@@ -29,6 +29,7 @@ jobs:
 
           import json
           import re
+          import time
           import unicodedata
           import urllib.request
           from collections import defaultdict
@@ -165,7 +166,20 @@ jobs:
 
           def is_blocked(url: str) -> bool:
               low = url.lower()
-              return any(x in low for x in BLOCKED)
+              if any(x in low for x in BLOCKED):
+                  return True
+
+              # Some Ayna URLs carry a Unix-expiry parameter such as ?e=1753741197.
+              # If that timestamp is already in the past, never add it as a new backup.
+              m = re.search(r"(?:[?&])e=(\d{10})(?:&|$)", url)
+              if m:
+                  try:
+                      if int(m.group(1)) < int(time.time()):
+                          return True
+                  except ValueError:
+                      pass
+
+              return False
 
           def has(text: str, words) -> bool:
               low = text.lower()
@@ -453,7 +467,7 @@ jobs:
               f"- Known bad V1 entries removed: **{len(cleaned_existing)}**",
               f"- Existing channel categories corrected: **{len(corrected_groups)}**",
               f"- Wrapper/proxy URLs resolved: **{proxy_resolved}**",
-              f"- Wrapper URLs skipped without a clean replacement: **{blocked_skipped}**",
+              f"- Blocked/expired URLs skipped without a clean replacement: **{blocked_skipped}**",
               f"- Duplicate URLs removed: **{len(duplicate_removed)}**",
           ]
 
