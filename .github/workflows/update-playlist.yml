@@ -36,7 +36,7 @@ jobs:
           from datetime import datetime, timezone
           from pathlib import Path
 
-          MASTER = Path("SAEID RAHMAN - IPTV Playlist")
+          MASTER = Path("IPTV Playlist.m3u")
           REPORT = Path("reports/auto-update.md")
 
           # A focused playlist is used for candidates. The larger list is lookup-only:
@@ -53,12 +53,15 @@ jobs:
               "Indian Movies",
               "Indian Music",
               "Indian Entertainment",
+              "Indian News",
               "International Movies",
               "International Music",
+              "International News",
               "Documentary & Wildlife",
               "Sports",
               "Kids",
               "Religious",
+              "Lifestyle",
           ]
 
           # Exact-name aliases for common source naming differences.
