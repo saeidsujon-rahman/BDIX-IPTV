@@ -45,7 +45,7 @@ jobs:
           LOOKUP_SOURCE = "https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u"
 
           MAX_BACKUPS = 8
-          MAX_NEW_CHANNELS = 6
+          MAX_NEW_CHANNELS = 0
 
           GROUP_ORDER = [
               "Bangladesh",
@@ -90,11 +90,13 @@ jobs:
           BLOCKED = (
               "go.skym3u.dev",
               "iptvlive.ahmed-bd-org.workers.dev",
+              "iptv-proxy.ahmed-bd-org.workers.dev",
               "filex.me",
               "proxy.php",
               "premiumtvs.space",
               "premimum.online",
               "ottclub.xyz",
+              "vercel.app",
           )
 
           INDIAN_NEWS = (
@@ -184,10 +186,12 @@ jobs:
                   return "Religious"
               if "document" in gl or has(nl, ("discovery", "nat geo", "animal planet", "history", "wild", "nature")):
                   return "Documentary & Wildlife"
-              if "news" in gl or has(nl, ("news", "cnbc", "cnn", "wion", "dw", "al jazeera", "bloomberg")):
-                  return "Indian News" if has(nl, INDIAN_NEWS) else "International News"
               if "bangladesh" in gl or gl in {"bd", "bangladesh tv"}:
                   return "Bangladesh"
+              if has(nl, BANGLADESH_NAMES) or has(nl, ("channel 1", "btv news", "btv shangshad", "btv parliament", "sangsad")):
+                  return "Bangladesh"
+              if "news" in gl or has(nl, ("news", "cnbc", "cnn", "wion", "dw", "al jazeera", "bloomberg")):
+                  return "Indian News" if has(nl, INDIAN_NEWS) else "International News"
               if gl in {"bangla", "bengali"} or "bangla" in gl:
                   if has(nl, INDIAN_BANGLA):
                       return "Indian Bangla"
@@ -402,7 +406,7 @@ jobs:
               "## Changes",
               "",
               f"- New backup streams: **{len(new_backups)}**",
-              f"- New channels: **{len(new_channels)}**",
+              f"- New channels automatically added: **{len(new_channels)}**",
               f"- Wrapper/proxy URLs resolved: **{proxy_resolved}**",
               f"- Wrapper URLs skipped without a clean replacement: **{blocked_skipped}**",
               f"- Duplicate URLs removed: **{len(duplicate_removed)}**",
