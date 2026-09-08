@@ -1,0 +1,447 @@
+name: IPTV Auto Update
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 02:30 UTC = 08:30 Bangladesh time
+    - cron: "30 2 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: iptv-auto-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update playlist
+        shell: bash
+        run: |
+          python - <<'PY'
+          from __future__ import annotations
+
+          import json
+          import re
+          import unicodedata
+          import urllib.request
+          from collections import defaultdict
+          from copy import deepcopy
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          MASTER = Path("SAEID RAHMAN - IPTV Playlist")
+          REPORT = Path("reports/auto-update.md")
+
+          # A focused playlist is used for candidates. The larger list is lookup-only:
+          # it helps replace obvious wrapper/proxy URLs with cleaner underlying URLs.
+          MERGE_SOURCE = "https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u"
+          LOOKUP_SOURCE = "https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u"
+
+          MAX_BACKUPS = 8
+          MAX_NEW_CHANNELS = 6
+
+          GROUP_ORDER = [
+              "Bangladesh",
+              "Indian Bangla",
+              "Indian Movies",
+              "Indian Music",
+              "Indian Entertainment",
+              "International Movies",
+              "International Music",
+              "Documentary & Wildlife",
+              "Sports",
+              "Kids",
+              "Religious",
+          ]
+
+          # Exact-name aliases for common source naming differences.
+          ALIASES = {
+              "bangla vision": "Banglavision",
+              "dbc news hd": "DBC News",
+              "ekattor hd": "Ekattor TV",
+              "channel i hd": "Channel I",
+              "news 24 hd": "News 24",
+              "star jalsha hd": "Star Jalsha",
+              "jalsha movies hd": "Jalsha Movies",
+              "zee bangla hd": "Zee Bangla",
+              "sony aath": "Sony AATH",
+              "sony sports 2 hd": "Sony Ten 2",
+              "sony sports 5 hd": "Sony Ten 5",
+              "bangla jago": "Bangla Jago TV",
+              "accu weather": "AccuWeather Now",
+              "cnbc tv 18": "CNBC TV18",
+              "cnn hd": "CNN News",
+              "dw": "DW News",
+              "trace sport": "Trace Sport Stars",
+              "music tv": "Kronehit TV",
+              "&xplore": "&Xplor HD",
+          }
+
+          BLOCKED = (
+              "go.skym3u.dev",
+              "iptvlive.ahmed-bd-org.workers.dev",
+              "filex.me",
+              "proxy.php",
+              "premiumtvs.space",
+              "premimum.online",
+              "ottclub.xyz",
+          )
+
+          INDIAN_NEWS = (
+              "abp", "aaj tak", "india today", "news18", "ndtv", "wion",
+              "cnbc", "times now", "republic", "zee news", "tv9 bharat",
+          )
+          INDIAN_BANGLA = (
+              "zee bangla", "star jalsha", "jalsha movies", "sony aath",
+              "colors bangla", "sun bangla", "enter 10 bangla", "enterr10 bangla",
+              "bangla jago", "republic bangla", "tv9 bangla", "sangeet bangla",
+          )
+          BANGLADESH_NAMES = (
+              "atn bangla", "atn news", "jamuna", "somoy", "ekattor", "dbc",
+              "ntv", "rtv", "channel i", "banglavision", "bangla vision",
+              "boishakhi", "duronto", "deepto", "maasranga", "independent",
+              "news 24", "mohona", "bijoy", "mytv", "desh tv", "asian tv",
+              "btv", "ekushey", "channel 24",
+          )
+
+          def fetch(url: str) -> str:
+              req = urllib.request.Request(
+                  url,
+                  headers={"User-Agent": "SaeidRahman-IPTV-Updater/1.0"}
+              )
+              with urllib.request.urlopen(req, timeout=40) as response:
+                  return response.read().decode("utf-8-sig", errors="replace")
+
+          def parse_m3u(text: str):
+              entries = []
+              current = None
+              extras = []
+              for raw in text.splitlines():
+                  line = raw.strip()
+                  if line.startswith("#EXTINF"):
+                      attrs = dict(re.findall(r'([\w-]+)="([^"]*)"', line))
+                      name = line.rsplit(",", 1)[-1].strip() if "," in line else attrs.get("tvg-name", "")
+                      current = {"attrs": attrs, "name": name, "url": None, "extras": []}
+                      extras = []
+                  elif current and (not line or line.startswith("#")):
+                      extras.append(raw)
+                  elif current and line:
+                      current["url"] = line
+                      current["extras"] = extras[:]
+                      entries.append(current)
+                      current = None
+                      extras = []
+              return [e for e in entries if e["name"] and e["url"]]
+
+          def strip_backup(name: str) -> str:
+              return re.sub(r"\s*\[Backup\s*\d+\]\s*$", "", name, flags=re.I).strip()
+
+          def backup_number(name: str) -> int:
+              m = re.search(r"\[Backup\s*(\d+)\]\s*$", name, flags=re.I)
+              return int(m.group(1)) if m else 0
+
+          def preferred_name(name: str) -> str:
+              clean = strip_backup(name)
+              return ALIASES.get(clean.lower(), clean)
+
+          def normalize(name: str) -> str:
+              name = preferred_name(name)
+              name = unicodedata.normalize("NFKD", name).lower().replace("&", "and")
+              name = re.sub(r"\b(fhd|uhd|hd|sd|4k|1080p|720p)\b", " ", name)
+              name = re.sub(r"[^a-z0-9]+", " ", name)
+              return " ".join(name.split())
+
+          def is_blocked(url: str) -> bool:
+              low = url.lower()
+              return any(x in low for x in BLOCKED)
+
+          def has(text: str, words) -> bool:
+              low = text.lower()
+              return any(word in low for word in words)
+
+          def guess_group(name: str, source_group: str):
+              g = (source_group or "").strip()
+              gl = g.lower()
+              nl = name.lower()
+
+              if g in GROUP_ORDER:
+                  return g
+              if "sport" in gl or "sport" in nl or "cricket" in nl:
+                  return "Sports"
+              if "kid" in gl or has(nl, ("cartoon", "nick", "disney", "kids", "baby", "pogo")):
+                  return "Kids"
+              if "relig" in gl or has(nl, ("quran", "islam", "peace tv", "aastha", "sanskar", "bhakti")):
+                  return "Religious"
+              if "document" in gl or has(nl, ("discovery", "nat geo", "animal planet", "history", "wild", "nature")):
+                  return "Documentary & Wildlife"
+              if "news" in gl or has(nl, ("news", "cnbc", "cnn", "wion", "dw", "al jazeera", "bloomberg")):
+                  return "Indian News" if has(nl, INDIAN_NEWS) else "International News"
+              if "bangladesh" in gl or gl in {"bd", "bangladesh tv"}:
+                  return "Bangladesh"
+              if gl in {"bangla", "bengali"} or "bangla" in gl:
+                  if has(nl, INDIAN_BANGLA):
+                      return "Indian Bangla"
+                  if has(nl, BANGLADESH_NAMES):
+                      return "Bangladesh"
+                  return None
+              if gl in {"india", "indian"}:
+                  if has(nl, INDIAN_NEWS):
+                      return "Indian News"
+                  if has(nl, ("music", "mtv", "9xm", "zoom", "sangeet")):
+                      return "Indian Music"
+                  if has(nl, ("movie", "cinema", "cineplex", "movies")):
+                      return "Indian Movies"
+                  return "Indian Entertainment"
+              if "movie" in gl or "cinema" in gl:
+                  return "International Movies"
+              if "music" in gl:
+                  return "International Music"
+              if "lifestyle" in gl or has(nl, ("fashion", "food", "travel", "lifestyle")):
+                  return "Lifestyle"
+              return None
+
+          def serialize_extinf(entry, chno):
+              attrs = dict(entry["attrs"])
+              attrs["tvg-name"] = entry["name"]
+              attrs["tvg-chno"] = str(chno)
+              attrs["group-title"] = entry["group"]
+              if entry["logo"]:
+                  attrs["tvg-logo"] = entry["logo"]
+              else:
+                  attrs.pop("tvg-logo", None)
+
+              order = [
+                  "tvg-id", "tvg-name", "tvg-logo", "tvg-chno",
+                  "tvg-language", "tvg-country", "group-title"
+              ]
+              parts = []
+              for key in order:
+                  if attrs.get(key, "") != "":
+                      parts.append(f'{key}="{attrs[key]}"')
+              for key, value in attrs.items():
+                  if key not in order and value != "":
+                      parts.append(f'{key}="{value}"')
+              return "#EXTINF:-1 " + " ".join(parts) + "," + entry["name"]
+
+          if not MASTER.exists():
+              raise SystemExit(f"Master playlist not found: {MASTER}")
+
+          master_raw = parse_m3u(MASTER.read_text(encoding="utf-8-sig", errors="replace"))
+          merge_raw = parse_m3u(fetch(MERGE_SOURCE))
+          lookup_raw = parse_m3u(fetch(LOOKUP_SOURCE))
+
+          master = []
+          for e in master_raw:
+              x = deepcopy(e)
+              x["canonical"] = strip_backup(e["name"])
+              x["group"] = e["attrs"].get("group-title", "")
+              x["logo"] = e["attrs"].get("tvg-logo", "")
+              master.append(x)
+
+          # Lookup-source index for replacing obvious wrapper URLs.
+          lookup = defaultdict(list)
+          for e in lookup_raw:
+              if not is_blocked(e["url"]):
+                  lookup[normalize(e["name"])].append(e)
+
+          candidates = []
+          proxy_resolved = 0
+          blocked_skipped = 0
+          for e in merge_raw:
+              x = deepcopy(e)
+              if is_blocked(x["url"]):
+                  replacement = next(iter(lookup.get(normalize(x["name"]), [])), None)
+                  if not replacement:
+                      blocked_skipped += 1
+                      continue
+                  x["url"] = replacement["url"]
+                  x["extras"] = replacement.get("extras", [])
+                  if not x["attrs"].get("tvg-logo"):
+                      x["attrs"]["tvg-logo"] = replacement["attrs"].get("tvg-logo", "")
+                  proxy_resolved += 1
+              candidates.append(x)
+
+          canonical = defaultdict(list)
+          norm_to_canonical = defaultdict(list)
+          for e in master:
+              canonical[e["canonical"]].append(e)
+              norm_to_canonical[normalize(e["canonical"])].append(e["canonical"])
+
+          existing_urls = {e["url"] for e in master}
+
+          def find_target(source_name):
+              wanted = preferred_name(source_name)
+              if wanted in canonical:
+                  return wanted
+              key = normalize(wanted)
+              choices = list(dict.fromkeys(norm_to_canonical.get(key, [])))
+              if len(choices) == 1:
+                  return choices[0]
+              for name in canonical:
+                  if name.lower() == wanted.lower():
+                      return name
+              return None
+
+          new_backups = []
+          new_channels = []
+          skipped_unclassified = 0
+          skipped_no_logo = 0
+          skipped_backup_limit = 0
+
+          for src in candidates:
+              url = src["url"]
+              if url in existing_urls:
+                  continue
+
+              target = find_target(src["name"])
+              if target:
+                  current = canonical[target]
+                  backup_count = sum(1 for e in current if backup_number(e["name"]) > 0)
+                  if backup_count >= MAX_BACKUPS:
+                      skipped_backup_limit += 1
+                      continue
+
+                  primary = next((e for e in current if backup_number(e["name"]) == 0), current[0])
+                  next_num = max(backup_number(e["name"]) for e in current) + 1
+                  ne = deepcopy(primary)
+                  ne["name"] = f"{target} [Backup {next_num}]"
+                  ne["canonical"] = target
+                  ne["url"] = url
+                  ne["extras"] = deepcopy(src.get("extras", []))
+                  ne["logo"] = primary["logo"] or src["attrs"].get("tvg-logo", "")
+                  master.append(ne)
+                  canonical[target].append(ne)
+                  existing_urls.add(url)
+                  new_backups.append((ne["name"], url))
+                  continue
+
+              if len(new_channels) >= MAX_NEW_CHANNELS:
+                  continue
+
+              name = preferred_name(src["name"])
+              group = guess_group(name, src["attrs"].get("group-title", ""))
+              if not group:
+                  skipped_unclassified += 1
+                  continue
+
+              logo = src["attrs"].get("tvg-logo", "")
+              if not logo:
+                  skipped_no_logo += 1
+                  continue
+
+              ne = {
+                  "attrs": deepcopy(src["attrs"]),
+                  "name": name,
+                  "canonical": name,
+                  "url": url,
+                  "extras": deepcopy(src.get("extras", [])),
+                  "group": group,
+                  "logo": logo,
+              }
+              master.append(ne)
+              canonical[name].append(ne)
+              norm_to_canonical[normalize(name)].append(name)
+              existing_urls.add(url)
+              new_channels.append((name, group, url))
+
+          if not new_backups and not new_channels:
+              print("No new streams or channels found.")
+              raise SystemExit(0)
+
+          # Defensive URL de-duplication: retain the first occurrence.
+          seen = set()
+          clean = []
+          duplicate_removed = []
+          for e in master:
+              if e["url"] in seen:
+                  duplicate_removed.append((e["name"], e["url"]))
+                  continue
+              seen.add(e["url"])
+              clean.append(e)
+          master = clean
+
+          rank = {g: i for i, g in enumerate(GROUP_ORDER)}
+          master.sort(
+              key=lambda e: (
+                  rank.get(e["group"], 999),
+                  normalize(e["canonical"]),
+                  backup_number(e["name"]),
+                  e["name"].lower(),
+              )
+          )
+
+          output = [
+              "#EXTM3U",
+              '#PLAYLIST-STUDIO-NAME:"SAEID RAHMAN - IPTV Playlist"',
+              "#PLAYLIST-STUDIO-CATEGORIES:" + json.dumps(GROUP_ORDER, ensure_ascii=False),
+          ]
+          for number, entry in enumerate(master, 1):
+              output.append(serialize_extinf(entry, number))
+              output.extend(entry.get("extras", []))
+              output.append(entry["url"])
+
+          MASTER.write_text("\ufeff" + "\n".join(output) + "\n", encoding="utf-8")
+
+          REPORT.parent.mkdir(parents=True, exist_ok=True)
+          now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+          report = [
+              "# 🤖 IPTV Auto Update",
+              "",
+              f"Generated: **{now}**",
+              "",
+              "## Changes",
+              "",
+              f"- New backup streams: **{len(new_backups)}**",
+              f"- New channels: **{len(new_channels)}**",
+              f"- Wrapper/proxy URLs resolved: **{proxy_resolved}**",
+              f"- Wrapper URLs skipped without a clean replacement: **{blocked_skipped}**",
+              f"- Duplicate URLs removed: **{len(duplicate_removed)}**",
+          ]
+
+          if new_channels:
+              report += ["", "## New channels", ""]
+              for name, group, url in new_channels:
+                  report.append(f"- **{name}** — `{group}` — {url}")
+
+          if new_backups:
+              report += ["", "## New backup streams", ""]
+              for name, url in new_backups:
+                  report.append(f"- **{name}** — {url}")
+
+          report += [
+              "",
+              "## Safety",
+              "",
+              f"- Unclassified new channels skipped: {skipped_unclassified}",
+              f"- New channels without logos skipped: {skipped_no_logo}",
+              f"- Channels already at the backup limit skipped: {skipped_backup_limit}",
+              "",
+              "> The updater never removes a stream merely because it fails a network test. "
+              "This protects BDIX streams that may work in Bangladesh but fail from GitHub's overseas servers.",
+              "",
+          ]
+          REPORT.write_text("\n".join(report), encoding="utf-8")
+
+          print(f"Added {len(new_backups)} backup streams and {len(new_channels)} new channels.")
+          PY
+
+      - name: Commit changes
+        shell: bash
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git config user.name "IPTV Update Bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "bot: auto-update IPTV playlist"
+          git push
