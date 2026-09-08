@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Update playlist
         shell: bash
@@ -244,12 +244,50 @@ jobs:
           merge_raw = parse_m3u(fetch(MERGE_SOURCE))
           lookup_raw = parse_m3u(fetch(LOOKUP_SOURCE))
 
+          # One-time/current-state sanitation.
+          # This removes only the known bad V1 additions, not general BDIX URLs.
+          CURRENT_BAD_PATTERNS = (
+              "iptv-proxy.ahmed-bd-org.workers.dev",
+              "iptvlive-beta.vercel.app",
+          )
+
           master = []
+          cleaned_existing = []
+          corrected_groups = []
+
           for e in master_raw:
+              url_low = e["url"].lower()
+
+              # Remove the proxy/Vercel links that slipped in during V1.
+              if any(pattern in url_low for pattern in CURRENT_BAD_PATTERNS):
+                  cleaned_existing.append((e["name"], e["url"]))
+                  continue
+
+              # Remove the obviously expired signed RTV URL that V1 added.
+              if (
+                  e["name"].strip().lower() == "rtv [backup 5]"
+                  and "e=1753741197" in url_low
+              ):
+                  cleaned_existing.append((e["name"], e["url"]))
+                  continue
+
               x = deepcopy(e)
               x["canonical"] = strip_backup(e["name"])
               x["group"] = e["attrs"].get("group-title", "")
               x["logo"] = e["attrs"].get("tvg-logo", "")
+
+              # Correct V1 Bangladesh channels that were misclassified.
+              if strip_backup(e["name"]).lower() in {
+                  "channel 1",
+                  "btv",
+                  "btv news",
+                  "bangla 1",
+              } and x["group"] != "Bangladesh":
+                  corrected_groups.append(
+                      (e["name"], x["group"] or "(blank)", "Bangladesh")
+                  )
+                  x["group"] = "Bangladesh"
+
               master.append(x)
 
           # Lookup-source index for replacing obvious wrapper URLs.
@@ -358,8 +396,13 @@ jobs:
               existing_urls.add(url)
               new_channels.append((name, group, url))
 
-          if not new_backups and not new_channels:
-              print("No new streams or channels found.")
+          if (
+              not new_backups
+              and not new_channels
+              and not cleaned_existing
+              and not corrected_groups
+          ):
+              print("No new streams, channels, or cleanup changes found.")
               raise SystemExit(0)
 
           # Defensive URL de-duplication: retain the first occurrence.
@@ -407,10 +450,24 @@ jobs:
               "",
               f"- New backup streams: **{len(new_backups)}**",
               f"- New channels automatically added: **{len(new_channels)}**",
+              f"- Known bad V1 entries removed: **{len(cleaned_existing)}**",
+              f"- Existing channel categories corrected: **{len(corrected_groups)}**",
               f"- Wrapper/proxy URLs resolved: **{proxy_resolved}**",
               f"- Wrapper URLs skipped without a clean replacement: **{blocked_skipped}**",
               f"- Duplicate URLs removed: **{len(duplicate_removed)}**",
           ]
+
+          if cleaned_existing:
+              report += ["", "## Cleaned V1 entries", ""]
+              for name, url in cleaned_existing:
+                  report.append(f"- Removed **{name}** — {url}")
+
+          if corrected_groups:
+              report += ["", "## Category corrections", ""]
+              for name, old_group, new_group in corrected_groups:
+                  report.append(
+                      f"- **{name}**: `{old_group}` → `{new_group}`"
+                  )
 
           if new_channels:
               report += ["", "## New channels", ""]
@@ -436,7 +493,12 @@ jobs:
           ]
           REPORT.write_text("\n".join(report), encoding="utf-8")
 
-          print(f"Added {len(new_backups)} backup streams and {len(new_channels)} new channels.")
+          print(
+              f"Added {len(new_backups)} backup streams, "
+              f"{len(new_channels)} new channels; "
+              f"removed {len(cleaned_existing)} bad V1 entries and "
+              f"corrected {len(corrected_groups)} categories."
+          )
           PY
 
       - name: Commit changes
