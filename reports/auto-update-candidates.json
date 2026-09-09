@@ -4,40 +4,32 @@
     "group": "Kids"
   },
   {
-    "channel": "aaj tak",
-    "group": "Indian News"
-  },
-  {
     "channel": "akash bangla",
     "group": "Indian Bangla"
   },
   {
     "channel": "al arabiya",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
     "channel": "al jazeera",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
     "channel": "al jazeera mubasher",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
     "channel": "al jazeera news",
-    "group": "International News"
-  },
-  {
-    "channel": "aljazeera",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
     "channel": "aristanis supertv",
     "group": "Bangladesh"
   },
   {
-    "channel": "asian",
-    "group": "Bangladesh"
+    "channel": "awaaz india",
+    "group": "Indian Entertainment"
   },
   {
     "channel": "azstartv",
@@ -56,22 +48,6 @@
     "group": "Sports"
   },
   {
-    "channel": "bloomberg",
-    "group": "International News"
-  },
-  {
-    "channel": "bloomberg television europe",
-    "group": "International News"
-  },
-  {
-    "channel": "bloomberg television us",
-    "group": "International News"
-  },
-  {
-    "channel": "bloomberg tv",
-    "group": "International News"
-  },
-  {
     "channel": "btv",
     "group": "Bangladesh"
   },
@@ -81,11 +57,11 @@
   },
   {
     "channel": "cbs news",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
     "channel": "cgtn",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
     "channel": "cgtn documentary english s",
@@ -93,7 +69,7 @@
   },
   {
     "channel": "cgtn espan ol",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
     "channel": "channel 1",
@@ -109,35 +85,19 @@
   },
   {
     "channel": "cnbc indonesia",
-    "group": "Indian News"
-  },
-  {
-    "channel": "cnn international",
-    "group": "International News"
-  },
-  {
-    "channel": "cusano news 7",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
     "channel": "dd india",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
     "channel": "dw",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
     "channel": "dw espan ol s",
-    "group": "International News"
-  },
-  {
-    "channel": "dw news",
-    "group": "International News"
-  },
-  {
-    "channel": "ekhon",
-    "group": "Bangladesh"
+    "group": "News & Weather"
   },
   {
     "channel": "ekushe tv",
@@ -149,47 +109,31 @@
   },
   {
     "channel": "euronews",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
     "channel": "france 24 espan ol y",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
-    "channel": "gb news",
-    "group": "International News"
+    "channel": "g tv",
+    "group": "Indian Bangla"
   },
   {
     "channel": "global news",
-    "group": "International News"
-  },
-  {
-    "channel": "independent",
-    "group": "Bangladesh"
-  },
-  {
-    "channel": "india today",
-    "group": "Indian News"
-  },
-  {
-    "channel": "intravel",
-    "group": "Lifestyle"
+    "group": "News & Weather"
   },
   {
     "channel": "intv",
     "group": "Bangladesh"
   },
   {
-    "channel": "iran press",
-    "group": "International News"
-  },
-  {
-    "channel": "islamic tv",
-    "group": "Religious"
-  },
-  {
     "channel": "khusbo bangla",
     "group": "Indian Bangla"
+  },
+  {
+    "channel": "khushboo",
+    "group": "Indian Entertainment"
   },
   {
     "channel": "kids pang tv",
@@ -200,36 +144,16 @@
     "group": "Bangladesh"
   },
   {
-    "channel": "me tv",
-    "group": "Bangladesh"
-  },
-  {
     "channel": "metro globe network",
-    "group": "International News"
-  },
-  {
-    "channel": "music india",
-    "group": "International Music"
-  },
-  {
-    "channel": "ndtv hindi",
-    "group": "Indian News"
+    "group": "News & Weather"
   },
   {
     "channel": "ndtv india",
-    "group": "Indian News"
-  },
-  {
-    "channel": "news 21 bangla tv",
-    "group": "Bangladesh"
+    "group": "News & Weather"
   },
   {
     "channel": "news 24 s",
     "group": "Bangladesh"
-  },
-  {
-    "channel": "news nation",
-    "group": "International News"
   },
   {
     "channel": "nikki",
@@ -237,11 +161,7 @@
   },
   {
     "channel": "oan",
-    "group": "International News"
-  },
-  {
-    "channel": "ora news",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
     "channel": "peer tv south tyrol",
@@ -261,7 +181,7 @@
   },
   {
     "channel": "rt",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
     "channel": "rt documentary english g",
@@ -269,7 +189,7 @@
   },
   {
     "channel": "rt espan ol g",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
     "channel": "rtv 38 toscana",
@@ -309,15 +229,11 @@
   },
   {
     "channel": "russia today g",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
     "channel": "sabc news",
-    "group": "International News"
-  },
-  {
-    "channel": "sangeet bangla",
-    "group": "Indian Bangla"
+    "group": "News & Weather"
   },
   {
     "channel": "sangeet bhojpuri",
@@ -325,23 +241,15 @@
   },
   {
     "channel": "scripps news",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
-    "channel": "sky news",
-    "group": "International News"
+    "channel": "shemarootv",
+    "group": "Indian Entertainment"
   },
   {
     "channel": "sky news arabia",
-    "group": "International News"
-  },
-  {
-    "channel": "sky news weather",
-    "group": "International News"
-  },
-  {
-    "channel": "sky news weather g",
-    "group": "International News"
+    "group": "News & Weather"
   },
   {
     "channel": "sport2u",
@@ -356,10 +264,6 @@
     "group": "Sports"
   },
   {
-    "channel": "star news",
-    "group": "Bangladesh"
-  },
-  {
     "channel": "star sports sl 2",
     "group": "Sports"
   },
@@ -368,32 +272,12 @@
     "group": "Bangladesh"
   },
   {
-    "channel": "travel tv",
-    "group": "Lifestyle"
-  },
-  {
-    "channel": "travel xp",
-    "group": "Documentary & Wildlife"
-  },
-  {
-    "channel": "travel xp",
-    "group": "Lifestyle"
-  },
-  {
-    "channel": "trt world",
-    "group": "International News"
-  },
-  {
     "channel": "tudn",
     "group": "Sports"
   },
   {
     "channel": "willow sports 2",
     "group": "Sports"
-  },
-  {
-    "channel": "wion",
-    "group": "Indian News"
   },
   {
     "channel": "xsport s",
