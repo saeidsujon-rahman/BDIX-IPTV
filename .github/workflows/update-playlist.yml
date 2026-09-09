@@ -16,40 +16,58 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 15   # prevent runaway jobs consuming GitHub Actions quota
+    timeout-minutes: 15
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Update playlist
+        id: updater
         shell: bash
         run: |
           set -euo pipefail
+
           python3 - <<'PY'
           from __future__ import annotations
 
           import json
           import os
           import re
-          import socket
           import time
           import unicodedata
           import urllib.error
           import urllib.request
+
           from collections import defaultdict
           from copy import deepcopy
           from datetime import datetime, timezone
           from pathlib import Path
 
+
+          # ============================================================================
+          # Configuration
+          # ============================================================================
+
           MASTER = Path("IPTV Playlist.m3u")
           REPORT = Path("reports/auto-update.md")
-          SUMMARY_FILE = Path("reports/auto-update-summary.txt")
+          CANDIDATE_STATE = Path("reports/auto-update-candidates.json")
 
-          MERGE_SOURCE  = "https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u"
-          LOOKUP_SOURCE = "https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u"
+          MERGE_SOURCE = (
+              "https://raw.githubusercontent.com/"
+              "ahmedstore75/Bdixplaylist/main/playlist.m3u"
+          )
 
-          MAX_BACKUPS      = 8
+          LOOKUP_SOURCE = (
+              "https://raw.githubusercontent.com/"
+              "ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u"
+          )
+
+          MAX_BACKUPS = 8
+
+          # 0 = discover/report new channels but never automatically add them.
           MAX_NEW_CHANNELS = 0
 
           GROUP_ORDER = [
@@ -58,40 +76,51 @@ jobs:
               "Indian Movies",
               "Indian Music",
               "Indian Entertainment",
-              "Indian News",
               "International Movies",
               "International Music",
-              "International News",
               "Documentary & Wildlife",
               "Sports",
               "Kids",
               "Religious",
-              "Lifestyle",
           ]
 
+
+          # ============================================================================
+          # Channel-name aliases
+          #
+          # Keep these conservative. Only aliases representing the same channel should
+          # be placed here.
+          # ============================================================================
+
           ALIASES = {
-              "bangla vision":    "Banglavision",
-              "dbc news hd":      "DBC News",
-              "ekattor hd":       "Ekattor TV",
-              "channel i hd":     "Channel I",
-              "news 24 hd":       "News 24",
-              "star jalsha hd":   "Star Jalsha",
+              "bangla vision": "Banglavision",
+              "dbc news hd": "DBC News",
+              "ekattor hd": "Ekattor TV",
+              "channel i hd": "Channel I",
+              "news 24 hd": "News 24",
+
+              "star jalsha hd": "Star Jalsha",
               "jalsha movies hd": "Jalsha Movies",
-              "zee bangla hd":    "Zee Bangla",
-              "sony aath":        "Sony AATH",
+              "zee bangla hd": "Zee Bangla",
+              "sony aath": "Sony AATH",
+
               "sony sports 2 hd": "Sony Ten 2",
               "sony sports 5 hd": "Sony Ten 5",
-              "bangla jago":      "Bangla Jago TV",
-              "accu weather":     "AccuWeather Now",
-              "cnbc tv 18":       "CNBC TV18",
-              "cnn hd":           "CNN News",
-              "dw":               "DW News",
-              "trace sport":      "Trace Sport Stars",
-              "music tv":         "Kronehit TV",
-              "&xplore":          "&Xplor HD",
+
+              "bangla jago": "Bangla Jago TV",
+              "accu weather": "AccuWeather Now",
+              "cnbc tv 18": "CNBC TV18",
+              "dw": "DW News",
+              "trace sport": "Trace Sport Stars",
+              "&xplore": "&Xplor HD",
           }
 
-          # Domains blocked from being ADDED as new backups from source playlists.
+
+          # ============================================================================
+          # Block lists
+          # ============================================================================
+
+          # These URLs/domains must never be ADDED from source playlists.
           BLOCKED_NEW = (
               "go.skym3u.dev",
               "iptvlive.ahmed-bd-org.workers.dev",
@@ -104,505 +133,2009 @@ jobs:
               "vercel.app",
           )
 
-          # Domains removed from existing entries -- intentionally narrow.
-          # Only genuine proxy/wrapper URLs that were never real streams.
-          # Paid domains like premiumtvs.space that already stream fine are NOT listed
-          # here; they are only blocked from being added as new backups.
+          # These are additionally removed if they already exist in the master.
+          #
+          # This list is deliberately much narrower.
+          #
+          # Example:
+          # premiumtvs.space may be blocked from NEW additions but an existing
+          # user-verified working stream is not automatically deleted.
           BLOCKED_EXISTING = (
               "iptvlive.ahmed-bd-org.workers.dev",
               "iptv-proxy.ahmed-bd-org.workers.dev",
               "vercel.app",
           )
 
-          INDIAN_NEWS = (
-              "abp", "aaj tak", "india today", "news18", "ndtv", "wion",
-              "cnbc", "times now", "republic", "zee news", "tv9 bharat",
-          )
+
+          # ============================================================================
+          # Classification data
+          # ============================================================================
+
+
           INDIAN_BANGLA = (
-              "zee bangla", "star jalsha", "jalsha movies", "sony aath",
-              "colors bangla", "sun bangla", "enter 10 bangla", "enterr10 bangla",
-              "bangla jago", "republic bangla", "tv9 bangla", "sangeet bangla",
+              "zee bangla",
+              "star jalsha",
+              "jalsha movies",
+              "sony aath",
+              "colors bangla",
+              "sun bangla",
+              "enter 10 bangla",
+              "enterr10 bangla",
+              "bangla jago",
+              "republic bangla",
+              "tv9 bangla",
+              "sangeet bangla",
           )
+
           BANGLADESH_NAMES = (
-              "atn bangla", "atn news", "jamuna", "somoy", "ekattor", "dbc",
-              "ntv", "rtv", "channel i", "banglavision", "bangla vision",
-              "boishakhi", "duronto", "deepto", "maasranga", "independent",
-              "news 24", "mohona", "bijoy", "mytv", "desh tv", "asian tv",
-              "btv", "ekushey", "channel 24",
+              "atn bangla",
+              "atn news",
+              "jamuna",
+              "somoy",
+              "ekattor",
+              "dbc",
+              "ntv",
+              "rtv",
+              "channel i",
+              "banglavision",
+              "bangla vision",
+              "boishakhi",
+              "duronto",
+              "deepto",
+              "maasranga",
+              "independent",
+              "news 24",
+              "mohona",
+              "bijoy",
+              "mytv",
+              "desh tv",
+              "asian tv",
+              "btv",
+              "ekushey",
+              "channel 24",
           )
 
 
-          # ---------------------------------------------------------------------------
-          # Helpers
-          # ---------------------------------------------------------------------------
+          # ============================================================================
+          # Utility helpers
+          # ============================================================================
+
+          def atomic_write(path: Path, text: str) -> None:
+              """
+              Write a file atomically.
+
+              Prevents leaving a partially written playlist/report if the process is
+              interrupted during the write.
+              """
+              path.parent.mkdir(parents=True, exist_ok=True)
+
+              tmp = path.with_name(path.name + ".tmp")
+              tmp.write_text(text, encoding="utf-8")
+              tmp.replace(path)
+
 
           def fetch(url: str, attempts: int = 3) -> str:
               req = urllib.request.Request(
                   url,
-                  headers={"User-Agent": "SaeidRahman-IPTV-Updater/1.0"},
+                  headers={
+                      "User-Agent": "SaeidRahman-IPTV-Updater/2.0",
+                      "Accept": "*/*",
+                  },
               )
+
               last_error: Exception | None = None
+
               for attempt in range(1, attempts + 1):
                   try:
-                      with urllib.request.urlopen(req, timeout=40) as resp:
-                          text = resp.read().decode("utf-8-sig", errors="replace")
-                          print(f"  Fetched {url} ({len(text):,} chars)")
+                      with urllib.request.urlopen(req, timeout=40) as response:
+                          text = response.read().decode(
+                              "utf-8-sig",
+                              errors="replace",
+                          )
+
+                          print(
+                              f"Fetched {url} "
+                              f"({len(text):,} characters)"
+                          )
+
                           return text
-                  except (urllib.error.URLError, TimeoutError, OSError, socket.error) as exc:
+
+                  except (
+                      urllib.error.URLError,
+                      TimeoutError,
+                      OSError,
+                  ) as exc:
                       last_error = exc
-                      print(f"  Attempt {attempt}/{attempts} failed for {url}: {exc}")
+
+                      print(
+                          f"Attempt {attempt}/{attempts} failed "
+                          f"for {url}: {exc}"
+                      )
+
                       if attempt < attempts:
                           time.sleep(5 * attempt)
-              raise SystemExit(f"Could not fetch {url} after {attempts} attempts: {last_error}")
+
+              raise SystemExit(
+                  f"Unable to fetch {url} after "
+                  f"{attempts} attempts: {last_error}"
+              )
 
 
-          def parse_m3u(text: str) -> list:
-              entries: list = []
+          def valid_stream_url(url: str) -> bool:
+              url = url.strip()
+
+              return url.lower().startswith(
+                  (
+                      "http://",
+                      "https://",
+                      "rtmp://",
+                      "rtsp://",
+                      "udp://",
+                      "rtp://",
+                  )
+              )
+
+
+          def parse_m3u(text: str) -> list[dict]:
+              entries: list[dict] = []
+
               current = None
-              extras: list = []
+              extras: list[str] = []
+
               for raw in text.splitlines():
                   line = raw.strip()
+
                   if line.startswith("#EXTINF"):
-                      attrs = dict(re.findall(r'([\w-]+)="([^"]*)"', line))
-                      name = line.rsplit(",", 1)[-1].strip() if "," in line else attrs.get("tvg-name", "")
-                      current = {"attrs": attrs, "name": name, "url": None, "extras": []}
+                      attrs = dict(
+                          re.findall(
+                              r'([\w-]+)="([^"]*)"',
+                              line,
+                          )
+                      )
+
+                      if "," in line:
+                          name = line.rsplit(",", 1)[-1].strip()
+                      else:
+                          name = attrs.get("tvg-name", "").strip()
+
+                      current = {
+                          "attrs": attrs,
+                          "name": name,
+                          "url": None,
+                          "extras": [],
+                      }
+
                       extras = []
-                  elif current and (not line or line.startswith("#")):
+
+                  elif current and (
+                      not line or line.startswith("#")
+                  ):
                       extras.append(raw)
+
                   elif current and line:
                       current["url"] = line
                       current["extras"] = extras[:]
-                      entries.append(current)
+
+                      if (
+                          current["name"]
+                          and current["url"]
+                          and valid_stream_url(current["url"])
+                      ):
+                          entries.append(current)
+
                       current = None
                       extras = []
-              return [e for e in entries if e["name"] and e["url"]]
+
+              return entries
+
+
+          def extract_header_lines(text: str) -> list[str]:
+              """
+              Preserve master-playlist header metadata, including values such as:
+
+                  #EXTM3U x-tvg-url="..."
+
+              Playlist Studio metadata is regenerated separately.
+              """
+              result: list[str] = []
+
+              for raw in text.splitlines():
+                  line = raw.strip()
+
+                  if line.startswith("#EXTINF"):
+                      break
+
+                  if not line:
+                      continue
+
+                  if line.startswith("\ufeff"):
+                      line = line.lstrip("\ufeff")
+
+                  if line.startswith("#PLAYLIST-STUDIO-NAME:"):
+                      continue
+
+                  if line.startswith("#PLAYLIST-STUDIO-CATEGORIES:"):
+                      continue
+
+                  result.append(line)
+
+              if not result or not result[0].startswith("#EXTM3U"):
+                  result.insert(0, "#EXTM3U")
+
+              return result
 
 
           def strip_backup(name: str) -> str:
-              return re.sub(r"\s*\[Backup\s*\d+\]\s*$", "", name, flags=re.I).strip()
+              return re.sub(
+                  r"\s*\[Backup\s*\d+\]\s*$",
+                  "",
+                  name,
+                  flags=re.I,
+              ).strip()
 
 
           def backup_number(name: str) -> int:
-              m = re.search(r"\[Backup\s*(\d+)\]\s*$", name, flags=re.I)
-              return int(m.group(1)) if m else 0
+              match = re.search(
+                  r"\[Backup\s*(\d+)\]\s*$",
+                  name,
+                  flags=re.I,
+              )
+
+              if match:
+                  return int(match.group(1))
+
+              return 0
 
 
           def preferred_name(name: str) -> str:
               clean = strip_backup(name)
-              return ALIASES.get(clean.lower(), clean)
+
+              return ALIASES.get(
+                  clean.lower(),
+                  clean,
+              )
 
 
           def normalize(name: str) -> str:
               name = preferred_name(name)
-              name = unicodedata.normalize("NFKD", name).lower().replace("&", "and")
-              name = re.sub(r"\b(fhd|uhd|hd|sd|4k|1080p|720p)\b", " ", name)
-              name = re.sub(r"[^a-z0-9]+", " ", name)
+
+              name = unicodedata.normalize(
+                  "NFKD",
+                  name,
+              )
+
+              name = name.lower().replace("&", "and")
+
+              name = re.sub(
+                  r"\b(fhd|uhd|hd|sd|4k|1080p|720p)\b",
+                  " ",
+                  name,
+              )
+
+              name = re.sub(
+                  r"[^a-z0-9]+",
+                  " ",
+                  name,
+              )
+
               return " ".join(name.split())
-
-
-          def is_blocked(url: str, existing: bool = False) -> bool:
-              low = url.lower()
-              domains = BLOCKED_EXISTING if existing else BLOCKED_NEW
-              if any(x in low for x in domains):
-                  return True
-              # Ayna signed URLs carry ?e=<unix_timestamp>. Reject if expired.
-              m = re.search(r"(?:[?&])e=(\d{10})(?:&|$)", url)
-              if m:
-                  try:
-                      if int(m.group(1)) < int(time.time()):
-                          return True
-                  except ValueError:
-                      pass
-              return False
 
 
           def has(text: str, words) -> bool:
               low = text.lower()
-              return any(word in low for word in words)
+
+              return any(
+                  word in low
+                  for word in words
+              )
 
 
-          def guess_group(name: str, source_group: str) -> str | None:
-              g  = (source_group or "").strip()
+          def is_blocked(
+              url: str,
+              existing: bool = False,
+          ) -> bool:
+              low = url.lower()
+
+              domains = (
+                  BLOCKED_EXISTING
+                  if existing
+                  else BLOCKED_NEW
+              )
+
+              if any(
+                  domain in low
+                  for domain in domains
+              ):
+                  return True
+
+              # Ayna-style signed URL:
+              #
+              # ?e=1753741197
+              #
+              # Remove only if the Unix expiry time is definitely in the past.
+              match = re.search(
+                  r"(?:[?&])e=(\d{10})(?:&|$)",
+                  url,
+              )
+
+              if match:
+                  try:
+                      if int(match.group(1)) < int(time.time()):
+                          return True
+                  except ValueError:
+                      pass
+
+              return False
+
+
+          # ============================================================================
+          # Classification
+          # ============================================================================
+
+          def guess_group(
+              name: str,
+              source_group: str,
+          ) -> str | None:
+              g = (source_group or "").strip()
               gl = g.lower()
               nl = name.lower()
 
               if g in GROUP_ORDER:
                   return g
-              if "sport" in gl or "sport" in nl or "cricket" in nl:
+
+              # Indian Bengali identity is checked before generic news logic.
+              if has(nl, INDIAN_BANGLA):
+                  return "Indian Bangla"
+
+              if (
+                  "sport" in gl
+                  or "sport" in nl
+                  or "cricket" in nl
+              ):
                   return "Sports"
-              if "kid" in gl or has(nl, ("cartoon", "nick", "disney", "kids", "baby", "pogo")):
+
+              if (
+                  "kid" in gl
+                  or has(
+                      nl,
+                      (
+                          "cartoon",
+                          "nick",
+                          "disney",
+                          "kids",
+                          "baby",
+                          "pogo",
+                      ),
+                  )
+              ):
                   return "Kids"
-              if "relig" in gl or has(nl, ("quran", "islam", "peace tv", "aastha", "sanskar", "bhakti")):
+
+              if (
+                  "relig" in gl
+                  or has(
+                      nl,
+                      (
+                          "quran",
+                          "islam",
+                          "peace tv",
+                          "aastha",
+                          "sanskar",
+                          "bhakti",
+                      ),
+                  )
+              ):
                   return "Religious"
-              if "document" in gl or has(nl, ("discovery", "nat geo", "animal planet", "history", "wild", "nature")):
+
+              if (
+                  "document" in gl
+                  or has(
+                      nl,
+                      (
+                          "discovery",
+                          "nat geo",
+                          "national geographic",
+                          "animal planet",
+                          "history",
+                          "wild",
+                          "nature",
+                      ),
+                  )
+              ):
                   return "Documentary & Wildlife"
-              if "bangladesh" in gl or gl in {"bd", "bangladesh tv"}:
+
+              if (
+                  "bangladesh" in gl
+                  or gl in {
+                      "bd",
+                      "bangladesh tv",
+                  }
+              ):
                   return "Bangladesh"
-              if has(nl, BANGLADESH_NAMES) or has(nl, ("channel 1", "btv news", "btv shangshad", "btv parliament", "sangsad")):
+
+              if has(
+                  nl,
+                  BANGLADESH_NAMES,
+              ):
                   return "Bangladesh"
-              if "news" in gl or has(nl, ("news", "cnbc", "cnn", "wion", "dw", "al jazeera", "bloomberg")):
-                  return "Indian News" if has(nl, INDIAN_NEWS) else "International News"
-              if gl in {"bangla", "bengali"} or "bangla" in gl:
-                  if has(nl, INDIAN_BANGLA):
-                      return "Indian Bangla"
-                  if has(nl, BANGLADESH_NAMES):
-                      return "Bangladesh"
-                  return None
-              if gl in {"india", "indian"}:
-                  if has(nl, INDIAN_NEWS):
+
+              if has(
+                  nl,
+                  (
+                      "channel 1",
+                      "btv news",
+                      "btv shangshad",
+                      "btv parliament",
+                      "sangsad",
+                  ),
+              ):
+                  return "Bangladesh"
+
+              if (
+                  "news" in gl
+                  or has(
+                      nl,
+                      (
+                          "news",
+                          "cnbc",
+                          "cnn",
+                          "wion",
+                          "dw",
+                          "al jazeera",
+                          "bloomberg",
+                      ),
+                  )
+              ):
+                  if has(
+                      nl,
+                      INDIAN_NEWS,
+                  ):
                       return "Indian News"
-                  if has(nl, ("music", "mtv", "9xm", "zoom", "sangeet")):
+
+                  return "International News"
+
+              if (
+                  gl in {
+                      "bangla",
+                      "bengali",
+                  }
+                  or "bangla" in gl
+              ):
+                  if has(
+                      nl,
+                      INDIAN_BANGLA,
+                  ):
+                      return "Indian Bangla"
+
+                  if has(
+                      nl,
+                      BANGLADESH_NAMES,
+                  ):
+                      return "Bangladesh"
+
+                  return None
+
+              if gl in {
+                  "india",
+                  "indian",
+              }:
+                  if has(
+                      nl,
+                      INDIAN_NEWS,
+                  ):
+                      return "Indian News"
+
+                  if has(
+                      nl,
+                      (
+                          "music",
+                          "mtv",
+                          "9xm",
+                          "zoom",
+                          "sangeet",
+                      ),
+                  ):
                       return "Indian Music"
-                  if has(nl, ("movie", "cinema", "cineplex", "movies")):
+
+                  if has(
+                      nl,
+                      (
+                          "movie",
+                          "cinema",
+                          "cineplex",
+                          "movies",
+                      ),
+                  ):
                       return "Indian Movies"
+
                   return "Indian Entertainment"
-              if "movie" in gl or "cinema" in gl:
+
+              if (
+                  "movie" in gl
+                  or "cinema" in gl
+              ):
                   return "International Movies"
+
               if "music" in gl:
                   return "International Music"
-              if "lifestyle" in gl or has(nl, ("fashion", "food", "travel", "lifestyle")):
+
+              if (
+                  "lifestyle" in gl
+                  or has(
+                      nl,
+                      (
+                          "fashion",
+                          "food",
+                          "travel",
+                          "lifestyle",
+                      ),
+                  )
+              ):
                   return "Lifestyle"
+
               return None
 
 
-          def serialize_extinf(entry: dict, chno: int) -> str:
+          def confident_existing_group(
+              name: str,
+          ) -> str | None:
+              """
+              Conservative corrections for existing master channels.
+
+              This does NOT blindly run source-group inference across the whole master.
+              Only categories that can be inferred confidently from the channel name
+              itself are returned.
+              """
+              nl = name.lower()
+
+              if has(
+                  nl,
+                  INDIAN_BANGLA,
+              ):
+                  return "Indian Bangla"
+
+              if has(
+                  nl,
+                  BANGLADESH_NAMES,
+              ):
+                  return "Bangladesh"
+
+              if has(
+                  nl,
+                  (
+                      "channel 1",
+                      "btv news",
+                      "btv shangshad",
+                      "btv parliament",
+                      "sangsad",
+                  ),
+              ):
+                  return "Bangladesh"
+
+              if has(
+                  nl,
+                  (
+                      "discovery",
+                      "animal planet",
+                      "nat geo",
+                      "national geographic",
+                  ),
+              ):
+                  return "Documentary & Wildlife"
+
+              if (
+                  "sport" in nl
+                  or "cricket" in nl
+                  or has(
+                      nl,
+                      (
+                          "sony ten",
+                          "star sports",
+                          "eurosport",
+                          "bein sports",
+                      ),
+                  )
+              ):
+                  return "Sports"
+
+              if has(
+                  nl,
+                  (
+                      "cartoon network",
+                      "nickelodeon",
+                      "nick jr",
+                      "disney junior",
+                      "pogo",
+                  ),
+              ):
+                  return "Kids"
+
+              return None
+
+
+          # ============================================================================
+          # Serialization
+          # ============================================================================
+
+          def serialize_extinf(
+              entry: dict,
+              chno: int,
+          ) -> str:
               attrs = dict(entry["attrs"])
-              attrs["tvg-name"]    = entry["name"]
-              attrs["tvg-chno"]    = str(chno)
+
+              attrs["tvg-name"] = entry["name"]
+              attrs["tvg-chno"] = str(chno)
               attrs["group-title"] = entry["group"]
+
               if entry["logo"]:
                   attrs["tvg-logo"] = entry["logo"]
               else:
                   attrs.pop("tvg-logo", None)
 
-              order = ["tvg-id", "tvg-name", "tvg-logo", "tvg-chno", "tvg-language", "tvg-country", "group-title"]
-              parts = [f'{k}="{attrs[k]}"' for k in order if attrs.get(k, "")]
-              parts += [f'{k}="{v}"' for k, v in attrs.items() if k not in order and v]
-              return "#EXTINF:-1 " + " ".join(parts) + "," + entry["name"]
+              preferred_order = [
+                  "tvg-id",
+                  "tvg-name",
+                  "tvg-logo",
+                  "tvg-chno",
+                  "tvg-language",
+                  "tvg-country",
+                  "group-title",
+              ]
+
+              parts: list[str] = []
+
+              for key in preferred_order:
+                  value = attrs.get(key, "")
+
+                  if value != "":
+                      parts.append(
+                          f'{key}="{value}"'
+                      )
+
+              for key, value in attrs.items():
+                  if (
+                      key not in preferred_order
+                      and value != ""
+                  ):
+                      parts.append(
+                          f'{key}="{value}"'
+                      )
+
+              return (
+                  "#EXTINF:-1 "
+                  + " ".join(parts)
+                  + ","
+                  + entry["name"]
+              )
 
 
-          def atomic_write(path: Path, text: str) -> None:
-              """Write to a temp file then rename -- prevents a corrupt half-written file
-              if the process is killed or crashes mid-write."""
-              tmp = path.with_suffix(".tmp")
-              tmp.write_text(text, encoding="utf-8")
-              tmp.replace(path)   # atomic on Linux (same filesystem)
-
-
-          # ---------------------------------------------------------------------------
-          # Main
-          # ---------------------------------------------------------------------------
+          # ============================================================================
+          # Load master
+          # ============================================================================
 
           if not MASTER.exists():
-              raise SystemExit(f"Master playlist not found: {MASTER}")
+              raise SystemExit(
+                  f"Master playlist not found: {MASTER}"
+              )
 
-          master_raw = parse_m3u(MASTER.read_text(encoding="utf-8-sig", errors="replace"))
+          original_master_text = MASTER.read_text(
+              encoding="utf-8-sig",
+              errors="replace",
+          )
+
+          master_header = extract_header_lines(
+              original_master_text
+          )
+
+          master_raw = parse_m3u(
+              original_master_text
+          )
+
           if not master_raw:
               raise SystemExit(
-                  f"Refusing to continue: parsed 0 channels from {MASTER}. "
-                  "The file may be empty or corrupted."
+                  f"Refusing to continue: parsed 0 "
+                  f"channels from {MASTER}. "
+                  "The playlist may be empty or corrupted."
               )
-          print(f"Master: {len(master_raw)} entries loaded")
+
+          print(
+              f"Master loaded: "
+              f"{len(master_raw)} stream entries"
+          )
+
+
+          # ============================================================================
+          # Fetch external sources
+          # ============================================================================
 
           print("Fetching source playlists...")
-          merge_raw  = parse_m3u(fetch(MERGE_SOURCE))
-          lookup_raw = parse_m3u(fetch(LOOKUP_SOURCE))
-          print(f"Merge source: {len(merge_raw)} entries | Lookup source: {len(lookup_raw)} entries")
 
-          # --- Sweep existing entries ---
-          master: list         = []
-          cleaned_existing:list  = []
-          corrected_groups: list = []
+          merge_text = fetch(
+              MERGE_SOURCE
+          )
 
-          BD_MISCLASSIFIED = {"channel 1", "btv", "btv news", "bangla 1"}
+          lookup_text = fetch(
+              LOOKUP_SOURCE
+          )
 
-          for e in master_raw:
-              # Remove known-dead proxy/wrapper URLs and expired signed links.
-              if is_blocked(e["url"], existing=True):
-                  cleaned_existing.append((e["name"], e["url"]))
+          merge_raw = parse_m3u(
+              merge_text
+          )
+
+          lookup_raw = parse_m3u(
+              lookup_text
+          )
+
+          print(
+              f"Merge source: {len(merge_raw)} entries"
+          )
+
+          print(
+              f"Lookup source: {len(lookup_raw)} entries"
+          )
+
+
+          # ============================================================================
+          # Sweep existing master
+          # ============================================================================
+
+          master: list[dict] = []
+
+          cleaned_existing: list[tuple[str, str]] = []
+          corrected_groups: list[tuple[str, str, str]] = []
+
+          for entry in master_raw:
+              if is_blocked(
+                  entry["url"],
+                  existing=True,
+              ):
+                  cleaned_existing.append(
+                      (
+                          entry["name"],
+                          entry["url"],
+                      )
+                  )
+
                   continue
 
-              x = deepcopy(e)
-              x["canonical"] = strip_backup(e["name"])
-              x["group"]     = e["attrs"].get("group-title", "")
-              x["logo"]      = e["attrs"].get("tvg-logo", "")
+              item = deepcopy(entry)
 
-              # Fix historically misclassified Bangladesh channels.
-              if strip_backup(e["name"]).lower() in BD_MISCLASSIFIED and x["group"] != "Bangladesh":
-                  corrected_groups.append((e["name"], x["group"] or "(blank)", "Bangladesh"))
-                  x["group"] = "Bangladesh"
+              item["canonical"] = strip_backup(
+                  entry["name"]
+              )
 
-              master.append(x)
+              item["group"] = entry["attrs"].get(
+                  "group-title",
+                  "",
+              )
 
-          # --- Build lookup index (clean URLs from the larger source) ---
-          lookup: dict = defaultdict(list)
-          for e in lookup_raw:
-              if not is_blocked(e["url"]):
-                  lookup[normalize(e["name"])].append(e)
+              item["logo"] = entry["attrs"].get(
+                  "tvg-logo",
+                  "",
+              )
 
-          # --- Resolve / filter merge candidates ---
-          candidates:    list = []
-          proxy_resolved:int  = 0
-          blocked_skipped:int = 0
+              suggested_group = confident_existing_group(
+                  item["canonical"]
+              )
 
-          for e in merge_raw:
-              x = deepcopy(e)
-              if is_blocked(x["url"]):
-                  replacement = next(iter(lookup.get(normalize(x["name"]), [])), None)
+              if (
+                  suggested_group
+                  and item["group"] != suggested_group
+              ):
+                  corrected_groups.append(
+                      (
+                          item["name"],
+                          item["group"] or "(blank)",
+                          suggested_group,
+                      )
+                  )
+
+                  item["group"] = suggested_group
+
+              master.append(item)
+
+
+          # ============================================================================
+          # Build lookup-source clean URL index
+          # ============================================================================
+
+          lookup: dict[str, list[dict]] = defaultdict(list)
+
+          for entry in lookup_raw:
+              if (
+                  valid_stream_url(entry["url"])
+                  and not is_blocked(entry["url"])
+              ):
+                  lookup[
+                      normalize(entry["name"])
+                  ].append(entry)
+
+
+          # ============================================================================
+          # Resolve blocked/wrapper URLs from merge source
+          # ============================================================================
+
+          candidates: list[dict] = []
+
+          proxy_resolved = 0
+          blocked_skipped = 0
+          malformed_skipped = 0
+
+          for entry in merge_raw:
+              item = deepcopy(entry)
+
+              if not valid_stream_url(
+                  item["url"]
+              ):
+                  malformed_skipped += 1
+                  continue
+
+              if is_blocked(
+                  item["url"]
+              ):
+                  replacements = lookup.get(
+                      normalize(item["name"]),
+                      [],
+                  )
+
+                  replacement = next(
+                      (
+                          candidate
+                          for candidate in replacements
+                          if (
+                              valid_stream_url(
+                                  candidate["url"]
+                              )
+                              and not is_blocked(
+                                  candidate["url"]
+                              )
+                          )
+                      ),
+                      None,
+                  )
+
                   if not replacement:
                       blocked_skipped += 1
                       continue
-                  x["url"]    = replacement["url"]
-                  x["extras"] = replacement.get("extras", [])
-                  if not x["attrs"].get("tvg-logo"):
-                      x["attrs"]["tvg-logo"] = replacement["attrs"].get("tvg-logo", "")
+
+                  item["url"] = replacement["url"]
+
+                  item["extras"] = deepcopy(
+                      replacement.get(
+                          "extras",
+                          [],
+                      )
+                  )
+
+                  if not item["attrs"].get(
+                      "tvg-logo"
+                  ):
+                      item["attrs"]["tvg-logo"] = (
+                          replacement["attrs"].get(
+                              "tvg-logo",
+                              "",
+                          )
+                      )
+
                   proxy_resolved += 1
-              candidates.append(x)
 
-          # --- Build canonical index from surviving master entries ---
-          canonical:        dict = defaultdict(list)
-          norm_to_canonical:dict = defaultdict(list)
-          for e in master:
-              canonical[e["canonical"]].append(e)
-              norm_to_canonical[normalize(e["canonical"])].append(e["canonical"])
-
-          existing_urls: set = {e["url"] for e in master}
+              candidates.append(item)
 
 
-          def find_target(source_name: str) -> str | None:
-              wanted = preferred_name(source_name)
+          # ============================================================================
+          # Build canonical indexes
+          # ============================================================================
+
+          canonical: dict[str, list[dict]] = defaultdict(list)
+
+          norm_to_canonical: dict[str, list[str]] = defaultdict(list)
+
+          for entry in master:
+              canonical[
+                  entry["canonical"]
+              ].append(entry)
+
+              norm_to_canonical[
+                  normalize(entry["canonical"])
+              ].append(
+                  entry["canonical"]
+              )
+
+          existing_urls: set[str] = {
+              entry["url"]
+              for entry in master
+          }
+
+
+          def find_target(
+              source_name: str,
+          ) -> str | None:
+              wanted = preferred_name(
+                  source_name
+              )
+
               if wanted in canonical:
                   return wanted
-              key     = normalize(wanted)
-              choices = list(dict.fromkeys(norm_to_canonical.get(key, [])))
+
+              key = normalize(
+                  wanted
+              )
+
+              choices = list(
+                  dict.fromkeys(
+                      norm_to_canonical.get(
+                          key,
+                          [],
+                      )
+                  )
+              )
+
               if len(choices) == 1:
                   return choices[0]
-              for name in canonical:
-                  if name.lower() == wanted.lower():
-                      return name
+
+              for canonical_name in canonical:
+                  if (
+                      canonical_name.lower()
+                      == wanted.lower()
+                  ):
+                      return canonical_name
+
               return None
 
 
-          new_backups:          list = []
-          new_channels:         list = []
-          new_channel_candidates:list = []
-          skipped_unclassified: int  = 0
-          skipped_no_logo:      int  = 0
-          skipped_backup_limit: int  = 0
+          # ============================================================================
+          # Add backups / discover new channels
+          # ============================================================================
+
+          new_backups: list[tuple[str, str]] = []
+
+          new_channels: list[tuple[str, str, str]] = []
+
+          new_channel_candidates: list[
+              tuple[str, str, str]
+          ] = []
+
+          skipped_unclassified = 0
+          skipped_no_logo = 0
+          skipped_backup_limit = 0
 
           for src in candidates:
               url = src["url"]
+
               if url in existing_urls:
                   continue
 
-              target = find_target(src["name"])
+              target = find_target(
+                  src["name"]
+              )
+
+              # ------------------------------------------------------------------------
+              # Existing channel -> add as backup
+              # ------------------------------------------------------------------------
+
               if target:
-                  current      = canonical[target]
-                  backup_count = sum(1 for e in current if backup_number(e["name"]) > 0)
+                  current = canonical[target]
+
+                  backup_count = sum(
+                      1
+                      for item in current
+                      if backup_number(
+                          item["name"]
+                      ) > 0
+                  )
+
                   if backup_count >= MAX_BACKUPS:
                       skipped_backup_limit += 1
                       continue
 
-                  primary  = next((e for e in current if backup_number(e["name"]) == 0), current[0])
-                  next_num = max(backup_number(e["name"]) for e in current) + 1
-                  ne = deepcopy(primary)
-                  ne["name"]      = f"{target} [Backup {next_num}]"
-                  ne["canonical"] = target
-                  ne["url"]       = url
-                  ne["extras"]    = deepcopy(src.get("extras", []))
-                  ne["logo"]      = primary["logo"] or src["attrs"].get("tvg-logo", "")
-                  master.append(ne)
-                  canonical[target].append(ne)
-                  existing_urls.add(url)
-                  new_backups.append((ne["name"], url))
+                  primary = next(
+                      (
+                          item
+                          for item in current
+                          if backup_number(
+                              item["name"]
+                          ) == 0
+                      ),
+                      current[0],
+                  )
+
+                  next_number = (
+                      max(
+                          backup_number(
+                              item["name"]
+                          )
+                          for item in current
+                      )
+                      + 1
+                  )
+
+                  new_entry = deepcopy(
+                      primary
+                  )
+
+                  new_entry["name"] = (
+                      f"{target} "
+                      f"[Backup {next_number}]"
+                  )
+
+                  new_entry["canonical"] = target
+                  new_entry["url"] = url
+
+                  # Preserve stream-specific VLC/referrer/options
+                  # from the new source.
+                  new_entry["extras"] = deepcopy(
+                      src.get(
+                          "extras",
+                          [],
+                      )
+                  )
+
+                  new_entry["logo"] = (
+                      primary.get(
+                          "logo",
+                          "",
+                      )
+                      or src["attrs"].get(
+                          "tvg-logo",
+                          "",
+                      )
+                  )
+
+                  master.append(
+                      new_entry
+                  )
+
+                  canonical[
+                      target
+                  ].append(
+                      new_entry
+                  )
+
+                  existing_urls.add(
+                      url
+                  )
+
+                  new_backups.append(
+                      (
+                          new_entry["name"],
+                          url,
+                      )
+                  )
+
                   continue
 
-              # Classify and logo-check BEFORE the MAX_NEW_CHANNELS gate so counters
-              # stay meaningful even when the cap is 0, and qualifying channels appear
-              # in the report as candidates for manual review.
-              name  = preferred_name(src["name"])
-              group = guess_group(name, src["attrs"].get("group-title", ""))
+
+              # ------------------------------------------------------------------------
+              # Completely new channel
+              # ------------------------------------------------------------------------
+
+              name = preferred_name(
+                  src["name"]
+              )
+
+              group = guess_group(
+                  name,
+                  src["attrs"].get(
+                      "group-title",
+                      "",
+                  ),
+              )
+
               if not group:
                   skipped_unclassified += 1
                   continue
 
-              logo = src["attrs"].get("tvg-logo", "")
+              logo = src["attrs"].get(
+                  "tvg-logo",
+                  "",
+              )
+
               if not logo:
                   skipped_no_logo += 1
                   continue
 
-              if len(new_channels) >= MAX_NEW_CHANNELS:
-                  new_channel_candidates.append((name, group, url))
+              if (
+                  len(new_channels)
+                  >= MAX_NEW_CHANNELS
+              ):
+                  new_channel_candidates.append(
+                      (
+                          name,
+                          group,
+                          url,
+                      )
+                  )
+
                   continue
 
-              ne = {
-                  "attrs":     deepcopy(src["attrs"]),
-                  "name":      name,
+              new_entry = {
+                  "attrs": deepcopy(
+                      src["attrs"]
+                  ),
+                  "name": name,
                   "canonical": name,
-                  "url":       url,
-                  "extras":    deepcopy(src.get("extras", [])),
-                  "group":     group,
-                  "logo":      logo,
+                  "url": url,
+                  "extras": deepcopy(
+                      src.get(
+                          "extras",
+                          [],
+                      )
+                  ),
+                  "group": group,
+                  "logo": logo,
               }
-              master.append(ne)
-              canonical[name].append(ne)
-              norm_to_canonical[normalize(name)].append(name)
-              existing_urls.add(url)
-              new_channels.append((name, group, url))
 
-          # --- Deduplicate (keep first occurrence) -- runs unconditionally ---
-          seen:             set  = set()
-          clean:            list = []
-          duplicate_removed:list = []
-          for e in master:
-              if e["url"] in seen:
-                  duplicate_removed.append((e["name"], e["url"]))
+              master.append(
+                  new_entry
+              )
+
+              canonical[
+                  name
+              ].append(
+                  new_entry
+              )
+
+              norm_to_canonical[
+                  normalize(name)
+              ].append(
+                  name
+              )
+
+              existing_urls.add(
+                  url
+              )
+
+              new_channels.append(
+                  (
+                      name,
+                      group,
+                      url,
+                  )
+              )
+
+
+          # ============================================================================
+          # Global URL deduplication
+          # ============================================================================
+
+          seen_urls: set[str] = set()
+          deduplicated: list[dict] = []
+
+          duplicate_removed: list[
+              tuple[str, str]
+          ] = []
+
+          for entry in master:
+              if entry["url"] in seen_urls:
+                  duplicate_removed.append(
+                      (
+                          entry["name"],
+                          entry["url"],
+                      )
+                  )
+
                   continue
-              seen.add(e["url"])
-              clean.append(e)
-          master = clean
 
-          # --- Nothing changed? Exit cleanly without touching the file ---
-          if (
-              not new_backups
-              and not new_channels
-              and not new_channel_candidates
-              and not cleaned_existing
-              and not corrected_groups
-              and not duplicate_removed
+              seen_urls.add(
+                  entry["url"]
+              )
+
+              deduplicated.append(
+                  entry
+              )
+
+          master = deduplicated
+
+
+          # ============================================================================
+          # Normalize channel families
+          #
+          # Important:
+          #
+          # 1. If primary disappeared, promote first surviving backup.
+          # 2. Rename remaining backups sequentially.
+          # 3. Synchronize channel identity metadata.
+          # ============================================================================
+
+          families: dict[str, list[dict]] = defaultdict(list)
+
+          for entry in master:
+              canonical_name = strip_backup(
+                  entry["canonical"]
+                  or entry["name"]
+              )
+
+              entry["canonical"] = canonical_name
+
+              families[
+                  canonical_name
+              ].append(
+                  entry
+              )
+
+
+          promoted_primaries: list[str] = []
+          renumbered_backups: list[
+              tuple[str, str]
+          ] = []
+          metadata_synced = 0
+
+          normalized_master: list[dict] = []
+
+          for canonical_name, members in families.items():
+              # Prefer actual primary, otherwise lowest-numbered surviving backup.
+              members.sort(
+                  key=lambda item: (
+                      0
+                      if backup_number(
+                          item["name"]
+                      ) == 0
+                      else 1,
+                      backup_number(
+                          item["name"]
+                      ),
+                      item["name"].lower(),
+                  )
+              )
+
+              existing_primary = next(
+                  (
+                      item
+                      for item in members
+                      if backup_number(
+                          item["name"]
+                      ) == 0
+                  ),
+                  None,
+              )
+
+              primary = (
+                  existing_primary
+                  if existing_primary
+                  else members[0]
+              )
+
+              if existing_primary is None:
+                  promoted_primaries.append(
+                      canonical_name
+                  )
+
+              old_primary_name = primary["name"]
+
+              primary["name"] = canonical_name
+              primary["canonical"] = canonical_name
+
+              if (
+                  old_primary_name
+                  != primary["name"]
+              ):
+                  renumbered_backups.append(
+                      (
+                          old_primary_name,
+                          primary["name"],
+                      )
+                  )
+
+
+              # ------------------------------------------------------------------------
+              # Determine canonical metadata
+              # ------------------------------------------------------------------------
+
+              canonical_group = primary.get(
+                  "group",
+                  "",
+              )
+
+              if not canonical_group:
+                  canonical_group = next(
+                      (
+                          member.get(
+                              "group",
+                              "",
+                          )
+                          for member in members
+                          if member.get(
+                              "group",
+                              "",
+                          )
+                      ),
+                      "",
+                  )
+
+              if not canonical_group:
+                  canonical_group = (
+                      confident_existing_group(
+                          canonical_name
+                      )
+                      or "Lifestyle"
+                  )
+
+
+              canonical_logo = primary.get(
+                  "logo",
+                  "",
+              )
+
+              if not canonical_logo:
+                  canonical_logo = next(
+                      (
+                          member.get(
+                              "logo",
+                              "",
+                          )
+                          for member in members
+                          if member.get(
+                              "logo",
+                              "",
+                          )
+                      ),
+                      "",
+                  )
+
+
+              identity_fields = (
+                  "tvg-id",
+                  "tvg-language",
+                  "tvg-country",
+              )
+
+              canonical_attrs: dict[str, str] = {}
+
+              for field in identity_fields:
+                  value = primary[
+                      "attrs"
+                  ].get(
+                      field,
+                      "",
+                  )
+
+                  if not value:
+                      value = next(
+                          (
+                              member[
+                                  "attrs"
+                              ].get(
+                                  field,
+                                  "",
+                              )
+                              for member in members
+                              if member[
+                                  "attrs"
+                              ].get(
+                                  field,
+                                  "",
+                              )
+                          ),
+                          "",
+                      )
+
+                  if value:
+                      canonical_attrs[
+                          field
+                      ] = value
+
+
+              # ------------------------------------------------------------------------
+              # Rebuild ordered family
+              # ------------------------------------------------------------------------
+
+              others = [
+                  member
+                  for member in members
+                  if member is not primary
+              ]
+
+              others.sort(
+                  key=lambda item: (
+                      backup_number(
+                          item["name"]
+                      ),
+                      item["name"].lower(),
+                  )
+              )
+
+              ordered_family = [
+                  primary
+              ] + others
+
+              for index, member in enumerate(
+                  ordered_family
+              ):
+                  old_name = member["name"]
+
+                  if index == 0:
+                      new_name = canonical_name
+                  else:
+                      new_name = (
+                          f"{canonical_name} "
+                          f"[Backup {index}]"
+                      )
+
+                  if old_name != new_name:
+                      renumbered_backups.append(
+                          (
+                              old_name,
+                              new_name,
+                          )
+                      )
+
+                  member["name"] = new_name
+                  member["canonical"] = canonical_name
+
+
+                  before_group = member.get(
+                      "group",
+                      "",
+                  )
+
+                  before_logo = member.get(
+                      "logo",
+                      "",
+                  )
+
+                  member["group"] = canonical_group
+                  member["logo"] = canonical_logo
+
+                  if (
+                      before_group != canonical_group
+                      or before_logo != canonical_logo
+                  ):
+                      metadata_synced += 1
+
+
+                  for field, value in canonical_attrs.items():
+                      old_value = member[
+                          "attrs"
+                      ].get(
+                          field,
+                          "",
+                      )
+
+                      if old_value != value:
+                          member[
+                              "attrs"
+                          ][field] = value
+
+                          metadata_synced += 1
+
+
+                  normalized_master.append(
+                      member
+                  )
+
+          master = normalized_master
+
+
+          # ============================================================================
+          # Candidate-state comparison
+          #
+          # Candidate identity intentionally ignores URL.
+          #
+          # This prevents a rotating token or source URL from causing a meaningless
+          # report commit every day for the same held-back channel.
+          # ============================================================================
+
+          candidate_identity = sorted(
+              {
+                  (
+                      normalize(name),
+                      group,
+                  )
+                  for name, group, _url
+                  in new_channel_candidates
+              }
+          )
+
+          candidate_state_data = [
+              {
+                  "channel": name,
+                  "group": group,
+              }
+              for name, group
+              in candidate_identity
+          ]
+
+          previous_candidate_state: list[dict] = []
+
+          if CANDIDATE_STATE.exists():
+              try:
+                  previous_candidate_state = json.loads(
+                      CANDIDATE_STATE.read_text(
+                          encoding="utf-8",
+                      )
+                  )
+
+              except (
+                  json.JSONDecodeError,
+                  OSError,
+              ):
+                  previous_candidate_state = []
+
+          candidate_changed = (
+              previous_candidate_state
+              != candidate_state_data
+          )
+
+
+          # ============================================================================
+          # Sort final playlist
+          # ============================================================================
+
+          rank = {
+              group: index
+              for index, group
+              in enumerate(
+                  GROUP_ORDER
+              )
+          }
+
+          master.sort(
+              key=lambda entry: (
+                  rank.get(
+                      entry["group"],
+                      999,
+                  ),
+                  normalize(
+                      entry["canonical"]
+                  ),
+                  backup_number(
+                      entry["name"]
+                  ),
+                  entry["name"].lower(),
+              )
+          )
+
+
+          # ============================================================================
+          # Serialize playlist
+          # ============================================================================
+
+          output = list(
+              master_header
+          )
+
+          output += [
+              '#PLAYLIST-STUDIO-NAME:"SAEID RAHMAN - IPTV Playlist"',
+              "#PLAYLIST-STUDIO-CATEGORIES:"
+              + json.dumps(
+                  GROUP_ORDER,
+                  ensure_ascii=False,
+              ),
+          ]
+
+          for number, entry in enumerate(
+              master,
+              1,
           ):
-              print("No changes found -- playlist untouched.")
+              output.append(
+                  serialize_extinf(
+                      entry,
+                      number,
+                  )
+              )
+
+              output.extend(
+                  entry.get(
+                      "extras",
+                      [],
+                  )
+              )
+
+              output.append(
+                  entry["url"]
+              )
+
+          new_master_text = (
+              "\ufeff"
+              + "\n".join(output)
+              + "\n"
+          )
+
+
+          # Compare content while treating BOM consistently.
+          current_compare = (
+              original_master_text.lstrip(
+                  "\ufeff"
+              )
+          )
+
+          new_compare = (
+              new_master_text.lstrip(
+                  "\ufeff"
+              )
+          )
+
+          playlist_changed = (
+              current_compare
+              != new_compare
+          )
+
+
+          # ============================================================================
+          # Determine whether anything meaningful changed
+          # ============================================================================
+
+          meaningful_change = (
+              playlist_changed
+              or candidate_changed
+          )
+
+          if not meaningful_change:
+              print(
+                  "No playlist changes and no candidate-set "
+                  "changes found."
+              )
+
+              print(
+                  "Nothing will be written or committed."
+              )
+
               raise SystemExit(0)
 
-          # --- Sort and serialise ---
-          rank = {g: i for i, g in enumerate(GROUP_ORDER)}
-          master.sort(key=lambda e: (
-              rank.get(e["group"], 999),
-              normalize(e["canonical"]),
-              backup_number(e["name"]),
-              e["name"].lower(),
-          ))
 
-          output = [
-              "#EXTM3U",
-              '#PLAYLIST-STUDIO-NAME:"SAEID RAHMAN - IPTV Playlist"',
-              "#PLAYLIST-STUDIO-CATEGORIES:" + json.dumps(GROUP_ORDER, ensure_ascii=False),
-          ]
-          for number, entry in enumerate(master, 1):
-              output.append(serialize_extinf(entry, number))
-              output.extend(entry.get("extras", []))
-              output.append(entry["url"])
+          # ============================================================================
+          # Write changed playlist
+          # ============================================================================
 
-          # Atomic write -- safe against mid-write crashes
-          atomic_write(MASTER, "\ufeff" + "\n".join(output) + "\n")
-          print(f"Playlist written: {len(master)} entries")
+          if playlist_changed:
+              atomic_write(
+                  MASTER,
+                  new_master_text,
+              )
 
-          # --- Build report ---
-          REPORT.parent.mkdir(parents=True, exist_ok=True)
-          now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+              print(
+                  f"Playlist written: "
+                  f"{len(master)} stream entries"
+              )
 
-          report = [
+          else:
+              print(
+                  "Candidate state changed, "
+                  "but playlist content did not."
+              )
+
+
+          # ============================================================================
+          # Store stable candidate state
+          # ============================================================================
+
+          atomic_write(
+              CANDIDATE_STATE,
+              json.dumps(
+                  candidate_state_data,
+                  ensure_ascii=False,
+                  indent=2,
+              )
+              + "\n",
+          )
+
+
+          # ============================================================================
+          # Statistics
+          # ============================================================================
+
+          canonical_channels = len(
+              {
+                  entry["canonical"]
+                  for entry in master
+              }
+          )
+
+          total_backups = sum(
+              1
+              for entry in master
+              if backup_number(
+                  entry["name"]
+              ) > 0
+          )
+
+
+          # ============================================================================
+          # Report
+          # ============================================================================
+
+          now = datetime.now(
+              timezone.utc
+          ).strftime(
+              "%Y-%m-%d %H:%M UTC"
+          )
+
+          report: list[str] = [
               "# 🤖 IPTV Auto Update",
               "",
               f"Generated: **{now}**",
               "",
               "## Summary",
               "",
-              f"| Metric | Count |",
-              f"|--------|-------|",
+              "| Metric | Count |",
+              "|---|---:|",
+              f"| Final canonical channels | **{canonical_channels}** |",
+              f"| Final stream URLs | **{len(master)}** |",
+              f"| Final backup streams | **{total_backups}** |",
               f"| New backup streams added | **{len(new_backups)}** |",
               f"| New channels auto-added | **{len(new_channels)}** |",
-              f"| New channel candidates (held back) | **{len(new_channel_candidates)}** |",
-              f"| Bad/expired entries removed | **{len(cleaned_existing)}** |",
-              f"| Category corrections | **{len(corrected_groups)}** |",
-              f"| Proxy URLs resolved to clean URLs | **{proxy_resolved}** |",
-              f"| Blocked/expired URLs skipped (no replacement) | **{blocked_skipped}** |",
+              f"| New channel candidates held back | **{len(new_channel_candidates)}** |",
+              f"| Bad/expired existing entries removed | **{len(cleaned_existing)}** |",
+              f"| Existing category corrections | **{len(corrected_groups)}** |",
+              f"| Missing primaries promoted | **{len(promoted_primaries)}** |",
+              f"| Backup names promoted/renumbered | **{len(renumbered_backups)}** |",
+              f"| Family metadata synchronizations | **{metadata_synced}** |",
+              f"| Wrapper/proxy URLs resolved | **{proxy_resolved}** |",
+              f"| Blocked URLs skipped without replacement | **{blocked_skipped}** |",
+              f"| Malformed source URLs skipped | **{malformed_skipped}** |",
               f"| Duplicate URLs removed | **{len(duplicate_removed)}** |",
           ]
 
+
           if cleaned_existing:
-              report += ["", "## Removed entries (proxy/expired)", ""]
+              report += [
+                  "",
+                  "## Removed blocked / expired entries",
+                  "",
+              ]
+
               for name, url in cleaned_existing:
-                  report.append(f"- **{name}** — `{url}`")
+                  report.append(
+                      f"- **{name}** — `{url}`"
+                  )
+
 
           if corrected_groups:
-              report += ["", "## Category corrections", ""]
-              for name, old_g, new_g in corrected_groups:
-                  report.append(f"- **{name}**: `{old_g}` → `{new_g}`")
+              report += [
+                  "",
+                  "## Category corrections",
+                  "",
+              ]
+
+              for (
+                  name,
+                  old_group,
+                  new_group,
+              ) in corrected_groups:
+                  report.append(
+                      f"- **{name}**: "
+                      f"`{old_group}` → `{new_group}`"
+                  )
+
+
+          if promoted_primaries:
+              report += [
+                  "",
+                  "## Promoted backup streams",
+                  "",
+                  "The original primary stream was no longer available, "
+                  "so the first surviving backup was promoted:",
+                  "",
+              ]
+
+              for channel in promoted_primaries:
+                  report.append(
+                      f"- **{channel}**"
+                  )
+
+
+          if renumbered_backups:
+              report += [
+                  "",
+                  "## Backup normalization",
+                  "",
+              ]
+
+              for old_name, new_name in renumbered_backups:
+                  if old_name != new_name:
+                      report.append(
+                          f"- `{old_name}` → `{new_name}`"
+                      )
+
 
           if new_channels:
-              report += ["", "## New channels added", ""]
-              for name, group, url in new_channels:
-                  report.append(f"- **{name}** (`{group}`) — `{url}`")
+              report += [
+                  "",
+                  "## New channels automatically added",
+                  "",
+              ]
+
+              for (
+                  name,
+                  group,
+                  url,
+              ) in new_channels:
+                  report.append(
+                      f"- **{name}** "
+                      f"(`{group}`) — `{url}`"
+                  )
+
 
           if new_channel_candidates:
               report += [
                   "",
-                  f"## New channel candidates (MAX_NEW_CHANNELS={MAX_NEW_CHANNELS}, not auto-added)",
+                  (
+                      "## New channel candidates "
+                      f"(MAX_NEW_CHANNELS={MAX_NEW_CHANNELS})"
+                  ),
                   "",
-                  "These passed classification and logo checks. "
-                  "Raise `MAX_NEW_CHANNELS` or add manually if wanted:",
+                  "These channels passed classification and logo checks "
+                  "but were not automatically added:",
                   "",
               ]
-              for name, group, url in new_channel_candidates:
-                  report.append(f"- **{name}** (`{group}`) — `{url}`")
+
+              for (
+                  name,
+                  group,
+                  url,
+              ) in sorted(
+                  new_channel_candidates,
+                  key=lambda item: (
+                      item[1],
+                      normalize(
+                          item[0]
+                      ),
+                      item[2],
+                  ),
+              ):
+                  report.append(
+                      f"- **{name}** "
+                      f"(`{group}`) — `{url}`"
+                  )
+
 
           if new_backups:
-              report += ["", "## New backup streams", ""]
+              report += [
+                  "",
+                  "## New backup streams",
+                  "",
+              ]
+
               for name, url in new_backups:
-                  report.append(f"- **{name}** — `{url}`")
+                  report.append(
+                      f"- **{name}** — `{url}`"
+                  )
+
 
           if duplicate_removed:
-              report += ["", "## Duplicate URLs removed", ""]
+              report += [
+                  "",
+                  "## Duplicate stream URLs removed",
+                  "",
+              ]
+
               for name, url in duplicate_removed:
-                  report.append(f"- **{name}** — `{url}`")
+                  report.append(
+                      f"- **{name}** — `{url}`"
+                  )
+
 
           report += [
               "",
-              "## Safety notes",
+              "## Safety",
               "",
-              f"- Unclassified new channels skipped: {skipped_unclassified}",
-              f"- New channels without a logo skipped: {skipped_no_logo}",
-              f"- Channels already at the backup limit ({MAX_BACKUPS}) skipped: {skipped_backup_limit}",
+              f"- Unclassified new channels skipped: **{skipped_unclassified}**",
+              f"- New channels without logos skipped: **{skipped_no_logo}**",
+              (
+                  "- Existing channels already at the new-backup limit "
+                  f"({MAX_BACKUPS}) skipped: **{skipped_backup_limit}**"
+              ),
               "",
-              "> Streams are never removed just because they fail a live network test. "
-              "This protects BDIX-only URLs that work in Bangladesh but time-out from GitHub's servers.",
+              "> The updater does not delete a stream merely because a "
+              "GitHub Actions runner cannot connect to it. This protects "
+              "BDIX/local-only streams that may work correctly inside "
+              "Bangladesh but fail from GitHub's overseas infrastructure.",
+              "",
+              "> Existing working streams on domains blocked only for new "
+              "additions are retained unless they match the narrower "
+              "BLOCKED_EXISTING list or contain a definitely expired signed URL.",
               "",
           ]
-          REPORT.write_text("\n".join(report), encoding="utf-8")
 
-          # One-line summary written to a separate file so the commit step can embed it
-          # in the commit message without re-parsing the full report.
-          summary = (
-              f"+{len(new_backups)} backups"
-              + (f", +{len(new_channels)} channels" if new_channels else "")
-              + (f", -{len(cleaned_existing)} removed" if cleaned_existing else "")
-              + (f", -{len(duplicate_removed)} dupes" if duplicate_removed else "")
-              + (f", {len(corrected_groups)} category fixes" if corrected_groups else "")
+          atomic_write(
+              REPORT,
+              "\n".join(report),
           )
-          SUMMARY_FILE.write_text(summary, encoding="utf-8")
 
-          print(f"Done. {summary}")
+
+          # ============================================================================
+          # Git commit summary output
+          # ============================================================================
+
+          summary_parts: list[str] = []
+
+          if new_backups:
+              summary_parts.append(
+                  f"+{len(new_backups)} backups"
+              )
+
+          if new_channels:
+              summary_parts.append(
+                  f"+{len(new_channels)} channels"
+              )
+
+          if cleaned_existing:
+              summary_parts.append(
+                  f"-{len(cleaned_existing)} expired/bad"
+              )
+
+          if duplicate_removed:
+              summary_parts.append(
+                  f"-{len(duplicate_removed)} dupes"
+              )
+
+          if corrected_groups:
+              summary_parts.append(
+                  f"{len(corrected_groups)} category fixes"
+              )
+
+          if promoted_primaries:
+              summary_parts.append(
+                  f"{len(promoted_primaries)} primary promotions"
+              )
+
+          if renumbered_backups:
+              summary_parts.append(
+                  f"{len(renumbered_backups)} backup normalizations"
+              )
+
+          if (
+              candidate_changed
+              and not playlist_changed
+          ):
+              summary_parts.append(
+                  "candidate list updated"
+              )
+
+          if not summary_parts:
+              summary_parts.append(
+                  "playlist normalized"
+              )
+
+          summary = ", ".join(
+              summary_parts
+          )
+
+          github_output = os.environ.get(
+              "GITHUB_OUTPUT"
+          )
+
+          if github_output:
+              with open(
+                  github_output,
+                  "a",
+                  encoding="utf-8",
+              ) as handle:
+                  handle.write(
+                      f"summary={summary}\n"
+                  )
+
+          print(
+              f"Done: {summary}"
+          )
+
           PY
+
 
       - name: Commit changes
         shell: bash
+        env:
+          UPDATE_SUMMARY: ${{ steps.updater.outputs.summary }}
         run: |
           set -euo pipefail
+
           git add -A
+
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
 
-          # Read the one-line summary the Python script wrote, fall back gracefully.
-          SUMMARY=$(cat reports/auto-update-summary.txt 2>/dev/null || echo "auto-update")
-
-          git config user.name  "IPTV Update Bot"
+          git config user.name "IPTV Update Bot"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Pull any concurrent push before committing to avoid rejection.
-          git pull --rebase --autostash origin HEAD
+          SUMMARY="${UPDATE_SUMMARY:-auto-update}"
 
+          # Commit our generated changes first.
           git commit -m "bot: ${SUMMARY}"
-          git push
+
+          # If somebody pushed to the same branch while the updater was running,
+          # rebase safely. A real conflict will stop the job rather than silently
+          # overwriting somebody else's changes.
+          git pull --rebase origin "$GITHUB_REF_NAME"
+
+          git push origin "HEAD:$GITHUB_REF_NAME"
