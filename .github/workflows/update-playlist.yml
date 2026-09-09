@@ -16,6 +16,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 15   # prevent runaway jobs consuming GitHub Actions quota
 
     steps:
       - name: Checkout repository
@@ -24,11 +25,14 @@ jobs:
       - name: Update playlist
         shell: bash
         run: |
+          set -euo pipefail
           python3 - <<'PY'
           from __future__ import annotations
 
           import json
+          import os
           import re
+          import socket
           import time
           import unicodedata
           import urllib.error
@@ -40,13 +44,12 @@ jobs:
 
           MASTER = Path("IPTV Playlist.m3u")
           REPORT = Path("reports/auto-update.md")
+          SUMMARY_FILE = Path("reports/auto-update-summary.txt")
 
-          # A focused playlist is used for candidates. The larger list is lookup-only:
-          # it helps replace obvious wrapper/proxy URLs with cleaner underlying URLs.
-          MERGE_SOURCE = "https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u"
+          MERGE_SOURCE  = "https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u"
           LOOKUP_SOURCE = "https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u"
 
-          MAX_BACKUPS = 8
+          MAX_BACKUPS      = 8
           MAX_NEW_CHANNELS = 0
 
           GROUP_ORDER = [
@@ -66,27 +69,26 @@ jobs:
               "Lifestyle",
           ]
 
-          # Exact-name aliases for common source naming differences.
           ALIASES = {
-              "bangla vision": "Banglavision",
-              "dbc news hd": "DBC News",
-              "ekattor hd": "Ekattor TV",
-              "channel i hd": "Channel I",
-              "news 24 hd": "News 24",
-              "star jalsha hd": "Star Jalsha",
+              "bangla vision":    "Banglavision",
+              "dbc news hd":      "DBC News",
+              "ekattor hd":       "Ekattor TV",
+              "channel i hd":     "Channel I",
+              "news 24 hd":       "News 24",
+              "star jalsha hd":   "Star Jalsha",
               "jalsha movies hd": "Jalsha Movies",
-              "zee bangla hd": "Zee Bangla",
-              "sony aath": "Sony AATH",
+              "zee bangla hd":    "Zee Bangla",
+              "sony aath":        "Sony AATH",
               "sony sports 2 hd": "Sony Ten 2",
               "sony sports 5 hd": "Sony Ten 5",
-              "bangla jago": "Bangla Jago TV",
-              "accu weather": "AccuWeather Now",
-              "cnbc tv 18": "CNBC TV18",
-              "cnn hd": "CNN News",
-              "dw": "DW News",
-              "trace sport": "Trace Sport Stars",
-              "music tv": "Kronehit TV",
-              "&xplore": "&Xplor HD",
+              "bangla jago":      "Bangla Jago TV",
+              "accu weather":     "AccuWeather Now",
+              "cnbc tv 18":       "CNBC TV18",
+              "cnn hd":           "CNN News",
+              "dw":               "DW News",
+              "trace sport":      "Trace Sport Stars",
+              "music tv":         "Kronehit TV",
+              "&xplore":          "&Xplor HD",
           }
 
           # Domains blocked from being ADDED as new backups from source playlists.
@@ -102,11 +104,10 @@ jobs:
               "vercel.app",
           )
 
-          # Domains that should also be REMOVED from existing entries.
-          # Kept intentionally narrow: only genuine proxy/wrapper URLs that
-          # were never real streams. Paid/paywalled domains like premiumtvs.space
-          # that are already in the playlist and actually stream fine are NOT
-          # listed here -- they are only blocked from being added as new backups.
+          # Domains removed from existing entries -- intentionally narrow.
+          # Only genuine proxy/wrapper URLs that were never real streams.
+          # Paid domains like premiumtvs.space that already stream fine are NOT listed
+          # here; they are only blocked from being added as new backups.
           BLOCKED_EXISTING = (
               "iptvlive.ahmed-bd-org.workers.dev",
               "iptv-proxy.ahmed-bd-org.workers.dev",
@@ -130,26 +131,35 @@ jobs:
               "btv", "ekushey", "channel 24",
           )
 
+
+          # ---------------------------------------------------------------------------
+          # Helpers
+          # ---------------------------------------------------------------------------
+
           def fetch(url: str, attempts: int = 3) -> str:
               req = urllib.request.Request(
                   url,
-                  headers={"User-Agent": "SaeidRahman-IPTV-Updater/1.0"}
+                  headers={"User-Agent": "SaeidRahman-IPTV-Updater/1.0"},
               )
-              last_error = None
+              last_error: Exception | None = None
               for attempt in range(1, attempts + 1):
                   try:
-                      with urllib.request.urlopen(req, timeout=40) as response:
-                          return response.read().decode("utf-8-sig", errors="replace")
-                  except (urllib.error.URLError, TimeoutError) as exc:
+                      with urllib.request.urlopen(req, timeout=40) as resp:
+                          text = resp.read().decode("utf-8-sig", errors="replace")
+                          print(f"  Fetched {url} ({len(text):,} chars)")
+                          return text
+                  except (urllib.error.URLError, TimeoutError, OSError, socket.error) as exc:
                       last_error = exc
+                      print(f"  Attempt {attempt}/{attempts} failed for {url}: {exc}")
                       if attempt < attempts:
                           time.sleep(5 * attempt)
-              raise SystemExit(f"Failed to fetch {url} after {attempts} attempts: {last_error}")
+              raise SystemExit(f"Could not fetch {url} after {attempts} attempts: {last_error}")
 
-          def parse_m3u(text: str):
-              entries = []
+
+          def parse_m3u(text: str) -> list:
+              entries: list = []
               current = None
-              extras = []
+              extras: list = []
               for raw in text.splitlines():
                   line = raw.strip()
                   if line.startswith("#EXTINF"):
@@ -167,16 +177,20 @@ jobs:
                       extras = []
               return [e for e in entries if e["name"] and e["url"]]
 
+
           def strip_backup(name: str) -> str:
               return re.sub(r"\s*\[Backup\s*\d+\]\s*$", "", name, flags=re.I).strip()
+
 
           def backup_number(name: str) -> int:
               m = re.search(r"\[Backup\s*(\d+)\]\s*$", name, flags=re.I)
               return int(m.group(1)) if m else 0
 
+
           def preferred_name(name: str) -> str:
               clean = strip_backup(name)
               return ALIASES.get(clean.lower(), clean)
+
 
           def normalize(name: str) -> str:
               name = preferred_name(name)
@@ -185,14 +199,13 @@ jobs:
               name = re.sub(r"[^a-z0-9]+", " ", name)
               return " ".join(name.split())
 
+
           def is_blocked(url: str, existing: bool = False) -> bool:
               low = url.lower()
               domains = BLOCKED_EXISTING if existing else BLOCKED_NEW
               if any(x in low for x in domains):
                   return True
-
-              # Some Ayna URLs carry a Unix-expiry parameter such as ?e=1753741197.
-              # If that timestamp is already in the past, treat the URL as dead.
+              # Ayna signed URLs carry ?e=<unix_timestamp>. Reject if expired.
               m = re.search(r"(?:[?&])e=(\d{10})(?:&|$)", url)
               if m:
                   try:
@@ -200,15 +213,16 @@ jobs:
                           return True
                   except ValueError:
                       pass
-
               return False
+
 
           def has(text: str, words) -> bool:
               low = text.lower()
               return any(word in low for word in words)
 
-          def guess_group(name: str, source_group: str):
-              g = (source_group or "").strip()
+
+          def guess_group(name: str, source_group: str) -> str | None:
+              g  = (source_group or "").strip()
               gl = g.lower()
               nl = name.lower()
 
@@ -250,28 +264,34 @@ jobs:
                   return "Lifestyle"
               return None
 
-          def serialize_extinf(entry, chno):
+
+          def serialize_extinf(entry: dict, chno: int) -> str:
               attrs = dict(entry["attrs"])
-              attrs["tvg-name"] = entry["name"]
-              attrs["tvg-chno"] = str(chno)
+              attrs["tvg-name"]    = entry["name"]
+              attrs["tvg-chno"]    = str(chno)
               attrs["group-title"] = entry["group"]
               if entry["logo"]:
                   attrs["tvg-logo"] = entry["logo"]
               else:
                   attrs.pop("tvg-logo", None)
 
-              order = [
-                  "tvg-id", "tvg-name", "tvg-logo", "tvg-chno",
-                  "tvg-language", "tvg-country", "group-title"
-              ]
-              parts = []
-              for key in order:
-                  if attrs.get(key, "") != "":
-                      parts.append(f'{key}="{attrs[key]}"')
-              for key, value in attrs.items():
-                  if key not in order and value != "":
-                      parts.append(f'{key}="{value}"')
+              order = ["tvg-id", "tvg-name", "tvg-logo", "tvg-chno", "tvg-language", "tvg-country", "group-title"]
+              parts = [f'{k}="{attrs[k]}"' for k in order if attrs.get(k, "")]
+              parts += [f'{k}="{v}"' for k, v in attrs.items() if k not in order and v]
               return "#EXTINF:-1 " + " ".join(parts) + "," + entry["name"]
+
+
+          def atomic_write(path: Path, text: str) -> None:
+              """Write to a temp file then rename -- prevents a corrupt half-written file
+              if the process is killed or crashes mid-write."""
+              tmp = path.with_suffix(".tmp")
+              tmp.write_text(text, encoding="utf-8")
+              tmp.replace(path)   # atomic on Linux (same filesystem)
+
+
+          # ---------------------------------------------------------------------------
+          # Main
+          # ---------------------------------------------------------------------------
 
           if not MASTER.exists():
               raise SystemExit(f"Master playlist not found: {MASTER}")
@@ -280,53 +300,51 @@ jobs:
           if not master_raw:
               raise SystemExit(
                   f"Refusing to continue: parsed 0 channels from {MASTER}. "
-                  "The file may be empty or corrupted -- aborting instead of overwriting it."
+                  "The file may be empty or corrupted."
               )
-          merge_raw = parse_m3u(fetch(MERGE_SOURCE))
-          lookup_raw = parse_m3u(fetch(LOOKUP_SOURCE))
+          print(f"Master: {len(master_raw)} entries loaded")
 
-          master = []
-          cleaned_existing = []
-          corrected_groups = []
+          print("Fetching source playlists...")
+          merge_raw  = parse_m3u(fetch(MERGE_SOURCE))
+          lookup_raw = parse_m3u(fetch(LOOKUP_SOURCE))
+          print(f"Merge source: {len(merge_raw)} entries | Lookup source: {len(lookup_raw)} entries")
+
+          # --- Sweep existing entries ---
+          master: list         = []
+          cleaned_existing:list  = []
+          corrected_groups: list = []
+
+          BD_MISCLASSIFIED = {"channel 1", "btv", "btv news", "bangla 1"}
 
           for e in master_raw:
-              # Re-check every existing stream against the same block rules new
-              # candidates go through: known-bad domains AND expired "e=" signed
-              # URLs. This runs on every entry, every run, so a URL that was fine
-              # when it was added but has since expired gets swept out on its own
-              # instead of sitting there dead forever.
+              # Remove known-dead proxy/wrapper URLs and expired signed links.
               if is_blocked(e["url"], existing=True):
                   cleaned_existing.append((e["name"], e["url"]))
                   continue
 
               x = deepcopy(e)
               x["canonical"] = strip_backup(e["name"])
-              x["group"] = e["attrs"].get("group-title", "")
-              x["logo"] = e["attrs"].get("tvg-logo", "")
+              x["group"]     = e["attrs"].get("group-title", "")
+              x["logo"]      = e["attrs"].get("tvg-logo", "")
 
-              # Correct known Bangladesh channels that have historically been misclassified.
-              if strip_backup(e["name"]).lower() in {
-                  "channel 1",
-                  "btv",
-                  "btv news",
-                  "bangla 1",
-              } and x["group"] != "Bangladesh":
-                  corrected_groups.append(
-                      (e["name"], x["group"] or "(blank)", "Bangladesh")
-                  )
+              # Fix historically misclassified Bangladesh channels.
+              if strip_backup(e["name"]).lower() in BD_MISCLASSIFIED and x["group"] != "Bangladesh":
+                  corrected_groups.append((e["name"], x["group"] or "(blank)", "Bangladesh"))
                   x["group"] = "Bangladesh"
 
               master.append(x)
 
-          # Lookup-source index for replacing obvious wrapper URLs.
-          lookup = defaultdict(list)
+          # --- Build lookup index (clean URLs from the larger source) ---
+          lookup: dict = defaultdict(list)
           for e in lookup_raw:
               if not is_blocked(e["url"]):
                   lookup[normalize(e["name"])].append(e)
 
-          candidates = []
-          proxy_resolved = 0
-          blocked_skipped = 0
+          # --- Resolve / filter merge candidates ---
+          candidates:    list = []
+          proxy_resolved:int  = 0
+          blocked_skipped:int = 0
+
           for e in merge_raw:
               x = deepcopy(e)
               if is_blocked(x["url"]):
@@ -334,26 +352,28 @@ jobs:
                   if not replacement:
                       blocked_skipped += 1
                       continue
-                  x["url"] = replacement["url"]
+                  x["url"]    = replacement["url"]
                   x["extras"] = replacement.get("extras", [])
                   if not x["attrs"].get("tvg-logo"):
                       x["attrs"]["tvg-logo"] = replacement["attrs"].get("tvg-logo", "")
                   proxy_resolved += 1
               candidates.append(x)
 
-          canonical = defaultdict(list)
-          norm_to_canonical = defaultdict(list)
+          # --- Build canonical index from surviving master entries ---
+          canonical:        dict = defaultdict(list)
+          norm_to_canonical:dict = defaultdict(list)
           for e in master:
               canonical[e["canonical"]].append(e)
               norm_to_canonical[normalize(e["canonical"])].append(e["canonical"])
 
-          existing_urls = {e["url"] for e in master}
+          existing_urls: set = {e["url"] for e in master}
 
-          def find_target(source_name):
+
+          def find_target(source_name: str) -> str | None:
               wanted = preferred_name(source_name)
               if wanted in canonical:
                   return wanted
-              key = normalize(wanted)
+              key     = normalize(wanted)
               choices = list(dict.fromkeys(norm_to_canonical.get(key, [])))
               if len(choices) == 1:
                   return choices[0]
@@ -362,12 +382,13 @@ jobs:
                       return name
               return None
 
-          new_backups = []
-          new_channels = []
-          new_channel_candidates = []
-          skipped_unclassified = 0
-          skipped_no_logo = 0
-          skipped_backup_limit = 0
+
+          new_backups:          list = []
+          new_channels:         list = []
+          new_channel_candidates:list = []
+          skipped_unclassified: int  = 0
+          skipped_no_logo:      int  = 0
+          skipped_backup_limit: int  = 0
 
           for src in candidates:
               url = src["url"]
@@ -376,31 +397,30 @@ jobs:
 
               target = find_target(src["name"])
               if target:
-                  current = canonical[target]
+                  current      = canonical[target]
                   backup_count = sum(1 for e in current if backup_number(e["name"]) > 0)
                   if backup_count >= MAX_BACKUPS:
                       skipped_backup_limit += 1
                       continue
 
-                  primary = next((e for e in current if backup_number(e["name"]) == 0), current[0])
+                  primary  = next((e for e in current if backup_number(e["name"]) == 0), current[0])
                   next_num = max(backup_number(e["name"]) for e in current) + 1
                   ne = deepcopy(primary)
-                  ne["name"] = f"{target} [Backup {next_num}]"
+                  ne["name"]      = f"{target} [Backup {next_num}]"
                   ne["canonical"] = target
-                  ne["url"] = url
-                  ne["extras"] = deepcopy(src.get("extras", []))
-                  ne["logo"] = primary["logo"] or src["attrs"].get("tvg-logo", "")
+                  ne["url"]       = url
+                  ne["extras"]    = deepcopy(src.get("extras", []))
+                  ne["logo"]      = primary["logo"] or src["attrs"].get("tvg-logo", "")
                   master.append(ne)
                   canonical[target].append(ne)
                   existing_urls.add(url)
                   new_backups.append((ne["name"], url))
                   continue
 
-              # Classify and logo-check BEFORE the MAX_NEW_CHANNELS gate, so the
-              # counters below stay meaningful even when the cap is 0, and so a
-              # channel that clears both checks still gets reported as a candidate
-              # for manual review instead of vanishing without a trace.
-              name = preferred_name(src["name"])
+              # Classify and logo-check BEFORE the MAX_NEW_CHANNELS gate so counters
+              # stay meaningful even when the cap is 0, and qualifying channels appear
+              # in the report as candidates for manual review.
+              name  = preferred_name(src["name"])
               group = guess_group(name, src["attrs"].get("group-title", ""))
               if not group:
                   skipped_unclassified += 1
@@ -416,13 +436,13 @@ jobs:
                   continue
 
               ne = {
-                  "attrs": deepcopy(src["attrs"]),
-                  "name": name,
+                  "attrs":     deepcopy(src["attrs"]),
+                  "name":      name,
                   "canonical": name,
-                  "url": url,
-                  "extras": deepcopy(src.get("extras", [])),
-                  "group": group,
-                  "logo": logo,
+                  "url":       url,
+                  "extras":    deepcopy(src.get("extras", [])),
+                  "group":     group,
+                  "logo":      logo,
               }
               master.append(ne)
               canonical[name].append(ne)
@@ -430,12 +450,10 @@ jobs:
               existing_urls.add(url)
               new_channels.append((name, group, url))
 
-          # Defensive URL de-duplication: retain the first occurrence. This runs
-          # unconditionally (not just when something else changed) so a backlog of
-          # duplicate URLs already sitting in the file gets cleaned up too.
-          seen = set()
-          clean = []
-          duplicate_removed = []
+          # --- Deduplicate (keep first occurrence) -- runs unconditionally ---
+          seen:             set  = set()
+          clean:            list = []
+          duplicate_removed:list = []
           for e in master:
               if e["url"] in seen:
                   duplicate_removed.append((e["name"], e["url"]))
@@ -444,6 +462,7 @@ jobs:
               clean.append(e)
           master = clean
 
+          # --- Nothing changed? Exit cleanly without touching the file ---
           if (
               not new_backups
               and not new_channels
@@ -452,18 +471,17 @@ jobs:
               and not corrected_groups
               and not duplicate_removed
           ):
-              print("No new streams, channels, or cleanup changes found.")
+              print("No changes found -- playlist untouched.")
               raise SystemExit(0)
 
+          # --- Sort and serialise ---
           rank = {g: i for i, g in enumerate(GROUP_ORDER)}
-          master.sort(
-              key=lambda e: (
-                  rank.get(e["group"], 999),
-                  normalize(e["canonical"]),
-                  backup_number(e["name"]),
-                  e["name"].lower(),
-              )
-          )
+          master.sort(key=lambda e: (
+              rank.get(e["group"], 999),
+              normalize(e["canonical"]),
+              backup_number(e["name"]),
+              e["name"].lower(),
+          ))
 
           output = [
               "#EXTM3U",
@@ -475,94 +493,116 @@ jobs:
               output.extend(entry.get("extras", []))
               output.append(entry["url"])
 
-          MASTER.write_text("\ufeff" + "\n".join(output) + "\n", encoding="utf-8")
+          # Atomic write -- safe against mid-write crashes
+          atomic_write(MASTER, "\ufeff" + "\n".join(output) + "\n")
+          print(f"Playlist written: {len(master)} entries")
 
+          # --- Build report ---
           REPORT.parent.mkdir(parents=True, exist_ok=True)
           now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+
           report = [
               "# 🤖 IPTV Auto Update",
               "",
               f"Generated: **{now}**",
               "",
-              "## Changes",
+              "## Summary",
               "",
-              f"- New backup streams: **{len(new_backups)}**",
-              f"- New channels automatically added: **{len(new_channels)}**",
-              f"- New channel candidates found but not added (MAX_NEW_CHANNELS={MAX_NEW_CHANNELS}): **{len(new_channel_candidates)}**",
-              f"- Known bad entries removed (blocked domain or expired link): **{len(cleaned_existing)}**",
-              f"- Existing channel categories corrected: **{len(corrected_groups)}**",
-              f"- Wrapper/proxy URLs resolved: **{proxy_resolved}**",
-              f"- Blocked/expired URLs skipped without a clean replacement: **{blocked_skipped}**",
-              f"- Duplicate URLs removed: **{len(duplicate_removed)}**",
+              f"| Metric | Count |",
+              f"|--------|-------|",
+              f"| New backup streams added | **{len(new_backups)}** |",
+              f"| New channels auto-added | **{len(new_channels)}** |",
+              f"| New channel candidates (held back) | **{len(new_channel_candidates)}** |",
+              f"| Bad/expired entries removed | **{len(cleaned_existing)}** |",
+              f"| Category corrections | **{len(corrected_groups)}** |",
+              f"| Proxy URLs resolved to clean URLs | **{proxy_resolved}** |",
+              f"| Blocked/expired URLs skipped (no replacement) | **{blocked_skipped}** |",
+              f"| Duplicate URLs removed | **{len(duplicate_removed)}** |",
           ]
 
           if cleaned_existing:
-              report += ["", "## Cleaned entries", ""]
+              report += ["", "## Removed entries (proxy/expired)", ""]
               for name, url in cleaned_existing:
-                  report.append(f"- Removed **{name}** — {url}")
+                  report.append(f"- **{name}** — `{url}`")
 
           if corrected_groups:
               report += ["", "## Category corrections", ""]
-              for name, old_group, new_group in corrected_groups:
-                  report.append(
-                      f"- **{name}**: `{old_group}` → `{new_group}`"
-                  )
+              for name, old_g, new_g in corrected_groups:
+                  report.append(f"- **{name}**: `{old_g}` → `{new_g}`")
 
           if new_channels:
-              report += ["", "## New channels", ""]
+              report += ["", "## New channels added", ""]
               for name, group, url in new_channels:
-                  report.append(f"- **{name}** — `{group}` — {url}")
+                  report.append(f"- **{name}** (`{group}`) — `{url}`")
 
           if new_channel_candidates:
               report += [
                   "",
-                  "## New channel candidates (not added — MAX_NEW_CHANNELS is 0)",
+                  f"## New channel candidates (MAX_NEW_CHANNELS={MAX_NEW_CHANNELS}, not auto-added)",
                   "",
-                  "These look like fully classifiable, logo-having new channels from "
-                  "the source playlist. Raise `MAX_NEW_CHANNELS` or add them by hand "
-                  "if you want them included:",
+                  "These passed classification and logo checks. "
+                  "Raise `MAX_NEW_CHANNELS` or add manually if wanted:",
                   "",
               ]
               for name, group, url in new_channel_candidates:
-                  report.append(f"- **{name}** — `{group}` — {url}")
+                  report.append(f"- **{name}** (`{group}`) — `{url}`")
 
           if new_backups:
               report += ["", "## New backup streams", ""]
               for name, url in new_backups:
-                  report.append(f"- **{name}** — {url}")
+                  report.append(f"- **{name}** — `{url}`")
+
+          if duplicate_removed:
+              report += ["", "## Duplicate URLs removed", ""]
+              for name, url in duplicate_removed:
+                  report.append(f"- **{name}** — `{url}`")
 
           report += [
               "",
-              "## Safety",
+              "## Safety notes",
               "",
               f"- Unclassified new channels skipped: {skipped_unclassified}",
-              f"- New channels without logos skipped: {skipped_no_logo}",
-              f"- Channels already at the backup limit skipped: {skipped_backup_limit}",
+              f"- New channels without a logo skipped: {skipped_no_logo}",
+              f"- Channels already at the backup limit ({MAX_BACKUPS}) skipped: {skipped_backup_limit}",
               "",
-              "> The updater never removes a stream merely because it fails a network test. "
-              "This protects BDIX streams that may work in Bangladesh but fail from GitHub's overseas servers.",
+              "> Streams are never removed just because they fail a live network test. "
+              "This protects BDIX-only URLs that work in Bangladesh but time-out from GitHub's servers.",
               "",
           ]
           REPORT.write_text("\n".join(report), encoding="utf-8")
 
-          print(
-              f"Added {len(new_backups)} backup streams, "
-              f"{len(new_channels)} new channels; "
-              f"removed {len(cleaned_existing)} bad entries and "
-              f"corrected {len(corrected_groups)} categories."
+          # One-line summary written to a separate file so the commit step can embed it
+          # in the commit message without re-parsing the full report.
+          summary = (
+              f"+{len(new_backups)} backups"
+              + (f", +{len(new_channels)} channels" if new_channels else "")
+              + (f", -{len(cleaned_existing)} removed" if cleaned_existing else "")
+              + (f", -{len(duplicate_removed)} dupes" if duplicate_removed else "")
+              + (f", {len(corrected_groups)} category fixes" if corrected_groups else "")
           )
+          SUMMARY_FILE.write_text(summary, encoding="utf-8")
+
+          print(f"Done. {summary}")
           PY
 
       - name: Commit changes
         shell: bash
         run: |
+          set -euo pipefail
           git add -A
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
 
-          git config user.name "IPTV Update Bot"
+          # Read the one-line summary the Python script wrote, fall back gracefully.
+          SUMMARY=$(cat reports/auto-update-summary.txt 2>/dev/null || echo "auto-update")
+
+          git config user.name  "IPTV Update Bot"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -m "bot: auto-update IPTV playlist"
+
+          # Pull any concurrent push before committing to avoid rejection.
+          git pull --rebase --autostash origin HEAD
+
+          git commit -m "bot: ${SUMMARY}"
           git push
