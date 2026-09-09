@@ -1,0 +1,402 @@
+[
+  {
+    "channel": "13 kids",
+    "group": "Kids"
+  },
+  {
+    "channel": "aaj tak",
+    "group": "Indian News"
+  },
+  {
+    "channel": "akash bangla",
+    "group": "Indian Bangla"
+  },
+  {
+    "channel": "al arabiya",
+    "group": "International News"
+  },
+  {
+    "channel": "al jazeera",
+    "group": "International News"
+  },
+  {
+    "channel": "al jazeera mubasher",
+    "group": "International News"
+  },
+  {
+    "channel": "al jazeera news",
+    "group": "International News"
+  },
+  {
+    "channel": "aljazeera",
+    "group": "International News"
+  },
+  {
+    "channel": "aristanis supertv",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "asian",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "azstartv",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "bahrain sports 1",
+    "group": "Sports"
+  },
+  {
+    "channel": "bangla 1",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "bleav football",
+    "group": "Sports"
+  },
+  {
+    "channel": "bloomberg",
+    "group": "International News"
+  },
+  {
+    "channel": "bloomberg television europe",
+    "group": "International News"
+  },
+  {
+    "channel": "bloomberg television us",
+    "group": "International News"
+  },
+  {
+    "channel": "bloomberg tv",
+    "group": "International News"
+  },
+  {
+    "channel": "btv",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "btv news",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "cbs news",
+    "group": "International News"
+  },
+  {
+    "channel": "cgtn",
+    "group": "International News"
+  },
+  {
+    "channel": "cgtn documentary english s",
+    "group": "Documentary & Wildlife"
+  },
+  {
+    "channel": "cgtn espan ol",
+    "group": "International News"
+  },
+  {
+    "channel": "channel 1",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "channel 16",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "channel win",
+    "group": "Religious"
+  },
+  {
+    "channel": "cnbc indonesia",
+    "group": "Indian News"
+  },
+  {
+    "channel": "cnn international",
+    "group": "International News"
+  },
+  {
+    "channel": "cusano news 7",
+    "group": "International News"
+  },
+  {
+    "channel": "dd india",
+    "group": "International News"
+  },
+  {
+    "channel": "dw",
+    "group": "International News"
+  },
+  {
+    "channel": "dw espan ol s",
+    "group": "International News"
+  },
+  {
+    "channel": "dw news",
+    "group": "International News"
+  },
+  {
+    "channel": "ekhon",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "ekushe tv",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "ep tv",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "euronews",
+    "group": "International News"
+  },
+  {
+    "channel": "france 24 espan ol y",
+    "group": "International News"
+  },
+  {
+    "channel": "gb news",
+    "group": "International News"
+  },
+  {
+    "channel": "global news",
+    "group": "International News"
+  },
+  {
+    "channel": "independent",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "india today",
+    "group": "Indian News"
+  },
+  {
+    "channel": "intravel",
+    "group": "Lifestyle"
+  },
+  {
+    "channel": "intv",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "iran press",
+    "group": "International News"
+  },
+  {
+    "channel": "islamic tv",
+    "group": "Religious"
+  },
+  {
+    "channel": "khusbo bangla",
+    "group": "Indian Bangla"
+  },
+  {
+    "channel": "kids pang tv",
+    "group": "Kids"
+  },
+  {
+    "channel": "lac news 24",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "me tv",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "metro globe network",
+    "group": "International News"
+  },
+  {
+    "channel": "music india",
+    "group": "International Music"
+  },
+  {
+    "channel": "ndtv hindi",
+    "group": "Indian News"
+  },
+  {
+    "channel": "ndtv india",
+    "group": "Indian News"
+  },
+  {
+    "channel": "news 21 bangla tv",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "news 24 s",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "news nation",
+    "group": "International News"
+  },
+  {
+    "channel": "nikki",
+    "group": "Kids"
+  },
+  {
+    "channel": "oan",
+    "group": "International News"
+  },
+  {
+    "channel": "ora news",
+    "group": "International News"
+  },
+  {
+    "channel": "peer tv south tyrol",
+    "group": "Documentary & Wildlife"
+  },
+  {
+    "channel": "persiana kore",
+    "group": "International Movies"
+  },
+  {
+    "channel": "rete 8 sport",
+    "group": "Sports"
+  },
+  {
+    "channel": "rongeen",
+    "group": "Kids"
+  },
+  {
+    "channel": "rt",
+    "group": "International News"
+  },
+  {
+    "channel": "rt documentary english g",
+    "group": "Documentary & Wildlife"
+  },
+  {
+    "channel": "rt espan ol g",
+    "group": "International News"
+  },
+  {
+    "channel": "rtv 38 toscana",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "rtv hb s",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "rtv noord",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "rtv oost",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "rtv rijnmond",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "rtv utrecht",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "rtv ze s",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "rtve 24h",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "ruposhi bangla",
+    "group": "Indian Bangla"
+  },
+  {
+    "channel": "russia today g",
+    "group": "International News"
+  },
+  {
+    "channel": "sabc news",
+    "group": "International News"
+  },
+  {
+    "channel": "sangeet bangla",
+    "group": "Indian Bangla"
+  },
+  {
+    "channel": "sangeet bhojpuri",
+    "group": "International Music"
+  },
+  {
+    "channel": "scripps news",
+    "group": "International News"
+  },
+  {
+    "channel": "sky news",
+    "group": "International News"
+  },
+  {
+    "channel": "sky news arabia",
+    "group": "International News"
+  },
+  {
+    "channel": "sky news weather",
+    "group": "International News"
+  },
+  {
+    "channel": "sky news weather g",
+    "group": "International News"
+  },
+  {
+    "channel": "sport2u",
+    "group": "Sports"
+  },
+  {
+    "channel": "sportoutdoor tv",
+    "group": "Sports"
+  },
+  {
+    "channel": "sports 18",
+    "group": "Sports"
+  },
+  {
+    "channel": "star news",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "star sports sl 2",
+    "group": "Sports"
+  },
+  {
+    "channel": "supertv",
+    "group": "Bangladesh"
+  },
+  {
+    "channel": "travel tv",
+    "group": "Lifestyle"
+  },
+  {
+    "channel": "travel xp",
+    "group": "Documentary & Wildlife"
+  },
+  {
+    "channel": "travel xp",
+    "group": "Lifestyle"
+  },
+  {
+    "channel": "trt world",
+    "group": "International News"
+  },
+  {
+    "channel": "tudn",
+    "group": "Sports"
+  },
+  {
+    "channel": "willow sports 2",
+    "group": "Sports"
+  },
+  {
+    "channel": "wion",
+    "group": "Indian News"
+  },
+  {
+    "channel": "xsport s",
+    "group": "Sports"
+  }
+]
