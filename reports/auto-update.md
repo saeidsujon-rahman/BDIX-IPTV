@@ -1,29 +1,29 @@
 # 🤖 IPTV Auto Update
 
-Generated: **2026-09-09 05:42 UTC**
+Generated: **2026-09-09 05:51 UTC**
 
 ## Summary
 
 | Metric | Count |
 |---|---:|
-| Final canonical channels | **780** |
-| Final stream URLs | **1129** |
+| Final canonical channels | **781** |
+| Final stream URLs | **1130** |
 | Final backup streams | **349** |
 | New backup streams added | **0** |
-| New channels auto-added | **0** |
-| New Adult channels auto-added | **0** |
+| New channels auto-added | **1** |
+| New Adult channels auto-added | **1** |
 | Adult channels added without logo | **0** |
 | Adult candidates held back after limit | **0** |
-| Unique new channel candidates held back | **66** |
-| Source stream URLs represented by candidates | **69** |
-| Bad/expired existing entries removed | **0** |
-| Existing category corrections | **1** |
-| Missing primaries promoted | **0** |
-| Backup names promoted/renumbered | **1** |
-| Family metadata synchronizations | **0** |
+| Unique other candidates held back | **65** |
+| Raw candidate stream URLs | **68** |
+| Existing bad/expired entries removed | **0** |
+| Existing category corrections | **0** |
+| Primary promotions | **0** |
+| Backup renames | **0** |
+| Metadata synchronizations | **0** |
 | Wrapper/proxy URLs resolved | **654** |
-| Blocked URLs skipped without replacement | **14** |
-| Malformed source URLs skipped | **0** |
+| Blocked URLs skipped | **14** |
+| Malformed URLs skipped | **0** |
 | Duplicate URLs removed | **0** |
 
 ## Final category distribution
@@ -42,19 +42,13 @@ Generated: **2026-09-09 05:42 UTC**
 | Kids | **120** |
 | Religious | **47** |
 | News & Weather | **56** |
-| Adult | **7** |
+| Adult | **8** |
 
-## Category corrections
+## New Adult channels automatically added
 
-- **Discovery Kids**: `Documentary & Wildlife` → `Kids`
+- **Sports 18** — `http://atg100.xyz/live/UL33K17/SYC4T9D/1090644.ts`
 
-## Backup normalization
-
-- `Bangla Jago TV [Backup 2]` → `Bangla Jago TV [Backup 1]`
-
-## Unique new channel candidates
-
-Normal auto-add limit: `0`  Adult auto-add limit: `50`
+## Held-back new channel candidates
 
 - **Bangla 1** (`Bangladesh`) — `https://video1.getstreamhosting.com:1936/eycqczsxka/eycqczsxka/playlist.m3u8`
 - **BTV** (`Bangladesh`) — `https://tvsen6.aynaott.com/opREbXLqJ2HFYPCXTJBa/index.m3u8`
@@ -89,7 +83,6 @@ Normal auto-add limit: `0`  Adult auto-add limit: `50`
 - **Rete 8 Sport** (`Sports`) — `https://64b16f23efbee.streamlock.net/rete8sport/rete8sport/playlist.m3u8`
 - **Sport2U** (`Sports`) — `https://stream9.xdevel.com/video0s976916-1685/stream/playlist_dvr.m3u8`
 - **SportOutdoor.tv** (`Sports`) — `https://gto2000-sportoutdoortv-1-it.samsung.wurl.tv/playlist.m3u8`
-- **Sports 18** (`Sports`) — `http://atg100.xyz/live/UL33K17/SYC4T9D/1090644.ts`
 - **Star Sports SL 2** (`Sports`) — `https://yowaimo.in/Sflex-ArtlPVT0719/STAR_SPORTS_SELECT_2_HD.m3u8`
 - **TUDN** (`Sports`) — `https://messi.damitv.st/papi/ts/tudn-usa/playlist.m3u8`
 - **Willow Sports 2** (`Sports`) — `https://mflixott.com/tv/dd/live.php/598.m3u8`
@@ -123,22 +116,18 @@ Normal auto-add limit: `0`  Adult auto-add limit: `50`
 - **SABC News** (`News & Weather`) — `https://sabconetanw.cdn.mangomolo.com/news/smil:news.stream.smil/chunklist_b250000_t64MjQwcA==.m3u8`
 - **Scripps News** (`News & Weather`) — `https://content.uplynk.com/channel/4bb4901b934c4e029fd4c1abfc766c37.m3u8`
 
-## Safety
+## Safety / policy
 
 - Unclassified new channels skipped: **352**
 - Non-Adult new channels without logos skipped: **0**
 - Adult channels added without logos: **0**
-- Channels already at the new-backup limit (8) skipped: **0**
-- Adult channels beyond the per-run auto-add limit (50) held back: **0**
+- Backup-limit skips: **0**
+- Adult-limit skips: **0**
 
-> Normal new channels remain review-only because `MAX_NEW_CHANNELS=0`.
+> Adult channels may be auto-added even when they have no logo.
 
-> Adult channels can be automatically added up to `MAX_NEW_ADULT_CHANNELS=50` per run, and an Adult channel does not need a logo.
+> Adult detection checks both channel names and source groups and accepts more common Adult naming formats.
 
-> Adult classification still uses strong Adult indicators. Removing the logo requirement does not weaken the Adult classification itself.
+> Normal completely-new channels remain review-only.
 
-> Short-name matching is phrase-aware, so a channel such as `MNTV` is not treated as `NTV` merely because the letters occur inside its name.
-
-> Kids classification is checked before Documentary classification, so channels such as `Discovery Kids` remain under `Kids`.
-
-> The updater never deletes a stream merely because GitHub's overseas runner cannot connect to it. This protects BDIX/local-only streams that may work correctly inside Bangladesh.
+> Live network failure is not used as a deletion reason, protecting BDIX/local-only streams.
