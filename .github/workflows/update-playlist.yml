@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Update playlist
         shell: bash
@@ -55,12 +55,15 @@ jobs:
               "Indian Movies",
               "Indian Music",
               "Indian Entertainment",
+              "Indian News",
               "International Movies",
               "International Music",
+              "International News",
               "Documentary & Wildlife",
               "Sports",
               "Kids",
               "Religious",
+              "Lifestyle",
           ]
 
           # Exact-name aliases for common source naming differences.
@@ -86,7 +89,8 @@ jobs:
               "&xplore": "&Xplor HD",
           }
 
-          BLOCKED = (
+          # Domains blocked from being ADDED as new backups from source playlists.
+          BLOCKED_NEW = (
               "go.skym3u.dev",
               "iptvlive.ahmed-bd-org.workers.dev",
               "iptv-proxy.ahmed-bd-org.workers.dev",
@@ -95,6 +99,17 @@ jobs:
               "premiumtvs.space",
               "premimum.online",
               "ottclub.xyz",
+              "vercel.app",
+          )
+
+          # Domains that should also be REMOVED from existing entries.
+          # Kept intentionally narrow: only genuine proxy/wrapper URLs that
+          # were never real streams. Paid/paywalled domains like premiumtvs.space
+          # that are already in the playlist and actually stream fine are NOT
+          # listed here -- they are only blocked from being added as new backups.
+          BLOCKED_EXISTING = (
+              "iptvlive.ahmed-bd-org.workers.dev",
+              "iptv-proxy.ahmed-bd-org.workers.dev",
               "vercel.app",
           )
 
@@ -170,9 +185,10 @@ jobs:
               name = re.sub(r"[^a-z0-9]+", " ", name)
               return " ".join(name.split())
 
-          def is_blocked(url: str) -> bool:
+          def is_blocked(url: str, existing: bool = False) -> bool:
               low = url.lower()
-              if any(x in low for x in BLOCKED):
+              domains = BLOCKED_EXISTING if existing else BLOCKED_NEW
+              if any(x in low for x in domains):
                   return True
 
               # Some Ayna URLs carry a Unix-expiry parameter such as ?e=1753741197.
@@ -279,7 +295,7 @@ jobs:
               # URLs. This runs on every entry, every run, so a URL that was fine
               # when it was added but has since expired gets swept out on its own
               # instead of sitting there dead forever.
-              if is_blocked(e["url"]):
+              if is_blocked(e["url"], existing=True):
                   cleaned_existing.append((e["name"], e["url"]))
                   continue
 
