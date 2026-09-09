@@ -19,18 +19,19 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Update playlist
         shell: bash
         run: |
-          python - <<'PY'
+          python3 - <<'PY'
           from __future__ import annotations
 
           import json
           import re
           import time
           import unicodedata
+          import urllib.error
           import urllib.request
           from collections import defaultdict
           from copy import deepcopy
@@ -54,15 +55,12 @@ jobs:
               "Indian Movies",
               "Indian Music",
               "Indian Entertainment",
-              "Indian News",
               "International Movies",
               "International Music",
-              "International News",
               "Documentary & Wildlife",
               "Sports",
               "Kids",
               "Religious",
-              "Lifestyle",
           ]
 
           # Exact-name aliases for common source naming differences.
@@ -117,13 +115,21 @@ jobs:
               "btv", "ekushey", "channel 24",
           )
 
-          def fetch(url: str) -> str:
+          def fetch(url: str, attempts: int = 3) -> str:
               req = urllib.request.Request(
                   url,
                   headers={"User-Agent": "SaeidRahman-IPTV-Updater/1.0"}
               )
-              with urllib.request.urlopen(req, timeout=40) as response:
-                  return response.read().decode("utf-8-sig", errors="replace")
+              last_error = None
+              for attempt in range(1, attempts + 1):
+                  try:
+                      with urllib.request.urlopen(req, timeout=40) as response:
+                          return response.read().decode("utf-8-sig", errors="replace")
+                  except (urllib.error.URLError, TimeoutError) as exc:
+                      last_error = exc
+                      if attempt < attempts:
+                          time.sleep(5 * attempt)
+              raise SystemExit(f"Failed to fetch {url} after {attempts} attempts: {last_error}")
 
           def parse_m3u(text: str):
               entries = []
@@ -170,7 +176,7 @@ jobs:
                   return True
 
               # Some Ayna URLs carry a Unix-expiry parameter such as ?e=1753741197.
-              # If that timestamp is already in the past, never add it as a new backup.
+              # If that timestamp is already in the past, treat the URL as dead.
               m = re.search(r"(?:[?&])e=(\d{10})(?:&|$)", url)
               if m:
                   try:
@@ -255,33 +261,25 @@ jobs:
               raise SystemExit(f"Master playlist not found: {MASTER}")
 
           master_raw = parse_m3u(MASTER.read_text(encoding="utf-8-sig", errors="replace"))
+          if not master_raw:
+              raise SystemExit(
+                  f"Refusing to continue: parsed 0 channels from {MASTER}. "
+                  "The file may be empty or corrupted -- aborting instead of overwriting it."
+              )
           merge_raw = parse_m3u(fetch(MERGE_SOURCE))
           lookup_raw = parse_m3u(fetch(LOOKUP_SOURCE))
-
-          # One-time/current-state sanitation.
-          # This removes only the known bad V1 additions, not general BDIX URLs.
-          CURRENT_BAD_PATTERNS = (
-              "iptv-proxy.ahmed-bd-org.workers.dev",
-              "iptvlive-beta.vercel.app",
-          )
 
           master = []
           cleaned_existing = []
           corrected_groups = []
 
           for e in master_raw:
-              url_low = e["url"].lower()
-
-              # Remove the proxy/Vercel links that slipped in during V1.
-              if any(pattern in url_low for pattern in CURRENT_BAD_PATTERNS):
-                  cleaned_existing.append((e["name"], e["url"]))
-                  continue
-
-              # Remove the obviously expired signed RTV URL that V1 added.
-              if (
-                  e["name"].strip().lower() == "rtv [backup 5]"
-                  and "e=1753741197" in url_low
-              ):
+              # Re-check every existing stream against the same block rules new
+              # candidates go through: known-bad domains AND expired "e=" signed
+              # URLs. This runs on every entry, every run, so a URL that was fine
+              # when it was added but has since expired gets swept out on its own
+              # instead of sitting there dead forever.
+              if is_blocked(e["url"]):
                   cleaned_existing.append((e["name"], e["url"]))
                   continue
 
@@ -290,7 +288,7 @@ jobs:
               x["group"] = e["attrs"].get("group-title", "")
               x["logo"] = e["attrs"].get("tvg-logo", "")
 
-              # Correct V1 Bangladesh channels that were misclassified.
+              # Correct known Bangladesh channels that have historically been misclassified.
               if strip_backup(e["name"]).lower() in {
                   "channel 1",
                   "btv",
@@ -350,6 +348,7 @@ jobs:
 
           new_backups = []
           new_channels = []
+          new_channel_candidates = []
           skipped_unclassified = 0
           skipped_no_logo = 0
           skipped_backup_limit = 0
@@ -381,9 +380,10 @@ jobs:
                   new_backups.append((ne["name"], url))
                   continue
 
-              if len(new_channels) >= MAX_NEW_CHANNELS:
-                  continue
-
+              # Classify and logo-check BEFORE the MAX_NEW_CHANNELS gate, so the
+              # counters below stay meaningful even when the cap is 0, and so a
+              # channel that clears both checks still gets reported as a candidate
+              # for manual review instead of vanishing without a trace.
               name = preferred_name(src["name"])
               group = guess_group(name, src["attrs"].get("group-title", ""))
               if not group:
@@ -393,6 +393,10 @@ jobs:
               logo = src["attrs"].get("tvg-logo", "")
               if not logo:
                   skipped_no_logo += 1
+                  continue
+
+              if len(new_channels) >= MAX_NEW_CHANNELS:
+                  new_channel_candidates.append((name, group, url))
                   continue
 
               ne = {
@@ -410,16 +414,9 @@ jobs:
               existing_urls.add(url)
               new_channels.append((name, group, url))
 
-          if (
-              not new_backups
-              and not new_channels
-              and not cleaned_existing
-              and not corrected_groups
-          ):
-              print("No new streams, channels, or cleanup changes found.")
-              raise SystemExit(0)
-
-          # Defensive URL de-duplication: retain the first occurrence.
+          # Defensive URL de-duplication: retain the first occurrence. This runs
+          # unconditionally (not just when something else changed) so a backlog of
+          # duplicate URLs already sitting in the file gets cleaned up too.
           seen = set()
           clean = []
           duplicate_removed = []
@@ -430,6 +427,17 @@ jobs:
               seen.add(e["url"])
               clean.append(e)
           master = clean
+
+          if (
+              not new_backups
+              and not new_channels
+              and not new_channel_candidates
+              and not cleaned_existing
+              and not corrected_groups
+              and not duplicate_removed
+          ):
+              print("No new streams, channels, or cleanup changes found.")
+              raise SystemExit(0)
 
           rank = {g: i for i, g in enumerate(GROUP_ORDER)}
           master.sort(
@@ -464,7 +472,8 @@ jobs:
               "",
               f"- New backup streams: **{len(new_backups)}**",
               f"- New channels automatically added: **{len(new_channels)}**",
-              f"- Known bad V1 entries removed: **{len(cleaned_existing)}**",
+              f"- New channel candidates found but not added (MAX_NEW_CHANNELS={MAX_NEW_CHANNELS}): **{len(new_channel_candidates)}**",
+              f"- Known bad entries removed (blocked domain or expired link): **{len(cleaned_existing)}**",
               f"- Existing channel categories corrected: **{len(corrected_groups)}**",
               f"- Wrapper/proxy URLs resolved: **{proxy_resolved}**",
               f"- Blocked/expired URLs skipped without a clean replacement: **{blocked_skipped}**",
@@ -472,7 +481,7 @@ jobs:
           ]
 
           if cleaned_existing:
-              report += ["", "## Cleaned V1 entries", ""]
+              report += ["", "## Cleaned entries", ""]
               for name, url in cleaned_existing:
                   report.append(f"- Removed **{name}** — {url}")
 
@@ -486,6 +495,19 @@ jobs:
           if new_channels:
               report += ["", "## New channels", ""]
               for name, group, url in new_channels:
+                  report.append(f"- **{name}** — `{group}` — {url}")
+
+          if new_channel_candidates:
+              report += [
+                  "",
+                  "## New channel candidates (not added — MAX_NEW_CHANNELS is 0)",
+                  "",
+                  "These look like fully classifiable, logo-having new channels from "
+                  "the source playlist. Raise `MAX_NEW_CHANNELS` or add them by hand "
+                  "if you want them included:",
+                  "",
+              ]
+              for name, group, url in new_channel_candidates:
                   report.append(f"- **{name}** — `{group}` — {url}")
 
           if new_backups:
@@ -510,7 +532,7 @@ jobs:
           print(
               f"Added {len(new_backups)} backup streams, "
               f"{len(new_channels)} new channels; "
-              f"removed {len(cleaned_existing)} bad V1 entries and "
+              f"removed {len(cleaned_existing)} bad entries and "
               f"corrected {len(corrected_groups)} categories."
           )
           PY
