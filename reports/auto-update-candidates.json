@@ -48,6 +48,10 @@
     "group": "Bangladesh"
   },
   {
+    "channel": "calcutta news",
+    "group": "News & Weather"
+  },
+  {
     "channel": "cbs news",
     "group": "News & Weather"
   },
@@ -160,6 +164,10 @@
     "group": "International Movies"
   },
   {
+    "channel": "republic bangla",
+    "group": "Indian Bangla"
+  },
+  {
     "channel": "rete 8 sport",
     "group": "Sports"
   },
@@ -252,11 +260,19 @@
     "group": "Sports"
   },
   {
+    "channel": "tv9 bangla",
+    "group": "Indian Bangla"
+  },
+  {
     "channel": "willow sports 2",
     "group": "Sports"
   },
   {
     "channel": "xsport s",
     "group": "Sports"
+  },
+  {
+    "channel": "zee 24 ghanta",
+    "group": "News & Weather"
   }
 ]
