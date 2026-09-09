@@ -44,6 +44,7 @@ jobs:
           from collections import defaultdict
           from copy import deepcopy
           from datetime import datetime, timezone
+          from difflib import SequenceMatcher
           from pathlib import Path
 
 
@@ -67,8 +68,13 @@ jobs:
 
           MAX_BACKUPS = 8
 
-          # 0 = discover/report new channels but never automatically add them.
+          # 0 = discover/report new channels but do not auto-add them.
           MAX_NEW_CHANNELS = 0
+
+
+          # ============================================================================
+          # Categories
+          # ============================================================================
 
           GROUP_ORDER = [
               "Bangladesh",
@@ -89,10 +95,9 @@ jobs:
 
 
           # ============================================================================
-          # Channel-name aliases
+          # Exact aliases
           #
-          # Keep these conservative. Only aliases representing the same channel should
-          # be placed here.
+          # Keep aliases conservative. Each mapping should represent the same channel.
           # ============================================================================
 
           ALIASES = {
@@ -116,14 +121,13 @@ jobs:
               "dw": "DW News",
               "trace sport": "Trace Sport Stars",
               "&xplore": "&Xplor HD",
-          }
+          ]
 
 
           # ============================================================================
-          # Block lists
+          # URL block lists
           # ============================================================================
 
-          # These URLs/domains must never be ADDED from source playlists.
           BLOCKED_NEW = (
               "go.skym3u.dev",
               "iptvlive.ahmed-bd-org.workers.dev",
@@ -136,13 +140,7 @@ jobs:
               "vercel.app",
           )
 
-          # These are additionally removed if they already exist in the master.
-          #
-          # This list is deliberately much narrower.
-          #
-          # Example:
-          # premiumtvs.space may be blocked from NEW additions but an existing
-          # user-verified working stream is not automatically deleted.
+          # Existing streams are treated more conservatively.
           BLOCKED_EXISTING = (
               "iptvlive.ahmed-bd-org.workers.dev",
               "iptv-proxy.ahmed-bd-org.workers.dev",
@@ -213,15 +211,36 @@ jobs:
 
 
           # ============================================================================
-          # Utility helpers
+          # Matching configuration
+          # ============================================================================
+
+          QUALITY_WORDS = {
+              "hd",
+              "fhd",
+              "uhd",
+              "sd",
+              "4k",
+              "1080p",
+              "720p",
+          }
+
+          GENERIC_NAME_WORDS = {
+              "tv",
+              "television",
+              "channel",
+              "network",
+              "official",
+              "live",
+          }
+
+
+          # ============================================================================
+          # Basic helpers
           # ============================================================================
 
           def atomic_write(path: Path, text: str) -> None:
               """
-              Write a file atomically.
-
-              Prevents leaving a partially written playlist/report if the process is
-              interrupted during the write.
+              Write to a temporary file first, then atomically replace the target.
               """
               path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -234,7 +253,7 @@ jobs:
               req = urllib.request.Request(
                   url,
                   headers={
-                      "User-Agent": "SaeidRahman-IPTV-Updater/2.0",
+                      "User-Agent": "SaeidRahman-IPTV-Updater/3.0",
                       "Accept": "*/*",
                   },
               )
@@ -264,23 +283,21 @@ jobs:
                       last_error = exc
 
                       print(
-                          f"Attempt {attempt}/{attempts} failed "
-                          f"for {url}: {exc}"
+                          f"Attempt {attempt}/{attempts} "
+                          f"failed for {url}: {exc}"
                       )
 
                       if attempt < attempts:
                           time.sleep(5 * attempt)
 
               raise SystemExit(
-                  f"Unable to fetch {url} after "
+                  f"Could not fetch {url} after "
                   f"{attempts} attempts: {last_error}"
               )
 
 
           def valid_stream_url(url: str) -> bool:
-              url = url.strip()
-
-              return url.lower().startswith(
+              return url.strip().lower().startswith(
                   (
                       "http://",
                       "https://",
@@ -347,11 +364,7 @@ jobs:
 
           def extract_header_lines(text: str) -> list[str]:
               """
-              Preserve master-playlist header metadata, including values such as:
-
-                  #EXTM3U x-tvg-url="..."
-
-              Playlist Studio metadata is regenerated separately.
+              Preserve the original master header, including EPG-related attributes.
               """
               result: list[str] = []
 
@@ -364,8 +377,7 @@ jobs:
                   if not line:
                       continue
 
-                  if line.startswith("\ufeff"):
-                      line = line.lstrip("\ufeff")
+                  line = line.lstrip("\ufeff")
 
                   if line.startswith("#PLAYLIST-STUDIO-NAME:"):
                       continue
@@ -397,10 +409,7 @@ jobs:
                   flags=re.I,
               )
 
-              if match:
-                  return int(match.group(1))
-
-              return 0
+              return int(match.group(1)) if match else 0
 
 
           def preferred_name(name: str) -> str:
@@ -418,9 +427,9 @@ jobs:
               name = unicodedata.normalize(
                   "NFKD",
                   name,
-              )
+              ).lower()
 
-              name = name.lower().replace("&", "and")
+              name = name.replace("&", " and ")
 
               name = re.sub(
                   r"\b(fhd|uhd|hd|sd|4k|1080p|720p)\b",
@@ -464,11 +473,8 @@ jobs:
               ):
                   return True
 
-              # Ayna-style signed URL:
-              #
+              # Signed URL expiry:
               # ?e=1753741197
-              #
-              # Remove only if the Unix expiry time is definitely in the past.
               match = re.search(
                   r"(?:[?&])e=(\d{10})(?:&|$)",
                   url,
@@ -482,6 +488,124 @@ jobs:
                       pass
 
               return False
+
+
+          # ============================================================================
+          # Improved channel-name normalization
+          # ============================================================================
+
+          def clean_source_name(name: str) -> str:
+              """
+              Remove common quality/source decorations.
+              """
+              name = strip_backup(name)
+
+              name = re.sub(
+                  r"\[(?:"
+                  r"hd|fhd|uhd|sd|4k|1080p|720p|"
+                  r"bd|bdix|india|indian|backup|live"
+                  r")\]",
+                  " ",
+                  name,
+                  flags=re.I,
+              )
+
+              name = re.sub(
+                  r"\b(?:HD|FHD|UHD|SD|4K|1080P|720P|BDIX)\b",
+                  " ",
+                  name,
+                  flags=re.I,
+              )
+
+              return " ".join(name.split())
+
+
+          def normalized_tokens(name: str) -> list[str]:
+              name = preferred_name(
+                  clean_source_name(name)
+              )
+
+              text = unicodedata.normalize(
+                  "NFKD",
+                  name,
+              ).lower()
+
+              text = text.replace("&", " and ")
+
+              text = re.sub(
+                  r"[^a-z0-9]+",
+                  " ",
+                  text,
+              )
+
+              return [
+                  token
+                  for token in text.split()
+                  if token not in QUALITY_WORDS
+              ]
+
+
+          def channel_signature(name: str) -> str:
+              """
+              Secondary normalized signature.
+
+              Removes generic words like TV/Channel while preserving meaningful
+              channel-specific words and numbers.
+              """
+              tokens = normalized_tokens(name)
+
+              reduced = [
+                  token
+                  for token in tokens
+                  if token not in GENERIC_NAME_WORDS
+              ]
+
+              if not reduced:
+                  return " ".join(tokens)
+
+              # Don't reduce Channel 24 -> 24
+              if all(
+                  token.isdigit()
+                  for token in reduced
+              ):
+                  return " ".join(tokens)
+
+              return " ".join(reduced)
+
+
+          def token_similarity(a: str, b: str) -> float:
+              a_tokens = set(
+                  normalized_tokens(a)
+              )
+
+              b_tokens = set(
+                  normalized_tokens(b)
+              )
+
+              if not a_tokens or not b_tokens:
+                  return 0.0
+
+              intersection = len(
+                  a_tokens & b_tokens
+              )
+
+              union = len(
+                  a_tokens | b_tokens
+              )
+
+              return (
+                  intersection / union
+                  if union
+                  else 0.0
+              )
+
+
+          def text_similarity(a: str, b: str) -> float:
+              return SequenceMatcher(
+                  None,
+                  normalize(a),
+                  normalize(b),
+              ).ratio()
 
 
           # ============================================================================
@@ -499,7 +623,6 @@ jobs:
               if g in GROUP_ORDER:
                   return g
 
-              # Indian Bengali identity is checked before generic news logic.
               if has(nl, INDIAN_BANGLA):
                   return "Indian Bangla"
 
@@ -601,13 +724,11 @@ jobs:
                       ),
                   )
               ):
-                  if has(
-                      nl,
-                      INDIAN_NEWS,
-                  ):
-                      return "Indian News"
-
-                  return "International News"
+                  return (
+                      "Indian News"
+                      if has(nl, INDIAN_NEWS)
+                      else "International News"
+                  )
 
               if (
                   gl in {
@@ -616,16 +737,10 @@ jobs:
                   }
                   or "bangla" in gl
               ):
-                  if has(
-                      nl,
-                      INDIAN_BANGLA,
-                  ):
+                  if has(nl, INDIAN_BANGLA):
                       return "Indian Bangla"
 
-                  if has(
-                      nl,
-                      BANGLADESH_NAMES,
-                  ):
+                  if has(nl, BANGLADESH_NAMES):
                       return "Bangladesh"
 
                   return None
@@ -634,10 +749,7 @@ jobs:
                   "india",
                   "indian",
               }:
-                  if has(
-                      nl,
-                      INDIAN_NEWS,
-                  ):
+                  if has(nl, INDIAN_NEWS):
                       return "Indian News"
 
                   if has(
@@ -694,25 +806,12 @@ jobs:
           def confident_existing_group(
               name: str,
           ) -> str | None:
-              """
-              Conservative corrections for existing master channels.
-
-              This does NOT blindly run source-group inference across the whole master.
-              Only categories that can be inferred confidently from the channel name
-              itself are returned.
-              """
               nl = name.lower()
 
-              if has(
-                  nl,
-                  INDIAN_BANGLA,
-              ):
+              if has(nl, INDIAN_BANGLA):
                   return "Indian Bangla"
 
-              if has(
-                  nl,
-                  BANGLADESH_NAMES,
-              ):
+              if has(nl, BANGLADESH_NAMES):
                   return "Bangladesh"
 
               if has(
@@ -768,8 +867,24 @@ jobs:
               return None
 
 
+          def group_compatible(
+              source_group: str | None,
+              target_group: str | None,
+          ) -> bool:
+              """
+              Prevent fuzzy matching between clearly unrelated categories.
+              """
+              if not source_group or not target_group:
+                  return True
+
+              if source_group == target_group:
+                  return True
+
+              return False
+
+
           # ============================================================================
-          # Serialization
+          # EXTINF serialization
           # ============================================================================
 
           def serialize_extinf(
@@ -825,7 +940,7 @@ jobs:
 
 
           # ============================================================================
-          # Load master
+          # Load master playlist
           # ============================================================================
 
           if not MASTER.exists():
@@ -848,9 +963,9 @@ jobs:
 
           if not master_raw:
               raise SystemExit(
-                  f"Refusing to continue: parsed 0 "
-                  f"channels from {MASTER}. "
-                  "The playlist may be empty or corrupted."
+                  f"Refusing to continue: parsed 0 channels "
+                  f"from {MASTER}. The playlist may be empty "
+                  "or corrupted."
               )
 
           print(
@@ -860,25 +975,17 @@ jobs:
 
 
           # ============================================================================
-          # Fetch external sources
+          # Fetch sources
           # ============================================================================
 
           print("Fetching source playlists...")
 
-          merge_text = fetch(
-              MERGE_SOURCE
-          )
-
-          lookup_text = fetch(
-              LOOKUP_SOURCE
-          )
-
           merge_raw = parse_m3u(
-              merge_text
+              fetch(MERGE_SOURCE)
           )
 
           lookup_raw = parse_m3u(
-              lookup_text
+              fetch(LOOKUP_SOURCE)
           )
 
           print(
@@ -891,13 +998,18 @@ jobs:
 
 
           # ============================================================================
-          # Sweep existing master
+          # Clean / prepare existing master
           # ============================================================================
 
           master: list[dict] = []
 
-          cleaned_existing: list[tuple[str, str]] = []
-          corrected_groups: list[tuple[str, str, str]] = []
+          cleaned_existing: list[
+              tuple[str, str]
+          ] = []
+
+          corrected_groups: list[
+              tuple[str, str, str]
+          ] = []
 
           for entry in master_raw:
               if is_blocked(
@@ -951,10 +1063,13 @@ jobs:
 
 
           # ============================================================================
-          # Build lookup-source clean URL index
+          # Build lookup index
           # ============================================================================
 
-          lookup: dict[str, list[dict]] = defaultdict(list)
+          lookup: dict[
+              str,
+              list[dict],
+          ] = defaultdict(list)
 
           for entry in lookup_raw:
               if (
@@ -967,7 +1082,7 @@ jobs:
 
 
           # ============================================================================
-          # Resolve blocked/wrapper URLs from merge source
+          # Resolve bad/wrapper merge URLs
           # ============================================================================
 
           candidates: list[dict] = []
@@ -985,18 +1100,15 @@ jobs:
                   malformed_skipped += 1
                   continue
 
-              if is_blocked(
-                  item["url"]
-              ):
-                  replacements = lookup.get(
-                      normalize(item["name"]),
-                      [],
-                  )
-
+              if is_blocked(item["url"]):
                   replacement = next(
                       (
                           candidate
-                          for candidate in replacements
+                          for candidate
+                          in lookup.get(
+                              normalize(item["name"]),
+                              [],
+                          )
                           if (
                               valid_stream_url(
                                   candidate["url"]
@@ -1038,23 +1150,84 @@ jobs:
 
 
           # ============================================================================
-          # Build canonical indexes
+          # Build multi-level channel indexes
           # ============================================================================
 
-          canonical: dict[str, list[dict]] = defaultdict(list)
+          canonical: dict[
+              str,
+              list[dict],
+          ] = defaultdict(list)
 
-          norm_to_canonical: dict[str, list[str]] = defaultdict(list)
+          norm_to_canonical: dict[
+              str,
+              list[str],
+          ] = defaultdict(list)
+
+          signature_to_canonical: dict[
+              str,
+              list[str],
+          ] = defaultdict(list)
+
+          tvgid_to_canonical: dict[
+              str,
+              list[str],
+          ] = defaultdict(list)
+
 
           for entry in master:
+              channel = entry["canonical"]
+
               canonical[
-                  entry["canonical"]
+                  channel
               ].append(entry)
 
-              norm_to_canonical[
-                  normalize(entry["canonical"])
-              ].append(
-                  entry["canonical"]
+              norm_key = normalize(
+                  channel
               )
+
+              if (
+                  channel
+                  not in norm_to_canonical[norm_key]
+              ):
+                  norm_to_canonical[
+                      norm_key
+                  ].append(channel)
+
+              signature = channel_signature(
+                  channel
+              )
+
+              if (
+                  signature
+                  and channel
+                  not in signature_to_canonical[signature]
+              ):
+                  signature_to_canonical[
+                      signature
+                  ].append(channel)
+
+              tvg_id = (
+                  entry.get(
+                      "attrs",
+                      {},
+                  )
+                  .get(
+                      "tvg-id",
+                      "",
+                  )
+                  .strip()
+                  .lower()
+              )
+
+              if (
+                  tvg_id
+                  and channel
+                  not in tvgid_to_canonical[tvg_id]
+              ):
+                  tvgid_to_canonical[
+                      tvg_id
+                  ].append(channel)
+
 
           existing_urls: set[str] = {
               entry["url"]
@@ -1062,57 +1235,332 @@ jobs:
           }
 
 
+          # ============================================================================
+          # Smart channel matcher
+          # ============================================================================
+
           def find_target(
               source_name: str,
-          ) -> str | None:
+              source_attrs: dict | None = None,
+              source_group: str | None = None,
+          ) -> tuple[str | None, str]:
+              """
+              Match progressively:
+
+              1. tvg-id
+              2. exact preferred name
+              3. case-insensitive exact
+              4. normalized exact
+              5. conservative signature
+              6. high-confidence fuzzy match
+
+              Returns:
+                  (target_channel, matching_method)
+              """
+
+              source_attrs = source_attrs or {}
+
               wanted = preferred_name(
-                  source_name
+                  clean_source_name(
+                      source_name
+                  )
               )
 
-              if wanted in canonical:
-                  return wanted
 
-              key = normalize(
+              # ------------------------------------------------------------------------
+              # 1. Exact tvg-id
+              # ------------------------------------------------------------------------
+
+              source_tvg_id = (
+                  source_attrs
+                  .get(
+                      "tvg-id",
+                      "",
+                  )
+                  .strip()
+                  .lower()
+              )
+
+              if source_tvg_id:
+                  matches = list(
+                      dict.fromkeys(
+                          tvgid_to_canonical.get(
+                              source_tvg_id,
+                              [],
+                          )
+                      )
+                  )
+
+                  if len(matches) == 1:
+                      return matches[0], "tvg-id"
+
+
+              # ------------------------------------------------------------------------
+              # 2. Exact canonical name
+              # ------------------------------------------------------------------------
+
+              if wanted in canonical:
+                  return wanted, "exact"
+
+
+              # ------------------------------------------------------------------------
+              # 3. Case-insensitive exact
+              # ------------------------------------------------------------------------
+
+              exact_casefold = [
+                  name
+                  for name in canonical
+                  if name.casefold()
+                  == wanted.casefold()
+              ]
+
+              if len(exact_casefold) == 1:
+                  return exact_casefold[0], "case-insensitive"
+
+
+              # ------------------------------------------------------------------------
+              # 4. Normalized exact
+              # ------------------------------------------------------------------------
+
+              norm_key = normalize(
                   wanted
               )
 
-              choices = list(
+              normalized_matches = list(
                   dict.fromkeys(
                       norm_to_canonical.get(
-                          key,
+                          norm_key,
                           [],
                       )
                   )
               )
 
-              if len(choices) == 1:
-                  return choices[0]
+              if len(normalized_matches) == 1:
+                  return normalized_matches[0], "normalized"
 
-              for canonical_name in canonical:
-                  if (
-                      canonical_name.lower()
-                      == wanted.lower()
+
+              # ------------------------------------------------------------------------
+              # 5. Conservative signature match
+              # ------------------------------------------------------------------------
+
+              signature = channel_signature(
+                  wanted
+              )
+
+              signature_matches = list(
+                  dict.fromkeys(
+                      signature_to_canonical.get(
+                          signature,
+                          [],
+                      )
+                  )
+              )
+
+              if len(signature_matches) == 1:
+                  target = signature_matches[0]
+
+                  target_group = next(
+                      (
+                          member.get(
+                              "group",
+                              "",
+                          )
+                          for member in canonical[target]
+                          if member.get(
+                              "group",
+                              "",
+                          )
+                      ),
+                      "",
+                  )
+
+                  if group_compatible(
+                      source_group,
+                      target_group,
                   ):
-                      return canonical_name
+                      return target, "signature"
 
-              return None
+
+              # ------------------------------------------------------------------------
+              # 6. Strict fuzzy matching
+              # ------------------------------------------------------------------------
+
+              wanted_tokens = normalized_tokens(
+                  wanted
+              )
+
+              # Short single-word names are unsafe for fuzzy matching.
+              # NTV, RTV, BTV, DW, etc.
+              if (
+                  len(wanted_tokens) == 1
+                  and len(wanted_tokens[0]) <= 4
+              ):
+                  return None, "none"
+
+
+              scored: list[
+                  tuple[
+                      float,
+                      float,
+                      float,
+                      str,
+                  ]
+              ] = []
+
+
+              for (
+                  candidate_name,
+                  members,
+              ) in canonical.items():
+
+                  target_group = next(
+                      (
+                          member.get(
+                              "group",
+                              "",
+                          )
+                          for member in members
+                          if member.get(
+                              "group",
+                              "",
+                          )
+                      ),
+                      "",
+                  )
+
+                  if not group_compatible(
+                      source_group,
+                      target_group,
+                  ):
+                      continue
+
+
+                  seq_score = text_similarity(
+                      wanted,
+                      candidate_name,
+                  )
+
+                  token_score = token_similarity(
+                      wanted,
+                      candidate_name,
+                  )
+
+                  sig_a = channel_signature(
+                      wanted
+                  )
+
+                  sig_b = channel_signature(
+                      candidate_name
+                  )
+
+                  signature_score = (
+                      SequenceMatcher(
+                          None,
+                          sig_a,
+                          sig_b,
+                      ).ratio()
+                      if sig_a and sig_b
+                      else 0.0
+                  )
+
+
+                  combined = (
+                      token_score * 0.50
+                      + signature_score * 0.30
+                      + seq_score * 0.20
+                  )
+
+                  scored.append(
+                      (
+                          combined,
+                          token_score,
+                          seq_score,
+                          candidate_name,
+                      )
+                  )
+
+
+              if not scored:
+                  return None, "none"
+
+
+              scored.sort(
+                  key=lambda item: item[0],
+                  reverse=True,
+              )
+
+              best = scored[0]
+
+              best_combined = best[0]
+              best_token = best[1]
+              best_seq = best[2]
+              best_name = best[3]
+
+              second_score = (
+                  scored[1][0]
+                  if len(scored) > 1
+                  else 0.0
+              )
+
+              margin = (
+                  best_combined
+                  - second_score
+              )
+
+
+              very_strong = (
+                  best_combined >= 0.92
+                  and best_seq >= 0.88
+              )
+
+              strong_tokens = (
+                  best_token >= 0.80
+                  and best_combined >= 0.88
+              )
+
+              clear_winner = (
+                  margin >= 0.06
+              )
+
+
+              if (
+                  clear_winner
+                  and (
+                      very_strong
+                      or strong_tokens
+                  )
+              ):
+                  return best_name, "fuzzy"
+
+
+              return None, "none"
 
 
           # ============================================================================
-          # Add backups / discover new channels
+          # Process candidates
           # ============================================================================
 
-          new_backups: list[tuple[str, str]] = []
+          new_backups: list[
+              tuple[str, str, str]
+          ] = []
 
-          new_channels: list[tuple[str, str, str]] = []
+          new_channels: list[
+              tuple[str, str, str]
+          ] = []
 
           new_channel_candidates: list[
               tuple[str, str, str]
           ] = []
 
+          match_method_counts: dict[
+              str,
+              int,
+          ] = defaultdict(int)
+
           skipped_unclassified = 0
           skipped_no_logo = 0
           skipped_backup_limit = 0
+
 
           for src in candidates:
               url = src["url"]
@@ -1120,15 +1568,39 @@ jobs:
               if url in existing_urls:
                   continue
 
-              target = find_target(
+
+              source_name = preferred_name(
                   src["name"]
               )
 
+              source_group = guess_group(
+                  source_name,
+                  src["attrs"].get(
+                      "group-title",
+                      "",
+                  ),
+              )
+
+
+              target, match_method = find_target(
+                  src["name"],
+                  src.get(
+                      "attrs",
+                      {},
+                  ),
+                  source_group,
+              )
+
+
               # ------------------------------------------------------------------------
-              # Existing channel -> add as backup
+              # Existing channel => add backup
               # ------------------------------------------------------------------------
 
               if target:
+                  match_method_counts[
+                      match_method
+                  ] += 1
+
                   current = canonical[target]
 
                   backup_count = sum(
@@ -1143,6 +1615,7 @@ jobs:
                       skipped_backup_limit += 1
                       continue
 
+
                   primary = next(
                       (
                           item
@@ -1154,6 +1627,7 @@ jobs:
                       current[0],
                   )
 
+
                   next_number = (
                       max(
                           backup_number(
@@ -1163,6 +1637,7 @@ jobs:
                       )
                       + 1
                   )
+
 
                   new_entry = deepcopy(
                       primary
@@ -1176,8 +1651,7 @@ jobs:
                   new_entry["canonical"] = target
                   new_entry["url"] = url
 
-                  # Preserve stream-specific VLC/referrer/options
-                  # from the new source.
+                  # Stream-specific VLC/referrer/options should come from source.
                   new_entry["extras"] = deepcopy(
                       src.get(
                           "extras",
@@ -1195,6 +1669,7 @@ jobs:
                           "",
                       )
                   )
+
 
                   master.append(
                       new_entry
@@ -1214,6 +1689,7 @@ jobs:
                       (
                           new_entry["name"],
                           url,
+                          match_method,
                       )
                   )
 
@@ -1224,21 +1700,14 @@ jobs:
               # Completely new channel
               # ------------------------------------------------------------------------
 
-              name = preferred_name(
-                  src["name"]
-              )
+              name = source_name
 
-              group = guess_group(
-                  name,
-                  src["attrs"].get(
-                      "group-title",
-                      "",
-                  ),
-              )
+              group = source_group
 
               if not group:
                   skipped_unclassified += 1
                   continue
+
 
               logo = src["attrs"].get(
                   "tvg-logo",
@@ -1248,6 +1717,7 @@ jobs:
               if not logo:
                   skipped_no_logo += 1
                   continue
+
 
               if (
                   len(new_channels)
@@ -1262,6 +1732,7 @@ jobs:
                   )
 
                   continue
+
 
               new_entry = {
                   "attrs": deepcopy(
@@ -1280,6 +1751,7 @@ jobs:
                   "logo": logo,
               }
 
+
               master.append(
                   new_entry
               )
@@ -1290,11 +1762,54 @@ jobs:
                   new_entry
               )
 
-              norm_to_canonical[
-                  normalize(name)
-              ].append(
+              norm_key = normalize(
                   name
               )
+
+              if (
+                  name
+                  not in norm_to_canonical[norm_key]
+              ):
+                  norm_to_canonical[
+                      norm_key
+                  ].append(name)
+
+
+              signature = channel_signature(
+                  name
+              )
+
+              if (
+                  signature
+                  and name
+                  not in signature_to_canonical[
+                      signature
+                  ]
+              ):
+                  signature_to_canonical[
+                      signature
+                  ].append(name)
+
+
+              tvg_id = (
+                  src["attrs"]
+                  .get(
+                      "tvg-id",
+                      "",
+                  )
+                  .strip()
+                  .lower()
+              )
+
+              if (
+                  tvg_id
+                  and name
+                  not in tvgid_to_canonical[tvg_id]
+              ):
+                  tvgid_to_canonical[
+                      tvg_id
+                  ].append(name)
+
 
               existing_urls.add(
                   url
@@ -1310,15 +1825,71 @@ jobs:
 
 
           # ============================================================================
+          # Collapse duplicate new-channel candidates
+          #
+          # Multiple URLs for the same new channel now count as ONE channel candidate.
+          # ============================================================================
+
+          raw_new_channel_candidate_streams = len(
+              new_channel_candidates
+          )
+
+          candidate_groups: dict[
+              tuple[str, str],
+              list[
+                  tuple[str, str, str]
+              ],
+          ] = defaultdict(list)
+
+
+          for (
+              name,
+              group,
+              url,
+          ) in new_channel_candidates:
+
+              candidate_groups[
+                  (
+                      normalize(name),
+                      group,
+                  )
+              ].append(
+                  (
+                      name,
+                      group,
+                      url,
+                  )
+              )
+
+
+          deduped_candidates: list[
+              tuple[str, str, str]
+          ] = []
+
+
+          for variants in candidate_groups.values():
+              deduped_candidates.append(
+                  variants[0]
+              )
+
+
+          new_channel_candidates = (
+              deduped_candidates
+          )
+
+
+          # ============================================================================
           # Global URL deduplication
           # ============================================================================
 
           seen_urls: set[str] = set()
+
           deduplicated: list[dict] = []
 
           duplicate_removed: list[
               tuple[str, str]
           ] = []
+
 
           for entry in master:
               if entry["url"] in seen_urls:
@@ -1339,20 +1910,23 @@ jobs:
                   entry
               )
 
+
           master = deduplicated
 
 
           # ============================================================================
           # Normalize channel families
           #
-          # Important:
-          #
-          # 1. If primary disappeared, promote first surviving backup.
-          # 2. Rename remaining backups sequentially.
-          # 3. Synchronize channel identity metadata.
+          # - promote a backup if primary disappeared
+          # - renumber backups
+          # - synchronize channel metadata
           # ============================================================================
 
-          families: dict[str, list[dict]] = defaultdict(list)
+          families: dict[
+              str,
+              list[dict],
+          ] = defaultdict(list)
+
 
           for entry in master:
               canonical_name = strip_backup(
@@ -1370,15 +1944,21 @@ jobs:
 
 
           promoted_primaries: list[str] = []
+
           renumbered_backups: list[
               tuple[str, str]
           ] = []
+
           metadata_synced = 0
 
           normalized_master: list[dict] = []
 
-          for canonical_name, members in families.items():
-              # Prefer actual primary, otherwise lowest-numbered surviving backup.
+
+          for (
+              canonical_name,
+              members,
+          ) in families.items():
+
               members.sort(
                   key=lambda item: (
                       0
@@ -1393,6 +1973,7 @@ jobs:
                   )
               )
 
+
               existing_primary = next(
                   (
                       item
@@ -1404,37 +1985,19 @@ jobs:
                   None,
               )
 
+
               primary = (
                   existing_primary
                   if existing_primary
                   else members[0]
               )
 
+
               if existing_primary is None:
                   promoted_primaries.append(
                       canonical_name
                   )
 
-              old_primary_name = primary["name"]
-
-              primary["name"] = canonical_name
-              primary["canonical"] = canonical_name
-
-              if (
-                  old_primary_name
-                  != primary["name"]
-              ):
-                  renumbered_backups.append(
-                      (
-                          old_primary_name,
-                          primary["name"],
-                      )
-                  )
-
-
-              # ------------------------------------------------------------------------
-              # Determine canonical metadata
-              # ------------------------------------------------------------------------
 
               canonical_group = primary.get(
                   "group",
@@ -1456,6 +2019,7 @@ jobs:
                       ),
                       "",
                   )
+
 
               if not canonical_group:
                   canonical_group = (
@@ -1494,7 +2058,11 @@ jobs:
                   "tvg-country",
               )
 
-              canonical_attrs: dict[str, str] = {}
+              canonical_attrs: dict[
+                  str,
+                  str,
+              ] = {}
+
 
               for field in identity_fields:
                   value = primary[
@@ -1530,15 +2098,12 @@ jobs:
                       ] = value
 
 
-              # ------------------------------------------------------------------------
-              # Rebuild ordered family
-              # ------------------------------------------------------------------------
-
               others = [
                   member
                   for member in members
                   if member is not primary
               ]
+
 
               others.sort(
                   key=lambda item: (
@@ -1549,22 +2114,26 @@ jobs:
                   )
               )
 
+
               ordered_family = [
                   primary
               ] + others
+
 
               for index, member in enumerate(
                   ordered_family
               ):
                   old_name = member["name"]
 
-                  if index == 0:
-                      new_name = canonical_name
-                  else:
-                      new_name = (
+                  new_name = (
+                      canonical_name
+                      if index == 0
+                      else (
                           f"{canonical_name} "
                           f"[Backup {index}]"
                       )
+                  )
+
 
                   if old_name != new_name:
                       renumbered_backups.append(
@@ -1574,31 +2143,38 @@ jobs:
                           )
                       )
 
+
                   member["name"] = new_name
                   member["canonical"] = canonical_name
 
 
-                  before_group = member.get(
+                  old_group = member.get(
                       "group",
                       "",
                   )
 
-                  before_logo = member.get(
+                  old_logo = member.get(
                       "logo",
                       "",
                   )
 
+
                   member["group"] = canonical_group
                   member["logo"] = canonical_logo
 
+
                   if (
-                      before_group != canonical_group
-                      or before_logo != canonical_logo
+                      old_group != canonical_group
+                      or old_logo != canonical_logo
                   ):
                       metadata_synced += 1
 
 
-                  for field, value in canonical_attrs.items():
+                  for (
+                      field,
+                      value,
+                  ) in canonical_attrs.items():
+
                       old_value = member[
                           "attrs"
                       ].get(
@@ -1618,16 +2194,15 @@ jobs:
                       member
                   )
 
+
           master = normalized_master
 
 
           # ============================================================================
-          # Candidate-state comparison
+          # Candidate-state tracking
           #
-          # Candidate identity intentionally ignores URL.
-          #
-          # This prevents a rotating token or source URL from causing a meaningless
-          # report commit every day for the same held-back channel.
+          # URL is intentionally ignored so rotating stream tokens don't create
+          # meaningless commits.
           # ============================================================================
 
           candidate_identity = sorted(
@@ -1636,21 +2211,29 @@ jobs:
                       normalize(name),
                       group,
                   )
-                  for name, group, _url
-                  in new_channel_candidates
+                  for (
+                      name,
+                      group,
+                      _url,
+                  ) in new_channel_candidates
               }
           )
+
 
           candidate_state_data = [
               {
                   "channel": name,
                   "group": group,
               }
-              for name, group
-              in candidate_identity
+              for (
+                  name,
+                  group,
+              ) in candidate_identity
           ]
 
+
           previous_candidate_state: list[dict] = []
+
 
           if CANDIDATE_STATE.exists():
               try:
@@ -1666,6 +2249,7 @@ jobs:
               ):
                   previous_candidate_state = []
 
+
           candidate_changed = (
               previous_candidate_state
               != candidate_state_data
@@ -1673,16 +2257,19 @@ jobs:
 
 
           # ============================================================================
-          # Sort final playlist
+          # Sort
           # ============================================================================
 
           rank = {
               group: index
-              for index, group
-              in enumerate(
+              for (
+                  index,
+                  group,
+              ) in enumerate(
                   GROUP_ORDER
               )
           }
+
 
           master.sort(
               key=lambda entry: (
@@ -1709,16 +2296,23 @@ jobs:
               master_header
           )
 
+
           output += [
               '#PLAYLIST-STUDIO-NAME:"SAEID RAHMAN - IPTV Playlist"',
-              "#PLAYLIST-STUDIO-CATEGORIES:"
-              + json.dumps(
-                  GROUP_ORDER,
-                  ensure_ascii=False,
+              (
+                  "#PLAYLIST-STUDIO-CATEGORIES:"
+                  + json.dumps(
+                      GROUP_ORDER,
+                      ensure_ascii=False,
+                  )
               ),
           ]
 
-          for number, entry in enumerate(
+
+          for (
+              number,
+              entry,
+          ) in enumerate(
               master,
               1,
           ):
@@ -1740,6 +2334,7 @@ jobs:
                   entry["url"]
               )
 
+
           new_master_text = (
               "\ufeff"
               + "\n".join(output)
@@ -1747,27 +2342,18 @@ jobs:
           )
 
 
-          # Compare content while treating BOM consistently.
-          current_compare = (
+          playlist_changed = (
               original_master_text.lstrip(
                   "\ufeff"
               )
-          )
-
-          new_compare = (
-              new_master_text.lstrip(
+              != new_master_text.lstrip(
                   "\ufeff"
               )
-          )
-
-          playlist_changed = (
-              current_compare
-              != new_compare
           )
 
 
           # ============================================================================
-          # Determine whether anything meaningful changed
+          # Exit if nothing meaningful changed
           # ============================================================================
 
           meaningful_change = (
@@ -1775,10 +2361,10 @@ jobs:
               or candidate_changed
           )
 
+
           if not meaningful_change:
               print(
-                  "No playlist changes and no candidate-set "
-                  "changes found."
+                  "No playlist changes and no candidate-set changes."
               )
 
               print(
@@ -1789,7 +2375,7 @@ jobs:
 
 
           # ============================================================================
-          # Write changed playlist
+          # Write playlist/state
           # ============================================================================
 
           if playlist_changed:
@@ -1805,14 +2391,9 @@ jobs:
 
           else:
               print(
-                  "Candidate state changed, "
-                  "but playlist content did not."
+                  "Playlist unchanged; only candidate state changed."
               )
 
-
-          # ============================================================================
-          # Store stable candidate state
-          # ============================================================================
 
           atomic_write(
               CANDIDATE_STATE,
@@ -1836,6 +2417,7 @@ jobs:
               }
           )
 
+
           total_backups = sum(
               1
               for entry in master
@@ -1855,6 +2437,7 @@ jobs:
               "%Y-%m-%d %H:%M UTC"
           )
 
+
           report: list[str] = [
               "# 🤖 IPTV Auto Update",
               "",
@@ -1869,7 +2452,8 @@ jobs:
               f"| Final backup streams | **{total_backups}** |",
               f"| New backup streams added | **{len(new_backups)}** |",
               f"| New channels auto-added | **{len(new_channels)}** |",
-              f"| New channel candidates held back | **{len(new_channel_candidates)}** |",
+              f"| Unique new channel candidates held back | **{len(new_channel_candidates)}** |",
+              f"| Source stream URLs represented by candidates | **{raw_new_channel_candidate_streams}** |",
               f"| Bad/expired existing entries removed | **{len(cleaned_existing)}** |",
               f"| Existing category corrections | **{len(corrected_groups)}** |",
               f"| Missing primaries promoted | **{len(promoted_primaries)}** |",
@@ -1882,6 +2466,44 @@ jobs:
           ]
 
 
+          # ============================================================================
+          # Match statistics
+          # ============================================================================
+
+          if match_method_counts:
+              report += [
+                  "",
+                  "## Existing-channel matching",
+                  "",
+                  "| Matching method | Backups recognized |",
+                  "|---|---:|",
+              ]
+
+              match_order = [
+                  "tvg-id",
+                  "exact",
+                  "case-insensitive",
+                  "normalized",
+                  "signature",
+                  "fuzzy",
+              ]
+
+              for method in match_order:
+                  count = match_method_counts.get(
+                      method,
+                      0,
+                  )
+
+                  if count:
+                      report.append(
+                          f"| {method} | **{count}** |"
+                      )
+
+
+          # ============================================================================
+          # Removed entries
+          # ============================================================================
+
           if cleaned_existing:
               report += [
                   "",
@@ -1889,11 +2511,19 @@ jobs:
                   "",
               ]
 
-              for name, url in cleaned_existing:
+              for (
+                  name,
+                  url,
+              ) in cleaned_existing:
+
                   report.append(
                       f"- **{name}** — `{url}`"
                   )
 
+
+          # ============================================================================
+          # Category corrections
+          # ============================================================================
 
           if corrected_groups:
               report += [
@@ -1907,19 +2537,24 @@ jobs:
                   old_group,
                   new_group,
               ) in corrected_groups:
+
                   report.append(
                       f"- **{name}**: "
                       f"`{old_group}` → `{new_group}`"
                   )
 
 
+          # ============================================================================
+          # Primary promotions
+          # ============================================================================
+
           if promoted_primaries:
               report += [
                   "",
                   "## Promoted backup streams",
                   "",
-                  "The original primary stream was no longer available, "
-                  "so the first surviving backup was promoted:",
+                  "The original primary was missing, so a surviving backup "
+                  "was promoted to primary:",
                   "",
               ]
 
@@ -1929,6 +2564,10 @@ jobs:
                   )
 
 
+          # ============================================================================
+          # Backup normalization
+          # ============================================================================
+
           if renumbered_backups:
               report += [
                   "",
@@ -1936,12 +2575,19 @@ jobs:
                   "",
               ]
 
-              for old_name, new_name in renumbered_backups:
-                  if old_name != new_name:
-                      report.append(
-                          f"- `{old_name}` → `{new_name}`"
-                      )
+              for (
+                  old_name,
+                  new_name,
+              ) in renumbered_backups:
 
+                  report.append(
+                      f"- `{old_name}` → `{new_name}`"
+                  )
+
+
+          # ============================================================================
+          # New channels
+          # ============================================================================
 
           if new_channels:
               report += [
@@ -1955,24 +2601,30 @@ jobs:
                   group,
                   url,
               ) in new_channels:
+
                   report.append(
                       f"- **{name}** "
                       f"(`{group}`) — `{url}`"
                   )
 
 
+          # ============================================================================
+          # Held-back candidates
+          # ============================================================================
+
           if new_channel_candidates:
               report += [
                   "",
                   (
-                      "## New channel candidates "
+                      "## Unique new channel candidates "
                       f"(MAX_NEW_CHANNELS={MAX_NEW_CHANNELS})"
                   ),
                   "",
-                  "These channels passed classification and logo checks "
-                  "but were not automatically added:",
+                  "These channels were not recognized as existing master channels, "
+                  "but passed classification and logo checks:",
                   "",
               ]
+
 
               for (
                   name,
@@ -1985,14 +2637,18 @@ jobs:
                       normalize(
                           item[0]
                       ),
-                      item[2],
                   ),
               ):
+
                   report.append(
                       f"- **{name}** "
                       f"(`{group}`) — `{url}`"
                   )
 
+
+          # ============================================================================
+          # New backups
+          # ============================================================================
 
           if new_backups:
               report += [
@@ -2001,11 +2657,22 @@ jobs:
                   "",
               ]
 
-              for name, url in new_backups:
+              for (
+                  name,
+                  url,
+                  method,
+              ) in new_backups:
+
                   report.append(
-                      f"- **{name}** — `{url}`"
+                      f"- **{name}** "
+                      f"— match: `{method}` "
+                      f"— `{url}`"
                   )
 
+
+          # ============================================================================
+          # Duplicates
+          # ============================================================================
 
           if duplicate_removed:
               report += [
@@ -2014,11 +2681,19 @@ jobs:
                   "",
               ]
 
-              for name, url in duplicate_removed:
+              for (
+                  name,
+                  url,
+              ) in duplicate_removed:
+
                   report.append(
                       f"- **{name}** — `{url}`"
                   )
 
+
+          # ============================================================================
+          # Safety
+          # ============================================================================
 
           report += [
               "",
@@ -2027,20 +2702,23 @@ jobs:
               f"- Unclassified new channels skipped: **{skipped_unclassified}**",
               f"- New channels without logos skipped: **{skipped_no_logo}**",
               (
-                  "- Existing channels already at the new-backup limit "
+                  "- Channels already at the new-backup limit "
                   f"({MAX_BACKUPS}) skipped: **{skipped_backup_limit}**"
               ),
               "",
-              "> The updater does not delete a stream merely because a "
-              "GitHub Actions runner cannot connect to it. This protects "
-              "BDIX/local-only streams that may work correctly inside "
-              "Bangladesh but fail from GitHub's overseas infrastructure.",
+              "> The updater never deletes a stream merely because GitHub's "
+              "overseas runner cannot connect to it. This protects BDIX/local-only "
+              "streams that may work correctly inside Bangladesh.",
               "",
-              "> Existing working streams on domains blocked only for new "
-              "additions are retained unless they match the narrower "
-              "BLOCKED_EXISTING list or contain a definitely expired signed URL.",
+              "> Fuzzy matching is deliberately strict. Short names such as NTV, "
+              "RTV, BTV and DW are never fuzzy-matched.",
+              "",
+              "> Candidate counting is based on unique channel identities rather "
+              "than individual source URLs, preventing multiple backup URLs from "
+              "inflating the new-channel count.",
               "",
           ]
+
 
           atomic_write(
               REPORT,
@@ -2049,45 +2727,53 @@ jobs:
 
 
           # ============================================================================
-          # Git commit summary output
+          # Commit summary
           # ============================================================================
 
           summary_parts: list[str] = []
+
 
           if new_backups:
               summary_parts.append(
                   f"+{len(new_backups)} backups"
               )
 
+
           if new_channels:
               summary_parts.append(
                   f"+{len(new_channels)} channels"
               )
+
 
           if cleaned_existing:
               summary_parts.append(
                   f"-{len(cleaned_existing)} expired/bad"
               )
 
+
           if duplicate_removed:
               summary_parts.append(
                   f"-{len(duplicate_removed)} dupes"
               )
+
 
           if corrected_groups:
               summary_parts.append(
                   f"{len(corrected_groups)} category fixes"
               )
 
+
           if promoted_primaries:
               summary_parts.append(
                   f"{len(promoted_primaries)} primary promotions"
               )
 
+
           if renumbered_backups:
               summary_parts.append(
                   f"{len(renumbered_backups)} backup normalizations"
               )
+
 
           if (
               candidate_changed
@@ -2097,18 +2783,22 @@ jobs:
                   "candidate list updated"
               )
 
+
           if not summary_parts:
               summary_parts.append(
                   "playlist normalized"
               )
 
+
           summary = ", ".join(
               summary_parts
           )
 
+
           github_output = os.environ.get(
               "GITHUB_OUTPUT"
           )
+
 
           if github_output:
               with open(
@@ -2116,9 +2806,11 @@ jobs:
                   "a",
                   encoding="utf-8",
               ) as handle:
+
                   handle.write(
                       f"summary={summary}\n"
                   )
+
 
           print(
               f"Done: {summary}"
@@ -2146,12 +2838,10 @@ jobs:
 
           SUMMARY="${UPDATE_SUMMARY:-auto-update}"
 
-          # Commit our generated changes first.
           git commit -m "bot: ${SUMMARY}"
 
-          # If somebody pushed to the same branch while the updater was running,
-          # rebase safely. A real conflict will stop the job rather than silently
-          # overwriting somebody else's changes.
+          # Rebase if another commit reached the branch while this job was running.
+          # Any real conflict stops the workflow instead of silently overwriting data.
           git pull --rebase origin "$GITHUB_REF_NAME"
 
           git push origin "HEAD:$GITHUB_REF_NAME"
