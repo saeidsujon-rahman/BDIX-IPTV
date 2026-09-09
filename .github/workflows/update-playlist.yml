@@ -76,12 +76,15 @@ jobs:
               "Indian Movies",
               "Indian Music",
               "Indian Entertainment",
+              "Indian News",
               "International Movies",
               "International Music",
+              "International News",
               "Documentary & Wildlife",
               "Sports",
               "Kids",
               "Religious",
+              "Lifestyle",
           ]
 
 
@@ -151,6 +154,19 @@ jobs:
           # Classification data
           # ============================================================================
 
+          INDIAN_NEWS = (
+              "abp",
+              "aaj tak",
+              "india today",
+              "news18",
+              "ndtv",
+              "wion",
+              "cnbc",
+              "times now",
+              "republic",
+              "zee news",
+              "tv9 bharat",
+          )
 
           INDIAN_BANGLA = (
               "zee bangla",
