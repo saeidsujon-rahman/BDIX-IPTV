@@ -11,7 +11,7 @@ permissions:
 
 concurrency:
   group: iptv-auto-update
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   update:
@@ -28,12 +28,15 @@ jobs:
           python - <<'PY'
           from __future__ import annotations
 
+          import hashlib
           import json
+          import os
           import re
           import socket
           import time
           import unicodedata
           import urllib.error
+          import urllib.parse
           import urllib.request
           from concurrent.futures import ThreadPoolExecutor, as_completed
           from collections import defaultdict
@@ -56,9 +59,18 @@ jobs:
           # Do NOT preflight every Adult URL from very large public lists.
           # Only inspect a bounded batch per run; after newly added URLs enter the
           # master playlist, later runs naturally advance to the next candidates.
-          MAX_ADULT_PREFLIGHT_CANDIDATES = 120
-          ADULT_SOURCE_TIMEOUT = 12
-          ADULT_FETCH_WORKERS = 7
+          # Quality-first Adult expansion: test a small, diverse sample each run.
+          MAX_ADULT_PREFLIGHT_CANDIDATES = 40
+          ADULT_SOURCE_TIMEOUT = 10
+          ADULT_FETCH_WORKERS = 6
+          STRICT_HLS_TIMEOUT = 6
+          STRICT_HLS_MAX_MANIFEST_BYTES = 256 * 1024
+          STRICT_HLS_SEGMENT_PROBE_BYTES = 16 * 1024
+          STRICT_HLS_MIN_SEGMENT_BYTES = 4096
+
+          # Prevent one provider/domain/source from flooding the playlist.
+          MAX_NEW_ADULT_PER_HOST = 2
+          MAX_NEW_ADULT_PER_SOURCE = 4
 
           # A focused playlist is used for normal candidates. The larger list is lookup-only:
           # it helps replace obvious wrapper/proxy URLs with cleaner underlying URLs.
@@ -68,13 +80,13 @@ jobs:
           # Dedicated Adult feeds. A failure in any one source is ignored so that the
           # other feeds and the rest of the updater can continue normally.
           ADULT_SOURCES = (
+              # Smaller / more structured source first.
               "https://raw.githubusercontent.com/hujingguang/ChinaIPTV/main/xxx.m3u8",
+
+              # Large sources are still useful for discovery, but EVERY admitted URL
+              # must pass strict live-HLS validation below.
               "https://raw.githubusercontent.com/sacuar/MyIPTV/main/adult.m3u",
-              "https://raw.githubusercontent.com/sacuar/MyIPTV/main/play18.m3u",
-              "https://raw.githubusercontent.com/sacuar/MyIPTV/main/pornbox.m3u",
               "https://raw.githubusercontent.com/atsushi444/iptv/main/adult.m3u",
-              "https://raw.githubusercontent.com/atsushi444/iptv/main/xxx.m3u",
-              "https://raw.githubusercontent.com/Moexin/IPTV/main/Adult.m3u",
           )
 
           MAX_BACKUPS = 8
@@ -82,9 +94,8 @@ jobs:
           # General new-channel auto-add remains disabled.
           MAX_NEW_CHANNELS = 0
 
-          # Dedicated Adult feeds are allowed to expand this category aggressively.
-          # This is a per-run limit, not a total playlist limit.
-          MAX_NEW_ADULT_CHANNELS = 50
+          # Quality matters more than quantity. This is a per-run limit.
+          MAX_NEW_ADULT_CHANNELS = 8
 
           GROUP_ORDER = [
               "Bangladesh",
@@ -203,11 +214,18 @@ jobs:
               return ALIASES.get(clean.lower(), clean)
 
           def normalize(name: str) -> str:
+              """Unicode-safe channel-name normalization.
+
+              The old [a-z0-9] filter collapsed Chinese/Japanese names to an empty
+              string, which could make unrelated channels look like the same channel.
+              """
               name = preferred_name(name)
-              name = unicodedata.normalize("NFKD", name).lower().replace("&", "and")
-              name = re.sub(r"\b(fhd|uhd|hd|sd|4k|1080p|720p)\b", " ", name)
-              name = re.sub(r"[^a-z0-9]+", " ", name)
-              return " ".join(name.split())
+              name = unicodedata.normalize("NFKC", name).casefold().replace("&", " and ")
+              name = re.sub(r"\b(fhd|uhd|hd|sd|4k|1080p|720p|576p|520p)\b", " ", name)
+              chars = []
+              for ch in name:
+                  chars.append(ch if ch.isalnum() else " ")
+              return " ".join("".join(chars).split())
 
           def is_blocked(url: str) -> bool:
               low = url.lower()
@@ -269,6 +287,149 @@ jobs:
                   OSError,
               ) as exc:
                   return "soft_fail", type(exc).__name__
+
+          def _read_limited(response, limit: int) -> bytes:
+              return response.read(limit)
+
+          def _http_probe(url: str, *, max_bytes: int, timeout: int):
+              req = urllib.request.Request(
+                  url,
+                  headers={
+                      "User-Agent": "Mozilla/5.0 (PlaylistStudio-QualityValidator/5.7)",
+                      "Accept": "application/vnd.apple.mpegurl,application/x-mpegURL,"
+                                "video/MP2T,video/*,*/*;q=0.8",
+                      "Connection": "close",
+                  },
+              )
+              with urllib.request.urlopen(req, timeout=timeout) as response:
+                  status = getattr(response, "status", 200) or 200
+                  final_url = response.geturl()
+                  content_type = response.headers.get("Content-Type", "")
+                  body = _read_limited(response, max_bytes)
+                  return status, final_url, content_type, body
+
+          def _manifest_text(url: str):
+              try:
+                  status, final_url, content_type, body = _http_probe(
+                      url,
+                      max_bytes=STRICT_HLS_MAX_MANIFEST_BYTES,
+                      timeout=STRICT_HLS_TIMEOUT,
+                  )
+              except urllib.error.HTTPError as exc:
+                  return None, None, f"HTTP {exc.code}"
+              except Exception as exc:
+                  return None, None, type(exc).__name__
+
+              if not (200 <= status < 300):
+                  return None, None, f"HTTP {status}"
+
+              text = body.decode("utf-8-sig", errors="replace")
+              if "#EXTM3U" not in text[:4096]:
+                  return None, None, "HTTP 2xx but not an HLS manifest"
+
+              return final_url, text, "OK"
+
+          def strict_validate_live_hls(url: str):
+              """Validate that a NEW Adult candidate looks like a playable LIVE HLS stream.
+
+              A URL is admitted only if:
+              1) an HLS manifest is actually returned,
+              2) it is not VOD/ended,
+              3) a media playlist contains segments, and
+              4) one recent segment can return real bytes.
+              """
+              if not url.lower().startswith(("http://", "https://")):
+                  return False, "non-http(s)"
+
+              manifest_url, manifest, reason = _manifest_text(url)
+              if manifest is None:
+                  return False, reason
+
+              upper = manifest.upper()
+              if "#EXT-X-PLAYLIST-TYPE:VOD" in upper or "#EXT-X-ENDLIST" in upper:
+                  return False, "VOD/ended playlist"
+
+              media_url = manifest_url
+              media = manifest
+
+              # Master playlist: follow a declared variant.
+              if "#EXT-X-STREAM-INF" in upper:
+                  lines = [line.strip() for line in manifest.splitlines()]
+                  variant = None
+                  for i, line in enumerate(lines):
+                      if line.startswith("#EXT-X-STREAM-INF"):
+                          for candidate in lines[i + 1:]:
+                              if candidate and not candidate.startswith("#"):
+                                  variant = candidate
+                                  break
+                          if variant:
+                              break
+
+                  if not variant:
+                      return False, "master playlist has no variant"
+
+                  media_url = urllib.parse.urljoin(manifest_url, variant)
+                  media_url, media, reason = _manifest_text(media_url)
+                  if media is None:
+                      return False, f"variant failed: {reason}"
+
+                  media_upper = media.upper()
+                  if (
+                      "#EXT-X-PLAYLIST-TYPE:VOD" in media_upper
+                      or "#EXT-X-ENDLIST" in media_upper
+                  ):
+                      return False, "variant is VOD/ended"
+
+              media_lines = [line.strip() for line in media.splitlines()]
+              segment_lines = [
+                  line
+                  for line in media_lines
+                  if line and not line.startswith("#")
+              ]
+
+              if "#EXTINF" not in media.upper() or len(segment_lines) < 2:
+                  return False, "no usable live media segments"
+
+              # Probe the newest listed media segment.
+              segment_url = urllib.parse.urljoin(media_url, segment_lines[-1])
+              try:
+                  status, _, _, segment = _http_probe(
+                      segment_url,
+                      max_bytes=STRICT_HLS_SEGMENT_PROBE_BYTES,
+                      timeout=STRICT_HLS_TIMEOUT,
+                  )
+              except urllib.error.HTTPError as exc:
+                  return False, f"segment HTTP {exc.code}"
+              except Exception as exc:
+                  return False, f"segment {type(exc).__name__}"
+
+              if not (200 <= status < 300):
+                  return False, f"segment HTTP {status}"
+
+              if len(segment) < STRICT_HLS_MIN_SEGMENT_BYTES:
+                  return False, f"segment too small ({len(segment)} bytes)"
+
+              return True, f"validated live HLS; segment probe {len(segment)} bytes"
+
+          def adult_name_is_quality_candidate(name: str) -> bool:
+              low = name.casefold()
+              bad_markers = (
+                  " vod",
+                  "vod ",
+                  "video on demand",
+                  "[geo-blocked]",
+                  "geo-blocked",
+                  "[not 24/7]",
+                  "not 24/7",
+              )
+              return not any(marker in low for marker in bad_markers)
+
+          def adult_metadata_is_usable(entry) -> bool:
+              """Require at least some stable metadata for a completely new channel."""
+              logo = (entry["attrs"].get("tvg-logo") or "").strip()
+              tvg_id = (entry["attrs"].get("tvg-id") or "").strip()
+              generic_ids = {"", "usa", "japan", "china", "adult", "xxx"}
+              return bool(logo or tvg_id.casefold() not in generic_ids)
 
           def load_dead_state():
               if not DEAD_STATE.exists():
@@ -758,61 +919,19 @@ jobs:
               if wanted in canonical:
                   return wanted
               key = normalize(wanted)
-              choices = list(dict.fromkeys(norm_to_canonical.get(key, [])))
-              if len(choices) == 1:
-                  return choices[0]
+              if key:
+                  choices = list(dict.fromkeys(norm_to_canonical.get(key, [])))
+                  if len(choices) == 1:
+                      return choices[0]
               for name in canonical:
                   if name.lower() == wanted.lower():
                       return name
               return None
 
-          # Preflight completely new Adult streams. Obvious 404/410 links are not
-          # imported. Timeouts, access restrictions, geo/ISP restrictions and other
-          # uncertain failures are still allowed because GitHub is outside Bangladesh.
+          # Strict quality preflight for Adult candidates.
+          # Includes completely new Adult channels AND potential Adult backups.
           adult_preflight = {}
-          adult_new_urls = []
-          for src in candidates:
-              if len(adult_new_urls) >= MAX_ADULT_PREFLIGHT_CANDIDATES:
-                  break
-
-              url = src["url"]
-              if url in existing_urls:
-                  continue
-              if find_target(src["name"]):
-                  continue
-
-              name = preferred_name(src["name"])
-              group = guess_group(name, src["attrs"].get("group-title", ""))
-              if group == "Adult" and url not in adult_preflight:
-                  adult_new_urls.append(url)
-                  adult_preflight[url] = None
-
-          if adult_new_urls:
-              print(
-                  f"Preflighting {len(adult_new_urls)} new Adult candidate URLs "
-                  f"(cap {MAX_ADULT_PREFLIGHT_CANDIDATES})..."
-              )
-              with ThreadPoolExecutor(max_workers=DEAD_WORKERS) as pool:
-                  future_to_url = {
-                      pool.submit(check_stream, url): url
-                      for url in adult_new_urls
-                  }
-                  for future in as_completed(future_to_url):
-                      url = future_to_url[future]
-                      try:
-                          adult_preflight[url] = future.result()
-                      except Exception as exc:
-                          adult_preflight[url] = ("soft_fail", type(exc).__name__)
-
-          new_backups = []
-          new_channels = []
-          new_adult_channels = []
-          skipped_unclassified = 0
-          skipped_no_logo = 0
-          skipped_backup_limit = 0
-          skipped_adult_limit = 0
-          skipped_adult_hard_dead = 0
-          adult_added_by_source = defaultdict(int)
+          adult_candidate_records = []
 
           for src in candidates:
               url = src["url"]
@@ -822,12 +941,103 @@ jobs:
               target = find_target(src["name"])
               if target:
                   current = canonical[target]
+                  primary = next(
+                      (e for e in current if backup_number(e["name"]) == 0),
+                      current[0],
+                  )
+                  if primary.get("group") != "Adult":
+                      continue
+              else:
+                  name = preferred_name(src["name"])
+                  group = guess_group(name, src["attrs"].get("group-title", ""))
+                  if group != "Adult":
+                      continue
+                  if not adult_name_is_quality_candidate(name):
+                      continue
+                  if not adult_metadata_is_usable(src):
+                      continue
+
+              adult_candidate_records.append(src)
+
+          # Rotate/scramble candidates by workflow run number so a bad first block in
+          # one huge source does not monopolize every run.
+          run_seed = os.getenv("GITHUB_RUN_NUMBER", "0")
+          adult_candidate_records.sort(
+              key=lambda e: hashlib.sha256(
+                  (run_seed + "\0" + e["url"]).encode("utf-8", errors="ignore")
+              ).hexdigest()
+          )
+
+          # Round-robin by source/domain-ish provenance to keep the sample diverse.
+          adult_candidate_records = adult_candidate_records[
+              :MAX_ADULT_PREFLIGHT_CANDIDATES
+          ]
+
+          if adult_candidate_records:
+              print(
+                  f"Strictly validating {len(adult_candidate_records)} Adult candidates "
+                  f"(cap {MAX_ADULT_PREFLIGHT_CANDIDATES})..."
+              )
+              with ThreadPoolExecutor(max_workers=min(20, DEAD_WORKERS)) as pool:
+                  future_to_url = {
+                      pool.submit(strict_validate_live_hls, src["url"]): src["url"]
+                      for src in adult_candidate_records
+                  }
+                  for future in as_completed(future_to_url):
+                      url = future_to_url[future]
+                      try:
+                          adult_preflight[url] = future.result()
+                      except Exception as exc:
+                          adult_preflight[url] = (
+                              False,
+                              f"validator {type(exc).__name__}",
+                          )
+
+          adult_validated_count = sum(
+              1 for ok, _ in adult_preflight.values() if ok
+          )
+          adult_rejected_count = sum(
+              1 for ok, _ in adult_preflight.values() if not ok
+          )
+
+          new_backups = []
+          new_channels = []
+          new_adult_channels = []
+          skipped_unclassified = 0
+          skipped_no_logo = 0
+          skipped_backup_limit = 0
+          skipped_adult_limit = 0
+          skipped_adult_hard_dead = 0
+          skipped_adult_quality = 0
+          skipped_adult_metadata = 0
+          skipped_adult_name = 0
+          adult_added_by_source = defaultdict(int)
+          adult_added_by_host = defaultdict(int)
+
+          for src in candidates:
+              url = src["url"]
+              if url in existing_urls:
+                  continue
+
+              target = find_target(src["name"])
+              if target:
+                  current = canonical[target]
+                  primary = next((e for e in current if backup_number(e["name"]) == 0), current[0])
+
+                  # Quality gate every NEW Adult backup too.
+                  if primary.get("group") == "Adult":
+                      if url not in adult_preflight:
+                          continue
+                      ok, reason = adult_preflight[url]
+                      if not ok:
+                          skipped_adult_quality += 1
+                          continue
+
                   backup_count = sum(1 for e in current if backup_number(e["name"]) > 0)
                   if backup_count >= MAX_BACKUPS:
                       skipped_backup_limit += 1
                       continue
 
-                  primary = next((e for e in current if backup_number(e["name"]) == 0), current[0])
                   next_num = max(backup_number(e["name"]) for e in current) + 1
                   ne = deepcopy(primary)
                   ne["name"] = f"{target} [Backup {next_num}]"
@@ -850,24 +1060,41 @@ jobs:
               is_adult_new = group == "Adult"
 
               if is_adult_new:
-                  # Only the bounded, preflighted Adult batch is eligible this run.
+                  if not adult_name_is_quality_candidate(name):
+                      skipped_adult_name += 1
+                      continue
+
+                  if not adult_metadata_is_usable(src):
+                      skipped_adult_metadata += 1
+                      continue
+
+                  # Quality-first: uncertain/403/timeout/non-HLS is NOT enough.
+                  # A new Adult URL must positively validate as live HLS.
                   if url not in adult_preflight:
                       continue
 
-                  status, detail = adult_preflight[url]
-                  if status == "hard_dead":
-                      skipped_adult_hard_dead += 1
+                  ok, detail = adult_preflight[url]
+                  if not ok:
+                      skipped_adult_quality += 1
                       continue
 
                   if len(new_adult_channels) >= MAX_NEW_ADULT_CHANNELS:
                       skipped_adult_limit += 1
                       continue
+
+                  host = (urllib.parse.urlparse(url).hostname or "").casefold()
+                  source_name = src.get("_adult_source", "normal/lookup source")
+
+                  if host and adult_added_by_host[host] >= MAX_NEW_ADULT_PER_HOST:
+                      continue
+                  if adult_added_by_source[source_name] >= MAX_NEW_ADULT_PER_SOURCE:
+                      continue
               else:
                   if len([x for x in new_channels if x[1] != "Adult"]) >= MAX_NEW_CHANNELS:
                       continue
 
-              # Adult channels are allowed even when the source has no logo.
-              # Other new channels still require a logo.
+              # New Adult channels may lack a logo only when they have a specific
+              # non-generic tvg-id. Other new channels still require a logo.
               logo = src["attrs"].get("tvg-logo", "")
               if not logo and not is_adult_new:
                   skipped_no_logo += 1
@@ -889,8 +1116,11 @@ jobs:
               new_channels.append((name, group, url))
               if is_adult_new:
                   source_name = src.get("_adult_source", "normal/lookup source")
+                  host = (urllib.parse.urlparse(url).hostname or "").casefold()
                   new_adult_channels.append((name, url))
                   adult_added_by_source[source_name] += 1
+                  if host:
+                      adult_added_by_host[host] += 1
 
           if (
               not new_backups
@@ -974,8 +1204,11 @@ jobs:
               "- Backups for existing channels inherit the primary channel's current category.",
               f"- Up to {MAX_NEW_ADULT_CHANNELS} new Adult channels may be added automatically per run.",
               f"- Adult expansion scans {len(ADULT_SOURCES)} dedicated Adult feeds plus the existing lookup source.",
-              f"- To keep runtime bounded, only the first {MAX_ADULT_PREFLIGHT_CANDIDATES} eligible new Adult URLs are checked per run.",
-              "- Adult channels may be added without a logo.",
+              f"- At most {MAX_ADULT_PREFLIGHT_CANDIDATES} Adult candidates are strictly validated per run.",
+              "- New Adult streams are accepted only after a real HLS manifest and media segment are fetched successfully.",
+              "- VOD, geo-blocked, and explicitly not-24/7 entries are not auto-added.",
+              f"- Maximum {MAX_NEW_ADULT_PER_HOST} new Adult channels per host and {MAX_NEW_ADULT_PER_SOURCE} per source per run.",
+              "- New Adult entries need a logo or a specific non-generic tvg-id.",
           ]
 
           if deleted_dead:
@@ -1013,6 +1246,26 @@ jobs:
               for name, group, url in new_channels:
                   report.append(f"- **{name}** — `{group}` — {url}")
 
+          if adult_preflight:
+              report += ["", "## Adult quality validation", ""]
+              report.append(
+                  f"- Strictly tested: **{len(adult_preflight)}**; "
+                  f"validated: **{adult_validated_count}**; "
+                  f"rejected: **{adult_rejected_count}**."
+              )
+              rejected_reasons = defaultdict(int)
+              for ok, reason in adult_preflight.values():
+                  if not ok:
+                      rejected_reasons[reason] += 1
+              if rejected_reasons:
+                  report.append("")
+                  report.append("### Rejection reasons")
+                  for reason, count in sorted(
+                      rejected_reasons.items(),
+                      key=lambda item: (-item[1], item[0]),
+                  ):
+                      report.append(f"- **{count}** — {reason}")
+
           report += ["", "## Adult expansion sources", ""]
           for source_url, count, status in adult_source_stats:
               if status == "OK":
@@ -1047,9 +1300,13 @@ jobs:
               f"- Unclassified new channels skipped: {skipped_unclassified}",
               f"- Non-Adult new channels without logos skipped: {skipped_no_logo}",
               f"- Adult candidates skipped because daily cap was reached: {skipped_adult_limit}",
-              f"- Adult candidates skipped after HTTP 404/410 preflight: {skipped_adult_hard_dead}",
+              f"- Adult candidates strictly tested this run: **{len(adult_preflight)}** / {MAX_ADULT_PREFLIGHT_CANDIDATES}",
+              f"- Adult candidates validated as live HLS: **{adult_validated_count}**",
+              f"- Adult candidates rejected by strict validation: **{adult_rejected_count}**",
+              f"- Adult additions/backups skipped by quality gate: {skipped_adult_quality}",
+              f"- Adult candidates skipped for weak metadata: {skipped_adult_metadata}",
+              f"- Adult candidates skipped by name policy (VOD/geo/not-24x7): {skipped_adult_name}",
               f"- Dedicated Adult source feeds configured: {len(ADULT_SOURCES)}",
-              f"- Adult candidates preflighted this run: {len(adult_new_urls)} / {MAX_ADULT_PREFLIGHT_CANDIDATES}",
               f"- Channels already at the backup limit skipped: {skipped_backup_limit}",
               "",
               "> A stream is deleted only after repeated HTTP 404/410 responses. "
