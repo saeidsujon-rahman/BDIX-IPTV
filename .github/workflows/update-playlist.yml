@@ -129,6 +129,23 @@ jobs:
 
           MAX_BACKUPS = 8
 
+          # Category-aware backup limits. Existing entries above these limits are
+          # preserved, but the updater will not add further backups to them.
+          MAX_BACKUPS_BY_GROUP = {
+              "Bangladesh": 4,
+              "Indian Bangla": 3,
+              "Indian Movies": 2,
+              "Indian Music": 2,
+              "Indian Entertainment": 2,
+              "International Movies": 2,
+              "International Music": 2,
+              "Documentary & Wildlife": 2,
+              "Kids": 2,
+              "Religious": 1,
+              "International News": 1,
+              "Sports": 1,
+          }
+
           # General new-channel auto-add remains disabled.
           MAX_NEW_CHANNELS = 0
 
@@ -146,6 +163,7 @@ jobs:
               "Documentary & Wildlife",
               "Kids",
               "Religious",
+              "International News",
               "Sports",
           ]
 
@@ -172,6 +190,143 @@ jobs:
               "&xplore": "&Xplor HD",
           }
 
+          # Repairs for every blank tvg-id in the 2026-09-10 master playlist.
+          # Official IPTV-org IDs are used where a reliable match exists. A stable,
+          # unique custom ID is used for channels that have no catalogued EPG ID.
+          # Logos are included only where the master playlist was missing one.
+          METADATA_FIXES = {
+              "Desh Bangla TV": {"tvg-id": "DeshBanglaTV.bd"},
+              "DTV USA": {
+                  "tvg-id": "DTVUSA.us",
+                  "tvg-logo": "https://yt3.ggpht.com/b5k6hzCSHAsvrPtt5xJXMMZb3GpciGCZRRWyXb4Xs7roWL1SK62R58XTi5PTx2ShAb3buqTOHfE=s512-c-k-c0x00ffffff-no-rj",
+              },
+              "G Series Drama": {"tvg-id": "GSeriesDrama.bd"},
+              "Global TV": {"tvg-id": "GlobalTV.bd"},
+              "ME TV": {"tvg-id": "METV.bd"},
+              "News 21 HD": {"tvg-id": "News21BanglaTV.bd"},
+              "NRB HD": {"tvg-id": "NRBTV.ca"},
+              "TBN24": {
+                  "tvg-id": "TBN24.us",
+                  "tvg-logo": "https://i.imgur.com/m5naptG.png",
+              },
+              "Thikana": {"tvg-id": "ThikanaTV.us"},
+              "TIME TV USA": {"tvg-id": "TimeTVUSA.us"},
+              "Amar Bangla Digital": {"tvg-id": "AamarBangla.in"},
+              "Bangla Jago TV": {
+                  "tvg-id": "BanglaJagoTV.in",
+                  "tvg-logo": "https://banglajagotv.com/wp-content/themes/BANGLAJAGOTV/images/logo.png",
+              },
+              "Bangla Plus": {"tvg-id": "BanglaPlus.in"},
+              "CTVN AKD Plus": {"tvg-id": "CTVNAKDPlus.in"},
+              "Mon Bangla": {"tvg-id": "MONTVBangla.in"},
+              "MUSIC BANGLA": {"tvg-id": "MusicBangla.in"},
+              "&Xplor HD": {"tvg-id": "AndxplorHD.in"},
+              "Shemaroo Bollywood": {"tvg-id": "ShemarooBollywood.us"},
+              "MIX Music": {"tvg-id": "MIXMusic.in"},
+              "Sana Plus": {
+                  "tvg-id": "SanaPlus.in",
+                  "tvg-logo": "https://i.imgur.com/N6tKUZv.png",
+              },
+              "Vijay Takkar APAC": {
+                  "tvg-id": "VijayTakkar.in",
+                  "tvg-logo": "https://i.imgur.com/bqqcEu7.png",
+              },
+              "Anand TV": {
+                  "tvg-id": "AnandTV.in",
+                  "tvg-logo": "https://jiotvimages.cdn.jio.com/dare_images/images/Anand_TV.png",
+              },
+              "Colors Rishtey": {
+                  "tvg-id": "ColorsRishtey.in",
+                  "tvg-logo": "https://i.imgur.com/YKWfMZo.png",
+              },
+              "Dheeran TV": {
+                  "tvg-id": "DheeranTV.in",
+                  "tvg-logo": "https://i.imgur.com/jSedjXf.png",
+              },
+              "ETV Comedy": {
+                  "tvg-id": "ETVComedy.in",
+                  "tvg-logo": "https://jiotvimages.cdn.jio.com/dare_images/images/ETV_Comedy.png",
+              },
+              "Kairali Arabia": {
+                  "tvg-id": "KairaliArabia.in",
+                  "tvg-logo": "https://i.imgur.com/BBEfplL.png",
+              },
+              "Metro TV Telugu": {
+                  "tvg-id": "MetroTV.in",
+                  "tvg-logo": "https://i.ibb.co/CBgJ4QV/metro-logo.jpg",
+              },
+              "NKR TV Kannada": {
+                  "tvg-id": "NKRTVKannada.in",
+                  "tvg-logo": "https://play-lh.googleusercontent.com/95RoiatvtkZgBaAhoVPUhXH-54pEw2-OVWlLO8Dch9mOk1lk75joTIkvHGoO4dW2DlBZQA5cydeHiGRpjd6X-w=w512-h512",
+              },
+              "Oli TV": {
+                  "tvg-id": "OliTV.in",
+                  "tvg-logo": "https://play-lh.googleusercontent.com/fRbNk6OxA12aYw0Vu7jSbv1HUivEv_Zr8WcUQta67fJf1gfScLn-SLdmWCu5p9rWtjE=w512-h512",
+              },
+              "Sana TV": {
+                  "tvg-id": "SanaTV.in",
+                  "tvg-logo": "https://i.imgur.com/CR7DGBv.png",
+              },
+              "Siri Kannada": {
+                  "tvg-id": "SiriKannada.in",
+                  "tvg-logo": "https://i.imgur.com/zKf0Wap.png",
+              },
+              "Siri Kannada All Time": {
+                  "tvg-id": "SiriKannadaAllTime.in",
+                  "tvg-logo": "https://i.imgur.com/IR0BrEX.jpeg",
+              },
+              "Sirippoli TV": {
+                  "tvg-id": "SirippoliTV.in",
+                  "tvg-logo": "https://i.imgur.com/nsplwFc.png",
+              },
+              "Alpha Cinema": {"tvg-id": "alphaCinema.ru"},
+              "30A Music": {"tvg-id": "30AMusic.us"},
+              "Kronehit TV": {"tvg-id": "Kronehit.at"},
+              "Biznet Adventure": {
+                  "tvg-id": "BiznetAdventure.id",
+                  "tvg-logo": "https://i.imgur.com/ZREy4zM.png",
+              },
+              "Digital Fashion": {"tvg-id": "DigitalFashion.in"},
+              "Discovery Bangla": {"tvg-id": "DiscoveryChannel.in"},
+              "Discovery English": {"tvg-id": "DiscoveryChannel.in"},
+              "Discovery Hindi": {
+                  "tvg-id": "DiscoveryChannel.in",
+                  "tvg-logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2019_Discovery_logo.svg/960px-2019_Discovery_logo.svg.png",
+              },
+              "DocuBay TV": {
+                  "tvg-id": "DocuBayTV.in",
+                  "tvg-logo": "https://i.imgur.com/OGyeLLR.png",
+              },
+              "Nat Geo Wild [AR]": {"tvg-id": "NationalGeographicWildLatinAmerica.us"},
+              "Travel XP Bangla": {
+                  "tvg-id": "Travelxp.in",
+                  "tvg-logo": "https://i.imgur.com/HUWEnc5.png",
+              },
+              "Travel XP English": {"tvg-id": "Travelxp.in"},
+              "Boomerang [CH]": {"tvg-id": "Boomerang.us"},
+              "Nick HD+": {"tvg-id": "NickHDPlus.in"},
+              "PBS Kids": {"tvg-id": "PBSKids.us"},
+              "Sony Yay": {"tvg-id": "SonyYay.in"},
+              "Islamic TV": {"tvg-id": "IslamicTV.bd"},
+              "Quran Live": {"tvg-id": "SharjahQuranTV.ae"},
+              "Caze TV": {"tvg-id": "CazeTV.br"},
+              "DAZN 1": {"tvg-id": "DAZN1.uk"},
+              "DAZN 3": {"tvg-id": "DAZN3.uk"},
+              "DAZN 4": {"tvg-id": "DAZN4.uk"},
+              "DAZN 5": {"tvg-id": "DAZN5.uk"},
+              "FOX Sports": {"tvg-id": "FoxSports.ar"},
+              "SONY LIV 1": {"tvg-id": "SonySportsTen1.in"},
+              "SONY LIV 2": {"tvg-id": "SonySportsTen2.in"},
+              "SONY LIV 3": {"tvg-id": "SonySportsTen3Hindi.in"},
+              "SONY LIV 5": {"tvg-id": "SonySportsTen5.in"},
+              "Ten Cricket HD": {"tvg-id": "TenCricket.in"},
+              "TNT Sports 1": {"tvg-id": "TNTSports1.uk"},
+              "TNT Sports 2": {"tvg-id": "TNTSports2.uk"},
+              "TNT Sports 3": {"tvg-id": "TNTSports3.uk"},
+              "TNT Sports 4": {"tvg-id": "TNTSports4.uk"},
+              "Trace Sport Stars": {"tvg-id": "TraceSportStars.fr"},
+          }
+
           BLOCKED = (
               "go.skym3u.dev",
               "iptvlive.ahmed-bd-org.workers.dev",
@@ -182,9 +337,13 @@ jobs:
               "vercel.app",
           )
 
-          INDIAN_NEWS = (
-              "abp", "aaj tak", "india today", "news18", "ndtv", "wion",
-              "cnbc", "times now", "republic", "zee news", "tv9 bharat",
+          FOREIGN_NEWS = (
+              "abp", "aaj tak", "al jazeera", "bbc news", "bloomberg",
+              "cnbc", "cnn", "dd news", "dw news", "et now", "euronews",
+              "firstpost", "france 24", "good news today", "india today",
+              "india tv", "mirror now", "news18", "news nation", "newsx",
+              "ndtv", "press tv", "republic", "sky news", "times now",
+              "trt world", "tv9", "wion", "zee business", "zee news",
           )
           INDIAN_BANGLA = (
               "zee bangla", "star jalsha", "jalsha movies", "sony aath",
@@ -197,6 +356,8 @@ jobs:
               "boishakhi", "duronto", "deepto", "maasranga", "independent",
               "news 24", "mohona", "bijoy", "mytv", "desh tv", "asian tv",
               "btv", "ekushey", "channel 24",
+              "news 21", "tbn24", "thikana", "time tv usa", "dtv usa",
+              "nrb", "desh bangla", "global tv", "me tv",
           )
 
           def fetch(url: str) -> str:
@@ -526,6 +687,21 @@ jobs:
               low = text.lower()
               return any(word in low for word in words)
 
+          def is_foreign_news(name: str, source_group: str = "") -> bool:
+              """Identify news channels outside the Bangladesh category."""
+              nl = strip_backup(name).casefold()
+              gl = (source_group or "").strip().casefold()
+
+              if has(nl, BANGLADESH_NAMES):
+                  return False
+
+              if gl in {"news", "international news", "indian news", "world news"}:
+                  return True
+
+              return has(nl, FOREIGN_NEWS) or bool(
+                  re.search(r"(?:^|\W)news(?:\W|$)", nl)
+              )
+
           def guess_group(name: str, source_group: str):
               """Classify only into categories that exist in the current playlist.
 
@@ -621,6 +797,11 @@ jobs:
               ):
                   return "Bangladesh"
 
+              # Keep all non-Bangladeshi news together and near the end of the
+              # playlist, regardless of whether it is Indian or international.
+              if is_foreign_news(name, g):
+                  return "International News"
+
               if gl in {"bangla", "bengali"} or "bangla" in gl:
                   if has(nl, INDIAN_BANGLA):
                       return "Indian Bangla"
@@ -634,8 +815,6 @@ jobs:
                   if has(nl, ("movie", "cinema", "cineplex", "movies")):
                       return "Indian Movies"
 
-                  # Indian news channels are kept inside the existing broad
-                  # Indian Entertainment category because there is no Indian News group.
                   return "Indian Entertainment"
 
               if "movie" in gl or "cinema" in gl:
@@ -754,11 +933,17 @@ jobs:
           master = []
           cleaned_existing = []
           corrected_groups = []
+          metadata_corrected = []
 
           for e in master_raw:
               if excluded_by_user(e):
                   continue
               url_low = e["url"].lower()
+
+              # Apply the complete blocked-domain policy to existing entries too.
+              if is_blocked(e["url"]):
+                  cleaned_existing.append((e["name"], e["url"]))
+                  continue
 
               # Remove the proxy/Vercel links that slipped in during V1.
               if any(pattern in url_low for pattern in CURRENT_BAD_PATTERNS):
@@ -778,6 +963,23 @@ jobs:
               x["group"] = e["attrs"].get("group-title", "")
               x["logo"] = e["attrs"].get("tvg-logo", "")
 
+              metadata = METADATA_FIXES.get(x["canonical"], {})
+              old_id = (x["attrs"].get("tvg-id") or "").strip()
+              old_logo = (x["logo"] or "").strip()
+              changed_fields = []
+
+              if not old_id and metadata.get("tvg-id"):
+                  x["attrs"]["tvg-id"] = metadata["tvg-id"]
+                  changed_fields.append("tvg-id")
+
+              if not old_logo and metadata.get("tvg-logo"):
+                  x["logo"] = metadata["tvg-logo"]
+                  x["attrs"]["tvg-logo"] = metadata["tvg-logo"]
+                  changed_fields.append("tvg-logo")
+
+              if changed_fields:
+                  metadata_corrected.append((e["name"], ", ".join(changed_fields)))
+
               # Correct V1 Bangladesh channels that were misclassified.
               if strip_backup(e["name"]).lower() in {
                   "channel 1",
@@ -789,6 +991,16 @@ jobs:
                       (e["name"], x["group"] or "(blank)", "Bangladesh")
                   )
                   x["group"] = "Bangladesh"
+
+              if (
+                  x["group"] != "Bangladesh"
+                  and is_foreign_news(e["name"], x["group"])
+                  and x["group"] != "International News"
+              ):
+                  corrected_groups.append(
+                      (e["name"], x["group"] or "(blank)", "International News")
+                  )
+                  x["group"] = "International News"
 
               master.append(x)
 
@@ -858,10 +1070,11 @@ jobs:
                       reachable_restricted += 1
 
               else:
-                  # Timeout, DNS/connect error, 5xx, etc. do not increase the deletion count.
+                  # A soft failure breaks the 404/410 streak. It is never grounds
+                  # for deletion, but resetting here makes "consecutive" accurate.
                   uncertain_failures += 1
                   dead_state[url] = {
-                      "hard_dead_count": previous_count,
+                      "hard_dead_count": 0,
                       "last_result": detail,
                       "last_checked_utc": checked_at,
                   }
@@ -1049,7 +1262,11 @@ jobs:
                           continue
 
                   backup_count = sum(1 for e in current if backup_number(e["name"]) > 0)
-                  if backup_count >= MAX_BACKUPS:
+                  backup_limit = MAX_BACKUPS_BY_GROUP.get(
+                      primary.get("group", ""),
+                      MAX_BACKUPS,
+                  )
+                  if backup_count >= backup_limit:
                       skipped_backup_limit += 1
                       continue
 
@@ -1142,6 +1359,7 @@ jobs:
               and not new_channels
               and not cleaned_existing
               and not corrected_groups
+              and not metadata_corrected
               and not deleted_dead
               and not dead_state_changed
           ):
@@ -1199,6 +1417,7 @@ jobs:
               f"- New Adult channels automatically added: **{len(new_adult_channels)}**",
               f"- Known bad V1 entries removed: **{len(cleaned_existing)}**",
               f"- Existing channel categories corrected: **{len(corrected_groups)}**",
+              f"- Existing metadata fields repaired: **{len(metadata_corrected)}**",
               f"- Wrapper/proxy URLs resolved: **{proxy_resolved}**",
               f"- Blocked/expired URLs skipped without a clean replacement: **{blocked_skipped}**",
               f"- Duplicate URLs removed: **{len(duplicate_removed)}**",
@@ -1215,7 +1434,8 @@ jobs:
               "",
               "- The updater uses only the categories already present in the current playlist:",
               "  " + ", ".join(GROUP_ORDER),
-              "- It does not create Indian News, International News, or Lifestyle categories.",
+              "- All non-Bangladeshi news channels use the International News category.",
+              "- Bangladesh news channels remain inside the Bangladesh category.",
               "- Backups for existing channels inherit the primary channel's current category.",
               "- Adult channels and user-rejected stream URLs are excluded permanently.",
               "- VOD, geo-blocked, and explicitly not-24/7 entries are not auto-added.",
@@ -1250,6 +1470,11 @@ jobs:
                   report.append(
                       f"- **{name}**: `{old_group}` → `{new_group}`"
                   )
+
+          if metadata_corrected:
+              report += ["", "## Metadata repairs", ""]
+              for name, fields in metadata_corrected:
+                  report.append(f"- **{name}** — {fields}")
 
           if new_channels:
               report += ["", "## New channels", ""]
