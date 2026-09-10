@@ -52,19 +52,31 @@ jobs:
           DEAD_TIMEOUT = 8
           DEAD_WORKERS = 32
 
-          # A focused playlist is used for candidates. The larger list is lookup-only:
+          # A focused playlist is used for normal candidates. The larger list is lookup-only:
           # it helps replace obvious wrapper/proxy URLs with cleaner underlying URLs.
           MERGE_SOURCE = "https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u"
           LOOKUP_SOURCE = "https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u"
+
+          # Dedicated Adult feeds. A failure in any one source is ignored so that the
+          # other feeds and the rest of the updater can continue normally.
+          ADULT_SOURCES = (
+              "https://raw.githubusercontent.com/hujingguang/ChinaIPTV/main/xxx.m3u8",
+              "https://raw.githubusercontent.com/sacuar/MyIPTV/main/adult.m3u",
+              "https://raw.githubusercontent.com/sacuar/MyIPTV/main/play18.m3u",
+              "https://raw.githubusercontent.com/sacuar/MyIPTV/main/pornbox.m3u",
+              "https://raw.githubusercontent.com/atsushi444/iptv/main/adult.m3u",
+              "https://raw.githubusercontent.com/atsushi444/iptv/main/xxx.m3u",
+              "https://raw.githubusercontent.com/Moexin/IPTV/main/Adult.m3u",
+          )
 
           MAX_BACKUPS = 8
 
           # General new-channel auto-add remains disabled.
           MAX_NEW_CHANNELS = 0
 
-          # Adult channels may be added automatically from both source playlists.
+          # Dedicated Adult feeds are allowed to expand this category aggressively.
           # This is a per-run limit, not a total playlist limit.
-          MAX_NEW_ADULT_CHANNELS = 20
+          MAX_NEW_ADULT_CHANNELS = 50
 
           GROUP_ORDER = [
               "Bangladesh",
@@ -138,6 +150,12 @@ jobs:
               )
               with urllib.request.urlopen(req, timeout=40) as response:
                   return response.read().decode("utf-8-sig", errors="replace")
+
+          def fetch_optional(url: str):
+              try:
+                  return fetch(url), None
+              except Exception as exc:
+                  return "", f"{type(exc).__name__}: {exc}"
 
           def parse_m3u(text: str):
               entries = []
@@ -470,6 +488,27 @@ jobs:
           merge_raw = parse_m3u(fetch(MERGE_SOURCE))
           lookup_raw = parse_m3u(fetch(LOOKUP_SOURCE))
 
+          adult_raw = []
+          adult_source_stats = []
+          for adult_source in ADULT_SOURCES:
+              body, error = fetch_optional(adult_source)
+              if error:
+                  adult_source_stats.append((adult_source, 0, error))
+                  print(f"Adult source unavailable: {adult_source} — {error}")
+                  continue
+
+              parsed = parse_m3u(body)
+              adult_source_stats.append((adult_source, len(parsed), "OK"))
+              print(f"Adult source loaded: {adult_source} — {len(parsed)} entries")
+
+              # These are dedicated Adult feeds, so force their group to Adult even if
+              # the source uses XXX, 18+, NSFW, blank groups, or inconsistent metadata.
+              for entry in parsed:
+                  x = deepcopy(entry)
+                  x["attrs"]["group-title"] = "Adult"
+                  x["_adult_source"] = adult_source
+                  adult_raw.append(x)
+
           # One-time/current-state sanitation.
           # This removes only the known bad V1 additions, not general BDIX URLs.
           CURRENT_BAD_PATTERNS = (
@@ -643,10 +682,11 @@ jobs:
                   proxy_resolved += 1
               candidates.append(x)
 
-          # Adult expansion source.
-          # LOOKUP_SOURCE is normally lookup-only, but Adult entries are also allowed
-          # to become new-channel candidates so the Adult category can grow over time.
+          # Adult expansion candidates.
+          # 1) Adult entries from the lookup list.
+          # 2) All entries from dedicated Adult feeds.
           candidate_urls = {e["url"] for e in candidates}
+
           for e in lookup_raw:
               if e["url"] in candidate_urls or is_blocked(e["url"]):
                   continue
@@ -657,6 +697,16 @@ jobs:
                   continue
 
               x = deepcopy(e)
+              x["_adult_source"] = LOOKUP_SOURCE
+              candidates.append(x)
+              candidate_urls.add(x["url"])
+
+          for e in adult_raw:
+              if e["url"] in candidate_urls or is_blocked(e["url"]):
+                  continue
+
+              x = deepcopy(e)
+              x["attrs"]["group-title"] = "Adult"
               candidates.append(x)
               candidate_urls.add(x["url"])
 
@@ -681,6 +731,37 @@ jobs:
                       return name
               return None
 
+          # Preflight completely new Adult streams. Obvious 404/410 links are not
+          # imported. Timeouts, access restrictions, geo/ISP restrictions and other
+          # uncertain failures are still allowed because GitHub is outside Bangladesh.
+          adult_preflight = {}
+          adult_new_urls = []
+          for src in candidates:
+              url = src["url"]
+              if url in existing_urls:
+                  continue
+              if find_target(src["name"]):
+                  continue
+              name = preferred_name(src["name"])
+              group = guess_group(name, src["attrs"].get("group-title", ""))
+              if group == "Adult" and url not in adult_preflight:
+                  adult_new_urls.append(url)
+                  adult_preflight[url] = None
+
+          if adult_new_urls:
+              print(f"Preflighting {len(adult_new_urls)} new Adult candidate URLs...")
+              with ThreadPoolExecutor(max_workers=DEAD_WORKERS) as pool:
+                  future_to_url = {
+                      pool.submit(check_stream, url): url
+                      for url in adult_new_urls
+                  }
+                  for future in as_completed(future_to_url):
+                      url = future_to_url[future]
+                      try:
+                          adult_preflight[url] = future.result()
+                      except Exception as exc:
+                          adult_preflight[url] = ("soft_fail", type(exc).__name__)
+
           new_backups = []
           new_channels = []
           new_adult_channels = []
@@ -688,6 +769,8 @@ jobs:
           skipped_no_logo = 0
           skipped_backup_limit = 0
           skipped_adult_limit = 0
+          skipped_adult_hard_dead = 0
+          adult_added_by_source = defaultdict(int)
 
           for src in candidates:
               url = src["url"]
@@ -725,6 +808,14 @@ jobs:
               is_adult_new = group == "Adult"
 
               if is_adult_new:
+                  status, detail = adult_preflight.get(
+                      url,
+                      ("soft_fail", "not-preflighted"),
+                  )
+                  if status == "hard_dead":
+                      skipped_adult_hard_dead += 1
+                      continue
+
                   if len(new_adult_channels) >= MAX_NEW_ADULT_CHANNELS:
                       skipped_adult_limit += 1
                       continue
@@ -754,7 +845,9 @@ jobs:
               existing_urls.add(url)
               new_channels.append((name, group, url))
               if is_adult_new:
+                  source_name = src.get("_adult_source", "normal/lookup source")
                   new_adult_channels.append((name, url))
+                  adult_added_by_source[source_name] += 1
 
           if (
               not new_backups
@@ -837,7 +930,8 @@ jobs:
               "- It does not create Indian News, International News, or Lifestyle categories.",
               "- Backups for existing channels inherit the primary channel's current category.",
               f"- Up to {MAX_NEW_ADULT_CHANNELS} new Adult channels may be added automatically per run.",
-              "- Adult candidates are taken from both configured source playlists and may be added without a logo.",
+              f"- Adult expansion actively scans {len(ADULT_SOURCES)} dedicated Adult feeds plus the existing lookup source.",
+              "- Adult channels may be added without a logo.",
           ]
 
           if deleted_dead:
@@ -875,12 +969,27 @@ jobs:
               for name, group, url in new_channels:
                   report.append(f"- **{name}** — `{group}` — {url}")
 
+          report += ["", "## Adult expansion sources", ""]
+          for source_url, count, status in adult_source_stats:
+              if status == "OK":
+                  report.append(f"- **Loaded {count} entries** — {source_url}")
+              else:
+                  report.append(f"- **Unavailable** — {source_url} — `{status}`")
+
           if new_adult_channels:
               report += ["", "## Adult auto-add", ""]
               report.append(
                   f"- Added {len(new_adult_channels)} new Adult channels "
-                  f"(daily cap: {MAX_NEW_ADULT_CHANNELS})."
+                  f"(per-run cap: {MAX_NEW_ADULT_CHANNELS})."
               )
+              if adult_added_by_source:
+                  report.append("")
+                  report.append("### New Adult channels by source")
+                  for source_name, count in sorted(
+                      adult_added_by_source.items(),
+                      key=lambda item: (-item[1], item[0]),
+                  ):
+                      report.append(f"- **{count}** — {source_name}")
 
           if new_backups:
               report += ["", "## New backup streams", ""]
@@ -894,6 +1003,8 @@ jobs:
               f"- Unclassified new channels skipped: {skipped_unclassified}",
               f"- Non-Adult new channels without logos skipped: {skipped_no_logo}",
               f"- Adult candidates skipped because daily cap was reached: {skipped_adult_limit}",
+              f"- Adult candidates skipped after HTTP 404/410 preflight: {skipped_adult_hard_dead}",
+              f"- Dedicated Adult source feeds configured: {len(ADULT_SOURCES)}",
               f"- Channels already at the backup limit skipped: {skipped_backup_limit}",
               "",
               "> A stream is deleted only after repeated HTTP 404/410 responses. "
