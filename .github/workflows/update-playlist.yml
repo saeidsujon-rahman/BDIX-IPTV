@@ -16,6 +16,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Checkout repository
@@ -49,8 +50,15 @@ jobs:
           # 403/451 responses, and 5xx errors are NOT enough to delete a stream.
           # Only repeated HTTP 404/410 responses count as confirmed-dead.
           DEAD_CONFIRMATIONS = 5
-          DEAD_TIMEOUT = 8
-          DEAD_WORKERS = 32
+          DEAD_TIMEOUT = 5
+          DEAD_WORKERS = 64
+
+          # Do NOT preflight every Adult URL from very large public lists.
+          # Only inspect a bounded batch per run; after newly added URLs enter the
+          # master playlist, later runs naturally advance to the next candidates.
+          MAX_ADULT_PREFLIGHT_CANDIDATES = 120
+          ADULT_SOURCE_TIMEOUT = 12
+          ADULT_FETCH_WORKERS = 7
 
           # A focused playlist is used for normal candidates. The larger list is lookup-only:
           # it helps replace obvious wrapper/proxy URLs with cleaner underlying URLs.
@@ -153,7 +161,12 @@ jobs:
 
           def fetch_optional(url: str):
               try:
-                  return fetch(url), None
+                  req = urllib.request.Request(
+                      url,
+                      headers={"User-Agent": "SaeidRahman-IPTV-Updater/1.0"},
+                  )
+                  with urllib.request.urlopen(req, timeout=ADULT_SOURCE_TIMEOUT) as response:
+                      return response.read().decode("utf-8-sig", errors="replace"), None
               except Exception as exc:
                   return "", f"{type(exc).__name__}: {exc}"
 
@@ -490,8 +503,30 @@ jobs:
 
           adult_raw = []
           adult_source_stats = []
+
+          # Fetch all Adult feeds in parallel. One slow/dead source can no longer hold
+          # the workflow for 40 seconds before the next source is even attempted.
+          adult_fetch_results = {}
+          with ThreadPoolExecutor(max_workers=ADULT_FETCH_WORKERS) as pool:
+              future_to_source = {
+                  pool.submit(fetch_optional, adult_source): adult_source
+                  for adult_source in ADULT_SOURCES
+              }
+              for future in as_completed(future_to_source):
+                  adult_source = future_to_source[future]
+                  try:
+                      adult_fetch_results[adult_source] = future.result()
+                  except Exception as exc:
+                      adult_fetch_results[adult_source] = (
+                          "",
+                          f"{type(exc).__name__}: {exc}",
+                      )
+
           for adult_source in ADULT_SOURCES:
-              body, error = fetch_optional(adult_source)
+              body, error = adult_fetch_results.get(
+                  adult_source,
+                  ("", "No result"),
+              )
               if error:
                   adult_source_stats.append((adult_source, 0, error))
                   print(f"Adult source unavailable: {adult_source} — {error}")
@@ -737,11 +772,15 @@ jobs:
           adult_preflight = {}
           adult_new_urls = []
           for src in candidates:
+              if len(adult_new_urls) >= MAX_ADULT_PREFLIGHT_CANDIDATES:
+                  break
+
               url = src["url"]
               if url in existing_urls:
                   continue
               if find_target(src["name"]):
                   continue
+
               name = preferred_name(src["name"])
               group = guess_group(name, src["attrs"].get("group-title", ""))
               if group == "Adult" and url not in adult_preflight:
@@ -749,7 +788,10 @@ jobs:
                   adult_preflight[url] = None
 
           if adult_new_urls:
-              print(f"Preflighting {len(adult_new_urls)} new Adult candidate URLs...")
+              print(
+                  f"Preflighting {len(adult_new_urls)} new Adult candidate URLs "
+                  f"(cap {MAX_ADULT_PREFLIGHT_CANDIDATES})..."
+              )
               with ThreadPoolExecutor(max_workers=DEAD_WORKERS) as pool:
                   future_to_url = {
                       pool.submit(check_stream, url): url
@@ -808,10 +850,11 @@ jobs:
               is_adult_new = group == "Adult"
 
               if is_adult_new:
-                  status, detail = adult_preflight.get(
-                      url,
-                      ("soft_fail", "not-preflighted"),
-                  )
+                  # Only the bounded, preflighted Adult batch is eligible this run.
+                  if url not in adult_preflight:
+                      continue
+
+                  status, detail = adult_preflight[url]
                   if status == "hard_dead":
                       skipped_adult_hard_dead += 1
                       continue
@@ -930,7 +973,8 @@ jobs:
               "- It does not create Indian News, International News, or Lifestyle categories.",
               "- Backups for existing channels inherit the primary channel's current category.",
               f"- Up to {MAX_NEW_ADULT_CHANNELS} new Adult channels may be added automatically per run.",
-              f"- Adult expansion actively scans {len(ADULT_SOURCES)} dedicated Adult feeds plus the existing lookup source.",
+              f"- Adult expansion scans {len(ADULT_SOURCES)} dedicated Adult feeds plus the existing lookup source.",
+              f"- To keep runtime bounded, only the first {MAX_ADULT_PREFLIGHT_CANDIDATES} eligible new Adult URLs are checked per run.",
               "- Adult channels may be added without a logo.",
           ]
 
@@ -1005,6 +1049,7 @@ jobs:
               f"- Adult candidates skipped because daily cap was reached: {skipped_adult_limit}",
               f"- Adult candidates skipped after HTTP 404/410 preflight: {skipped_adult_hard_dead}",
               f"- Dedicated Adult source feeds configured: {len(ADULT_SOURCES)}",
+              f"- Adult candidates preflighted this run: {len(adult_new_urls)} / {MAX_ADULT_PREFLIGHT_CANDIDATES}",
               f"- Channels already at the backup limit skipped: {skipped_backup_limit}",
               "",
               "> A stream is deleted only after repeated HTTP 404/410 responses. "
