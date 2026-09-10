@@ -2312,371 +2312,375 @@ https://amg00218-wptenterprises-amg00218c1-sportstribal-emea-1900.playouts.now.a
 https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/e0b81a5c-6ab5-48cd-aaa9-f82de4ab5bf9/manifest.m3u8
 #EXTINF:-1 tvg-id="XXTreme Jobs Hindi" tvg-name="XXTreme Jobs Hindi" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IN46000011Q_20250205T004626SQUARE.png" tvg-chno="1150" group-title="Sports",XXTreme Jobs Hindi
 https://cc-zko1curyce7jh.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-zko1curyce7jh/IQJW/WBD/XXtremeJobs_IN/XXtremeJobs_IN.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="玩美台" tvg-chno="1151" group-title="Adult",玩美台
-http://live.redtraffic.xyz:80/pov.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="玩美台 [Backup 1]" tvg-chno="1152" group-title="Adult",玩美台 [Backup 1]
-http://cdn.adultiptv.net/blonde.m3u8?streamType=livеhls
-#EXTINF:-1 tvg-id="USA" tvg-name="玩美台 [Backup 2]" tvg-chno="1153" group-title="Adult",玩美台 [Backup 2]
-http://sochinskayatrk.ru/hdtv/hls/strc_hd/playlist.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="玩美台 [Backup 3]" tvg-chno="1154" group-title="Adult",玩美台 [Backup 3]
-http://ctrl.yunshipin.bbroot.com:8080/streams/ds7fcf8th2/gc/playlist.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="玩美台 [Backup 4]" tvg-logo="https://raw.githubusercontent.com/atsushi444/iptv/main/logo/amazing_tv.png" tvg-chno="1155" group-title="Adult",玩美台 [Backup 4]
-http://15.204.105.50:25461/G2s9zK2n9m/xDtwVfWM8T/85
-#EXTINF:-1 tvg-id="USA" tvg-name="玩美台 [Backup 5]" tvg-logo="https://raw.githubusercontent.com/atsushi444/iptv/main/logo/pandora_perfect.png" tvg-chno="1156" group-title="Adult",玩美台 [Backup 5]
-http://15.204.105.50:25461/G2s9zK2n9m/xDtwVfWM8T/86
-#EXTINF:-1 tvg-id="USA" tvg-name="玩美台 [Backup 6]" tvg-chno="1157" group-title="Adult",玩美台 [Backup 6]
-http://15.204.105.50:25461/G2s9zK2n9m/xDtwVfWM8T/87
-#EXTINF:-1 tvg-id="USA" tvg-name="玩美台 [Backup 7]" tvg-logo="https://raw.githubusercontent.com/atsushi444/iptv/main/logo/Banana.png" tvg-chno="1158" group-title="Adult",玩美台 [Backup 7]
-http://15.204.105.50:25461/G2s9zK2n9m/xDtwVfWM8T/117
-#EXTINF:-1 tvg-id="USA" tvg-name="玩美台 [Backup 8]" tvg-logo="https://epg.iptvx.one/picons/russkaya-noch.png" tvg-chno="1159" group-title="Adult",玩美台 [Backup 8]
-http://a0bn5xro.rostelekom.xyz/iptv/2TBC4G2WWDG6RSUSN5SXSQEC/2057/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="一本00" tvg-chno="1160" group-title="Adult",一本00
-https://vip4.ddyunbo.com/20210208/6LaKp6lZ/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="一本00 [Backup 1]" tvg-chno="1161" group-title="Adult",一本00 [Backup 1]
-https://t0.97img.com/a1001312/a.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="一本00 [Backup 2]" tvg-chno="1162" group-title="Adult",一本00 [Backup 2]
-https://t0.97img.com/a1010021/a.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="一本00 [Backup 3]" tvg-chno="1163" group-title="Adult",一本00 [Backup 3]
-https://t0.97img.com/a1990002/a.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="一本00 [Backup 4]" tvg-chno="1164" group-title="Adult",一本00 [Backup 4]
-https://t30.cdn2020.com/video/m3u8/2025/06/19/2b0624fe/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="一本00 [Backup 5]" tvg-chno="1165" group-title="Adult",一本00 [Backup 5]
-https://t30.cdn2020.com/video/m3u8/2025/04/24/0fcddbb5/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="一本00 [Backup 6]" tvg-chno="1166" group-title="Adult",一本00 [Backup 6]
-https://t30.cdn2020.com/video/m3u8/2025/04/23/c1489a62/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="一本00 [Backup 7]" tvg-chno="1167" group-title="Adult",一本00 [Backup 7]
-https://t30.cdn2020.com/video/m3u8/2025/04/12/c6b4a1c6/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="一本00 [Backup 8]" tvg-chno="1168" group-title="Adult",一本00 [Backup 8]
-https://t30.cdn2020.com/video/m3u8/2025/03/06/1d01059c/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热01" tvg-chno="1169" group-title="Adult",东热01
-https://video1.rhsj520.com/nyrm3/2011225/DR/n0011/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热01 [Backup 1]" tvg-chno="1170" group-title="Adult",东热01 [Backup 1]
-https://vip4.ddyunbo.com/20210209/dEzJjeSU/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热01 [Backup 2]" tvg-chno="1171" group-title="Adult",东热01 [Backup 2]
-http://live.redtraffic.xyz/threesome.m3u8?fluxuslust.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热01 [Backup 3]" tvg-chno="1172" group-title="Adult",东热01 [Backup 3]
-https://t0.97img.com/a1000012/a.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热01 [Backup 4]" tvg-chno="1173" group-title="Adult",东热01 [Backup 4]
-https://t0.97img.com/a1990014/a.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热01 [Backup 5]" tvg-chno="1174" group-title="Adult",东热01 [Backup 5]
-https://t30.cdn2020.com/video/m3u8/2025/05/20/12542053/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热01 [Backup 6]" tvg-chno="1175" group-title="Adult",东热01 [Backup 6]
-https://t30.cdn2020.com/video/m3u8/2025/02/27/55d447eb/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热01 [Backup 7]" tvg-chno="1176" group-title="Adult",东热01 [Backup 7]
-https://t30.cdn2020.com/video/m3u8/2025/02/02/0c5bf3f9/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热01 [Backup 8]" tvg-chno="1177" group-title="Adult",东热01 [Backup 8]
-https://t27.cdn2020.com/video/m3u8/2024/12/04/4e62dafe/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热02" tvg-chno="1178" group-title="Adult",东热02
-https://video1.rhsj520.com/nyrm3/2011225/DR/n0010/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热02 [Backup 1]" tvg-chno="1179" group-title="Adult",东热02 [Backup 1]
-https://vip4.ddyunbo.com/20210210/IjSENz6s/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热02 [Backup 2]" tvg-chno="1180" group-title="Adult",东热02 [Backup 2]
-http://live.redtraffic.xyz/bigass.m3u8?fluxuslust.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热02 [Backup 3]" tvg-chno="1181" group-title="Adult",东热02 [Backup 3]
-https://t30.cdn2020.com/video/m3u8/2025/06/27/ed8f623f/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热02 [Backup 4]" tvg-chno="1182" group-title="Adult",东热02 [Backup 4]
-https://t0.97img.com/a1001668/a.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热02 [Backup 5]" tvg-chno="1183" group-title="Adult",东热02 [Backup 5]
-https://t0.97img.com/a1000579/a.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热02 [Backup 6]" tvg-chno="1184" group-title="Adult",东热02 [Backup 6]
-https://t0.97img.com/a1000030/a.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热02 [Backup 7]" tvg-chno="1185" group-title="Adult",东热02 [Backup 7]
-https://t0.97img.com/a1990015/a.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热02 [Backup 8]" tvg-chno="1186" group-title="Adult",东热02 [Backup 8]
-https://t33.cdn2020.com/video/m3u8/2025/08/05/ea82538f/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热03" tvg-chno="1187" group-title="Adult",东热03
-https://video1.rhsj520.com/nyrm3/2011225/DR/n0008/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热03 [Backup 1]" tvg-chno="1188" group-title="Adult",东热03 [Backup 1]
-http://live.redtraffic.xyz:80/bigass.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热03 [Backup 2]" tvg-chno="1189" group-title="Adult",东热03 [Backup 2]
-https://t30.cdn2020.com/video/m3u8/2025/07/17/841e0e8a/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热03 [Backup 3]" tvg-chno="1190" group-title="Adult",东热03 [Backup 3]
-https://t30.cdn2020.com/video/m3u8/2025/07/23/67db06b3/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热03 [Backup 4]" tvg-chno="1191" group-title="Adult",东热03 [Backup 4]
-https://t30.cdn2020.com/video/m3u8/2025/07/21/3aa08673/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热03 [Backup 5]" tvg-chno="1192" group-title="Adult",东热03 [Backup 5]
-https://t30.cdn2020.com/video/m3u8/2025/06/27/e2bcb012/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热03 [Backup 6]" tvg-chno="1193" group-title="Adult",东热03 [Backup 6]
-https://t30.cdn2020.com/video/m3u8/2025/06/05/7ea04b1a/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热03 [Backup 7]" tvg-chno="1194" group-title="Adult",东热03 [Backup 7]
-https://t0.97img.com/a1000051/a.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热03 [Backup 8]" tvg-chno="1195" group-title="Adult",东热03 [Backup 8]
-https://t0.97img.com/a1990016/a.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热04" tvg-chno="1196" group-title="Adult",东热04
-https://video1.rhsj520.com/nyrm3/2011225/DR/n0001/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热04 [Backup 1]" tvg-chno="1197" group-title="Adult",东热04 [Backup 1]
-http://live.redtraffic.xyz:80/blowjob.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热04 [Backup 2]" tvg-chno="1198" group-title="Adult",东热04 [Backup 2]
-https://t26.cdn2020.com/video/m3u8/2023/06/30/c2bb46f7/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热04 [Backup 3]" tvg-chno="1199" group-title="Adult",东热04 [Backup 3]
-https://t0.97img.com/a1000066/a.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热04 [Backup 4]" tvg-chno="1200" group-title="Adult",东热04 [Backup 4]
-https://t0.97img.com/a1990017/a.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热04 [Backup 5]" tvg-chno="1201" group-title="Adult",东热04 [Backup 5]
-https://t30.cdn2020.com/video/m3u8/2025/07/05/9512c513/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热04 [Backup 6]" tvg-chno="1202" group-title="Adult",东热04 [Backup 6]
-https://t30.cdn2020.com/video/m3u8/2025/06/01/edd28f96/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热04 [Backup 7]" tvg-chno="1203" group-title="Adult",东热04 [Backup 7]
-https://t30.cdn2020.com/video/m3u8/2025/02/07/2e5ace1c/index.m3u8
-#EXTINF:-1 tvg-id="Japan" tvg-name="东热04 [Backup 8]" tvg-chno="1204" group-title="Adult",东热04 [Backup 8]
-https://t30.cdn2020.com/video/m3u8/2025/02/05/2f731fae/index.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="松视1" tvg-chno="1205" group-title="Adult",松视1
-http://live.redtraffic.xyz:80/fetish.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="松视1 [Backup 1]" tvg-logo="https://raw.githubusercontent.com/atsushi444/iptv/main/logo/sonsee1.png" tvg-chno="1206" group-title="Adult",松视1 [Backup 1]
-http://15.204.105.50:25461/G2s9zK2n9m/xDtwVfWM8T/88
-#EXTINF:-1 tvg-id="USA" tvg-name="松视1 [Backup 2]" tvg-logo="https://www.caribbeancompr.com/moviepages/010119_001/images/l_l.jpg" tvg-chno="1207" group-title="Adult",松视1 [Backup 2]
-https://v2025.ddcdnbf.com/20250330/BpOp3Ltk/2000kb/hls/index.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="松视1 [Backup 3]" tvg-logo="https://www.caribbeancompr.com/moviepages/102816_013/images/l_l.jpg" tvg-chno="1208" group-title="Adult",松视1 [Backup 3]
-https://vip2.viii155.com/20241006/OwNUnJYs/2000kb/hls/index.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="松视1 [Backup 4]" tvg-logo="https://www.caribbeancompr.com/moviepages/032317_019/images/l_l.jpg" tvg-chno="1209" group-title="Adult",松视1 [Backup 4]
-https://v1.1bbffvip.com/20240908/DjmZCxfM/2000kb/hls/index.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="松视1 [Backup 5]" tvg-logo="https://www.caribbeancompr.com/moviepages/040517_001/images/l_l.jpg" tvg-chno="1210" group-title="Adult",松视1 [Backup 5]
-https://vip1.bf155bf.com/20220819/9ZT5FFpJ/800kb/hls/index.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="松视1 [Backup 6]" tvg-logo="https://www.caribbeancompr.com/moviepages/121217_002/images/l_l.jpg" tvg-chno="1211" group-title="Adult",松视1 [Backup 6]
-https://b.gg155gg1.com/20250506/Elysvcli/2000kb/hls/index.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="松视1 [Backup 7]" tvg-chno="1212" group-title="Adult",松视1 [Backup 7]
-https://t30.cdn2020.com/video/m3u8/2025/04/03/7d22d812/index.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="松视1 [Backup 8]" tvg-chno="1213" group-title="Adult",松视1 [Backup 8]
-https://t33.cdn2020.com/video/m3u8/2025/08/22/fcc420a2/index.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="松视2" tvg-chno="1214" group-title="Adult",松视2
-http://live.redtraffic.xyz:80/bigdick.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="松视2 [Backup 1]" tvg-logo="https://raw.githubusercontent.com/atsushi444/iptv/main/logo/SonSee2.png" tvg-chno="1215" group-title="Adult",松视2 [Backup 1]
-http://15.204.105.50:25461/G2s9zK2n9m/xDtwVfWM8T/89
-#EXTINF:-1 tvg-id="USA" tvg-name="松视2 [Backup 2]" tvg-logo="https://www.caribbeancompr.com/moviepages/010819_001/images/l_l.jpg" tvg-chno="1216" group-title="Adult",松视2 [Backup 2]
-https://vip7.newljlj.com/20231130/0lyFdZ60/600kb/hls/index.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="松视2 [Backup 3]" tvg-logo="https://www.caribbeancompr.com/moviepages/102816_014/images/l_l.jpg" tvg-chno="1217" group-title="Adult",松视2 [Backup 3]
-https://vip5.3sybf.com/20210525/pDScEUbJ/2000kb/hls/index.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="松视2 [Backup 4]" tvg-logo="https://www.caribbeancompr.com/moviepages/032317_020/images/l_l.jpg" tvg-chno="1218" group-title="Adult",松视2 [Backup 4]
-https://b.gg155gg1.com/20250423/lIoTjk8u/2000kb/hls/index.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="松视2 [Backup 5]" tvg-logo="https://www.caribbeancompr.com/moviepages/060717_001/images/l_l.jpg" tvg-chno="1219" group-title="Adult",松视2 [Backup 5]
-https://dadi-bo.com/20181221/mi0GVztv/800kb/hls/index.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="松视2 [Backup 6]" tvg-logo="https://www.caribbeancompr.com/moviepages/121217_003/images/l_l.jpg" tvg-chno="1220" group-title="Adult",松视2 [Backup 6]
-https://lajiao-bo.com/20190508/hgjOwQpq/800kb/hls/index.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="松视2 [Backup 7]" tvg-chno="1221" group-title="Adult",松视2 [Backup 7]
-https://t30.cdn2020.com/video/m3u8/2025/02/04/47dd5fee/index.m3u8
-#EXTINF:-1 tvg-id="USA" tvg-name="松视2 [Backup 8]" tvg-chno="1222" group-title="Adult",松视2 [Backup 8]
-https://t30.cdn2020.com/video/m3u8/2025/01/13/99cd6ac4/index.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetAnal.us" tvg-name="AdultIPTV.net Anal (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1223" group-title="Adult",AdultIPTV.net Anal (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetAnal.us" tvg-name="AdultIPTV.net Anal (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1151" group-title="Adult",AdultIPTV.net Anal (720p)
 https://cdn.adultiptv.net/anal.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetAsian.us" tvg-name="AdultIPTV.net Asian (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1224" group-title="Adult",AdultIPTV.net Asian (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetAsian.us" tvg-name="AdultIPTV.net Asian (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1152" group-title="Adult",AdultIPTV.net Asian (720p)
 https://cdn.adultiptv.net/asian.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetBigAss.us" tvg-name="AdultIPTV.net Big Ass (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1225" group-title="Adult",AdultIPTV.net Big Ass (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetBigAss.us" tvg-name="AdultIPTV.net Big Ass (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1153" group-title="Adult",AdultIPTV.net Big Ass (720p)
 https://cdn.adultiptv.net/bigass.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetBigDick.us" tvg-name="AdultIPTV.net Big Dick (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1226" group-title="Adult",AdultIPTV.net Big Dick (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetBigDick.us" tvg-name="AdultIPTV.net Big Dick (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1154" group-title="Adult",AdultIPTV.net Big Dick (720p)
 https://cdn.adultiptv.net/bigdick.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetBigTits.us" tvg-name="AdultIPTV.net Big Tits (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1227" group-title="Adult",AdultIPTV.net Big Tits (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetBigTits.us" tvg-name="AdultIPTV.net Big Tits (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1155" group-title="Adult",AdultIPTV.net Big Tits (720p)
 https://cdn.adultiptv.net/bigtits.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetBlonde.us" tvg-name="AdultIPTV.net Blonde (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1228" group-title="Adult",AdultIPTV.net Blonde (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetBlonde.us" tvg-name="AdultIPTV.net Blonde (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1156" group-title="Adult",AdultIPTV.net Blonde (720p)
 https://cdn.adultiptv.net/blonde.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetBlowjob.us" tvg-name="AdultIPTV.net Blowjob (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1229" group-title="Adult",AdultIPTV.net Blowjob (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetBlowjob.us" tvg-name="AdultIPTV.net Blowjob (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1157" group-title="Adult",AdultIPTV.net Blowjob (720p)
 https://cdn.adultiptv.net/blowjob.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetBrunette.us" tvg-name="AdultIPTV.net Brunette (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1230" group-title="Adult",AdultIPTV.net Brunette (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetBrunette.us" tvg-name="AdultIPTV.net Brunette (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1158" group-title="Adult",AdultIPTV.net Brunette (720p)
 https://cdn.adultiptv.net/brunette.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetCompilation.us" tvg-name="AdultIPTV.net Compilation (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1231" group-title="Adult",AdultIPTV.net Compilation (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetCompilation.us" tvg-name="AdultIPTV.net Compilation (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1159" group-title="Adult",AdultIPTV.net Compilation (720p)
 https://cdn.adultiptv.net/compilation.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetCuckold.us" tvg-name="AdultIPTV.net Cuckold (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1232" group-title="Adult",AdultIPTV.net Cuckold (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetCuckold.us" tvg-name="AdultIPTV.net Cuckold (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1160" group-title="Adult",AdultIPTV.net Cuckold (720p)
 https://cdn.adultiptv.net/cuckold.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetFetish.us" tvg-name="AdultIPTV.net Fetish (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1233" group-title="Adult",AdultIPTV.net Fetish (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetFetish.us" tvg-name="AdultIPTV.net Fetish (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1161" group-title="Adult",AdultIPTV.net Fetish (720p)
 https://cdn.adultiptv.net/fetish.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetGangbang.us" tvg-name="AdultIPTV.net Gangbang (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1234" group-title="Adult",AdultIPTV.net Gangbang (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetGangbang.us" tvg-name="AdultIPTV.net Gangbang (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1162" group-title="Adult",AdultIPTV.net Gangbang (720p)
 https://cdn.adultiptv.net/gangbang.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetGay.us" tvg-name="AdultIPTV.net Gay (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1235" group-title="Adult",AdultIPTV.net Gay (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetGay.us" tvg-name="AdultIPTV.net Gay (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1163" group-title="Adult",AdultIPTV.net Gay (720p)
 https://cdn.adultiptv.net/gay.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetHardcore.us" tvg-name="AdultIPTV.net Hardcore (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1236" group-title="Adult",AdultIPTV.net Hardcore (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetHardcore.us" tvg-name="AdultIPTV.net Hardcore (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1164" group-title="Adult",AdultIPTV.net Hardcore (720p)
 https://cdn.adultiptv.net/hardcore.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetInterracial.us" tvg-name="AdultIPTV.net Interracial (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1237" group-title="Adult",AdultIPTV.net Interracial (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetInterracial.us" tvg-name="AdultIPTV.net Interracial (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1165" group-title="Adult",AdultIPTV.net Interracial (720p)
 https://cdn.adultiptv.net/interracial.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetLatina.us" tvg-name="AdultIPTV.net Latina (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1238" group-title="Adult",AdultIPTV.net Latina (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetLatina.us" tvg-name="AdultIPTV.net Latina (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1166" group-title="Adult",AdultIPTV.net Latina (720p)
 https://cdn.adultiptv.net/latina.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetLesbian.us" tvg-name="AdultIPTV.net Lesbian (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1239" group-title="Adult",AdultIPTV.net Lesbian (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetLesbian.us" tvg-name="AdultIPTV.net Lesbian (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1167" group-title="Adult",AdultIPTV.net Lesbian (720p)
 https://cdn.adultiptv.net/lesbian.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetLiveCams.us" tvg-name="AdultIPTV.net Live Cams (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1240" group-title="Adult",AdultIPTV.net Live Cams (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetLiveCams.us" tvg-name="AdultIPTV.net Live Cams (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1168" group-title="Adult",AdultIPTV.net Live Cams (720p)
 https://cdn.adultiptv.net/livecams.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetMILF.us" tvg-name="AdultIPTV.net MILF (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1241" group-title="Adult",AdultIPTV.net MILF (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetMILF.us" tvg-name="AdultIPTV.net MILF (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1169" group-title="Adult",AdultIPTV.net MILF (720p)
 https://cdn.adultiptv.net/milf.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetPornstar.us" tvg-name="AdultIPTV.net Pornstar (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1242" group-title="Adult",AdultIPTV.net Pornstar (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetPornstar.us" tvg-name="AdultIPTV.net Pornstar (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1170" group-title="Adult",AdultIPTV.net Pornstar (720p)
 https://cdn.adultiptv.net/pornstar.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetPOV.us" tvg-name="AdultIPTV.net POV (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1243" group-title="Adult",AdultIPTV.net POV (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetPOV.us" tvg-name="AdultIPTV.net POV (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1171" group-title="Adult",AdultIPTV.net POV (720p)
 https://cdn.adultiptv.net/pov.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetRough.us" tvg-name="AdultIPTV.net Rough (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1244" group-title="Adult",AdultIPTV.net Rough (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetRough.us" tvg-name="AdultIPTV.net Rough (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1172" group-title="Adult",AdultIPTV.net Rough (720p)
 https://cdn.adultiptv.net/rough.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetRussian.us" tvg-name="AdultIPTV.net Russian (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1245" group-title="Adult",AdultIPTV.net Russian (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetRussian.us" tvg-name="AdultIPTV.net Russian (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1173" group-title="Adult",AdultIPTV.net Russian (720p)
 https://cdn.adultiptv.net/russian.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetTeen.us" tvg-name="AdultIPTV.net Teen (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1246" group-title="Adult",AdultIPTV.net Teen (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetTeen.us" tvg-name="AdultIPTV.net Teen (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1174" group-title="Adult",AdultIPTV.net Teen (720p)
 https://cdn.adultiptv.net/teen.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetThreesome.us" tvg-name="AdultIPTV.net Threesome (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1247" group-title="Adult",AdultIPTV.net Threesome (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetThreesome.us" tvg-name="AdultIPTV.net Threesome (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1175" group-title="Adult",AdultIPTV.net Threesome (720p)
 https://cdn.adultiptv.net/threesome.m3u8
-#EXTINF:-1 tvg-id="AdultIPTVnetWoman.us" tvg-name="AdultIPTV.net Woman (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1248" group-title="Adult",AdultIPTV.net Woman (720p)
+#EXTINF:-1 tvg-id="AdultIPTVnetWoman.us" tvg-name="AdultIPTV.net Woman (720p)" tvg-logo="https://i.imgur.com/cqKFF8A.png" tvg-chno="1176" group-title="Adult",AdultIPTV.net Woman (720p)
 https://live.redtraffic.net/woman.m3u8
-#EXTINF:-1 tvg-id="BabesTV.us" tvg-name="Babes TV [EU]" tvg-logo="https://i.imgur.com/XK19a9v.png" tvg-chno="1249" group-title="Adult",Babes TV [EU]
+#EXTINF:-1 tvg-id="BabesTV.us" tvg-name="Babes TV [EU]" tvg-logo="https://i.imgur.com/XK19a9v.png" tvg-chno="1177" group-title="Adult",Babes TV [EU]
 http://45.145.32.13:20440/babes_tv/index.m3u8?token=test
-#EXTINF:-1 tvg-id="BlueHustler.nl" tvg-name="Blue Hustler (720p)" tvg-logo="https://i.imgur.com/G1YaX0Q.png" tvg-chno="1250" group-title="Adult",Blue Hustler (720p)
+#EXTINF:-1 tvg-id="BlueHustler.nl" tvg-name="Blue Hustler (720p)" tvg-logo="https://i.imgur.com/G1YaX0Q.png" tvg-chno="1178" group-title="Adult",Blue Hustler (720p)
 http://193.33.240.8:8080/hustler_hd/index.m3u8
-#EXTINF:-1 tvg-id="BlueHustler.nl" tvg-name="Blue Hustler (720p) [Backup 1]" tvg-logo="https://i.imgur.com/G1YaX0Q.png" tvg-chno="1251" group-title="Adult",Blue Hustler (720p) [Backup 1]
+#EXTINF:-1 tvg-id="BlueHustler.nl" tvg-name="Blue Hustler (720p) [Backup 1]" tvg-logo="https://i.imgur.com/G1YaX0Q.png" tvg-chno="1179" group-title="Adult",Blue Hustler (720p) [Backup 1]
 http://
-#EXTINF:-1 tvg-id="BlueHustler.nl" tvg-name="Blue Hustler (720p) [Backup 2]" tvg-logo="https://i.imgur.com/G1YaX0Q.png" tvg-chno="1252" group-title="Adult",Blue Hustler (720p) [Backup 2]
+#EXTINF:-1 tvg-id="BlueHustler.nl" tvg-name="Blue Hustler (720p) [Backup 2]" tvg-logo="https://i.imgur.com/G1YaX0Q.png" tvg-chno="1180" group-title="Adult",Blue Hustler (720p) [Backup 2]
 http://zk85.hofcepesp1.top:8080/GhWtzs6hRzMh/KPSxDmTq9dDY/77738
-#EXTINF:-1 tvg-id="BrazzersTVEurope.us" tvg-name="Brazzers TV Europe (720p)" tvg-logo="https://i.imgur.com/95nP0Pb.png" tvg-chno="1253" group-title="Adult",Brazzers TV Europe (720p)
+#EXTINF:-1 tvg-id="BrazzersTVEurope.us" tvg-name="Brazzers TV Europe (720p)" tvg-logo="https://i.imgur.com/95nP0Pb.png" tvg-chno="1181" group-title="Adult",Brazzers TV Europe (720p)
 https://cdn-main.lolokoko.tv/BRAZZERS.stream/chunks.m3u8
-#EXTINF:-1 tvg-id="BrazzersTVEurope.us" tvg-name="Brazzers TV Europe (720p) [Backup 1]" tvg-logo="https://i.imgur.com/95nP0Pb.png" tvg-chno="1254" group-title="Adult",Brazzers TV Europe (720p) [Backup 1]
+#EXTINF:-1 tvg-id="BrazzersTVEurope.us" tvg-name="Brazzers TV Europe (720p) [Backup 1]" tvg-logo="https://i.imgur.com/95nP0Pb.png" tvg-chno="1182" group-title="Adult",Brazzers TV Europe (720p) [Backup 1]
 http://a0bn5xro.rostelekom.xyz/iptv/2TBC4G2WWDG6RSUSN5SXSQEC/12113/index.m3u8
-#EXTINF:-1 tvg-id="BrazzersTVEurope.us" tvg-name="Brazzers TV Europe (720p) [Backup 2]" tvg-logo="https://i.imgur.com/95nP0Pb.png" tvg-chno="1255" group-title="Adult",Brazzers TV Europe (720p) [Backup 2]
+#EXTINF:-1 tvg-id="BrazzersTVEurope.us" tvg-name="Brazzers TV Europe (720p) [Backup 2]" tvg-logo="https://i.imgur.com/95nP0Pb.png" tvg-chno="1183" group-title="Adult",Brazzers TV Europe (720p) [Backup 2]
 http://a0bn5xro.rostelekom.xyz/iptv/2TBC4G2WWDG6RSUSN5SXSQEC/910/index.m3u8
-#EXTINF:-1 tvg-id="DorcelTV.nl" tvg-name="Dorcel TV (720p)" tvg-logo="https://i.imgur.com/RkzyjEd.png" tvg-chno="1256" group-title="Adult",Dorcel TV (720p)
+#EXTINF:-1 tvg-id="DorcelTV.nl" tvg-name="Dorcel TV (720p)" tvg-logo="https://i.imgur.com/RkzyjEd.png" tvg-chno="1184" group-title="Adult",Dorcel TV (720p)
 https://cdn-main.lolokoko.tv/DorcelTV.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="DorcelTV.nl" tvg-name="Dorcel TV (720p) [Backup 1]" tvg-logo="https://i.imgur.com/RkzyjEd.png" tvg-chno="1257" group-title="Adult",Dorcel TV (720p) [Backup 1]
+#EXTINF:-1 tvg-id="DorcelTV.nl" tvg-name="Dorcel TV (720p) [Backup 1]" tvg-logo="https://i.imgur.com/RkzyjEd.png" tvg-chno="1185" group-title="Adult",Dorcel TV (720p) [Backup 1]
 http://a0bn5xro.rostelekom.xyz/iptv/2TBC4G2WWDG6RSUSN5SXSQEC/245/index.m3u8
-#EXTINF:-1 tvg-id="DorcelTV.nl" tvg-name="DorcelTV [LU]" tvg-logo="https://i.imgur.com/RkzyjEd.png" tvg-chno="1258" group-title="Adult",DorcelTV [LU]
+#EXTINF:-1 tvg-id="DorcelTV.nl" tvg-name="DorcelTV [LU]" tvg-logo="https://i.imgur.com/RkzyjEd.png" tvg-chno="1186" group-title="Adult",DorcelTV [LU]
 http://77.46.130.252:99/dorcel
-#EXTINF:-1 tvg-id="EroXHD.nl" tvg-name="EroX HD (720p)" tvg-logo="https://i.imgur.com/1EOQFqE.png" tvg-chno="1259" group-title="Adult",EroX HD (720p)
+#EXTINF:-1 tvg-id="440975" tvg-name="Eromania 4K" tvg-logo="https://epg.iptvx.one/picons/eromania4k.png" tvg-chno="1187" group-title="Adult",Eromania 4K
+http://a0bn5xro.rostelekom.xyz/iptv/2TBC4G2WWDG6RSUSN5SXSQEC/10049/index.m3u8
+#EXTINF:-1 tvg-id="EroXHD.nl" tvg-name="EroX HD (720p)" tvg-logo="https://i.imgur.com/1EOQFqE.png" tvg-chno="1188" group-title="Adult",EroX HD (720p)
 https://cdn-main.lolokoko.tv/Eroxx.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="EroXHD.nl" tvg-name="EroX HD (720p) [Backup 1]" tvg-logo="https://i.imgur.com/1EOQFqE.png" tvg-chno="1260" group-title="Adult",EroX HD (720p) [Backup 1]
+#EXTINF:-1 tvg-id="EroXHD.nl" tvg-name="EroX HD (720p) [Backup 1]" tvg-logo="https://i.imgur.com/1EOQFqE.png" tvg-chno="1189" group-title="Adult",EroX HD (720p) [Backup 1]
 http://a0bn5xro.rostelekom.xyz/iptv/2TBC4G2WWDG6RSUSN5SXSQEC/6296/index.m3u8
-#EXTINF:-1 tvg-id="EroXXXHD.nl" tvg-name="EroXXX HD (720p)" tvg-logo="https://i.imgur.com/ZNBLK41.png" tvg-chno="1261" group-title="Adult",EroXXX HD (720p)
+#EXTINF:-1 tvg-id="EroXXXHD.nl" tvg-name="EroXXX HD (720p)" tvg-logo="https://i.imgur.com/ZNBLK41.png" tvg-chno="1190" group-title="Adult",EroXXX HD (720p)
 https://cdn-main.lolokoko.tv/Eroxxx.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="EroXXXHD.nl" tvg-name="EroXXX HD (720p) [Backup 1]" tvg-logo="https://i.imgur.com/ZNBLK41.png" tvg-chno="1262" group-title="Adult",EroXXX HD (720p) [Backup 1]
+#EXTINF:-1 tvg-id="EroXXXHD.nl" tvg-name="EroXXX HD (720p) [Backup 1]" tvg-logo="https://i.imgur.com/ZNBLK41.png" tvg-chno="1191" group-title="Adult",EroXXX HD (720p) [Backup 1]
 http://a0bn5xro.rostelekom.xyz/iptv/2TBC4G2WWDG6RSUSN5SXSQEC/5015/index.m3u8
-#EXTINF:-1 tvg-id="HustlerHD.nl" tvg-name="Hustler HD (720p)" tvg-logo="https://i.imgur.com/41Ej2io.png" tvg-chno="1263" group-title="Adult",Hustler HD (720p)
+#EXTINF:-1 tvg-id="HustlerHD.nl" tvg-name="Hustler HD (720p)" tvg-logo="https://i.imgur.com/41Ej2io.png" tvg-chno="1192" group-title="Adult",Hustler HD (720p)
 https://cdn-main.lolokoko.tv/HUSTLER.stream/chunks.m3u8
-#EXTINF:-1 tvg-id="HustlerHD.nl" tvg-name="Hustler HD (720p) [Backup 1]" tvg-logo="https://i.imgur.com/41Ej2io.png" tvg-chno="1264" group-title="Adult",Hustler HD (720p) [Backup 1]
+#EXTINF:-1 tvg-id="HustlerHD.nl" tvg-name="Hustler HD (720p) [Backup 1]" tvg-logo="https://i.imgur.com/41Ej2io.png" tvg-chno="1193" group-title="Adult",Hustler HD (720p) [Backup 1]
 http://a0bn5xro.rostelekom.xyz/iptv/2TBC4G2WWDG6RSUSN5SXSQEC/244/index.m3u8
-#EXTINF:-1 tvg-id="JasminTV.lu" tvg-name="Jasmin TV (1080p)" tvg-logo="https://i.imgur.com/3VdU9r0.png" tvg-chno="1265" group-title="Adult",Jasmin TV (1080p)
+#EXTINF:-1 tvg-id="JasminTV.lu" tvg-name="Jasmin TV (1080p)" tvg-logo="https://i.imgur.com/3VdU9r0.png" tvg-chno="1194" group-title="Adult",Jasmin TV (1080p)
 http://109.71.163.112:1935/live/hd.jasminchannel.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="JasminTV.lu" tvg-name="Jasmin TV (1080p) [Backup 1]" tvg-logo="https://i.imgur.com/3VdU9r0.png" tvg-chno="1266" group-title="Adult",Jasmin TV (1080p) [Backup 1]
+#EXTINF:-1 tvg-id="JasminTV.lu" tvg-name="Jasmin TV (1080p) [Backup 1]" tvg-logo="https://i.imgur.com/3VdU9r0.png" tvg-chno="1195" group-title="Adult",Jasmin TV (1080p) [Backup 1]
 http://109.71.162.112:1935/live/hd.jasminchannel.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="JasminTV.lu" tvg-name="Jasmin TV (1080p) [Backup 2]" tvg-logo="https://i.imgur.com/3VdU9r0.png" tvg-chno="1267" group-title="Adult",Jasmin TV (1080p) [Backup 2]
+#EXTINF:-1 tvg-id="JasminTV.lu" tvg-name="Jasmin TV (1080p) [Backup 2]" tvg-logo="https://i.imgur.com/3VdU9r0.png" tvg-chno="1196" group-title="Adult",Jasmin TV (1080p) [Backup 2]
 http://109.71.162.112:1935/live/sd.jasminchannel.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="JennyLive.us" tvg-name="Miami TV Jenny Live (720p) [Not 24/7]" tvg-logo="https://i.imgur.com/3vsBZI3.png" tvg-chno="1268" group-title="Adult",Miami TV Jenny Live (720p) [Not 24/7]
+#EXTINF:-1 tvg-id="JennyLive.us" tvg-name="Miami TV Jenny Live (720p) [Not 24/7]" tvg-logo="https://i.imgur.com/3vsBZI3.png" tvg-chno="1197" group-title="Adult",Miami TV Jenny Live (720p) [Not 24/7]
 https://59ec5453559f0.streamlock.net/JennyLive/JennyLive/playlist.m3u8
-#EXTINF:-1 tvg-id="MiamiTVMexico.us" tvg-name="Miami TV Mexico (1080p)" tvg-logo="https://i.imgur.com/MpQtdTb.png" tvg-chno="1269" group-title="Adult",Miami TV Mexico (1080p)
+#EXTINF:-1 tvg-id="MiamiTVMexico.us" tvg-name="Miami TV Mexico (1080p)" tvg-logo="https://i.imgur.com/MpQtdTb.png" tvg-chno="1198" group-title="Adult",Miami TV Mexico (1080p)
 https://59ec5453559f0.streamlock.net/mexicotv/smil:miamitvmexico/playlist.m3u8
-#EXTINF:-1 tvg-id="MyCamTVAnal.cy" tvg-name="MyCamTV Anal (720p)" tvg-logo="https://i.imgur.com/sli5irt.png" tvg-chno="1270" group-title="Adult",MyCamTV Anal (720p)
+#EXTINF:-1 tvg-id="MyCamTVAnal.cy" tvg-name="MyCamTV Anal (720p)" tvg-logo="https://i.imgur.com/sli5irt.png" tvg-chno="1199" group-title="Adult",MyCamTV Anal (720p)
 https://live.mycamtv.com/anal.m3u8
-#EXTINF:-1 tvg-id="MyCamTVArab.cy" tvg-name="MyCamTV Arab (720p)" tvg-logo="https://i.imgur.com/sli5irt.png" tvg-chno="1271" group-title="Adult",MyCamTV Arab (720p)
+#EXTINF:-1 tvg-id="MyCamTVArab.cy" tvg-name="MyCamTV Arab (720p)" tvg-logo="https://i.imgur.com/sli5irt.png" tvg-chno="1200" group-title="Adult",MyCamTV Arab (720p)
 http://live.mycamtv.com/arab.m3u8
-#EXTINF:-1 tvg-id="MyCamTVAsian.cy" tvg-name="MyCamTV Asian (720p)" tvg-logo="https://i.imgur.com/FBSodo6.png" tvg-chno="1272" group-title="Adult",MyCamTV Asian (720p)
+#EXTINF:-1 tvg-id="MyCamTVAsian.cy" tvg-name="MyCamTV Asian (720p)" tvg-logo="https://i.imgur.com/FBSodo6.png" tvg-chno="1201" group-title="Adult",MyCamTV Asian (720p)
 https://live.mycamtv.com/asian.m3u8
-#EXTINF:-1 tvg-id="MyCamTVBigAss.cy" tvg-name="MyCamTV Big Ass (720p)" tvg-logo="https://cdn.strpst.com/assets/icons/headerlogo_mycamtv.com.png" tvg-chno="1273" group-title="Adult",MyCamTV Big Ass (720p)
+#EXTINF:-1 tvg-id="MyCamTVBigAss.cy" tvg-name="MyCamTV Big Ass (720p)" tvg-logo="https://cdn.strpst.com/assets/icons/headerlogo_mycamtv.com.png" tvg-chno="1202" group-title="Adult",MyCamTV Big Ass (720p)
 https://live.mycamtv.com/defstream.m3u8
-#EXTINF:-1 tvg-id="MyCamTVBigTits.cy" tvg-name="MyCamTV Big Tits (720p)" tvg-logo="https://cdn.strpst.com/assets/icons/headerlogo_mycamtv.com.png" tvg-chno="1274" group-title="Adult",MyCamTV Big Tits (720p)
+#EXTINF:-1 tvg-id="MyCamTVBigTits.cy" tvg-name="MyCamTV Big Tits (720p)" tvg-logo="https://cdn.strpst.com/assets/icons/headerlogo_mycamtv.com.png" tvg-chno="1203" group-title="Adult",MyCamTV Big Tits (720p)
 https://live.mycamtv.com/bigtits.m3u8
-#EXTINF:-1 tvg-id="MyCamTVBlonde.cy" tvg-name="MyCamTV Blonde (720p)" tvg-logo="https://cdn.strpst.com/assets/icons/headerlogo_mycamtv.com.png" tvg-chno="1275" group-title="Adult",MyCamTV Blonde (720p)
+#EXTINF:-1 tvg-id="MyCamTVBlonde.cy" tvg-name="MyCamTV Blonde (720p)" tvg-logo="https://cdn.strpst.com/assets/icons/headerlogo_mycamtv.com.png" tvg-chno="1204" group-title="Adult",MyCamTV Blonde (720p)
 https://live.mycamtv.com/blonde.m3u8
-#EXTINF:-1 tvg-id="MyCamTVBlowjob.cy" tvg-name="MyCamTV Blowjob (720p)" tvg-logo="https://i.imgur.com/sli5irt.png" tvg-chno="1276" group-title="Adult",MyCamTV Blowjob (720p)
+#EXTINF:-1 tvg-id="MyCamTVBlowjob.cy" tvg-name="MyCamTV Blowjob (720p)" tvg-logo="https://i.imgur.com/sli5irt.png" tvg-chno="1205" group-title="Adult",MyCamTV Blowjob (720p)
 http://live.mycamtv.com/blowjob.m3u8
-#EXTINF:-1 tvg-id="MyCamTVBrunette.cy" tvg-name="MyCamTV Brunette (720p)" tvg-logo="https://cdn.strpst.com/assets/icons/headerlogo_mycamtv.com.png" tvg-chno="1277" group-title="Adult",MyCamTV Brunette (720p)
+#EXTINF:-1 tvg-id="MyCamTVBrunette.cy" tvg-name="MyCamTV Brunette (720p)" tvg-logo="https://cdn.strpst.com/assets/icons/headerlogo_mycamtv.com.png" tvg-chno="1206" group-title="Adult",MyCamTV Brunette (720p)
 https://live.mycamtv.com/brunette.m3u8
-#EXTINF:-1 tvg-id="MyCamTVLatina.cy" tvg-name="MyCamTV Latina (720p)" tvg-logo="https://cdn.strpst.com/assets/icons/headerlogo_mycamtv.com.png" tvg-chno="1278" group-title="Adult",MyCamTV Latina (720p)
+#EXTINF:-1 tvg-id="MyCamTVLatina.cy" tvg-name="MyCamTV Latina (720p)" tvg-logo="https://cdn.strpst.com/assets/icons/headerlogo_mycamtv.com.png" tvg-chno="1207" group-title="Adult",MyCamTV Latina (720p)
 https://live.mycamtv.com/latina.m3u8
-#EXTINF:-1 tvg-id="MyCamTVMedium.cy" tvg-name="MyCamTV Medium (720p)" tvg-logo="https://i.imgur.com/sli5irt.png" tvg-chno="1279" group-title="Adult",MyCamTV Medium (720p)
+#EXTINF:-1 tvg-id="MyCamTVMedium.cy" tvg-name="MyCamTV Medium (720p)" tvg-logo="https://i.imgur.com/sli5irt.png" tvg-chno="1208" group-title="Adult",MyCamTV Medium (720p)
 http://live.mycamtv.com/medium.m3u8
-#EXTINF:-1 tvg-id="MyCamTVMILF.cy" tvg-name="MyCamTV MILF (720p)" tvg-logo="https://i.imgur.com/sli5irt.png" tvg-chno="1280" group-title="Adult",MyCamTV MILF (720p)
+#EXTINF:-1 tvg-id="MyCamTVMILF.cy" tvg-name="MyCamTV MILF (720p)" tvg-logo="https://i.imgur.com/sli5irt.png" tvg-chno="1209" group-title="Adult",MyCamTV MILF (720p)
 http://live.mycamtv.com/milf.m3u8
-#EXTINF:-1 tvg-id="MyCamTVSkinny.cy" tvg-name="MyCamTV Skinny (720p)" tvg-logo="https://cdn.strpst.com/assets/icons/headerlogo_mycamtv.com.png" tvg-chno="1281" group-title="Adult",MyCamTV Skinny (720p)
+#EXTINF:-1 tvg-id="MyCamTVSkinny.cy" tvg-name="MyCamTV Skinny (720p)" tvg-logo="https://cdn.strpst.com/assets/icons/headerlogo_mycamtv.com.png" tvg-chno="1210" group-title="Adult",MyCamTV Skinny (720p)
 https://live.mycamtv.com/arab.m3u8
-#EXTINF:-1 tvg-id="MyCamTVSquirt.cy" tvg-name="MyCamTV Squirt (720p)" tvg-logo="https://cdn.strpst.com/assets/icons/headerlogo_mycamtv.com.png" tvg-chno="1282" group-title="Adult",MyCamTV Squirt (720p)
+#EXTINF:-1 tvg-id="MyCamTVSquirt.cy" tvg-name="MyCamTV Squirt (720p)" tvg-logo="https://cdn.strpst.com/assets/icons/headerlogo_mycamtv.com.png" tvg-chno="1211" group-title="Adult",MyCamTV Squirt (720p)
 https://live.mycamtv.com/squirt.m3u8
-#EXTINF:-1 tvg-id="MyCamTVTeen.cy" tvg-name="MyCamTV Teen (720p)" tvg-logo="https://i.imgur.com/sli5irt.png" tvg-chno="1283" group-title="Adult",MyCamTV Teen (720p)
+#EXTINF:-1 tvg-id="MyCamTVTeen.cy" tvg-name="MyCamTV Teen (720p)" tvg-logo="https://i.imgur.com/sli5irt.png" tvg-chno="1212" group-title="Adult",MyCamTV Teen (720p)
 http://live.mycamtv.com/teen.m3u8
-#EXTINF:-1 tvg-id="MyCamTVWhite.cy" tvg-name="MyCamTV White (720p)" tvg-logo="https://cdn.strpst.com/assets/icons/headerlogo_mycamtv.com.png" tvg-chno="1284" group-title="Adult",MyCamTV White (720p)
+#EXTINF:-1 tvg-id="MyCamTVWhite.cy" tvg-name="MyCamTV White (720p)" tvg-logo="https://cdn.strpst.com/assets/icons/headerlogo_mycamtv.com.png" tvg-chno="1213" group-title="Adult",MyCamTV White (720p)
 https://live.mycamtv.com/white.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #1" tvg-chno="1285" group-title="Adult",MyCamTV XXX Vod #1
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #1" tvg-chno="1214" group-title="Adult",MyCamTV XXX Vod #1
 https://vod.mycamtv.net/1.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #10" tvg-chno="1286" group-title="Adult",MyCamTV XXX Vod #10
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #10" tvg-chno="1215" group-title="Adult",MyCamTV XXX Vod #10
 https://vod.mycamtv.net/10.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #11" tvg-chno="1287" group-title="Adult",MyCamTV XXX Vod #11
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #11" tvg-chno="1216" group-title="Adult",MyCamTV XXX Vod #11
 https://vod.mycamtv.net/11.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #12" tvg-chno="1288" group-title="Adult",MyCamTV XXX Vod #12
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #12" tvg-chno="1217" group-title="Adult",MyCamTV XXX Vod #12
 https://vod.mycamtv.net/12.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #13" tvg-chno="1289" group-title="Adult",MyCamTV XXX Vod #13
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #13" tvg-chno="1218" group-title="Adult",MyCamTV XXX Vod #13
 https://vod.mycamtv.net/13.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #14" tvg-chno="1290" group-title="Adult",MyCamTV XXX Vod #14
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #14" tvg-chno="1219" group-title="Adult",MyCamTV XXX Vod #14
 https://vod.mycamtv.net/14.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #15" tvg-chno="1291" group-title="Adult",MyCamTV XXX Vod #15
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #15" tvg-chno="1220" group-title="Adult",MyCamTV XXX Vod #15
 https://vod.mycamtv.net/15.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #16" tvg-chno="1292" group-title="Adult",MyCamTV XXX Vod #16
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #16" tvg-chno="1221" group-title="Adult",MyCamTV XXX Vod #16
 https://vod.mycamtv.net/16.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #17" tvg-chno="1293" group-title="Adult",MyCamTV XXX Vod #17
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #17" tvg-chno="1222" group-title="Adult",MyCamTV XXX Vod #17
 https://vod.mycamtv.net/17.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #18" tvg-chno="1294" group-title="Adult",MyCamTV XXX Vod #18
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #18" tvg-chno="1223" group-title="Adult",MyCamTV XXX Vod #18
 https://vod.mycamtv.net/18.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #19" tvg-chno="1295" group-title="Adult",MyCamTV XXX Vod #19
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #19" tvg-chno="1224" group-title="Adult",MyCamTV XXX Vod #19
 https://vod.mycamtv.net/19.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #2" tvg-chno="1296" group-title="Adult",MyCamTV XXX Vod #2
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #2" tvg-chno="1225" group-title="Adult",MyCamTV XXX Vod #2
 https://vod.mycamtv.net/2.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #20" tvg-chno="1297" group-title="Adult",MyCamTV XXX Vod #20
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #20" tvg-chno="1226" group-title="Adult",MyCamTV XXX Vod #20
 https://vod.mycamtv.net/20.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #21" tvg-chno="1298" group-title="Adult",MyCamTV XXX Vod #21
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #21" tvg-chno="1227" group-title="Adult",MyCamTV XXX Vod #21
 https://vod.mycamtv.net/21.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #22" tvg-chno="1299" group-title="Adult",MyCamTV XXX Vod #22
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #22" tvg-chno="1228" group-title="Adult",MyCamTV XXX Vod #22
 https://vod.mycamtv.net/22.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #23" tvg-chno="1300" group-title="Adult",MyCamTV XXX Vod #23
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #23" tvg-chno="1229" group-title="Adult",MyCamTV XXX Vod #23
 https://vod.mycamtv.net/23.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #24" tvg-chno="1301" group-title="Adult",MyCamTV XXX Vod #24
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #24" tvg-chno="1230" group-title="Adult",MyCamTV XXX Vod #24
 https://vod.mycamtv.net/24.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #25" tvg-chno="1302" group-title="Adult",MyCamTV XXX Vod #25
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #25" tvg-chno="1231" group-title="Adult",MyCamTV XXX Vod #25
 https://vod.mycamtv.net/25.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #26" tvg-chno="1303" group-title="Adult",MyCamTV XXX Vod #26
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #26" tvg-chno="1232" group-title="Adult",MyCamTV XXX Vod #26
 https://vod.mycamtv.net/26.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #27" tvg-chno="1304" group-title="Adult",MyCamTV XXX Vod #27
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #27" tvg-chno="1233" group-title="Adult",MyCamTV XXX Vod #27
 https://vod.mycamtv.net/27.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #28" tvg-chno="1305" group-title="Adult",MyCamTV XXX Vod #28
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #28" tvg-chno="1234" group-title="Adult",MyCamTV XXX Vod #28
 https://vod.mycamtv.net/28.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #29" tvg-chno="1306" group-title="Adult",MyCamTV XXX Vod #29
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #29" tvg-chno="1235" group-title="Adult",MyCamTV XXX Vod #29
 https://vod.mycamtv.net/29.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #3" tvg-chno="1307" group-title="Adult",MyCamTV XXX Vod #3
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #3" tvg-chno="1236" group-title="Adult",MyCamTV XXX Vod #3
 https://vod.mycamtv.net/3.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #30" tvg-chno="1308" group-title="Adult",MyCamTV XXX Vod #30
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #30" tvg-chno="1237" group-title="Adult",MyCamTV XXX Vod #30
 https://vod.mycamtv.net/30.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #31" tvg-chno="1309" group-title="Adult",MyCamTV XXX Vod #31
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #31" tvg-chno="1238" group-title="Adult",MyCamTV XXX Vod #31
 https://vod.mycamtv.net/31.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #32" tvg-chno="1310" group-title="Adult",MyCamTV XXX Vod #32
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #32" tvg-chno="1239" group-title="Adult",MyCamTV XXX Vod #32
 https://vod.mycamtv.net/32.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #33" tvg-chno="1311" group-title="Adult",MyCamTV XXX Vod #33
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #33" tvg-chno="1240" group-title="Adult",MyCamTV XXX Vod #33
 https://vod.mycamtv.net/33.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #4" tvg-chno="1312" group-title="Adult",MyCamTV XXX Vod #4
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #4" tvg-chno="1241" group-title="Adult",MyCamTV XXX Vod #4
 https://vod.mycamtv.net/4.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #5" tvg-chno="1313" group-title="Adult",MyCamTV XXX Vod #5
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #5" tvg-chno="1242" group-title="Adult",MyCamTV XXX Vod #5
 https://vod.mycamtv.net/5.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #6" tvg-chno="1314" group-title="Adult",MyCamTV XXX Vod #6
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #6" tvg-chno="1243" group-title="Adult",MyCamTV XXX Vod #6
 https://vod.mycamtv.net/6.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #7" tvg-chno="1315" group-title="Adult",MyCamTV XXX Vod #7
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #7" tvg-chno="1244" group-title="Adult",MyCamTV XXX Vod #7
 https://vod.mycamtv.net/7.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #8" tvg-chno="1316" group-title="Adult",MyCamTV XXX Vod #8
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #8" tvg-chno="1245" group-title="Adult",MyCamTV XXX Vod #8
 https://vod.mycamtv.net/8.m3u8
-#EXTINF:-1 tvg-name="MyCamTV XXX Vod #9" tvg-chno="1317" group-title="Adult",MyCamTV XXX Vod #9
+#EXTINF:-1 tvg-name="MyCamTV XXX Vod #9" tvg-chno="1246" group-title="Adult",MyCamTV XXX Vod #9
 https://vod.mycamtv.net/9.m3u8
-#EXTINF:-1 tvg-id="MyCamTVYoung.cy" tvg-name="MyCamTV Young (720p)" tvg-logo="https://i.imgur.com/sli5irt.png" tvg-chno="1318" group-title="Adult",MyCamTV Young (720p)
+#EXTINF:-1 tvg-id="MyCamTVYoung.cy" tvg-name="MyCamTV Young (720p)" tvg-logo="https://i.imgur.com/sli5irt.png" tvg-chno="1247" group-title="Adult",MyCamTV Young (720p)
 http://live.mycamtv.com/young.m3u8
-#EXTINF:-1 tvg-id="Olala.ru" tvg-name="O-la-la! (576p)" tvg-logo="https://i.imgur.com/6aOmZs4.png" tvg-chno="1319" group-title="Adult",O-la-la! (576p)
+#EXTINF:-1 tvg-id="Olala.ru" tvg-name="O-la-la! (576p)" tvg-logo="https://i.imgur.com/6aOmZs4.png" tvg-chno="1248" group-title="Adult",O-la-la! (576p)
 http://31.148.48.15/O-la-la/index.m3u8
-#EXTINF:-1 tvg-id="PenthouseGold.us" tvg-name="Penthouse Gold (1080p)" tvg-logo="https://i.imgur.com/0JufwBJ.png" tvg-chno="1320" group-title="Adult",Penthouse Gold (1080p)
+#EXTINF:-1 tvg-id="PenthouseGold.us" tvg-name="Penthouse Gold (1080p)" tvg-logo="https://i.imgur.com/0JufwBJ.png" tvg-chno="1249" group-title="Adult",Penthouse Gold (1080p)
 http://51.159.102.100/PenthouseGold/index.m3u8
-#EXTINF:-1 tvg-id="PenthouseGold.us" tvg-name="Penthouse Gold (1080p) [Backup 1]" tvg-logo="https://i.imgur.com/0JufwBJ.png" tvg-chno="1321" group-title="Adult",Penthouse Gold (1080p) [Backup 1]
+#EXTINF:-1 tvg-id="PenthouseGold.us" tvg-name="Penthouse Gold (1080p) [Backup 1]" tvg-logo="https://i.imgur.com/0JufwBJ.png" tvg-chno="1250" group-title="Adult",Penthouse Gold (1080p) [Backup 1]
 http://a0bn5xro.rostelekom.xyz/iptv/2TBC4G2WWDG6RSUSN5SXSQEC/5011/index.m3u8
-#EXTINF:-1 tvg-id="PenthouseGold.us" tvg-name="Penthouse Gold [CA]" tvg-logo="https://i.imgur.com/0JufwBJ.png" tvg-chno="1322" group-title="Adult",Penthouse Gold [CA]
+#EXTINF:-1 tvg-id="PenthouseGold.us" tvg-name="Penthouse Gold [CA]" tvg-logo="https://i.imgur.com/0JufwBJ.png" tvg-chno="1251" group-title="Adult",Penthouse Gold [CA]
 http://185.98.209.11:81/penthouse1/index.m3u8?token=test
-#EXTINF:-1 tvg-id="PlayboyTVLatinAmericaHD.us" tvg-name="Playboy TV Latin America (1080p)" tvg-logo="https://i.imgur.com/B3DMUM9.png" tvg-chno="1323" group-title="Adult",Playboy TV Latin America (1080p)
+#EXTINF:-1 tvg-id="4960" tvg-name="Pink Erotic 8" tvg-logo="http://epg.one/img2/4960.png" tvg-chno="1252" group-title="Adult",Pink Erotic 8
+http://a0bn5xro.rostelekom.xyz/iptv/2TBC4G2WWDG6RSUSN5SXSQEC/12153/index.m3u8
+#EXTINF:-1 tvg-id="PlayboyTVLatinAmericaHD.us" tvg-name="Playboy TV Latin America (1080p)" tvg-logo="https://i.imgur.com/B3DMUM9.png" tvg-chno="1253" group-title="Adult",Playboy TV Latin America (1080p)
 http://190.11.225.124:5000/live/playboy_hd/playlist.m3u8
-#EXTINF:-1 tvg-name="Private HD [IE]" tvg-logo="https://ui-avatars.com/api/?name=Private%20HD&background=17324d&color=ffffff&size=256&length=3&format=png" tvg-chno="1324" group-title="Adult",Private HD [IE]
+#EXTINF:-1 tvg-name="Private HD [IE]" tvg-logo="https://ui-avatars.com/api/?name=Private%20HD&background=17324d&color=ffffff&size=256&length=3&format=png" tvg-chno="1254" group-title="Adult",Private HD [IE]
 http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/CRKBTYRXLLNSEF/243/index.m3u8
-#EXTINF:-1 tvg-id="PrivateTVHD.nl" tvg-name="Private TV HD (720p)" tvg-logo="https://i.imgur.com/89E8Ev2.png" tvg-chno="1325" group-title="Adult",Private TV HD (720p)
-https://cdn-main.lolokoko.tv/Private.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="PrivateTVHD.nl" tvg-name="Private TV HD (720p) [Backup 1]" tvg-logo="https://i.imgur.com/89E8Ev2.png" tvg-chno="1326" group-title="Adult",Private TV HD (720p) [Backup 1]
-http://ns2.138754.xyz:80/ege0343/mstfa12.v/402558
-#EXTINF:-1 tvg-id="PrivateTV.nl" tvg-name="Private TV (576p)" tvg-logo="https://i.imgur.com/2yt8MAA.png" tvg-chno="1327" group-title="Adult",Private TV (576p)
+#EXTINF:-1 tvg-id="PrivateTV.nl" tvg-name="Private TV (576p)" tvg-logo="https://i.imgur.com/2yt8MAA.png" tvg-chno="1255" group-title="Adult",Private TV (576p)
 http://149.62.183.194:9293/play/a07t
-#EXTINF:-1 tvg-id="RedlightHD.nl" tvg-name="Redlight HD (720p)" tvg-logo="https://i.imgur.com/g0QF5IG.png" tvg-chno="1328" group-title="Adult",Redlight HD (720p)
+#EXTINF:-1 tvg-id="PrivateTVHD.nl" tvg-name="Private TV HD (720p)" tvg-logo="https://i.imgur.com/89E8Ev2.png" tvg-chno="1256" group-title="Adult",Private TV HD (720p)
+https://cdn-main.lolokoko.tv/Private.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="PrivateTVHD.nl" tvg-name="Private TV HD (720p) [Backup 1]" tvg-logo="https://i.imgur.com/89E8Ev2.png" tvg-chno="1257" group-title="Adult",Private TV HD (720p) [Backup 1]
+http://ns2.138754.xyz:80/ege0343/mstfa12.v/402558
+#EXTINF:-1 tvg-id="RedlightHD.nl" tvg-name="Redlight HD (720p)" tvg-logo="https://i.imgur.com/g0QF5IG.png" tvg-chno="1258" group-title="Adult",Redlight HD (720p)
 https://cdn-main.lolokoko.tv/REDLIGHT.stream/chunks.m3u8
-#EXTINF:-1 tvg-id="RedlightHD.nl" tvg-name="Redlight HD (720p) [Backup 1]" tvg-logo="https://i.imgur.com/g0QF5IG.png" tvg-chno="1329" group-title="Adult",Redlight HD (720p) [Backup 1]
+#EXTINF:-1 tvg-id="RedlightHD.nl" tvg-name="Redlight HD (720p) [Backup 1]" tvg-logo="https://i.imgur.com/g0QF5IG.png" tvg-chno="1259" group-title="Adult",Redlight HD (720p) [Backup 1]
 http://a0bn5xro.rostelekom.xyz/iptv/2TBC4G2WWDG6RSUSN5SXSQEC/242/index.m3u8
-#EXTINF:-1 tvg-id="RedlightHD.nl" tvg-name="RedLight HD [NL]" tvg-logo="https://i.imgur.com/g0QF5IG.png" tvg-chno="1330" group-title="Adult",RedLight HD [NL]
+#EXTINF:-1 tvg-id="RedlightHD.nl" tvg-name="RedLight HD [NL]" tvg-logo="https://i.imgur.com/g0QF5IG.png" tvg-chno="1260" group-title="Adult",RedLight HD [NL]
 http://ww6gvvez.ukminlt.fun/iptv/GKTT8YW6E9SFM2/242/index.m3u8
-#EXTINF:-1 tvg-id="Sexprive.br" tvg-name="Sex Prive [US]" tvg-logo="https://i.imgur.com/irp3iLP.png" tvg-chno="1331" group-title="Adult",Sex Prive [US]
+#EXTINF:-1 tvg-id="Sexprive.br" tvg-name="Sex Prive [US]" tvg-logo="https://i.imgur.com/irp3iLP.png" tvg-chno="1261" group-title="Adult",Sex Prive [US]
 http://dns.fontedecanais.com.br/playercodestv/947942/2286
-#EXTINF:-1 tvg-id="Silk.ru" tvg-name="Silk (1080p) [Geo-blocked]" tvg-logo="https://i.imgur.com/pbLpTrt.png" tvg-chno="1332" group-title="Adult",Silk (1080p) [Geo-blocked]
+#EXTINF:-1 tvg-id="Silk.ru" tvg-name="Silk (1080p) [Geo-blocked]" tvg-logo="https://i.imgur.com/pbLpTrt.png" tvg-chno="1262" group-title="Adult",Silk (1080p) [Geo-blocked]
 http://live-1.otcnet.ru/shelkhdmts/playlist.m3u8
-#EXTINF:-1 tvg-name="Unidentified channel [CA]" tvg-logo="https://ui-avatars.com/api/?name=Unidentified%20channel&background=17324d&color=ffffff&size=256&length=3&format=png" tvg-chno="1333" group-title="Adult",Unidentified channel [CA]
+#EXTINF:-1 tvg-name="Unidentified channel [CA]" tvg-logo="https://ui-avatars.com/api/?name=Unidentified%20channel&background=17324d&color=ffffff&size=256&length=3&format=png" tvg-chno="1263" group-title="Adult",Unidentified channel [CA]
 http://206.212.242.25/live/hhXjW5P/34695701563/20751.ts
-#EXTINF:-1 tvg-id="XXXCartoons.de" tvg-name="XXX Cartoons (520p)" tvg-logo="https://i.imgur.com/kNYY78z.png" tvg-chno="1334" group-title="Adult",XXX Cartoons (520p)
+#EXTINF:-1 tvg-id="XXXCartoons.de" tvg-name="XXX Cartoons (520p)" tvg-logo="https://i.imgur.com/kNYY78z.png" tvg-chno="1264" group-title="Adult",XXX Cartoons (520p)
 http://144.76.58.245:2307/cartoon/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="一本00" tvg-chno="1265" group-title="Adult",一本00
+https://vip4.ddyunbo.com/20210208/6LaKp6lZ/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="一本00 [Backup 1]" tvg-chno="1266" group-title="Adult",一本00 [Backup 1]
+https://t0.97img.com/a1001312/a.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="一本00 [Backup 2]" tvg-chno="1267" group-title="Adult",一本00 [Backup 2]
+https://t0.97img.com/a1010021/a.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="一本00 [Backup 3]" tvg-chno="1268" group-title="Adult",一本00 [Backup 3]
+https://t0.97img.com/a1990002/a.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="一本00 [Backup 4]" tvg-chno="1269" group-title="Adult",一本00 [Backup 4]
+https://t30.cdn2020.com/video/m3u8/2025/06/19/2b0624fe/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="一本00 [Backup 5]" tvg-chno="1270" group-title="Adult",一本00 [Backup 5]
+https://t30.cdn2020.com/video/m3u8/2025/04/24/0fcddbb5/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="一本00 [Backup 6]" tvg-chno="1271" group-title="Adult",一本00 [Backup 6]
+https://t30.cdn2020.com/video/m3u8/2025/04/23/c1489a62/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="一本00 [Backup 7]" tvg-chno="1272" group-title="Adult",一本00 [Backup 7]
+https://t30.cdn2020.com/video/m3u8/2025/04/12/c6b4a1c6/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="一本00 [Backup 8]" tvg-chno="1273" group-title="Adult",一本00 [Backup 8]
+https://t30.cdn2020.com/video/m3u8/2025/03/06/1d01059c/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热01" tvg-chno="1274" group-title="Adult",东热01
+https://video1.rhsj520.com/nyrm3/2011225/DR/n0011/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热01 [Backup 1]" tvg-chno="1275" group-title="Adult",东热01 [Backup 1]
+https://vip4.ddyunbo.com/20210209/dEzJjeSU/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热01 [Backup 2]" tvg-chno="1276" group-title="Adult",东热01 [Backup 2]
+http://live.redtraffic.xyz/threesome.m3u8?fluxuslust.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热01 [Backup 3]" tvg-chno="1277" group-title="Adult",东热01 [Backup 3]
+https://t0.97img.com/a1000012/a.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热01 [Backup 4]" tvg-chno="1278" group-title="Adult",东热01 [Backup 4]
+https://t0.97img.com/a1990014/a.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热01 [Backup 5]" tvg-chno="1279" group-title="Adult",东热01 [Backup 5]
+https://t30.cdn2020.com/video/m3u8/2025/05/20/12542053/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热01 [Backup 6]" tvg-chno="1280" group-title="Adult",东热01 [Backup 6]
+https://t30.cdn2020.com/video/m3u8/2025/02/27/55d447eb/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热01 [Backup 7]" tvg-chno="1281" group-title="Adult",东热01 [Backup 7]
+https://t30.cdn2020.com/video/m3u8/2025/02/02/0c5bf3f9/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热01 [Backup 8]" tvg-chno="1282" group-title="Adult",东热01 [Backup 8]
+https://t27.cdn2020.com/video/m3u8/2024/12/04/4e62dafe/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热02" tvg-chno="1283" group-title="Adult",东热02
+https://video1.rhsj520.com/nyrm3/2011225/DR/n0010/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热02 [Backup 1]" tvg-chno="1284" group-title="Adult",东热02 [Backup 1]
+https://vip4.ddyunbo.com/20210210/IjSENz6s/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热02 [Backup 2]" tvg-chno="1285" group-title="Adult",东热02 [Backup 2]
+http://live.redtraffic.xyz/bigass.m3u8?fluxuslust.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热02 [Backup 3]" tvg-chno="1286" group-title="Adult",东热02 [Backup 3]
+https://t30.cdn2020.com/video/m3u8/2025/06/27/ed8f623f/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热02 [Backup 4]" tvg-chno="1287" group-title="Adult",东热02 [Backup 4]
+https://t0.97img.com/a1001668/a.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热02 [Backup 5]" tvg-chno="1288" group-title="Adult",东热02 [Backup 5]
+https://t0.97img.com/a1000579/a.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热02 [Backup 6]" tvg-chno="1289" group-title="Adult",东热02 [Backup 6]
+https://t0.97img.com/a1000030/a.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热02 [Backup 7]" tvg-chno="1290" group-title="Adult",东热02 [Backup 7]
+https://t0.97img.com/a1990015/a.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热02 [Backup 8]" tvg-chno="1291" group-title="Adult",东热02 [Backup 8]
+https://t33.cdn2020.com/video/m3u8/2025/08/05/ea82538f/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热03" tvg-chno="1292" group-title="Adult",东热03
+https://video1.rhsj520.com/nyrm3/2011225/DR/n0008/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热03 [Backup 1]" tvg-chno="1293" group-title="Adult",东热03 [Backup 1]
+http://live.redtraffic.xyz:80/bigass.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热03 [Backup 2]" tvg-chno="1294" group-title="Adult",东热03 [Backup 2]
+https://t30.cdn2020.com/video/m3u8/2025/07/17/841e0e8a/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热03 [Backup 3]" tvg-chno="1295" group-title="Adult",东热03 [Backup 3]
+https://t30.cdn2020.com/video/m3u8/2025/07/23/67db06b3/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热03 [Backup 4]" tvg-chno="1296" group-title="Adult",东热03 [Backup 4]
+https://t30.cdn2020.com/video/m3u8/2025/07/21/3aa08673/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热03 [Backup 5]" tvg-chno="1297" group-title="Adult",东热03 [Backup 5]
+https://t30.cdn2020.com/video/m3u8/2025/06/27/e2bcb012/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热03 [Backup 6]" tvg-chno="1298" group-title="Adult",东热03 [Backup 6]
+https://t30.cdn2020.com/video/m3u8/2025/06/05/7ea04b1a/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热03 [Backup 7]" tvg-chno="1299" group-title="Adult",东热03 [Backup 7]
+https://t0.97img.com/a1000051/a.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热03 [Backup 8]" tvg-chno="1300" group-title="Adult",东热03 [Backup 8]
+https://t0.97img.com/a1990016/a.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热04" tvg-chno="1301" group-title="Adult",东热04
+https://video1.rhsj520.com/nyrm3/2011225/DR/n0001/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热04 [Backup 1]" tvg-chno="1302" group-title="Adult",东热04 [Backup 1]
+http://live.redtraffic.xyz:80/blowjob.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热04 [Backup 2]" tvg-chno="1303" group-title="Adult",东热04 [Backup 2]
+https://t26.cdn2020.com/video/m3u8/2023/06/30/c2bb46f7/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热04 [Backup 3]" tvg-chno="1304" group-title="Adult",东热04 [Backup 3]
+https://t0.97img.com/a1000066/a.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热04 [Backup 4]" tvg-chno="1305" group-title="Adult",东热04 [Backup 4]
+https://t0.97img.com/a1990017/a.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热04 [Backup 5]" tvg-chno="1306" group-title="Adult",东热04 [Backup 5]
+https://t30.cdn2020.com/video/m3u8/2025/07/05/9512c513/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热04 [Backup 6]" tvg-chno="1307" group-title="Adult",东热04 [Backup 6]
+https://t30.cdn2020.com/video/m3u8/2025/06/01/edd28f96/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热04 [Backup 7]" tvg-chno="1308" group-title="Adult",东热04 [Backup 7]
+https://t30.cdn2020.com/video/m3u8/2025/02/07/2e5ace1c/index.m3u8
+#EXTINF:-1 tvg-id="Japan" tvg-name="东热04 [Backup 8]" tvg-chno="1309" group-title="Adult",东热04 [Backup 8]
+https://t30.cdn2020.com/video/m3u8/2025/02/05/2f731fae/index.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="松视1" tvg-chno="1310" group-title="Adult",松视1
+http://live.redtraffic.xyz:80/fetish.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="松视1 [Backup 1]" tvg-logo="https://raw.githubusercontent.com/atsushi444/iptv/main/logo/sonsee1.png" tvg-chno="1311" group-title="Adult",松视1 [Backup 1]
+http://15.204.105.50:25461/G2s9zK2n9m/xDtwVfWM8T/88
+#EXTINF:-1 tvg-id="USA" tvg-name="松视1 [Backup 2]" tvg-logo="https://www.caribbeancompr.com/moviepages/010119_001/images/l_l.jpg" tvg-chno="1312" group-title="Adult",松视1 [Backup 2]
+https://v2025.ddcdnbf.com/20250330/BpOp3Ltk/2000kb/hls/index.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="松视1 [Backup 3]" tvg-logo="https://www.caribbeancompr.com/moviepages/102816_013/images/l_l.jpg" tvg-chno="1313" group-title="Adult",松视1 [Backup 3]
+https://vip2.viii155.com/20241006/OwNUnJYs/2000kb/hls/index.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="松视1 [Backup 4]" tvg-logo="https://www.caribbeancompr.com/moviepages/032317_019/images/l_l.jpg" tvg-chno="1314" group-title="Adult",松视1 [Backup 4]
+https://v1.1bbffvip.com/20240908/DjmZCxfM/2000kb/hls/index.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="松视1 [Backup 5]" tvg-logo="https://www.caribbeancompr.com/moviepages/040517_001/images/l_l.jpg" tvg-chno="1315" group-title="Adult",松视1 [Backup 5]
+https://vip1.bf155bf.com/20220819/9ZT5FFpJ/800kb/hls/index.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="松视1 [Backup 6]" tvg-logo="https://www.caribbeancompr.com/moviepages/121217_002/images/l_l.jpg" tvg-chno="1316" group-title="Adult",松视1 [Backup 6]
+https://b.gg155gg1.com/20250506/Elysvcli/2000kb/hls/index.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="松视1 [Backup 7]" tvg-chno="1317" group-title="Adult",松视1 [Backup 7]
+https://t30.cdn2020.com/video/m3u8/2025/04/03/7d22d812/index.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="松视1 [Backup 8]" tvg-chno="1318" group-title="Adult",松视1 [Backup 8]
+https://t33.cdn2020.com/video/m3u8/2025/08/22/fcc420a2/index.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="松视2" tvg-chno="1319" group-title="Adult",松视2
+http://live.redtraffic.xyz:80/bigdick.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="松视2 [Backup 1]" tvg-logo="https://raw.githubusercontent.com/atsushi444/iptv/main/logo/SonSee2.png" tvg-chno="1320" group-title="Adult",松视2 [Backup 1]
+http://15.204.105.50:25461/G2s9zK2n9m/xDtwVfWM8T/89
+#EXTINF:-1 tvg-id="USA" tvg-name="松视2 [Backup 2]" tvg-logo="https://www.caribbeancompr.com/moviepages/010819_001/images/l_l.jpg" tvg-chno="1321" group-title="Adult",松视2 [Backup 2]
+https://vip7.newljlj.com/20231130/0lyFdZ60/600kb/hls/index.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="松视2 [Backup 3]" tvg-logo="https://www.caribbeancompr.com/moviepages/102816_014/images/l_l.jpg" tvg-chno="1322" group-title="Adult",松视2 [Backup 3]
+https://vip5.3sybf.com/20210525/pDScEUbJ/2000kb/hls/index.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="松视2 [Backup 4]" tvg-logo="https://www.caribbeancompr.com/moviepages/032317_020/images/l_l.jpg" tvg-chno="1323" group-title="Adult",松视2 [Backup 4]
+https://b.gg155gg1.com/20250423/lIoTjk8u/2000kb/hls/index.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="松视2 [Backup 5]" tvg-logo="https://www.caribbeancompr.com/moviepages/060717_001/images/l_l.jpg" tvg-chno="1324" group-title="Adult",松视2 [Backup 5]
+https://dadi-bo.com/20181221/mi0GVztv/800kb/hls/index.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="松视2 [Backup 6]" tvg-logo="https://www.caribbeancompr.com/moviepages/121217_003/images/l_l.jpg" tvg-chno="1325" group-title="Adult",松视2 [Backup 6]
+https://lajiao-bo.com/20190508/hgjOwQpq/800kb/hls/index.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="松视2 [Backup 7]" tvg-chno="1326" group-title="Adult",松视2 [Backup 7]
+https://t30.cdn2020.com/video/m3u8/2025/02/04/47dd5fee/index.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="松视2 [Backup 8]" tvg-chno="1327" group-title="Adult",松视2 [Backup 8]
+https://t30.cdn2020.com/video/m3u8/2025/01/13/99cd6ac4/index.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="玩美台" tvg-chno="1328" group-title="Adult",玩美台
+http://live.redtraffic.xyz:80/pov.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="玩美台 [Backup 1]" tvg-chno="1329" group-title="Adult",玩美台 [Backup 1]
+http://cdn.adultiptv.net/blonde.m3u8?streamType=livеhls
+#EXTINF:-1 tvg-id="USA" tvg-name="玩美台 [Backup 2]" tvg-chno="1330" group-title="Adult",玩美台 [Backup 2]
+http://sochinskayatrk.ru/hdtv/hls/strc_hd/playlist.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="玩美台 [Backup 3]" tvg-chno="1331" group-title="Adult",玩美台 [Backup 3]
+http://ctrl.yunshipin.bbroot.com:8080/streams/ds7fcf8th2/gc/playlist.m3u8
+#EXTINF:-1 tvg-id="USA" tvg-name="玩美台 [Backup 4]" tvg-logo="https://raw.githubusercontent.com/atsushi444/iptv/main/logo/amazing_tv.png" tvg-chno="1332" group-title="Adult",玩美台 [Backup 4]
+http://15.204.105.50:25461/G2s9zK2n9m/xDtwVfWM8T/85
+#EXTINF:-1 tvg-id="USA" tvg-name="玩美台 [Backup 5]" tvg-logo="https://raw.githubusercontent.com/atsushi444/iptv/main/logo/pandora_perfect.png" tvg-chno="1333" group-title="Adult",玩美台 [Backup 5]
+http://15.204.105.50:25461/G2s9zK2n9m/xDtwVfWM8T/86
+#EXTINF:-1 tvg-id="USA" tvg-name="玩美台 [Backup 6]" tvg-chno="1334" group-title="Adult",玩美台 [Backup 6]
+http://15.204.105.50:25461/G2s9zK2n9m/xDtwVfWM8T/87
+#EXTINF:-1 tvg-id="USA" tvg-name="玩美台 [Backup 7]" tvg-logo="https://raw.githubusercontent.com/atsushi444/iptv/main/logo/Banana.png" tvg-chno="1335" group-title="Adult",玩美台 [Backup 7]
+http://15.204.105.50:25461/G2s9zK2n9m/xDtwVfWM8T/117
+#EXTINF:-1 tvg-id="USA" tvg-name="玩美台 [Backup 8]" tvg-logo="https://epg.iptvx.one/picons/russkaya-noch.png" tvg-chno="1336" group-title="Adult",玩美台 [Backup 8]
+http://a0bn5xro.rostelekom.xyz/iptv/2TBC4G2WWDG6RSUSN5SXSQEC/2057/index.m3u8
