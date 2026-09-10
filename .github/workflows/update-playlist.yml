@@ -48,6 +48,52 @@ jobs:
           REPORT = Path("reports/auto-update.md")
           DEAD_STATE = Path("reports/dead-check-state.json")
 
+          # Streams tested and rejected by the playlist owner. Never re-add them.
+          REJECTED_URLS = {
+              'http://14.199.164.20:4001/play/a0wk/index.m3u8',
+              'http://221.120.204.4/zee-tv-LOCKLE/tracks-v1a1/mono.m3u8',
+              'http://40.160.24.53/NAT_GEO/index.m3u8',
+              'http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/mohonatv.stream/tracks-v1a1/mono.m3u8',
+              'http://host.phorious.art/validation/377?deviceMac=10:27:BE:25:67:80&split=33da9c80155413830543e27c8520ba99&smart=1',
+              'http://ipm.oncast.me:1934/iplived/ip-doyeltv.stream/playlist.m3u8',
+              'http://tvsen7.aynascope.net/sspts1/index.m3u8',
+              'https://a.jsrdn.com/r-373576a3/publish/22679_24MrQma9TX/index.m3u8',
+              'https://banglajagotv.livebox.co.in/banglajagohls/24x7.m3u8',
+              'https://bozztv.com/rongo/rongo-DeshTV/tracks-v1a1/mono.m3u8',
+              'https://cdn-2.pishow.tv/live/226/master.m3u8',
+              'https://cdn-6.pishow.tv/live/13/master.m3u8',
+              'https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/bijoy00.stream/playlist.m3u8',
+              'https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/boishakhitv-org.stream/playlist.m3u8',
+              'https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/channel24-sg-e8e.stream/playlist.m3u8',
+              'https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/deshebideshe.stream/playlist.m3u8',
+              'https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/independent-8-org.stream/playlist.m3u8',
+              'https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/jamuna-test-sample-ok.stream/playlist.m3u8',
+              'https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/news24local.stream/playlist.m3u8',
+              'https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/rtv-sg.stream/playlist.m3u8',
+              'https://dai2.xumo.com/amagi_hls_data_xumo1212A-redboxgravitas/CDN/playlist.m3u8',
+              'https://feed.play.mv/live/10005200/7EsSDh7aX6/master.m3u8',
+              'https://messi.damitv.st/papi/ts/beinsports-usa/playlist.m3u8',
+              'https://moviesphere-plex.amagi.tv/playlist.m3u8',
+              'https://shls-mbcbollywood-prod-dub.shahid.net/out/v1/a79c9d7ef2a64a54a64d5c4567b3462a/index.m3u8',
+              'https://stream.ottplus.bd/live/ten_2_hd_abr/index.m3u8',
+              'https://stream.ottplus.bd/live/ten_5_hd_abr/index.m3u8',
+              'https://t26.cdn2020.com/video/m3u8/2023/09/23/b5b21e88/index.m3u8',
+              'https://t26.cdn2020.com/video/m3u8/2023/09/27/0c59ca0a/index.m3u8',
+              'https://t27.cdn2020.com/video/m3u8/2024/06/22/edbe2df5/index.m3u8',
+              'https://t27.cdn2020.com/video/m3u8/2024/09/15/2d5f67db/index.m3u8',
+              'https://t27.cdn2020.com/video/m3u8/2024/11/29/c632a6a1/index.m3u8',
+              'https://t27.cdn2020.com/video/m3u8/2024/12/21/c1fe9f10/index.m3u8',
+              'https://t27.cdn2020.com/video/m3u8/2024/12/21/d95bea26/index.m3u8',
+              'https://yowaimo.in/Sflex-ArtlPVT0719/STAR_SPORTS_SELECT_1_HD.m3u8',
+          }
+
+          def excluded_by_user(entry):
+              return (
+                  entry["url"] in REJECTED_URLS
+                  or entry["attrs"].get("group-title", "").strip().casefold() == "adult"
+                  or guess_group(entry["name"], entry["attrs"].get("group-title", "")) == "Adult"
+              )
+
           # Conservative dead-stream removal policy.
           # GitHub runners are outside Bangladesh, so timeout/DNS/connect errors,
           # 403/451 responses, and 5xx errors are NOT enough to delete a stream.
@@ -79,15 +125,7 @@ jobs:
 
           # Dedicated Adult feeds. A failure in any one source is ignored so that the
           # other feeds and the rest of the updater can continue normally.
-          ADULT_SOURCES = (
-              # Smaller / more structured source first.
-              "https://raw.githubusercontent.com/hujingguang/ChinaIPTV/main/xxx.m3u8",
-
-              # Large sources are still useful for discovery, but EVERY admitted URL
-              # must pass strict live-HLS validation below.
-              "https://raw.githubusercontent.com/sacuar/MyIPTV/main/adult.m3u",
-              "https://raw.githubusercontent.com/atsushi444/iptv/main/adult.m3u",
-          )
+          ADULT_SOURCES = ()  # Adult channels are permanently excluded by user preference.
 
           MAX_BACKUPS = 8
 
@@ -95,7 +133,7 @@ jobs:
           MAX_NEW_CHANNELS = 0
 
           # Quality matters more than quantity. This is a per-run limit.
-          MAX_NEW_ADULT_CHANNELS = 8
+          MAX_NEW_ADULT_CHANNELS = 0
 
           GROUP_ORDER = [
               "Bangladesh",
@@ -109,7 +147,6 @@ jobs:
               "Kids",
               "Religious",
               "Sports",
-              "Adult",
           ]
 
           # Exact-name aliases for common source naming differences.
@@ -228,6 +265,8 @@ jobs:
               return " ".join("".join(chars).split())
 
           def is_blocked(url: str) -> bool:
+              if url in REJECTED_URLS:
+                  return True
               low = url.lower()
               if any(x in low for x in BLOCKED):
                   return True
@@ -717,6 +756,8 @@ jobs:
           corrected_groups = []
 
           for e in master_raw:
+              if excluded_by_user(e):
+                  continue
               url_low = e["url"].lower()
 
               # Remove the proxy/Vercel links that slipped in during V1.
@@ -878,33 +919,7 @@ jobs:
                   proxy_resolved += 1
               candidates.append(x)
 
-          # Adult expansion candidates.
-          # 1) Adult entries from the lookup list.
-          # 2) All entries from dedicated Adult feeds.
-          candidate_urls = {e["url"] for e in candidates}
-
-          for e in lookup_raw:
-              if e["url"] in candidate_urls or is_blocked(e["url"]):
-                  continue
-
-              name = preferred_name(e["name"])
-              group = guess_group(name, e["attrs"].get("group-title", ""))
-              if group != "Adult":
-                  continue
-
-              x = deepcopy(e)
-              x["_adult_source"] = LOOKUP_SOURCE
-              candidates.append(x)
-              candidate_urls.add(x["url"])
-
-          for e in adult_raw:
-              if e["url"] in candidate_urls or is_blocked(e["url"]):
-                  continue
-
-              x = deepcopy(e)
-              x["attrs"]["group-title"] = "Adult"
-              candidates.append(x)
-              candidate_urls.add(x["url"])
+          candidates = [e for e in candidates if not excluded_by_user(e)]
 
           canonical = defaultdict(list)
           norm_to_canonical = defaultdict(list)
@@ -1202,13 +1217,8 @@ jobs:
               "  " + ", ".join(GROUP_ORDER),
               "- It does not create Indian News, International News, or Lifestyle categories.",
               "- Backups for existing channels inherit the primary channel's current category.",
-              f"- Up to {MAX_NEW_ADULT_CHANNELS} new Adult channels may be added automatically per run.",
-              f"- Adult expansion scans {len(ADULT_SOURCES)} dedicated Adult feeds plus the existing lookup source.",
-              f"- At most {MAX_ADULT_PREFLIGHT_CANDIDATES} Adult candidates are strictly validated per run.",
-              "- New Adult streams are accepted only after a real HLS manifest and media segment are fetched successfully.",
+              "- Adult channels and user-rejected stream URLs are excluded permanently.",
               "- VOD, geo-blocked, and explicitly not-24/7 entries are not auto-added.",
-              f"- Maximum {MAX_NEW_ADULT_PER_HOST} new Adult channels per host and {MAX_NEW_ADULT_PER_SOURCE} per source per run.",
-              "- New Adult entries need a logo or a specific non-generic tvg-id.",
           ]
 
           if deleted_dead:
