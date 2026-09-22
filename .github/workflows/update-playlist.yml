@@ -125,6 +125,8 @@ jobs:
           def channel_policy_reason(name, supplied=''):
               channel = norm(name)
               group = norm(supplied)
+              if channel == 'sananda tv':
+                  return 'defunct or misidentified channel'
               if group == 'sports' or SPORTS_CHANNEL.search(channel):
                   return 'sports channel'
               if NON_ISLAMIC_RELIGIOUS.search(channel):
