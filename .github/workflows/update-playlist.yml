@@ -101,9 +101,17 @@ jobs:
           IN_BANGLA = {'zee bangla','star jalsha','jalsha movies','sony aath',
                        'colors bangla','sun bangla','sangeet bangla','tv9 bangla'}
           FOREIGN_NEWS = re.compile(
-              r'\b(abp|aaj tak|bbc|cnbc|cnn|dd news|dw|ndtv|news18|republic|'
-              r'sky news|times now|trt world|tv9|wion|zee news)\b', re.I
+              r'\b(?:news|abp|aaj tak|bbc|cnbc|cnn|dd news|dw|ndtv|news18|'
+              r'republic|sky news|times now|trt world|tv9|wion|zee news|'
+              r'zee 24 ghanta|24 ghanta|kolkata tv|calcutta news|r plus|'
+              r'taaza tv|india tv|india today|news time bangla|bharat 24|'
+              r'good news today|gnt|news nation|india ahead|et now|mirror now)\b',
+              re.I,
           )
+
+          def is_foreign_news(name):
+              channel = norm(name)
+              return channel not in BD and bool(FOREIGN_NEWS.search(channel))
           BLOCKED = ('adult', 'porn', 'xxx', 'proxy', 'filex.me', 'vercel.app')
 
           def attrs(text):
@@ -203,7 +211,7 @@ jobs:
               supplied_group = norm(supplied)
               if any(item in channel for item in BLOCKED):
                   return None
-              if FOREIGN_NEWS.search(channel) and channel not in BD:
+              if is_foreign_news(channel):
                   return None
               if channel in BD:
                   return 'Bangladesh'
@@ -312,13 +320,17 @@ jobs:
           canonical = defaultdict(list)
           used = set()
           duplicates = 0
+          removed_foreign_news = []
           for entry in existing:
               url_key = canonical_url(entry.get('url', ''))
               if not url_key or url_key in used:
                   duplicates += 1
                   continue
-              used.add(url_key)
               entry['canonical'] = base(entry['name'])
+              if is_foreign_news(entry['canonical']):
+                  removed_foreign_news.append((entry['canonical'], entry.get('url', '')))
+                  continue
+              used.add(url_key)
               supplied_group = entry['attrs'].get('group-title', '')
               entry['group'] = (
                   supplied_group if supplied_group == 'Bangladesh Backup'
@@ -468,6 +480,7 @@ jobs:
               f'- New primary channels: **{len(added_channels)}**',
               f'- New backup streams: **{len(added_backups)}**',
               f'- Duplicate URLs removed from master: **{duplicates}**',
+              f'- Non-Bangladeshi news entries removed: **{len(removed_foreign_news)}**',
               f'- Duplicate source candidates skipped: **{skipped_duplicates}**',
               f'- Candidates blocked before testing: **{len(blocked_imports)}**',
               f'- Candidates tested concurrently: **{len(candidates)}**',
@@ -484,6 +497,8 @@ jobs:
               lines.append(f'- **{source}** — {len(entries)} entries — {elapsed:.1f}s — {status}')
           lines += ['', '## Category totals', '']
           lines += [f'- **{group}**: {totals[group]}' for group in GROUPS]
+          lines += ['', '## Removed non-Bangladeshi news channels', '']
+          lines += [f'- **{name}** — {url}' for name, url in removed_foreign_news] or ['- None']
           lines += ['', '## New primary channels', '']
           lines += [f'- **{name}** — `{group}` — {url}' for name, group, url in added_channels] or ['- None']
           lines += ['', '## New backup streams', '']
@@ -499,6 +514,7 @@ jobs:
               '- Existing membership is authoritative.',
               '- Candidate identity uses exact normalized base names; fuzzy matching is not used.',
               '- New candidates require an approved category and a logo.',
+              '- Non-Bangladeshi news channels are rejected from both existing and imported entries.',
               '- New Bangladeshi channels and backups are placed in `Bangladesh Backup`.',
               '- Proxy/masking hosts, wrappers, redirects to blocked hosts and explicit DRM settings are rejected.',
               '- Only media-like responses are accepted; HTML and empty responses are rejected.',
