@@ -62,6 +62,7 @@ jobs:
               'https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u',
               'https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u',
               'https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u',
+              'https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u',
           ]
           GROUPS = [
               'Bangladesh', 'Bangladesh Backup',
@@ -90,6 +91,11 @@ jobs:
               'kids': {'cartoon network', 'nick', 'nick jr', 'sonic', 'disney',
                        'disney junior', 'disney xd', 'hungama', 'pogo',
                        'discovery kids', 'pbs kids', 'boomerang'},
+              'indian movies': {'sony max', 'sony pix', 'zee cinema', 'zee action',
+                       'zee bollywood', 'zee cafe', 'b4u movies', 'zee bangla cinema',
+                       '& pictures'},
+              'indian music': {'b4u music', 'zing'},
+              'religious': {'islamic tv', 'saudi quran', 'saudi sunnah'},
           }
           BD = {'ananda tv','asian tv','atn bangla','atn news','banglavision',
                 'bijoy tv','boishakhi tv','btv','channel i','channel 24',
@@ -97,7 +103,8 @@ jobs:
                 'ekattor tv','ekhon tv','ekushey tv','gazi tv','jamuna tv',
                 'maasranga tv','mohona tv','my tv','nagorik tv','news 24',
                 'ntv','rtv','somoy tv','t sports','independent tv',
-                'btv news','jago news 24','news 21 bangla tv','star news'}
+                'btv news','jago news 24','news 21 bangla tv','star news',
+                'toffee tv','toffee movies','channel s','bangla tv'}
           IN_BANGLA = {'zee bangla','star jalsha','jalsha movies','sony aath',
                        'colors bangla','sun bangla','sangeet bangla','tv9 bangla'}
           FOREIGN_NEWS = re.compile(
@@ -193,12 +200,28 @@ jobs:
               url = entry.get('url', '').strip()
               try:
                   parsed = urlsplit(url)
-                  for key, value in parse_qsl(parsed.query, keep_blank_values=True):
+                  query_items = parse_qsl(parsed.query, keep_blank_values=True)
+                  query = {key.casefold(): value for key, value in query_items}
+                  for key, value in query_items:
                       if key.lower() not in {'url', 'uri', 'target', 'destination', 'redirect_url'}:
                           continue
                       target = unquote(value).strip()
                       target_parts = urlsplit(target)
                       if target_parts.scheme.lower() in {'http', 'https'} and target_parts.hostname:
+                          # The public Toffee wrapper exposes its origin and signed
+                          # cookie. Keep the origin as the stream URL and preserve the
+                          # cookie as standard M3U metadata instead of retaining the
+                          # proxy or its worker secret.
+                          cookie = unquote(query.get('cookie', '')).strip()
+                          if cookie and (parsed.hostname or '').lower().endswith(
+                              ('workers.dev', 'pages.dev')
+                          ):
+                              entry['_http_cookie'] = cookie
+                              entry['extras'] = [
+                                  line for line in entry.get('extras', [])
+                                  if not line.lower().startswith('#extvlcopt:http-cookie=')
+                              ]
+                              entry['extras'].append(f'#EXTVLCOPT:http-cookie={cookie}')
                           entry['url'] = target
                           return target
               except ValueError:
@@ -282,10 +305,10 @@ jobs:
               url = entry['url']
               started = time.monotonic()
               try:
-                  request = urllib.request.Request(
-                      url,
-                      headers={'User-Agent': 'Mozilla/5.0', 'Range': 'bytes=0-2047'},
-                  )
+                  headers = {'User-Agent': 'Mozilla/5.0', 'Range': 'bytes=0-2047'}
+                  if entry.get('_http_cookie'):
+                      headers['Cookie'] = entry['_http_cookie']
+                  request = urllib.request.Request(url, headers=headers)
                   with urllib.request.urlopen(request, timeout=STREAM_TIMEOUT) as response:
                       status = getattr(response, 'status', 200)
                       final_url = response.geturl()
@@ -368,6 +391,28 @@ jobs:
               )
               canonical[norm(entry['canonical'])].append(entry)
 
+          SOURCE_NAME_ALIASES = {
+              'sony ten sports 1': 'sony ten 1',
+              'sony ten sports 2': 'sony ten 2',
+              'sony ten sports 5': 'sony ten 5',
+              'eurosport': 'euro sport',
+              'b4u movies apac': 'b4u movies',
+              'sony entertainment television': 'sony entertainment tv',
+              'hum': 'hum tv',
+          }
+
+          def source_identity(name):
+              key = norm(name)
+              variants = [key]
+              without_quality = re.sub(r'\b(?:fhd|hd|sd)\b', ' ', key)
+              variants.append(re.sub(r'\s+', ' ', without_quality).strip())
+              for variant in list(variants):
+                  variants.append(SOURCE_NAME_ALIASES.get(variant, variant))
+              for variant in variants:
+                  if variant in canonical:
+                      return variant
+              return SOURCE_NAME_ALIASES.get(variants[-1], variants[-1])
+
           source_entries, source_results = parse_sources()
           blocked_imports = []
           rejected_names = []
@@ -391,7 +436,7 @@ jobs:
               if reason:
                   blocked_imports.append((name, url, reason))
                   continue
-              key = norm(name)
+              key = source_identity(name)
               target = canonical.get(key, [])
               if target:
                   primary = target[0]
