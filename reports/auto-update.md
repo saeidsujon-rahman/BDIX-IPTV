@@ -1,63 +1,71 @@
 # IPTV Auto Update
 
-Generated: **2026-09-22T18:05:51.247975+00:00**
+Generated: **2026-09-22T18:25:35.752087+00:00**
 
 ## Summary
 
-- Final playlist entries: **801**
-- New primary channels: **1**
-- New backup streams: **5**
-- Duplicate URLs removed from master: **0**
-- Non-Bangladeshi news entries removed: **4**
-- Duplicate source candidates skipped: **356**
-- Candidates blocked before testing: **701**
-- Candidates tested concurrently: **131**
-- Dead/invalid responses: **125**
-- Candidates skipped by backup limits: **24**
+- Final playlist entries: **679**
+- New primary channels: **3**
+- New backup streams: **2**
+- Duplicate/semantic-duplicate URLs removed from master: **0**
+- Non-Bangladeshi news entries removed: **0**
+- Sports/non-Islamic religious entries removed: **0**
+- Proxy/expired/invalid existing streams removed: **3**
+- Excess backups trimmed: **0**
+- Duplicate source candidates skipped: **343**
+- Candidates blocked before testing: **810**
+- Candidates tested concurrently: **39**
+- Dead/invalid responses: **33**
+- Candidates skipped by backup limits: **14**
 - Candidates omitted by safety cap: **0**
 - Stream-check workers: **20**
-- Parallel stream-check time: **18.0s**
+- Parallel stream-check time: **6.2s**
 
 ## Source status
 
-- **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.4s — OK
-- **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.4s — OK
-- **https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u** — 422 entries — 0.4s — OK
-- **https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u** — 33 entries — 0.4s — OK
+- **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.3s — OK
+- **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.5s — OK
+- **https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u** — 422 entries — 0.3s — OK
+- **https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u** — 33 entries — 0.2s — OK
 
 ## Category totals
 
-- **Bangladesh**: 54
-- **Bangladesh Backup**: 103
-- **Indian Bangla**: 58
-- **Indian Movies**: 71
-- **Indian Music**: 54
-- **Indian Entertainment**: 110
+- **Bangladesh**: 51
+- **Bangladesh Backup**: 76
+- **Indian Bangla**: 50
+- **Indian Movies**: 66
+- **Indian Music**: 51
+- **Indian Entertainment**: 100
 - **International Movies**: 46
-- **International Music**: 53
-- **Documentary & Wildlife**: 84
-- **Kids**: 75
-- **Religious**: 35
-- **Sports**: 58
+- **International Music**: 52
+- **Documentary & Wildlife**: 83
+- **Kids**: 72
+- **Religious**: 32
 
 ## Removed non-Bangladeshi news channels
 
-- **kolkata TV** — https://tvsen6.aynaott.com/kolkatatv/index.m3u8?e=1784102634&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7dd61eff112afc871fa5ff030faacde9
-- **R Plus Gold** — https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/cf883da3-f9f5-4c70-b0ef-b3ac2e2ad1e3/index.m3u8
-- **R Plus Gold** — https://thelegitpro.in/pntv/rplusnews24x7/tracks-v1a1/mono.m3u8
-- **Zee 24 Ghanta** — https://tvsen6.aynaott.com/DpPnXP9r/index.m3u8?e=1784102633&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=4dfe1eedcd3d06e8d4e5f73751abcf2a
+- None
+
+## Removed by channel policy
+
+- None
+
+## Removed proxy, expired or invalid existing streams
+
+- **Sony AATH** — dynamic stream wrapper — https://digitalotthub.com/tv/toffee-by-maruf/live.php?id=sonyaath&e=.m3u8
+- **Jalwa** — credential-wrapped URL — https://tiger-hub.vercel.app@vodzong.mjunoon.tv:8087/streamtest/JalwaTV-135/playlist.m3u8
+- **National Geographic** — dynamic stream wrapper — http://main.light-ott.net:80/play/live.php?mac=00:1A:79:17:28:41&stream=373017&extension=ts&play_token=zCaGy5dtla
 
 ## New primary channels
 
-- **Khushboo** — `Indian Bangla` — https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8?e=1784102631&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=98108f8c82a0dc91e30e52fe77713a09
+- **Sun Bangla** — `Indian Bangla` — http://27.124.71.27/Sun_Bangla/index.m3u8
+- **Zee Bangla Cinema** — `Indian Bangla` — https://d1g8wgjurz8via.cloudfront.net/bpk-tv/ColorsHD/default/master2.m3u8
+- **Sananda Tv** — `Indian Bangla` — http://live-stream.amarbanglatv.in:8080/hls/sanandatv/index.m3u8
 
 ## New backup streams
 
-- **Goldmines [Backup 1]** — `Indian Movies` — https://tvsen6.aynaott.com/hKrngve2/index.m3u8?e=1784102592&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c2995b4981869497cd8659e3a739f2d1
-- **Goldmines Movies [Backup 1]** — `Indian Movies` — https://tvsen6.aynaott.com/FsD43fcG/index.m3u8?e=1784102593&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=5da1770fba3540984206a834fafb382a
-- **Dangal [Backup 2]** — `Indian Entertainment` — https://tvsen6.aynaott.com/uS9QwrbB/index.m3u8?e=1784102594&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=1f2a210560b673b66b0d398f2d6fc2fd
-- **Cricket Gold [Backup 1]** — `Sports` — https://tvsen6.aynaott.com/M2W2UR49dmeKbZnmdRzN/index.m3u8?e=1784102657&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=46102f1b8150e3d7fda5eb1ee9ffd94e
-- **Cricket Gold [Backup 2]** — `Sports` — https://tvsen6.aynaott.com/M2W2UR49dmeKbZnmdRzN/index.m3u8
+- **RTV [Backup 4]** — `Bangladesh Backup` — http://iptv.rtv-ooe.at/stream.m3u8
+- **Zee Bangla Sonar [Backup 2]** — `Indian Bangla` — https://d1g8wgjurz8via.cloudfront.net/bpk-tv/NGCHD/default/NGCHD.m3u8
 
 ## Blocked stream imports
 
@@ -730,6 +738,7 @@ Generated: **2026-09-22T18:05:51.247975+00:00**
 - **Televisa Telenovelas** — proxy/masking or URL-shortener host — https://iptvlive.ahmed-bd-org.workers.dev/televisa-telenovelas-1/index.m3u8
 - **SportOutdoor.tv** — proxy/masking or URL-shortener host — https://iptvlive.ahmed-bd-org.workers.dev/sportoutdoortv-1/index.m3u8
 - **CGtv** — proxy/masking or URL-shortener host — https://iptvlive.ahmed-bd-org.workers.dev/cgtv-1/index.m3u8
+- **Live Cricket** — expired access token — https://tvsen6.aynaott.com/zv68oqPDu7MZZwmHhRxt/index.m3u8?e=1784102512&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=968935df4fd0678de5d7fe392c0610d9
 - **Jamuna TV** — proxy/masking or URL-shortener host — https://iptv-proxy.ahmed-bd-org.workers.dev/jamuna-tv/index.m3u8
 - **DBC News HD** — proxy/masking or URL-shortener host — https://iptv-proxy.ahmed-bd-org.workers.dev/dbc-news/index.m3u8
 - **NTV** — proxy/masking or URL-shortener host — https://iptv-proxy.ahmed-bd-org.workers.dev/ntv/index.m3u8
@@ -760,8 +769,116 @@ Generated: **2026-09-22T18:05:51.247975+00:00**
 - **Stiletv** — proxy hostname — https://proxy.media.convergenze.it/stiletv/streams/oQOFd7JglHjO1631525551097.m3u8
 - **Pro TV** — wrapped destination or access/license parameter — https://cmero-ott-live.ssl.cdn.cra.cz/channels/cme-ro-voyo-news/playlist.m3u8?offsetSeconds=0&url=0
 - **Welcome to PlayZ TV** — proxy/masking or URL-shortener host — https://playztv.pages.dev/promo/master.m3u8
+- **Unite8 Sports 1** — expired access token — https://tvsen6.aynaott.com/superlaliga/index.m3u8?e=1784102509&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b6e220b27addbd7e852fe6671bff5738
+- **Unite8 Sports 2** — expired access token — https://tvsen7.aynaott.com/Sports1/index.m3u8?e=1784102510&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&ip=52.157.32.49&token=3d148447575a06fa99eb4be6e5d9a318
+- **Willow TV** — expired access token — https://tvsen5.aynaott.com/willowhd/index.m3u8?e=1784102512&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7058af1b60fb3bcfd7f687bf5b7866aa
+- **Fox Sports 2** — expired access token — https://tvsen7.aynaott.com/foxsports2/index.m3u8?e=1784102513&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d99d64707b3804bb93d8e2a7dc7c2ec3
+- **Bein Sports** — expired access token — https://tvsen6.aynaott.com/beinsports/index.m3u8?e=1784102515&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=67d5960a5b93b5cfcf562312b4627330
+- **Sports Grid** — expired access token — https://tvsen6.aynaott.com/SportsGrid/index.m3u8?e=1784102516&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=805223f37eb8e43994f002e68e736eea
+- **TSN 1** — expired access token — https://tvsen7.aynaott.com/tsn1/index.m3u8?e=1784102517&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=875a4be5959340b6ce790a1dcac84130
+- **TSN 2** — expired access token — https://tvsen7.aynaott.com/tsn2/index.m3u8?e=1784102518&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7cba9240a1b91322266a3f7c57824bb3
+- **TSN 3** — expired access token — https://tvsen7.aynaott.com/tsn3/index.m3u8?e=1784102519&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7198307d4f6898a7cd02e15c336fa0ae
+- **Golf Channel** — expired access token — https://tvsen6.aynaott.com/golfchannel/index.m3u8?e=1784102520&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b1b12d40a9966b3fbfc1653626e09f42
+- **NFL Network** — expired access token — https://tvsen6.aynaott.com/nfl/index.m3u8?e=1784102521&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b788fb69852f06155761f8a22c9676c4
+- **Talk Sport** — expired access token — https://tvsen6.aynaott.com/talkSPORT/index.m3u8?e=1784102522&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=a3506be66a1595e3d3572c6fc3547dc7
+- **Marquee Sports Network** — expired access token — https://tvsen6.aynaott.com/MarqueeSportsNetwork/index.m3u8?e=1784102523&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=93bce8c31c0b8ab66f85c4aa716baae0
+- **Espn** — expired access token — https://tvsen5.aynaott.com/espn/index.m3u8?e=1784102528&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d701f3665e12964090ddd656a9a89c29
+- **Cricket Gold** — expired access token — https://tvsen6.aynaott.com/M2W2UR49dmeKbZnmdRzN/index.m3u8?e=1784102529&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ae32567acc583949116a1ea5f4410044
+- **BT Sports 2** — expired access token — https://tvsen6.aynaott.com/btSport2/index.m3u8?e=1784102530&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=de4c666535fcd6f7a743880c028ac891
 - **TNT Sport 1** — invalid or unsupported stream URL — hls://103.205.133.70/TntSports1HD/index.m3u8
-- **Animal Planet HD** — credential-wrapped URL — https://tiger-hub.vercel.app@vodzong.mjunoon.tv:8087/streamtest/Animal-Planet-158-3/playlist.m3u8
+- **BTV News** — expired access token — https://tvsen6.aynaott.com/tV8mB2zP7rX4kL1w/index.m3u8?e=1784102532&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=20448821bed8f397806d492c1b39da46
+- **Channel 24** — expired access token — https://tvsen6.aynaott.com/YrVDF8gu/index.m3u8?e=1784102534&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=af07191085f18faa873302c2d8cdff28
+- **Independent TV** — expired access token — https://tvsen6.aynaott.com/Wef2Vj67njeYGDqQNFB9/index.m3u8?e=1784102536&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=faa76e200f238010e464d45a3135f138
+- **BBC News** — expired access token — https://tvsen6.aynaott.com/bbcnews/index.m3u8?e=1784102536&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=5e9078a7846dc502cd318c96824709e2
+- **CNN** — expired access token — https://tvsen6.aynaott.com/cnn/index.m3u8?e=1784102537&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3d319d99045811bace569a7cc2885eb3
+- **AlJazeera** — expired access token — https://tvsen6.aynaott.com/euNaV2R5/index.m3u8?e=1784102538&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=889140eadf3be89eae9410f2da1b32c5
+- **Bloomberg TV** — expired access token — https://tvsen6.aynaott.com/bloombergtv/index.m3u8?e=1784102539&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=f3fc3aaf7592e99b0e130d2c47373099
+- **CNBC TV** — expired access token — https://tvsen6.aynaott.com/cnbc/index.m3u8?e=1784102539&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=79af8268c0330df2560ca626432a0d66
+- **CP 24** — expired access token — https://tvsen6.aynaott.com/cp24/index.m3u8?e=1784102540&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=1d0fe8aec5413766c44876cc752f4900
+- **MSNBC News** — expired access token — https://tvsen6.aynaott.com/msnbc/index.m3u8?e=1784102541&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=68093cc976c69de22a5f01b8034edf41
+- **ABC News** — expired access token — https://tvsen6.aynaott.com/AbcNews/index.m3u8?e=1784102541&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=52b8ba78cc6aa66f187f91e92fe8f52c
+- **Sky News** — expired access token — https://tvsen5.aynaott.com/skynews/index.m3u8?e=1784102543&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=adcd9273f21cb19a982ad314a5367a29
+- **LIFE TIME** — expired access token — https://tvsen7.aynaott.com/lifetime/index.m3u8?e=1784102543&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=337f2f905c6a6c7884636d4b7919562d
+- **NHK World** — expired access token — https://tvsen6.aynaott.com/xfJ3PuYS/index.m3u8?e=1784102545&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=dbc117649b51bf27bb2048647c01a038
+- **Fox 5** — expired access token — https://tvsen6.aynaott.com/fox5/index.m3u8?e=1784102545&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=664911dcae498c56f125594ce7372f6f
+- **Fox business** — expired access token — https://tvsen6.aynaott.com/foxbusiness/index.m3u8?e=1784102546&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=cac9ac4bc54a6e48978f2fae429de506
+- **WEATHER CHANNEL** — expired access token — https://tvsen6.aynaott.com/TheWeatherChannel/index.m3u8?e=1784102549&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c4aa612a94336a51a339dd5c52d6242d
+- **TIME TV USA** — expired access token — https://tvsen7.aynaott.com/eQbvBDhUkVuCovH2bT66/index.m3u8?e=1784102551&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=0bd05d2925ab60f042d2623d5acb29de
+- **Republic TV Bharat** — expired access token — https://tvsen6.aynaott.com/faGd3tuq/index.m3u8?e=1784102553&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=8133079644fb0609090a409e519aaa73
+- **Hindi Khabar** — expired access token — https://tvsen7.aynaott.com/HindiKhabar/index.m3u8?e=1784102554&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=815bee841efa174fe7bce8b61da9833e
+- **News 1 India** — expired access token — https://tvsen6.aynaott.com/TaVfw58T/index.m3u8?e=1784102555&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=48799eef4dce6bc5c63337d0e5a2312c
+- **Sadhna Prime News** — expired access token — https://tvsen6.aynaott.com/WZUs6gAU/index.m3u8?e=1784102556&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=49ac20f3ecb8e9577b16afd7195615fa
+- **ANB News** — expired access token — https://tvsen6.aynaott.com/H5aeGVSj/index.m3u8?e=1784102558&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d854e648379933601524b35077263247
+- **NTV** — expired access token — https://tvsen5.aynaott.com/JHPxHAWonztVucyc4GzF/index.m3u8?e=1784102559&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d26add1c49d848c9199b708427134979
+- **Gazi TV** — expired access token — https://tvsen5.aynaott.com/Ravc7gPCZpxk/index.m3u8?e=1784102565&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=36497099fc726a799b13d41016259efc
+- **Channel 9** — expired access token — https://tvsen6.aynaott.com/kajlsd57jnkdf/index.m3u8?e=1784102566&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=de9d33cfd8daf9a7f2e56a88534d0548
+- **IBTV USA** — expired access token — https://tvsen7.aynaott.com/ibtvusa/index.m3u8?e=1784102566&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3bc7a2a5fe20a69e8fadc40261b2cbba
+- **MADANI TV** — expired access token — https://tvsen7.aynaott.com/MadaniTV/index.m3u8?e=1784102568&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=53ed67e964fe885411421a49f01856fb
+- **Peace TV Bangla HD** — expired access token — https://tvsen7.aynaott.com/xM9hpJpqLqs83ZrvkeBG/index.m3u8?e=1784102568&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=90ea05f54cbc7e469d26591ca7a526e4
+- **Global TV** — expired access token — https://tvsen6.aynaott.com/y0q9eFAuquAtvTxRzUHq/index.m3u8?e=1784102573&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3b36e6e9d0ee3e8ec8ddd9a8c61acf71
+- **Green TV HD** — expired access token — https://tvsen6.aynaott.com/cLuA3hJR/index.m3u8?e=1784102578&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=57bcdefd396bd85d72461ff29cbde00d
+- **Cartoon Network** — expired access token — https://tvsen5.aynaott.com/cartoonnetwork/index.m3u8?e=1784102579&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=9563d33da06516fd262e9156a110a8d8
+- **Disney JR** — expired access token — https://tvsen7.aynaott.com/disneyjr/index.m3u8?e=1784102580&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=6a87c2e077df270ccd0de2c2e611177c
+- **Nicktoons** — expired access token — https://tvsen5.aynaott.com/nicktoons/index.m3u8?e=1784102580&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=8eaa14af29c832e9b2b22399a5dfd762
+- **Nickjr** — expired access token — https://tvsen5.aynaott.com/nickjr/index.m3u8?e=1784102581&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=1a9cf0bc5e79f08de29d345545216d31
+- **Discovery Family** — expired access token — https://tvsen5.aynaott.com/discoveryfamily/index.m3u8?e=1784102581&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7551ec4daacd3d773ab2a992615f1f6c
+- **Disney Channel** — expired access token — https://tvsen7.aynaott.com/disney/index.m3u8?e=1784102582&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=a212272f110a3334f0ef1dab82346a2c
+- **Disney XD** — expired access token — https://tvsen5.aynaott.com/disneyxd/index.m3u8?e=1784102583&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ef40738201244a8d2cd440ce648b5fc6
+- **Family JR** — expired access token — https://tvsen5.aynaott.com/familyjr/index.m3u8?e=1784102583&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=f07cdf73f07a49d18a334d98b734ddf4
+- **Nickelodeon** — expired access token — https://tvsen7.aynaott.com/nicklodean/index.m3u8?e=1784102584&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=81eb7a6fadc0212e5a961b40ee037c49
+- **Teen Nick** — expired access token — https://tvsen7.aynaott.com/teennick/index.m3u8?e=1784102584&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d43b3bb62ef7f77b2a1199b0cbd11f74
+- **Moonbug Kids** — expired access token — https://tvsen6.aynaott.com/MoonbugKids/index.m3u8?e=1784102587&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=bb483e4de44847e04d2d1fbbf8098cd7
+- **3ABN Kids** — expired access token — https://tvsen6.aynaott.com/3abnkids/index.m3u8?e=1784102588&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3a88dd05abf3d2a88da7c3754b99c5e6
+- **Network 10** — expired access token — https://tvsen6.aynaott.com/Network10/index.m3u8?e=1784102589&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ce8f95de4868ba48e754638e36f90109
+- **9X Tashan** — expired access token — https://tvsen6.aynaott.com/9X_Tashan/index.m3u8?e=1784102590&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c021d7a607b33144aa5b0b83089b0fb5
+- **9x Jalwa** — expired access token — https://tvsen6.aynaott.com/CiPT1VTG8bVekeAZiibd/index.m3u8?e=1784102591&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=6ff3e5a92d4d71f3fc281780d3831c05
+- **Goldmines** — expired access token — https://tvsen6.aynaott.com/hKrngve2/index.m3u8?e=1784102592&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c2995b4981869497cd8659e3a739f2d1
+- **Goldmines Movies** — expired access token — https://tvsen6.aynaott.com/FsD43fcG/index.m3u8?e=1784102593&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=5da1770fba3540984206a834fafb382a
+- **Goldmines Bollywood** — expired access token — https://tvsen6.aynaott.com/55xNrLdf/index.m3u8?e=1784102593&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=bdf9e0d52656d2f220337254a719a208
+- **Dangal 2** — expired access token — https://tvsen6.aynaott.com/U8SSRsqP/index.m3u8?e=1784102594&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=e51e1a1419a8e13a78b319b915184125
+- **Dangal** — expired access token — https://tvsen6.aynaott.com/uS9QwrbB/index.m3u8?e=1784102594&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=1f2a210560b673b66b0d398f2d6fc2fd
+- **Shemaroo TV** — expired access token — https://tvsen6.aynaott.com/D3NDt6gn/index.m3u8?e=1784102595&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=2347b8a1b6f0ba558b12440528ea38a5
+- **The Q** — expired access token — https://tvsen6.aynaott.com/3PjZZahm/index.m3u8?e=1784102596&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=92ddc6a5821e135aef133dbd8b8b6fc7
+- **Taaza TV** — expired access token — https://tvsen7.aynaott.com/TaazaTV/index.m3u8?e=1784102596&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=494643e330e44e6ef06dc35ccda0ac7c
+- **Dhinchaak** — expired access token — https://tvsen6.aynaott.com/a2cKGQtB/index.m3u8?e=1784102597&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=18f202477e23fba0f1d6d5e94ac5c4f3
+- **Manoranjan TV** — expired access token — https://tvsen6.aynaott.com/vhu6qz5Nsd/index.m3u8?e=1784102598&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=a7992b8a768b673dd9befef8df89c6e8
+- **CGTN Docu** — expired access token — https://tvsen6.aynaott.com/cgtnDocumentary/index.m3u8?e=1784102601&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=e219182793529f01b10009fa276c071e
+- **AXS** — expired access token — https://tvsen6.aynaott.com/axs/index.m3u8?e=1784102603&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=5b48c4a7bd1890ccb2bba27e4471f1db
+- **Travel Channel** — expired access token — https://tvsen6.aynaott.com/travelxp/index.m3u8?e=1784102608&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=2d204479cea4c71c2290102ae4d75ea1
+- **MTV** — expired access token — https://tvsen6.aynaott.com/mtv/index.m3u8?e=1784102610&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b99f4b905260714794250d1410a936a2
+- **AMC TV** — expired access token — https://tvsen6.aynaott.com/amc/index.m3u8?e=1784102611&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ea6c08b4d5db4f78b5d801f40610e3e0
+- **Nat Geo TV** — expired access token — https://tvsen6.aynaott.com/natgeo/index.m3u8?e=1784102611&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=be23b688e0d8482e77b3a038a220a900
+- **HBO** — expired access token — https://tvsen5.aynaott.com/MehaSAh6/index.m3u8?e=1784102613&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=63800af70a1a86c816985ecf6e9de82f
+- **HBO 2** — expired access token — https://tvsen7.aynaott.com/hbo2/index.m3u8?e=1784102613&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=40fc8084b5fc57624decaf17689aa4e3
+- **EPIX TV** — expired access token — https://tvsen7.aynaott.com/epix/index.m3u8?e=1784102614&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=59a2e109d32014e09775390d135382f5
+- **HGTV** — expired access token — https://tvsen7.aynaott.com/hgtv/index.m3u8?e=1784102615&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=1314fc6868b96607d2b88ebf38af1736
+- **CBS TV** — expired access token — https://tvsen7.aynaott.com/cbs/index.m3u8?e=1784102616&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=090e7d0dc284e7ec6ad993c1a8c9fc18
+- **USA TV** — expired access token — https://tvsen6.aynaott.com/usa/index.m3u8?e=1784102617&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3859c38f5a35c0c3d95b5244f5e393d4
+- **FX TV** — expired access token — https://tvsen7.aynaott.com/fx/index.m3u8?e=1784102617&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=fd5a4237c19f16cb306dcfd4e312ad23
+- **pix 11** — expired access token — https://tvsen6.aynaott.com/pix11/index.m3u8?e=1784102618&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=a0dee7e79b0bdfa720434250b5fa6240
+- **YTV** — expired access token — https://tvsen6.aynaott.com/ytv/index.m3u8?e=1784102618&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=984e9148885e8c2f8cc1fbbf456eaa27
+- **BRAVO** — expired access token — https://tvsen7.aynaott.com/bravo/index.m3u8?e=1784102619&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3b78032bd928888aede14d2a4c6d4232
+- **COOKING TV** — expired access token — https://tvsen7.aynaott.com/cooking/index.m3u8?e=1784102620&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=5b879064b7a6da5ae5e100c1f71ad522
+- **TLC HD** — expired access token — https://tvsen6.aynaott.com/tlc_hd/index.m3u8?e=1784102621&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=032b2c039214b5eb81d1d06aac66a512
+- **COMEDY CENTRAL** — expired access token — https://tvsen7.aynaott.com/comedycentral/index.m3u8?e=1784102621&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=27fa1c9d3a8441fe7c5b8c05a081c9b5
+- **Food Network** — expired access token — https://tvsen6.aynaott.com/foodnetwork/index.m3u8?e=1784102622&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=dabd0667017770543635be4bb1f63c22
+- **LAFF TV** — expired access token — https://tvsen7.aynaott.com/laff/index.m3u8?e=1784102623&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=faf783961c7c677ea0d1dfef140ad3ca
+- **SYFY TV** — expired access token — https://tvsen7.aynaott.com/syfy/index.m3u8?e=1784102623&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=5e174d1f2948823df1ef557767e4aa8d
+- **RDS Social TV** — expired access token — https://tvsen6.aynaott.com/RDSSocialTV/index.m3u8?e=1784102624&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=1ac300264468f2f6fe391b1cac109e95
+- **TAQBEER** — expired access token — https://tvsen7.aynaott.com/takbeer/index.m3u8?e=1784102625&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=81782f6025584e79ffd591d834ff3fb0
+- **Eman Channel** — expired access token — https://tvsen6.aynaott.com/eman/index.m3u8?e=1784102626&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ac68781519dc02fa881bb036e27720d6
+- **Deen TV** — expired access token — https://tvsen7.aynaott.com/deen/index.m3u8?e=1784102626&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=0e3dce4bf23e1ea8b102191022c0dfcc
+- **Peace TV Urdu HD** — expired access token — https://tvsen6.aynaott.com/PeaceTVUrduHD/index.m3u8?e=1784102628&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7cf820bc700fe8ed9e8b0084f0c6f84b
+- **Islam TV** — expired access token — https://tvsen6.aynaott.com/islam/index.m3u8?e=1784102629&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=08e8a8df941b53b9792355f81b43937e
+- **Sangeet Bangla** — expired access token — https://tvsen6.aynaott.com/hT5jHczt/index.m3u8?e=1784102630&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=36c90e8e5a1cee8374378d93fb7c4971
+- **Khushboo** — expired access token — https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8?e=1784102631&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=98108f8c82a0dc91e30e52fe77713a09
+- **Republic Bangla** — expired access token — https://tvsen5.aynaott.com/qRHda6ax/index.m3u8?e=1784102632&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=f74b592fbf23b79d3f770baf76fefd5d
+- **Zee 24 Ghanta** — expired access token — https://tvsen6.aynaott.com/DpPnXP9r/index.m3u8?e=1784102633&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=4dfe1eedcd3d06e8d4e5f73751abcf2a
+- **kolkata TV** — expired access token — https://tvsen6.aynaott.com/kolkatatv/index.m3u8?e=1784102634&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7dd61eff112afc871fa5ff030faacde9
+- **Assam Talks** — expired access token — https://tvsen7.aynaott.com/AssamTalks/index.m3u8?e=1784102635&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c5ae931b66e2b3bb39f8dcc43ef2118d
+- **R Plus Gold** — expired access token — https://tvsen6.aynaott.com/RplusGold/index.m3u8?e=1784102636&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b861d971e5f250a869df24cffd35d888
+- **News Time Bangla** — expired access token — https://tvsen6.aynaott.com/NewsTime/index.m3u8?e=1784102637&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=31255bb35aab8fb1f34e5e741754152c
+- **PTV Sports** — expired access token — https://tvsen7.aynaott.com/zY3hJ7pQ2vM5gD8s/index.m3u8?e=1784102651&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&ip=52.157.32.49&token=258517a6abcacd20116947f2c3132059
 
 ## Dead or invalid stream imports
 
@@ -769,56 +886,22 @@ Generated: **2026-09-22T18:05:51.247975+00:00**
 - **Zee Bangla HD** — URLError: <urlopen error [Errno 111] Connection refused> — http://103.159.180.34:5001/live/625.m3u8
 - **Sony Max 2** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://stream.ottplus.bd/live/max_2_abr/live/max_2_720/chunks.m3u8
 - **Music India** — HTTPError: HTTP Error 404: Not Found — https://cdn-2.pishow.tv/live/226/master.m3u8
-- **PTV Sports** — HTTPError: HTTP Error 403: Forbidden — https://saseries.akamaized.net/hls/live/2110097/2353jkiL-tapmad/master.m3u8
-- **Star Sports 1** — HTTPError: HTTP Error 404: Not Found — http://tvsen7.aynascope.net/sspts1/index.m3u8
-- **Star Sports SL 1** — URLError: <urlopen error [Errno -3] Temporary failure in name resolution> — https://yowaimo.in/Sflex-ArtlPVT0719/STAR_SPORTS_SELECT_1_HD.m3u8
-- **Star Sports SL 2** — URLError: <urlopen error [Errno -3] Temporary failure in name resolution> — https://yowaimo.in/Sflex-ArtlPVT0719/STAR_SPORTS_SELECT_2_HD.m3u8
-- **Sony Ten 1** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://stream.ottplus.bd/live/ten_1_hd_abr/index.m3u8
-- **Sony Ten 2** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://stream.ottplus.bd/live/ten_2_hd_abr/index.m3u8
-- **Sony Ten 5** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://stream.ottplus.bd/live/ten_5_hd_abr/index.m3u8
 - **National Geographic HD** — HTTPError: HTTP Error 404: Not Found — http://40.160.24.53/NAT_GEO/index.m3u8
 - **Sangeet Bangla** — HTTPError: HTTP Error 404: Not Found — https://cdn-4.pishow.tv/live/1143/master.m3u8
-- **Star Sports 1** — URLError: <urlopen error timed out> — https://cdn6.zohanayaan.com:1686/hls/star1in.m3u8?md5=z01bfeJKZboZw759qZ_TTw&expires=1790102122
-- **Star Sports 1 Hindi** — URLError: <urlopen error timed out> — https://cdn8.zohanayaan.com:1686/hls/starhindi.m3u8?md5=ICl-zC6TxMiNyAJSpq88Gw&expires=1790102123
-- **PTV Sports** — URLError: <urlopen error timed out> — https://cdn7.zohanayaan.com:1686/hls/ptvpk.m3u8?md5=d80nnMfudOW5JE3rN9Fr2w&expires=1790102123
-- **A Sports HD** — URLError: <urlopen error timed out> — https://cdn10.zohanayaan.com:1686/hls/asportshd.m3u8?md5=CI6ifIvcCe5GWBUwxtUcRQ&expires=1790102125
-- **Sky Sports Cricket** — URLError: <urlopen error timed out> — https://cdn2.zohanayaan.com:1686/hls/skyscric.m3u8?md5=ZEToDsjDzRkwBdFSye_e7Q&expires=1790102125
-- **Sky Sports Action** — URLError: <urlopen error timed out> — https://cdn1.zohanayaan.com:1686/hls/skysact.m3u8?md5=LDZAVKww5Yv3zoAZBn9ULQ&expires=1790102130
-- **Sky Sports Football** — URLError: <urlopen error timed out> — https://cdn10.zohanayaan.com:1686/hls/skysfott.m3u8?md5=EKyM62L1vIyQQm-ScX1u2A&expires=1790102131
-- **Espn** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/espn/index.m3u8?e=1784102528&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d701f3665e12964090ddd656a9a89c29
-- **BTV News** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/tV8mB2zP7rX4kL1w/index.m3u8?e=1784102532&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=20448821bed8f397806d492c1b39da46
+- **MY TV** — URLError: <urlopen error timed out> — https://mytvbangla.com/0.m3u8
 - **Star News** — HTTPError: HTTP Error 403: Forbidden — https://owrcovcrpy.gpcdn.net/bpk-tv/1710/output/1701.m3u8
-- **Channel 24** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/YrVDF8gu/index.m3u8?e=1784102534&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=af07191085f18faa873302c2d8cdff28
-- **Independent TV** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/Wef2Vj67njeYGDqQNFB9/index.m3u8?e=1784102536&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=faa76e200f238010e464d45a3135f138
-- **Channel 9** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/kajlsd57jnkdf/index.m3u8?e=1784102566&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=de9d33cfd8daf9a7f2e56a88534d0548
-- **Disney JR** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/disneyjr/index.m3u8?e=1784102580&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=6a87c2e077df270ccd0de2c2e611177c
-- **9X Tashan** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/9X_Tashan/index.m3u8?e=1784102590&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c021d7a607b33144aa5b0b83089b0fb5
-- **MTV** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/mtv/index.m3u8?e=1784102610&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b99f4b905260714794250d1410a936a2
-- **Sangeet Bangla** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/hT5jHczt/index.m3u8?e=1784102630&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=36c90e8e5a1cee8374378d93fb7c4971
-- **PTV Sports** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/zY3hJ7pQ2vM5gD8s/index.m3u8?e=1784102651&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&ip=52.157.32.49&token=258517a6abcacd20116947f2c3132059
-- **Espn** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/espn/index.m3u8?e=1784102653&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=fbc560646ea38d9fce118fcd264926c5
-- **PTV Sports** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/zY3hJ7pQ2vM5gD8s/index.m3u8?e=1784102658&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&ip=52.157.32.49&token=b75669e4aa0dd58c602b637ab66af304
 - **BTV** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/opREbXLqJ2HFYPCXTJBa/index.m3u8
 - **Nikki HD** — HTTPError: HTTP Error 403: Forbidden — https://nomawnoijl.gpcdn.net/akash/nikky/playlist.m3u8
+- **Colors Bangla HD** — URLError: <urlopen error [Errno 111] Connection refused> — http://103.151.61.12/COLORS_BANHLA/tracks-v1a1/mono.m3u8
 - **Akash Bangla** — URLError: <urlopen error [Errno 111] Connection refused> — https://live.thebosstv.com:30443/dwlive/AAKAASH-AATH/playlist.m3u8
 - **Khusbo Bangla** — URLError: <urlopen error timed out> — http://103.175.73.12:8080/live/375/375_0.m3u8
 - **Sony Sab HD** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://stream.ottplus.bd/live/sub_hd_abr/index.m3u8
-- **Ten Cricket** — HTTPError: HTTP Error 403: Forbidden — https://s2.itcnbd.live/server-2/stream/ten_cricket.m3u8
-- **TUDN** — HTTPError: HTTP Error 403: Forbidden — https://messi.damitv.st/papi/ts/tudn-usa/playlist.m3u8
-- **Bein Sports** — HTTPError: HTTP Error 403: Forbidden — https://messi.damitv.st/papi/ts/beinsports-usa/playlist.m3u8
-- **Bleav Football** — HTTPError: HTTP Error 404: Not Found — https://linear-493.frequency.stream/dist/glewedtv/493/hls/master/playlist.m3u8
-- **DD Sports** — HTTPError: HTTP Error 404: Not Found — https://cdn-6.pishow.tv/live/13/master.m3u8
 - **Kids Pang TV** — URLError: <urlopen error [Errno -2] Name or service not known> — https://newidco-kidspangtv-1-us.roku.wurl.tv/playlist.m3u8
 - **Channel Win** — HTTPError: HTTP Error 404: Not Found — https://cdn-4.pishow.tv/live/229/master.m3u8
-- **T Sports Live 01** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://live.tsports.com/mobile_hls/tsports_live_1/playlist.m3u8
 - **[BD] Sony Entertainment Television HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonyentertainmnt_hd/playlist.m3u8
 - **[BD] Sony SAB HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonysab_hd/playlist.m3u8
 - **[BD] Zee TV HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_tv_hd/playlist.m3u8
 - **[BD] Sony Entertainment Television** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_entertainment/playlist.m3u8
-- **[BD] Sony Ten Sports 1 HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_1_hd/playlist.m3u8
-- **[BD] Sony Ten Sports 5 HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_5_hd/playlist.m3u8
-- **[BD] Sony Ten Cricket** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/ten_cricket/playlist.m3u8
-- **[BD] Eurosport HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/euro_sports_hd/playlist.m3u8
 - **[BD] Animal Planet** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/animal_planet_sd/playlist.m3u8
 - **[BD] Animal Planet HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/animal_planet_hd/playlist.m3u8
 - **[BD] Sony BBC Earth HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonybbc_earth_hd/playlist.m3u8
@@ -831,69 +914,11 @@ Generated: **2026-09-22T18:05:51.247975+00:00**
 - **[BD] Cartoon Network HD +** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/cartoon_network_hd/playlist.m3u8
 - **[BD] Discovery Kids** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_kids/playlist.m3u8
 - **[BD] POGO** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/pogo_sd/playlist.m3u8
-- **Willow HD** — URLError: <urlopen error timed out> — https://cdn3.zohanayaan.com:1686/hls/willowusa.m3u8?md5=_vaVPv6pBh_KE2ptOIx5gQ&expires=1790102123
-- **Willow HD 2** — URLError: <urlopen error timed out> — https://cdn5.zohanayaan.com:1686/hls/willowextra.m3u8?md5=8ir-IqX_p3UsCVSzswMBjw&expires=1790102124
-- **Ten Sports** — URLError: <urlopen error timed out> — https://cdn10.zohanayaan.com:1686/hls/tenspk.m3u8?md5=aTbzu_WlloMzhzSHbb25MQ&expires=1790102124
-- **Sky Sports Main Event** — URLError: <urlopen error timed out> — https://cdn10.zohanayaan.com:1686/hls/skysme.m3u8?md5=iYkn_7XcftUHH9G1zhY8Nw&expires=1790102125
-- **TNT 1** — URLError: <urlopen error timed out> — https://cdn2.zohanayaan.com:1686/hls/bbtsp1.m3u8?md5=xnsR0KIDtXpqRLXPFOrg_g&expires=1790102126
-- **TNT 2** — URLError: <urlopen error timed out> — https://cdn1.zohanayaan.com:1686/hls/bbtsp2.m3u8?md5=j8ysQx1eKjyl22g3exhIXg&expires=1790102126
-- **TNT 3** — URLError: <urlopen error timed out> — https://cdn8.zohanayaan.com:1686/hls/bbtsp3.m3u8?md5=1gdIUnjqguQmzgUB3bng2Q&expires=1790102126
-- **TNT 4** — URLError: <urlopen error timed out> — https://cdn10.zohanayaan.com:1686/hls/bbtespn.m3u8?md5=TmOYLN9bCvjuOsVEpyIDqQ&expires=1790102127
-- **Sky Sport Nz 1** — URLError: <urlopen error timed out> — https://cdn2.zohanayaan.com:1686/hls/sky1nz.m3u8?md5=mfO-IQ4RfCiSnIwBKFLfjA&expires=1790102127
-- **Sky Sport Nz 2** — URLError: <urlopen error timed out> — https://cdn8.zohanayaan.com:1686/hls/sky2nz.m3u8?md5=kT3fm7TX39CWhS6rMsDojg&expires=1790102127
-- **Sky Sport Nz 3** — URLError: <urlopen error timed out> — https://cdn1.zohanayaan.com:1686/hls/sky3nz.m3u8?md5=oCckffALCFO3PyPTJeGTMw&expires=1790102127
-- **Sky Sport Nz 4** — URLError: <urlopen error timed out> — https://cdn3.zohanayaan.com:1686/hls/sky4nz.m3u8?md5=iXfVYquEgvDEbIEnW0f1eg&expires=1790102128
-- **Sky Sport Nz 5** — URLError: <urlopen error timed out> — https://cdn9.zohanayaan.com:1686/hls/sky5nz.m3u8?md5=dd_gK8ReJAQ_zDhL40e0Rg&expires=1790102128
-- **Sky Sport 6 Nz** — URLError: <urlopen error timed out> — https://cdn8.zohanayaan.com:1686/hls/sky6nz.m3u8?md5=iV0Lc8eSe5VTfEYwqJfqyQ&expires=1790102128
-- **Sky Sport Nz 7** — URLError: <urlopen error timed out> — https://cdn3.zohanayaan.com:1686/hls/sky7nz.m3u8?md5=rnKKGfvFZnqNEwZcwH0dnw&expires=1790102129
-- **Sky Sport Nz 8** — URLError: <urlopen error timed out> — https://cdn3.zohanayaan.com:1686/hls/sky8nz.m3u8?md5=UUi2J0I4gkaQuO6pWW-Yzw&expires=1790102129
-- **Sky Sport Nz 9** — URLError: <urlopen error timed out> — https://cdn9.zohanayaan.com:1686/hls/sky9nz.m3u8?md5=n5g_gH1haNTqTJVXx5J60A&expires=1790102129
-- **Sky Sports Golf** — URLError: <urlopen error timed out> — https://cdn10.zohanayaan.com:1686/hls/skysgol.m3u8?md5=2dmbquZei39fQGLN-8NwsQ&expires=1790102130
-- **Sky Sports Premier League** — URLError: <urlopen error timed out> — https://cdn6.zohanayaan.com:1686/hls/skysprem.m3u8?md5=UFC8Js6_vffcW7_s42jDRw&expires=1790102130
-- **Sky Sports Plus** — URLError: <urlopen error timed out> — https://cdn8.zohanayaan.com:1686/hls/skysare.m3u8?md5=3SVPiK86kH689nlvHw--cg&expires=1790102131
-- **Sky Sports F1** — URLError: <urlopen error timed out> — https://cdn6.zohanayaan.com:1686/hls/skysfor1.m3u8?md5=CUU8lWOB8VdImR0rIKPvyg&expires=1790102131
-- **LaLiGA** — URLError: <urlopen error timed out> — https://cdn8.zohanayaan.com:1686/hls/laligauk.m3u8?md5=cbfMUDbzc7VvDeecH5i6cw&expires=1790102132
-- **Premier Sports 1** — URLError: <urlopen error timed out> — https://cdn5.zohanayaan.com:1686/hls/premieruk.m3u8?md5=l9qgmfjnzVKNeHzU5eU8EQ&expires=1790102132
-- **Premier Sports 2** — URLError: <urlopen error timed out> — https://cdn3.zohanayaan.com:1686/hls/hdchnl2.m3u8?md5=WB-cHrMYna9n3mNtK9r9WA&expires=1790102132
-- **Super Premier League** — URLError: <urlopen error timed out> — https://cdn7.zohanayaan.com:1686/hls/superpremier.m3u8?md5=wbEj-jABLkEjw4tj1I9YXw&expires=1790102133
-- **Astro Cricket** — URLError: <urlopen error timed out> — https://cdn10.zohanayaan.com:1686/hls/fox501.m3u8?md5=OYE4Bd5N8SJ-cqiat0jgGQ&expires=1790102133
-- **ESPN 1** — URLError: <urlopen error timed out> — https://cdn2.zohanayaan.com:1686/hls/espnusa.m3u8?md5=ZtQZWDriRXFUwu8tzaC1xw&expires=1790102134
-- **ESPN 2** — URLError: <urlopen error timed out> — https://cdn6.zohanayaan.com:1686/hls/espn2.m3u8?md5=KWy3hl6Jkl7I_7ZiVROuPw&expires=1790102134
-- **Sky Sports Mix** — URLError: <urlopen error timed out> — https://cdn1.zohanayaan.com:1686/hls/skysmixx.m3u8?md5=xhiJUX6hW1vx8YsyZDUXig&expires=1790102134
-- **Sky Sports Tennis** — URLError: <urlopen error timed out> — https://cdn10.zohanayaan.com:1686/hls/skystennis.m3u8?md5=GVQh78Pyf-wVv3j4OFr2iA&expires=1790102135
-- **Sony Sports3** — URLError: <urlopen error timed out> — https://cdn2.zohanayaan.com:1686/hls/ten1hd.m3u8?md5=tvp6iLVS2fb0tyWX9CHXLw&expires=1790102135
-- **Unite8 Sports 1** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/superlaliga/index.m3u8?e=1784102509&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b6e220b27addbd7e852fe6671bff5738
-- **Unite8 Sports 2** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/Sports1/index.m3u8?e=1784102510&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&ip=52.157.32.49&token=3d148447575a06fa99eb4be6e5d9a318
-- **Willow TV** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/willowhd/index.m3u8?e=1784102512&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7058af1b60fb3bcfd7f687bf5b7866aa
-- **Fox Sports 2** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/foxsports2/index.m3u8?e=1784102513&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d99d64707b3804bb93d8e2a7dc7c2ec3
-- **Bein Sports** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/beinsports/index.m3u8?e=1784102515&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=67d5960a5b93b5cfcf562312b4627330
-- **TSN 1** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/tsn1/index.m3u8?e=1784102517&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=875a4be5959340b6ce790a1dcac84130
-- **TSN 2** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/tsn2/index.m3u8?e=1784102518&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7cba9240a1b91322266a3f7c57824bb3
-- **TSN 3** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/tsn3/index.m3u8?e=1784102519&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7198307d4f6898a7cd02e15c336fa0ae
-- **Golf Channel** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/golfchannel/index.m3u8?e=1784102520&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b1b12d40a9966b3fbfc1653626e09f42
-- **NFL Network** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/nfl/index.m3u8?e=1784102521&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b788fb69852f06155761f8a22c9676c4
-- **BT Sports 2** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/btSport2/index.m3u8?e=1784102530&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=de4c666535fcd6f7a743880c028ac891
-- **Gazi TV** — TimeoutError: The read operation timed out — https://tvsen5.aynaott.com/Ravc7gPCZpxk/index.m3u8?e=1784102565&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=36497099fc726a799b13d41016259efc
-- **Nicktoons** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/nicktoons/index.m3u8?e=1784102580&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=8eaa14af29c832e9b2b22399a5dfd762
-- **Nickjr** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/nickjr/index.m3u8?e=1784102581&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=1a9cf0bc5e79f08de29d345545216d31
-- **Discovery Family** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/discoveryfamily/index.m3u8?e=1784102581&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7551ec4daacd3d773ab2a992615f1f6c
-- **Disney Channel** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/disney/index.m3u8?e=1784102582&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=a212272f110a3334f0ef1dab82346a2c
-- **Disney XD** — TimeoutError: The read operation timed out — https://tvsen5.aynaott.com/disneyxd/index.m3u8?e=1784102583&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ef40738201244a8d2cd440ce648b5fc6
-- **Family JR** — TimeoutError: The read operation timed out — https://tvsen5.aynaott.com/familyjr/index.m3u8?e=1784102583&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=f07cdf73f07a49d18a334d98b734ddf4
-- **Nickelodeon** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/nicklodean/index.m3u8?e=1784102584&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=81eb7a6fadc0212e5a961b40ee037c49
-- **Teen Nick** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/teennick/index.m3u8?e=1784102584&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d43b3bb62ef7f77b2a1199b0cbd11f74
-- **TAQBEER** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/takbeer/index.m3u8?e=1784102625&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=81782f6025584e79ffd591d834ff3fb0
-- **Eman Channel** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/eman/index.m3u8?e=1784102626&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ac68781519dc02fa881bb036e27720d6
-- **Deen TV** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/deen/index.m3u8?e=1784102626&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=0e3dce4bf23e1ea8b102191022c0dfcc
-- **Peace TV Urdu HD** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/PeaceTVUrduHD/index.m3u8?e=1784102628&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7cf820bc700fe8ed9e8b0084f0c6f84b
 - **RTV Islam** — HTTPError: HTTP Error 404: Not Found — https://protokolldns.xyz/rtvislamweb554/index.m3u8
-- **Islam TV** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/islam/index.m3u8?e=1784102629&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=08e8a8df941b53b9792355f81b43937e
-- **Assam Talks** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/AssamTalks/index.m3u8?e=1784102635&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c5ae931b66e2b3bb39f8dcc43ef2118d
-- **BT Sports 2** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/btSport2/index.m3u8?e=1784102657&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=adb8565e4802294a0887f78480964696
 
 ## Rejected candidates
 
-- **Live Cricket** — source group `` — https://tvsen6.aynaott.com/zv68oqPDu7MZZwmHhRxt/index.m3u8?e=1784102512&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=968935df4fd0678de5d7fe392c0610d9
+- **Zee Bangla Cinema** — source group `Bangla` — https://d1g8wgjurz8via.cloudfront.net/bpk-tv/ColorsHD/default/Zeebanglahd.m3u8
 - **Deshe Bideshe** — source group `Bangla` — https://dbcanada.sonarbanglatv.com/deshebideshe/dbtv/index.m3u8
 - **Sananda** — source group `Bangla` — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/sanandatv.stream/tracks-v1a1/mono.m3u8
 - **Jonmo Bhumi TV** — source group `Bangla` — https://jtvs.ncare.live/Gznr84Woj7UEye3OPVeWq2ForboWAgdV/jonmobhumitv.stream/tracks-v1a1/mono.m3u8
@@ -901,6 +926,7 @@ Generated: **2026-09-22T18:05:51.247975+00:00**
 - **Bangla 1** — source group `Bangladeshi` — https://video1.getstreamhosting.com:1936/eycqczsxka/eycqczsxka/playlist.m3u8
 - **Independent** — source group `Bangladeshi` — https://sm-monirul.top/@monirul_Islam_SM/play/independent_tv.m3u8
 - **EP TV** — source group `Bangladeshi` — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/eptv.stream/playlist.m3u8
+- **Ekhon** — source group `Bangladeshi` — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/globaltv.stream/index.m3u8
 - **Asian** — source group `Bangladeshi` — https://mtlivestream.com/hls/asian/ytlive/index.m3u8
 - **R Plus Gold** — source group `Indian Bangla` — https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/cf883da3-f9f5-4c70-b0ef-b3ac2e2ad1e3/index.m3u8
 - **Star Gold HD** — source group `Indian Hindi` — http://66.102.126.10:8000/play/a00f/index.m3u8
@@ -921,6 +947,20 @@ Generated: **2026-09-22T18:05:51.247975+00:00**
 - **Aaj Tak HD** — source group `Indian News` — https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_720p/chunks.m3u8
 - **NDTV Hindi** — source group `Indian News` — https://ndtvindiaelemarchana.akamaized.net/hls/live/2003679-b/ndtvindia/master.m3u8
 - **Sangeet Bhojpuri** — source group `Music` — https://cdn-4.pishow.tv/live/1293/master.m3u8
+- **T Sports HD** — source group `Sports` — https://tvsen5.aynaott.com/TnMn5kZz8aLm/index.m3u8
+- **PTV Sports** — source group `Sports` — https://saseries.akamaized.net/hls/live/2110097/2353jkiL-tapmad/master.m3u8
+- **Ten Cricket** — source group `Sports` — https://s2.itcnbd.live/server-2/stream/ten_cricket.m3u8
+- **TUDN** — source group `Sports` — https://messi.damitv.st/papi/ts/tudn-usa/playlist.m3u8
+- **Star Sports 1** — source group `Sports` — http://tvsen7.aynascope.net/sspts1/index.m3u8
+- **Star Sports 2** — source group `Sports` — https://tvsen7.aynaott.com/ssport2hd/index.m3u8
+- **Star Sports SL 1** — source group `Sports` — https://yowaimo.in/Sflex-ArtlPVT0719/STAR_SPORTS_SELECT_1_HD.m3u8
+- **Star Sports SL 2** — source group `Sports` — https://yowaimo.in/Sflex-ArtlPVT0719/STAR_SPORTS_SELECT_2_HD.m3u8
+- **Sony Ten 1** — source group `Sports` — https://stream.ottplus.bd/live/ten_1_hd_abr/index.m3u8
+- **Sony Ten 2** — source group `Sports` — https://stream.ottplus.bd/live/ten_2_hd_abr/index.m3u8
+- **Sony Ten 5** — source group `Sports` — https://stream.ottplus.bd/live/ten_5_hd_abr/index.m3u8
+- **Bein Sports** — source group `Sports` — https://messi.damitv.st/papi/ts/beinsports-usa/playlist.m3u8
+- **Bein Sports 1** — source group `Sports` — http://host.phorious.art/validation/377?deviceMac=10:27:BE:25:67:80&split=33da9c80155413830543e27c8520ba99&smart=1
+- **Mundial** — source group `Sports` — https://s2.bufaloweb.com/bufalo9/tracks-v4a1/mono.ts.m3u8
 - **AlJazeera** — source group `News` — https://live-hls-apps-aje-fa.getaj.net/AJE/index.m3u8
 - **DW News** — source group `News` — https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/master.m3u8
 - **Wion** — source group `News` — https://d7x8z4yuq42qn.cloudfront.net/index_7.m3u8
@@ -929,6 +969,17 @@ Generated: **2026-09-22T18:05:51.247975+00:00**
 - **India Today** — source group `News` — https://feeds.intoday.in/hltapps/api/master.m3u8
 - **OAN** — source group `News` — https://a-cdn.klowdtv.com/live1/oan_720p/playlist.m3u8
 - **Iran Press** — source group `News` — https://live.presstv.ir/hls/presstv_5_482/index.m3u8
+- **Bleav Football** — source group `Sports` — https://linear-493.frequency.stream/dist/glewedtv/493/hls/master/playlist.m3u8
+- **KTV Sport Plus** — source group `Sports` — https://kwtsplta.cdn.mangomolo.com/spl/smil:spl.stream.smil/chunklist.m3u8
+- **SPORTS FIRST TV** — source group `Sports` — https://d4ddgdmj1cvnm.cloudfront.net/scheduler/scheduleMaster/409.m3u8
+- **Xtream Sports** — source group `Sports` — https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/e0b81a5c-6ab5-48cd-aaa9-f82de4ab5bf9/manifest.m3u8
+- **Bahrain Sports 1** — source group `Sports` — https://5c7b683162943.streamlock.net/live/ngrp:sportsone_all/playlist.m3u8
+- **DD Sports** — source group `Sports` — https://cdn-6.pishow.tv/live/13/master.m3u8
+- **NBC Sports** — source group `Sports` — https://xumo-xumoent-vc-122-sjv70.fast.nbcuni.com/live/master.m3u8
+- **WOF 1** — source group `Sports` — https://mainstreammedia-worldoffreesportsintl-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-mainstreammediafreesportsintl-rakuten/CDN/master.m3u8
+- **speed sports 1** — source group `Sports` — https://linear-599.frequency.stream/dist/stirr/599/hls/master/playlist.m3u8
+- **MORE THEN SPORTS TV** — source group `Sports` — https://mts1.iptv-playoutcenter.de/mts/mts-web/playlist.m3u8
+- **Oman Sports TV** — source group `Sports` — https://partneta.cdn.mgmlcdn.com/omsport/smil:omsport.stream.smil/chunklist.m3u8
 - **Goal TV** — source group `Channels` — https://streams2.sofast.tv/sofastplayout/WiseM3U8_1/master.m3u8
 - **TBS** — source group `Channels` — https://cdntv.tbs.seoul.kr/tbs/tbs_tv_web.smil/playlist.m3u8
 - **4k Travel TV** — source group `Channels` — https://streams2.sofast.tv/sofastplayout/33c31ac4-51fa-46ae-afd0-0d1fe5e60a80_0_HLS/master.m3u8
@@ -951,6 +1002,7 @@ Generated: **2026-09-22T18:05:51.247975+00:00**
 - **Sports 18** — source group `` — http://atg100.xyz/live/UL33K17/SYC4T9D/1090644.ts
 - **Al Jazeera News** — source group `` — https://live-hls-web-aje-fa.getaj.net/AJE/index.m3u8
 - **Bangla Jago** — source group `` — https://banglajagotv.livebox.co.in/banglajagohls/24x7.m3u8
+- **STAR JALSHA HD** — source group `Bangla` — https://catchup.yuppcdn.net/amazonv2/36/preview/starjalsha/master/chunklist.m3u8
 - **Dw News** — source group `` — https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8
 - **TV9 Bangla** — source group `` — https://amg01448-samsungin-tv9bangla-samsungin-9lgnh.amagi.tv/playlist/amg01448-samsungin-tv9bangla-samsungin/playlist.m3u8
 - **Republic Bangla** — source group `` — https://vg-republictvlive.akamaized.net/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/vglive-sk-456368/main.m3u8
@@ -1325,6 +1377,8 @@ Generated: **2026-09-22T18:05:51.247975+00:00**
 - **BBC News** — source group `Akash Go` — https://cdn4.skygo.mn/live/disk1/BBC_News/HLSv3-FTA/BBC_News-avc1_3000000=8-mp4a_208000_eng=2.m3u8
 - **MUSIC BANGLA** — source group `Bangla` — http://live.matribhumitv.com/music-bangla/index.m3u8
 - **MAASRANGA HD** — source group `Bangla` — http://mtv.sunplex.live/MAASRANGA-TV/index.m3u8
+- **T Sports Live 01** — source group `Sports` — https://live.tsports.com/mobile_hls/tsports_live_1/playlist.m3u8
+- **T Sports (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3)** — source group `Sports` — https://tvsen5.aynaott.com/TnMn5kZz8aLm/tracks-v1a1/mono.ts.m3u8
 - **[BD] Zee Bangla** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_bangla/playlist.m3u8
 - **[BD] HUM** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/hum_tv/playlist.m3u8
 - **[BD] HUM Masala** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/hum_masala/playlist.m3u8
@@ -1357,6 +1411,10 @@ Generated: **2026-09-22T18:05:51.247975+00:00**
 - **[BD] Movie Bangla** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/movie_bangla/playlist.m3u8
 - **[BD] EPL channel 1** — source group `[LIVE] BDIX ♛` — https://mprod-cdn.toffeelive.com/live/match-1/index.m3u8
 - **[BD] WC Match Recap** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/fifa_world_cup/playlist.m3u8
+- **[BD] Sony Ten Sports 1 HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_1_hd/playlist.m3u8
+- **[BD] Sony Ten Sports 5 HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_5_hd/playlist.m3u8
+- **[BD] Sony Ten Cricket** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/ten_cricket/playlist.m3u8
+- **[BD] Eurosport HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/euro_sports_hd/playlist.m3u8
 - **[BD] Sony MAX HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_max_hd/playlist.m3u8
 - **[BD] Sony MAX** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_max/playlist.m3u8
 - **[BD] Sony PIX HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonypix_hd/playlist.m3u8
@@ -1372,91 +1430,64 @@ Generated: **2026-09-22T18:05:51.247975+00:00**
 - **[BD] TLC HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/tlc_hd/playlist.m3u8
 - **[BD] TLC** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/tlc_sd/playlist.m3u8
 - **[BD] Sony YAY** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonyyay/playlist.m3u8
-- **News 24 BD** — source group `News` — https://tvsen6.aynaott.com/cdgr3tw6WoG7JyRnLbi0/index.m3u8?e=1784102534&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ff40b53535a0e90b724ac25ff41c590c
-- **BBC News** — source group `News` — https://tvsen6.aynaott.com/bbcnews/index.m3u8?e=1784102536&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=5e9078a7846dc502cd318c96824709e2
-- **CNN** — source group `News` — https://tvsen6.aynaott.com/cnn/index.m3u8?e=1784102537&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3d319d99045811bace569a7cc2885eb3
-- **AlJazeera** — source group `News` — https://tvsen6.aynaott.com/euNaV2R5/index.m3u8?e=1784102538&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=889140eadf3be89eae9410f2da1b32c5
-- **Bloomberg TV** — source group `News` — https://tvsen6.aynaott.com/bloombergtv/index.m3u8?e=1784102539&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=f3fc3aaf7592e99b0e130d2c47373099
-- **CNBC TV** — source group `News` — https://tvsen6.aynaott.com/cnbc/index.m3u8?e=1784102539&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=79af8268c0330df2560ca626432a0d66
-- **CP 24** — source group `News` — https://tvsen6.aynaott.com/cp24/index.m3u8?e=1784102540&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=1d0fe8aec5413766c44876cc752f4900
-- **MSNBC News** — source group `News` — https://tvsen6.aynaott.com/msnbc/index.m3u8?e=1784102541&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=68093cc976c69de22a5f01b8034edf41
-- **ABC News** — source group `News` — https://tvsen6.aynaott.com/AbcNews/index.m3u8?e=1784102541&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=52b8ba78cc6aa66f187f91e92fe8f52c
+- **Star Sports 1** — source group `Sports` — https://cdn6.zohanayaan.com:1686/hls/star1in.m3u8?md5=z01bfeJKZboZw759qZ_TTw&expires=1790102122
+- **Star Sports 1 Hindi** — source group `Sports` — https://cdn8.zohanayaan.com:1686/hls/starhindi.m3u8?md5=ICl-zC6TxMiNyAJSpq88Gw&expires=1790102123
+- **PTV Sports** — source group `Sports` — https://cdn7.zohanayaan.com:1686/hls/ptvpk.m3u8?md5=d80nnMfudOW5JE3rN9Fr2w&expires=1790102123
+- **Willow HD** — source group `Sports` — https://cdn3.zohanayaan.com:1686/hls/willowusa.m3u8?md5=_vaVPv6pBh_KE2ptOIx5gQ&expires=1790102123
+- **Willow HD 2** — source group `Sports` — https://cdn5.zohanayaan.com:1686/hls/willowextra.m3u8?md5=8ir-IqX_p3UsCVSzswMBjw&expires=1790102124
+- **Ten Sports** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/tenspk.m3u8?md5=aTbzu_WlloMzhzSHbb25MQ&expires=1790102124
+- **A Sports HD** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/asportshd.m3u8?md5=CI6ifIvcCe5GWBUwxtUcRQ&expires=1790102125
+- **Sky Sports Cricket** — source group `Sports` — https://cdn2.zohanayaan.com:1686/hls/skyscric.m3u8?md5=ZEToDsjDzRkwBdFSye_e7Q&expires=1790102125
+- **Sky Sports Main Event** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/skysme.m3u8?md5=iYkn_7XcftUHH9G1zhY8Nw&expires=1790102125
+- **TNT 1** — source group `Sports` — https://cdn2.zohanayaan.com:1686/hls/bbtsp1.m3u8?md5=xnsR0KIDtXpqRLXPFOrg_g&expires=1790102126
+- **TNT 2** — source group `Sports` — https://cdn1.zohanayaan.com:1686/hls/bbtsp2.m3u8?md5=j8ysQx1eKjyl22g3exhIXg&expires=1790102126
+- **TNT 3** — source group `Sports` — https://cdn8.zohanayaan.com:1686/hls/bbtsp3.m3u8?md5=1gdIUnjqguQmzgUB3bng2Q&expires=1790102126
+- **TNT 4** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/bbtespn.m3u8?md5=TmOYLN9bCvjuOsVEpyIDqQ&expires=1790102127
+- **Sky Sport Nz 1** — source group `Sports` — https://cdn2.zohanayaan.com:1686/hls/sky1nz.m3u8?md5=mfO-IQ4RfCiSnIwBKFLfjA&expires=1790102127
+- **Sky Sport Nz 2** — source group `Sports` — https://cdn8.zohanayaan.com:1686/hls/sky2nz.m3u8?md5=kT3fm7TX39CWhS6rMsDojg&expires=1790102127
+- **Sky Sport Nz 3** — source group `Sports` — https://cdn1.zohanayaan.com:1686/hls/sky3nz.m3u8?md5=oCckffALCFO3PyPTJeGTMw&expires=1790102127
+- **Sky Sport Nz 4** — source group `Sports` — https://cdn3.zohanayaan.com:1686/hls/sky4nz.m3u8?md5=iXfVYquEgvDEbIEnW0f1eg&expires=1790102128
+- **Sky Sport Nz 5** — source group `Sports` — https://cdn9.zohanayaan.com:1686/hls/sky5nz.m3u8?md5=dd_gK8ReJAQ_zDhL40e0Rg&expires=1790102128
+- **Sky Sport 6 Nz** — source group `Sports` — https://cdn8.zohanayaan.com:1686/hls/sky6nz.m3u8?md5=iV0Lc8eSe5VTfEYwqJfqyQ&expires=1790102128
+- **Sky Sport Nz 7** — source group `Sports` — https://cdn3.zohanayaan.com:1686/hls/sky7nz.m3u8?md5=rnKKGfvFZnqNEwZcwH0dnw&expires=1790102129
+- **Sky Sport Nz 8** — source group `Sports` — https://cdn3.zohanayaan.com:1686/hls/sky8nz.m3u8?md5=UUi2J0I4gkaQuO6pWW-Yzw&expires=1790102129
+- **Sky Sport Nz 9** — source group `Sports` — https://cdn9.zohanayaan.com:1686/hls/sky9nz.m3u8?md5=n5g_gH1haNTqTJVXx5J60A&expires=1790102129
+- **Sky Sports Action** — source group `Sports` — https://cdn1.zohanayaan.com:1686/hls/skysact.m3u8?md5=LDZAVKww5Yv3zoAZBn9ULQ&expires=1790102130
+- **Sky Sports Golf** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/skysgol.m3u8?md5=2dmbquZei39fQGLN-8NwsQ&expires=1790102130
+- **Sky Sports Premier League** — source group `Sports` — https://cdn6.zohanayaan.com:1686/hls/skysprem.m3u8?md5=UFC8Js6_vffcW7_s42jDRw&expires=1790102130
+- **Sky Sports Football** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/skysfott.m3u8?md5=EKyM62L1vIyQQm-ScX1u2A&expires=1790102131
+- **Sky Sports Plus** — source group `Sports` — https://cdn8.zohanayaan.com:1686/hls/skysare.m3u8?md5=3SVPiK86kH689nlvHw--cg&expires=1790102131
+- **Sky Sports F1** — source group `Sports` — https://cdn6.zohanayaan.com:1686/hls/skysfor1.m3u8?md5=CUU8lWOB8VdImR0rIKPvyg&expires=1790102131
+- **LaLiGA** — source group `Sports` — https://cdn8.zohanayaan.com:1686/hls/laligauk.m3u8?md5=cbfMUDbzc7VvDeecH5i6cw&expires=1790102132
+- **Premier Sports 1** — source group `Sports` — https://cdn5.zohanayaan.com:1686/hls/premieruk.m3u8?md5=l9qgmfjnzVKNeHzU5eU8EQ&expires=1790102132
+- **Premier Sports 2** — source group `Sports` — https://cdn3.zohanayaan.com:1686/hls/hdchnl2.m3u8?md5=WB-cHrMYna9n3mNtK9r9WA&expires=1790102132
+- **Super Premier League** — source group `Sports` — https://cdn7.zohanayaan.com:1686/hls/superpremier.m3u8?md5=wbEj-jABLkEjw4tj1I9YXw&expires=1790102133
+- **Astro Cricket** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/fox501.m3u8?md5=OYE4Bd5N8SJ-cqiat0jgGQ&expires=1790102133
+- **ESPN 1** — source group `Sports` — https://cdn2.zohanayaan.com:1686/hls/espnusa.m3u8?md5=ZtQZWDriRXFUwu8tzaC1xw&expires=1790102134
+- **ESPN 2** — source group `Sports` — https://cdn6.zohanayaan.com:1686/hls/espn2.m3u8?md5=KWy3hl6Jkl7I_7ZiVROuPw&expires=1790102134
+- **Sky Sports Mix** — source group `Sports` — https://cdn1.zohanayaan.com:1686/hls/skysmixx.m3u8?md5=xhiJUX6hW1vx8YsyZDUXig&expires=1790102134
+- **Sky Sports Tennis** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/skystennis.m3u8?md5=GVQh78Pyf-wVv3j4OFr2iA&expires=1790102135
+- **Sony Sports3** — source group `Sports` — https://cdn2.zohanayaan.com:1686/hls/ten1hd.m3u8?md5=tvp6iLVS2fb0tyWX9CHXLw&expires=1790102135
+- **FIFA+** — source group `Sports` — https://4397879b.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWRlX0ZJRkFQbHVzR2VybWFuX0hMUw/playlist.m3u8
+- **Bein Sports 1** — source group `Sports` — https://1nyaler.streamhostingcdn.top/stream/23/index.m3u8
 - **ABC 7 Bay** — source group `News` — https://content.uplynk.com/channel/ext/4413701bf5a1488db55b767f8ae9d4fa/kgo_24x7_news.m3u8
-- **Sky News** — source group `News` — https://tvsen5.aynaott.com/skynews/index.m3u8?e=1784102543&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=adcd9273f21cb19a982ad314a5367a29
-- **LIFE TIME** — source group `News` — https://tvsen7.aynaott.com/lifetime/index.m3u8?e=1784102543&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=337f2f905c6a6c7884636d4b7919562d
 - **BEK TV News** — source group `News` — https://cdn3.wowza.com/5/ZWQ1K2NYTmpFbGsr/BEK-WOWZA-1/smil:BEKPRIMEeast.smil/playlist.m3u8
-- **NHK World** — source group `News` — https://tvsen6.aynaott.com/xfJ3PuYS/index.m3u8?e=1784102545&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=dbc117649b51bf27bb2048647c01a038
-- **Fox 5** — source group `News` — https://tvsen6.aynaott.com/fox5/index.m3u8?e=1784102545&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=664911dcae498c56f125594ce7372f6f
-- **Fox business** — source group `News` — https://tvsen6.aynaott.com/foxbusiness/index.m3u8?e=1784102546&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=cac9ac4bc54a6e48978f2fae429de506
-- **WEATHER CHANNEL** — source group `News` — https://tvsen6.aynaott.com/TheWeatherChannel/index.m3u8?e=1784102549&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c4aa612a94336a51a339dd5c52d6242d
-- **TIME TV USA** — source group `News` — https://tvsen7.aynaott.com/eQbvBDhUkVuCovH2bT66/index.m3u8?e=1784102551&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=0bd05d2925ab60f042d2623d5acb29de
-- **Republic TV Bharat** — source group `News` — https://tvsen6.aynaott.com/faGd3tuq/index.m3u8?e=1784102553&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=8133079644fb0609090a409e519aaa73
-- **Hindi Khabar** — source group `News` — https://tvsen7.aynaott.com/HindiKhabar/index.m3u8?e=1784102554&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=815bee841efa174fe7bce8b61da9833e
-- **News 1 India** — source group `News` — https://tvsen6.aynaott.com/TaVfw58T/index.m3u8?e=1784102555&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=48799eef4dce6bc5c63337d0e5a2312c
-- **Sadhna Prime News** — source group `News` — https://tvsen6.aynaott.com/WZUs6gAU/index.m3u8?e=1784102556&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=49ac20f3ecb8e9577b16afd7195615fa
-- **ANB News** — source group `News` — https://tvsen6.aynaott.com/H5aeGVSj/index.m3u8?e=1784102558&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d854e648379933601524b35077263247
-- **Bangla Vision** — source group `Bangla` — https://tvsen5.aynaott.com/banglavision/index.m3u8?e=1784102560&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ddcd867c4b5ff4b8041ee4e513423464
-- **ETV** — source group `Bangla` — https://tvsen6.aynaott.com/y4mEVZNAbeNWTbd6Z2Pw/index.m3u8?e=1784102562&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7e70b215021d5b63d625a677bec65a1d
-- **IBTV USA** — source group `Bangla` — https://tvsen7.aynaott.com/ibtvusa/index.m3u8?e=1784102566&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3bc7a2a5fe20a69e8fadc40261b2cbba
-- **Peace TV Bangla HD** — source group `Bangla` — https://tvsen7.aynaott.com/xM9hpJpqLqs83ZrvkeBG/index.m3u8?e=1784102568&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=90ea05f54cbc7e469d26591ca7a526e4
-- **BTV NATIONAL HD** — source group `Bangla` — https://tvsen6.aynaott.com/AQLYTPfXtjm5x7zj7AsM/index.m3u8?e=1784102574&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c77a7f71fb9c8690eec45bed699ba960
-- **BTV World** — source group `Bangla` — https://tvsen6.aynaott.com/opREbXLqJ2HFYPCXTJBa/index.m3u8?e=1784102575&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c85b53f4cee30af4a19d4b9ad0cd60c7
-- **BTV CTG** — source group `Bangla` — https://tvsen6.aynaott.com/TjGR1GcxKetHNVcMVxbq/index.m3u8?e=1784102576&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=901c0ca2f1ba54041a543dce43641c12
-- **Green TV HD** — source group `Bangla` — https://tvsen6.aynaott.com/cLuA3hJR/index.m3u8?e=1784102578&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=57bcdefd396bd85d72461ff29cbde00d
-- **Network 10** — source group `Hindi` — https://tvsen6.aynaott.com/Network10/index.m3u8?e=1784102589&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ce8f95de4868ba48e754638e36f90109
-- **Shemaroo TV** — source group `Hindi` — https://tvsen6.aynaott.com/D3NDt6gn/index.m3u8?e=1784102595&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=2347b8a1b6f0ba558b12440528ea38a5
-- **The Q** — source group `Hindi` — https://tvsen6.aynaott.com/3PjZZahm/index.m3u8?e=1784102596&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=92ddc6a5821e135aef133dbd8b8b6fc7
-- **Taaza TV** — source group `Hindi` — https://tvsen7.aynaott.com/TaazaTV/index.m3u8?e=1784102596&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=494643e330e44e6ef06dc35ccda0ac7c
-- **Dhinchaak** — source group `Hindi` — https://tvsen6.aynaott.com/a2cKGQtB/index.m3u8?e=1784102597&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=18f202477e23fba0f1d6d5e94ac5c4f3
-- **Manoranjan TV** — source group `Hindi` — https://tvsen6.aynaott.com/vhu6qz5Nsd/index.m3u8?e=1784102598&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=a7992b8a768b673dd9befef8df89c6e8
-- **CGTN Docu** — source group `English` — https://tvsen6.aynaott.com/cgtnDocumentary/index.m3u8?e=1784102601&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=e219182793529f01b10009fa276c071e
-- **AXS** — source group `English` — https://tvsen6.aynaott.com/axs/index.m3u8?e=1784102603&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=5b48c4a7bd1890ccb2bba27e4471f1db
 - **Persiana Travel** — source group `English` — https://ptravelhls.persiana.live/hls/stream.m3u8
-- **Travel Channel** — source group `English` — https://tvsen6.aynaott.com/travelxp/index.m3u8?e=1784102608&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=2d204479cea4c71c2290102ae4d75ea1
-- **AMC TV** — source group `English` — https://tvsen6.aynaott.com/amc/index.m3u8?e=1784102611&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ea6c08b4d5db4f78b5d801f40610e3e0
-- **Nat Geo TV** — source group `English` — https://tvsen6.aynaott.com/natgeo/index.m3u8?e=1784102611&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=be23b688e0d8482e77b3a038a220a900
-- **HBO** — source group `English` — https://tvsen5.aynaott.com/MehaSAh6/index.m3u8?e=1784102613&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=63800af70a1a86c816985ecf6e9de82f
-- **HBO 2** — source group `English` — https://tvsen7.aynaott.com/hbo2/index.m3u8?e=1784102613&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=40fc8084b5fc57624decaf17689aa4e3
-- **EPIX TV** — source group `English` — https://tvsen7.aynaott.com/epix/index.m3u8?e=1784102614&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=59a2e109d32014e09775390d135382f5
-- **HGTV** — source group `English` — https://tvsen7.aynaott.com/hgtv/index.m3u8?e=1784102615&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=1314fc6868b96607d2b88ebf38af1736
-- **CBS TV** — source group `English` — https://tvsen7.aynaott.com/cbs/index.m3u8?e=1784102616&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=090e7d0dc284e7ec6ad993c1a8c9fc18
-- **USA TV** — source group `English` — https://tvsen6.aynaott.com/usa/index.m3u8?e=1784102617&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3859c38f5a35c0c3d95b5244f5e393d4
-- **FX TV** — source group `English` — https://tvsen7.aynaott.com/fx/index.m3u8?e=1784102617&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=fd5a4237c19f16cb306dcfd4e312ad23
-- **pix 11** — source group `English` — https://tvsen6.aynaott.com/pix11/index.m3u8?e=1784102618&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=a0dee7e79b0bdfa720434250b5fa6240
-- **YTV** — source group `English` — https://tvsen6.aynaott.com/ytv/index.m3u8?e=1784102618&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=984e9148885e8c2f8cc1fbbf456eaa27
-- **BRAVO** — source group `English` — https://tvsen7.aynaott.com/bravo/index.m3u8?e=1784102619&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3b78032bd928888aede14d2a4c6d4232
-- **COOKING TV** — source group `English` — https://tvsen7.aynaott.com/cooking/index.m3u8?e=1784102620&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=5b879064b7a6da5ae5e100c1f71ad522
-- **TLC HD** — source group `English` — https://tvsen6.aynaott.com/tlc_hd/index.m3u8?e=1784102621&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=032b2c039214b5eb81d1d06aac66a512
-- **COMEDY CENTRAL** — source group `English` — https://tvsen7.aynaott.com/comedycentral/index.m3u8?e=1784102621&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=27fa1c9d3a8441fe7c5b8c05a081c9b5
-- **Food Network** — source group `English` — https://tvsen6.aynaott.com/foodnetwork/index.m3u8?e=1784102622&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=dabd0667017770543635be4bb1f63c22
-- **LAFF TV** — source group `English` — https://tvsen7.aynaott.com/laff/index.m3u8?e=1784102623&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=faf783961c7c677ea0d1dfef140ad3ca
-- **SYFY TV** — source group `English` — https://tvsen7.aynaott.com/syfy/index.m3u8?e=1784102623&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=5e174d1f2948823df1ef557767e4aa8d
-- **Republic Bangla** — source group `Indian Bangla` — https://tvsen5.aynaott.com/qRHda6ax/index.m3u8?e=1784102632&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=f74b592fbf23b79d3f770baf76fefd5d
-- **Zee 24 Ghanta** — source group `Indian Bangla` — https://tvsen6.aynaott.com/DpPnXP9r/index.m3u8?e=1784102633&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=4dfe1eedcd3d06e8d4e5f73751abcf2a
-- **kolkata TV** — source group `Indian Bangla` — https://tvsen6.aynaott.com/kolkatatv/index.m3u8?e=1784102634&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7dd61eff112afc871fa5ff030faacde9
-- **R Plus Gold** — source group `Indian Bangla` — https://tvsen6.aynaott.com/RplusGold/index.m3u8?e=1784102636&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b861d971e5f250a869df24cffd35d888
-- **News Time Bangla** — source group `Indian Bangla` — https://tvsen6.aynaott.com/NewsTime/index.m3u8?e=1784102637&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=31255bb35aab8fb1f34e5e741754152c
 - **Spice FM** — source group `Radio` — https://stream.spicefmbd.com/stream.m3u8
 - **Radio Bhumi 92.80 FM** — source group `Radio` — https://apollo.ihostman.com/8002/stream
 - **Peoples Radio** — source group `Radio` — http://s3.myradiostream.com:14498/;stream.mp3
 - **Radio Bangladesh CO** — source group `Radio` — http://radiobangladesh.co.uk:8000/live
-- **Relaks Radio** — source group `Radio` — http://stream.spicefmbd.com/stream.m3u8
 - **Bangla Radio** — source group `Radio` — https://apollo.ihostman.com:8002/stream?icy=https
-- **Unite8 Sports 1** — source group `Latest` — https://tvsen6.aynaott.com/superlaliga/index.m3u8?e=1784102646&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ca6007374eda23b74a8328c74fb0adf0
-- **Unite8 Sports 2** — source group `Latest` — https://tvsen7.aynaott.com/Sports1/index.m3u8?e=1784102646&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&ip=52.157.32.49&token=6e80b0021171278f37f9970c64f7e10f
-- **Green TV HD** — source group `Latest` — https://tvsen6.aynaott.com/cLuA3hJR/index.m3u8?e=1784102650&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=4611739ee78a2cc302c5eb6c7e0ec1d9
-- **A sports** — source group `Cricket` — https://tvsen6.aynaott.com/zv68oqPDu7MZZwmHhRxt/index.m3u8?e=1784102655&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=833b5dd42540ad3eaf690e4b371d5fec
-- **Willow TV** — source group `Cricket` — https://tvsen5.aynaott.com/willowhd/index.m3u8?e=1784102658&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=a9cdf8d7d3bacb7c8aea83611a6c3906
 - **Deshi TV (720p)** — source group `Unknown` — https://deshitv.deshitv24.net/live/myStream/playlist.m3u8
 - **Gazi TV** — source group `Unknown` — https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/gazibdz.stream/live-orgin/gazibdz.stream/playlist.m3u8
-- **RTV (720p)** — source group `Unknown` — https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/rtv-sg.stream/index.m3u8
+- **Bein Sports Extra 2** — source group `Sports` — https://bein-esp-xumo.amagi.tv/playlistR1080p.m3u8
 - **MTRSPT** — source group `Sports` — https://amg02873-kravemedia-mtrspt1-sportstribal-ajosc.amagi.tv/playlist/amg02873-kravemedia-mtrspt1-sportstribal/playlist.m3u8
 - **Sony TV HD** — source group `India` — http://premimum.online:80/live/jen12345/jen54321/98854.ts
 - **Star Sports 2 HD** — source group `Sports` — http://tvsen5.aynascope.net/cXPB2LKkErN9/index.m3u8
 - **Horse & Country** — source group `Sports` — https://hncfree-samsungau.amagi.tv/playlist.m3u8
-- **A Sports** — source group `Sports` — https://tvsen6.aynaott.com/zv68oqPDu7MZZwmHhRxt/index.m3u8
 - **Star Sports 1 Hindi HD** — source group `Sports` — http://41.205.93.154/STARSPORTS1/index.m3u8
 - **Music TV** — source group `Music` — http://bitcdn-kronehit.bitmovin.com/v2/hls/chunklist_b3128000.m3u8
+- **Trace Sport** — source group `Sports` — https://lightning-tracesport-samsungau.amagi.tv/playlist.m3u8
 - **Radio BBC** — source group `Radio` — https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_vlow_sbr_v1/cfs/bbc_world_service_news_internet.m3u8
 - **Willow Extra** — source group `Sports` — http://27.124.71.27/Willow_Extra/index.m3u8
 - **Sony Sports 2 HD** — source group `Sports` — https://stream.ottplus.live/live/ten_2_hd_abr/live/ten_2_hd_720/chunks.m3u8
@@ -1467,6 +1498,7 @@ Generated: **2026-09-22T18:05:51.247975+00:00**
 - **Ananda TV (480p)** — source group `` — http://103.99.249.139/anandatv/index.m3u8
 - **DBC News (480p)** — source group `` — http://tvn3.chowdhury-shaheb.com/dbc/index.m3u8
 - **Ekhon TV (1080p)** — source group `` — https://tplay.live/out/bangladesh/ekhontv.index.m3u8
+- **Ekushey TV (480p)** — source group `` — https://ekusheyserver.com/etvlivesn.m3u8
 - **Gazi TV (1080p)** — source group `` — http://tvn1.chowdhury-shaheb.com/gazitv/index.m3u8
 - **Green TV (1080p)** — source group `` — https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/greentv.stream/live-orgin/greentv.stream/playlist.m3u8
 - **NAN TV** — source group `` — https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/nantv.stream/live-orgin/nantv.stream/playlist.m3u8
@@ -1481,6 +1513,10 @@ Generated: **2026-09-22T18:05:51.247975+00:00**
 - Candidate identity uses exact normalized base names; fuzzy matching is not used.
 - New candidates require an approved category and a logo.
 - Non-Bangladeshi news channels are rejected from both existing and imported entries.
+- Sports and non-Islamic religious channels are rejected.
+- Existing proxy/wrapper and expired-token streams are removed on every run.
+- URL identity ignores HTTP/HTTPS and volatile access tokens to prevent false backups.
+- Backup naming is normalized and limited to four for Bangladeshi or two for other channels.
 - New Bangladeshi channels and backups are placed in `Bangladesh Backup`.
 - Proxy/masking hosts, wrappers, redirects to blocked hosts and explicit DRM settings are rejected.
 - Only media-like responses are accepted; HTML and empty responses are rejected.
