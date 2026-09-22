@@ -53,7 +53,7 @@ jobs:
           from copy import deepcopy
           from datetime import datetime, timezone
           from pathlib import Path
-          from urllib.parse import parse_qsl, unquote, urlsplit, urlunsplit
+          from urllib.parse import parse_qsl, unquote, urlencode, urlsplit, urlunsplit
 
           MASTER = Path('IPTV Playlist.m3u')
           REPORT = Path('reports/auto-update.md')
@@ -67,7 +67,7 @@ jobs:
               'Bangladesh', 'Bangladesh Backup',
               'Indian Bangla', 'Indian Movies', 'Indian Music',
               'Indian Entertainment', 'International Movies', 'International Music',
-              'Documentary & Wildlife', 'Kids', 'Religious', 'Sports',
+              'Documentary & Wildlife', 'Kids', 'Religious',
           ]
 
           MAX_WORKERS = max(1, min(int(os.getenv('MAX_WORKERS', '20')), 32))
@@ -78,10 +78,6 @@ jobs:
 
           # Deliberately conservative: expand only after manual review.
           MAJOR = {
-              'sports': {'espn', 'star sports', 'sony ten', 'sony liv', 't sports',
-                         'bein sports', 'sky sports', 'eurosport', 'ptv sports',
-                         'ten cricket', 'fox sports', 'nba tv', 'nfl network',
-                         'tsn', 'tnt sports', 'premier sports'},
               'indian entertainment': {'star plus', 'sony entertainment television',
                          'colors', 'zee tv', 'sony sab', '&tv', 'dangal',
                          'and pictures', 'sony pal', 'colors rishtey'},
@@ -97,7 +93,7 @@ jobs:
                 'dbc news','deepto tv','desh tv','doyel tv','duronto tv',
                 'ekattor tv','ekhon tv','ekushey tv','gazi tv','jamuna tv',
                 'maasranga tv','mohona tv','my tv','nagorik tv','news 24',
-                'ntv','rtv','somoy tv','t sports','independent tv',
+                'ntv','rtv','somoy tv','independent tv',
                 'btv news','jago news 24','news 21 bangla tv','star news'}
           IN_BANGLA = {'zee bangla','star jalsha','jalsha movies','sony aath',
                        'colors bangla','sun bangla','sangeet bangla','tv9 bangla'}
@@ -113,6 +109,28 @@ jobs:
           def is_foreign_news(name):
               channel = norm(name)
               return channel not in BD and bool(FOREIGN_NEWS.search(channel))
+
+          SPORTS_CHANNEL = re.compile(
+              r'\b(?:sports?|espn|bein|star sports|sony ten|ten cricket|'
+              r'sky sports|eurosport|ptv sports|nba tv|nfl network|nhl network|'
+              r'willow|cricket gold|fifa\+?|laliga|fight network|golf network)\b',
+              re.I,
+          )
+          NON_ISLAMIC_RELIGIOUS = re.compile(
+              r'\b(?:3abn|christ|jesus|gospel|bible|church|hindu|krishna|'
+              r'bhakti|aastha|sanskar|buddh|jain|god tv|tbn|daystar|ewtn)\b',
+              re.I,
+          )
+
+          def channel_policy_reason(name, supplied=''):
+              channel = norm(name)
+              group = norm(supplied)
+              if group == 'sports' or SPORTS_CHANNEL.search(channel):
+                  return 'sports channel'
+              if NON_ISLAMIC_RELIGIOUS.search(channel):
+                  return 'non-Islamic religious channel'
+              return ''
+
           BLOCKED = ('adult', 'porn', 'xxx', 'proxy', 'filex.me', 'vercel.app')
 
           def attrs(text):
@@ -155,14 +173,20 @@ jobs:
               try:
                   parsed = urlsplit(value.strip())
                   host = (parsed.hostname or '').lower().rstrip('.')
+                  if not host:
+                      return value.strip()
                   port = parsed.port
-                  if (parsed.scheme.lower() == 'http' and port == 80) or (
-                      parsed.scheme.lower() == 'https' and port == 443
-                  ):
-                      netloc = host
-                  else:
-                      netloc = parsed.netloc.lower()
-                  return urlunsplit((parsed.scheme.lower(), netloc, parsed.path, parsed.query, ''))
+                  netloc = host if port in {None, 80, 443} else f'{host}:{port}'
+                  volatile = {
+                      'e', 'u', 'token', 'hdnea', 'hdnts', 'expires', 'exp',
+                      'signature', 'sig', 'auth', 'auth_key', 'remote',
+                  }
+                  query = [
+                      (key, item) for key, item in parse_qsl(parsed.query, keep_blank_values=True)
+                      if key.lower() not in volatile
+                  ]
+                  # HTTP/HTTPS and short-lived access tokens do not make a new feed.
+                  return urlunsplit(('', netloc, parsed.path, urlencode(query, doseq=True), ''))
               except ValueError:
                   return value.strip()
 
@@ -193,12 +217,23 @@ jobs:
                       return 'proxy/encoded wrapper path'
                   if re.search(r'\.(?:php|asp|aspx)(?:/|$)', path):
                       return 'dynamic stream wrapper'
+                  query_items = parse_qsl(parsed.query, keep_blank_values=True)
+                  current_time = int(time.time())
+                  for key, value in query_items:
+                      lowered = key.lower()
+                      if lowered in {'e', 'exp', 'expires'} and value.isdigit():
+                          if len(value) >= 9 and int(value) < current_time:
+                              return 'expired access token'
+                      if lowered == 'hdnea':
+                          match = re.search(r'(?:^|~)exp=(\d{9,12})(?:~|$)', value)
+                          if match and int(match.group(1)) < current_time:
+                              return 'expired access token'
                   wrapped_keys = {
                       'url', 'uri', 'redirect', 'redirect_url', 'target', 'destination',
                       'encoded', 'encrypted', 'payload', 'play_token', 'license',
                       'license_key', 'drm',
                   }
-                  if any(key.lower() in wrapped_keys for key, _ in parse_qsl(parsed.query, keep_blank_values=True)):
+                  if any(key.lower() in wrapped_keys for key, _ in query_items):
                       return 'wrapped destination or access/license parameter'
                   extras = '\n'.join(entry.get('extras', []))
                   if re.search(r'(?i)(?:license_type|license_key|widevine|playready|clearkey|drm)', extras):
@@ -211,6 +246,8 @@ jobs:
               channel = norm(name)
               supplied_group = norm(supplied)
               if any(item in channel for item in BLOCKED):
+                  return None
+              if channel_policy_reason(channel, supplied):
                   return None
               if is_foreign_news(channel):
                   return None
@@ -322,17 +359,27 @@ jobs:
           used = set()
           duplicates = 0
           removed_foreign_news = []
+          removed_policy = []
+          removed_existing_streams = []
           for entry in existing:
               url_key = canonical_url(entry.get('url', ''))
               if not url_key or url_key in used:
                   duplicates += 1
                   continue
               entry['canonical'] = base(entry['name'])
+              supplied_group = entry['attrs'].get('group-title', '')
               if is_foreign_news(entry['canonical']):
                   removed_foreign_news.append((entry['canonical'], entry.get('url', '')))
                   continue
+              policy_reason = channel_policy_reason(entry['canonical'], supplied_group)
+              if policy_reason:
+                  removed_policy.append((entry['canonical'], entry.get('url', ''), policy_reason))
+                  continue
+              stream_reason = blocked_stream_reason(entry)
+              if stream_reason:
+                  removed_existing_streams.append((entry['canonical'], entry.get('url', ''), stream_reason))
+                  continue
               used.add(url_key)
-              supplied_group = entry['attrs'].get('group-title', '')
               entry['group'] = (
                   supplied_group if supplied_group == 'Bangladesh Backup'
                   else classify(entry['canonical'], supplied_group) or supplied_group or 'Bangladesh'
@@ -450,7 +497,25 @@ jobs:
               used.add(url_key)
               added_channels.append((name, group, url))
 
-          final = [entry for bucket in canonical.values() for entry in bucket]
+          trimmed_backups = []
+          final = []
+          for bucket in canonical.values():
+              if not bucket:
+                  continue
+              primary = bucket[0]
+              primary_group = primary['group']
+              canonical_name = base(primary['canonical'])
+              limit = 5 if primary_group in {'Bangladesh', 'Bangladesh Backup'} else 3
+              trimmed_backups.extend(bucket[limit:])
+              for index, entry in enumerate(bucket[:limit]):
+                  entry['canonical'] = canonical_name
+                  entry['name'] = canonical_name if index == 0 else f'{canonical_name} [Backup {index}]'
+                  if primary_group == 'Bangladesh':
+                      entry['group'] = 'Bangladesh' if index == 0 else 'Bangladesh Backup'
+                  else:
+                      entry['group'] = primary_group
+                  final.append(entry)
+
           rank = {group: index for index, group in enumerate(GROUPS)}
           final.sort(key=lambda entry: (
               rank.get(entry['group'], 999),
@@ -480,8 +545,11 @@ jobs:
               f'- Final playlist entries: **{len(final)}**',
               f'- New primary channels: **{len(added_channels)}**',
               f'- New backup streams: **{len(added_backups)}**',
-              f'- Duplicate URLs removed from master: **{duplicates}**',
+              f'- Duplicate/semantic-duplicate URLs removed from master: **{duplicates}**',
               f'- Non-Bangladeshi news entries removed: **{len(removed_foreign_news)}**',
+              f'- Sports/non-Islamic religious entries removed: **{len(removed_policy)}**',
+              f'- Proxy/expired/invalid existing streams removed: **{len(removed_existing_streams)}**',
+              f'- Excess backups trimmed: **{len(trimmed_backups)}**',
               f'- Duplicate source candidates skipped: **{skipped_duplicates}**',
               f'- Candidates blocked before testing: **{len(blocked_imports)}**',
               f'- Candidates tested concurrently: **{len(candidates)}**',
@@ -500,6 +568,10 @@ jobs:
           lines += [f'- **{group}**: {totals[group]}' for group in GROUPS]
           lines += ['', '## Removed non-Bangladeshi news channels', '']
           lines += [f'- **{name}** — {url}' for name, url in removed_foreign_news] or ['- None']
+          lines += ['', '## Removed by channel policy', '']
+          lines += [f'- **{name}** — {reason} — {url}' for name, url, reason in removed_policy] or ['- None']
+          lines += ['', '## Removed proxy, expired or invalid existing streams', '']
+          lines += [f'- **{name}** — {reason} — {url}' for name, url, reason in removed_existing_streams] or ['- None']
           lines += ['', '## New primary channels', '']
           lines += [f'- **{name}** — `{group}` — {url}' for name, group, url in added_channels] or ['- None']
           lines += ['', '## New backup streams', '']
@@ -516,6 +588,10 @@ jobs:
               '- Candidate identity uses exact normalized base names; fuzzy matching is not used.',
               '- New candidates require an approved category and a logo.',
               '- Non-Bangladeshi news channels are rejected from both existing and imported entries.',
+              '- Sports and non-Islamic religious channels are rejected.',
+              '- Existing proxy/wrapper and expired-token streams are removed on every run.',
+              '- URL identity ignores HTTP/HTTPS and volatile access tokens to prevent false backups.',
+              '- Backup naming is normalized and limited to four for Bangladeshi or two for other channels.',
               '- New Bangladeshi channels and backups are placed in `Bangladesh Backup`.',
               '- Proxy/masking hosts, wrappers, redirects to blocked hosts and explicit DRM settings are rejected.',
               '- Only media-like responses are accepted; HTML and empty responses are rejected.',
