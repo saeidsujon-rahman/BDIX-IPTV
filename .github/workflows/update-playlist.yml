@@ -97,11 +97,12 @@ jobs:
                 'dbc news','deepto tv','desh tv','doyel tv','duronto tv',
                 'ekattor tv','ekhon tv','ekushey tv','gazi tv','jamuna tv',
                 'maasranga tv','mohona tv','my tv','nagorik tv','news 24',
-                'ntv','rtv','somoy tv','t sports','independent tv'}
+                'ntv','rtv','somoy tv','t sports','independent tv',
+                'btv news','jago news 24','news 21 bangla tv','star news'}
           IN_BANGLA = {'zee bangla','star jalsha','jalsha movies','sony aath',
                        'colors bangla','sun bangla','sangeet bangla','tv9 bangla'}
           FOREIGN_NEWS = re.compile(
-              r'\b(?:news|abp|aaj tak|bbc|cnbc|cnn|dd news|dw|ndtv|news18|'
+              r'\b(?:news|abp|aaj tak|bbc news|cnbc|cnn|dd news|dw|ndtv|news18|'
               r'republic|sky news|times now|trt world|tv9|wion|zee news|'
               r'zee 24 ghanta|24 ghanta|kolkata tv|calcutta news|r plus|'
               r'taaza tv|india tv|india today|news time bangla|bharat 24|'
