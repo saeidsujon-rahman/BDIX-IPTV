@@ -1,32 +1,32 @@
 # IPTV Auto Update
 
-Generated: **2026-09-22T18:25:35.752087+00:00**
+Generated: **2026-09-22T18:27:55.905684+00:00**
 
 ## Summary
 
 - Final playlist entries: **679**
-- New primary channels: **3**
-- New backup streams: **2**
+- New primary channels: **0**
+- New backup streams: **1**
 - Duplicate/semantic-duplicate URLs removed from master: **0**
 - Non-Bangladeshi news entries removed: **0**
 - Sports/non-Islamic religious entries removed: **0**
-- Proxy/expired/invalid existing streams removed: **3**
+- Proxy/expired/invalid existing streams removed: **0**
 - Excess backups trimmed: **0**
-- Duplicate source candidates skipped: **343**
+- Duplicate source candidates skipped: **347**
 - Candidates blocked before testing: **810**
-- Candidates tested concurrently: **39**
+- Candidates tested concurrently: **34**
 - Dead/invalid responses: **33**
 - Candidates skipped by backup limits: **14**
 - Candidates omitted by safety cap: **0**
 - Stream-check workers: **20**
-- Parallel stream-check time: **6.2s**
+- Parallel stream-check time: **5.1s**
 
 ## Source status
 
-- **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.3s — OK
+- **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.2s — OK
 - **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.5s — OK
 - **https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u** — 422 entries — 0.3s — OK
-- **https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u** — 33 entries — 0.2s — OK
+- **https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u** — 33 entries — 0.1s — OK
 
 ## Category totals
 
@@ -52,20 +52,15 @@ Generated: **2026-09-22T18:25:35.752087+00:00**
 
 ## Removed proxy, expired or invalid existing streams
 
-- **Sony AATH** — dynamic stream wrapper — https://digitalotthub.com/tv/toffee-by-maruf/live.php?id=sonyaath&e=.m3u8
-- **Jalwa** — credential-wrapped URL — https://tiger-hub.vercel.app@vodzong.mjunoon.tv:8087/streamtest/JalwaTV-135/playlist.m3u8
-- **National Geographic** — dynamic stream wrapper — http://main.light-ott.net:80/play/live.php?mac=00:1A:79:17:28:41&stream=373017&extension=ts&play_token=zCaGy5dtla
+- None
 
 ## New primary channels
 
-- **Sun Bangla** — `Indian Bangla` — http://27.124.71.27/Sun_Bangla/index.m3u8
-- **Zee Bangla Cinema** — `Indian Bangla` — https://d1g8wgjurz8via.cloudfront.net/bpk-tv/ColorsHD/default/master2.m3u8
-- **Sananda Tv** — `Indian Bangla` — http://live-stream.amarbanglatv.in:8080/hls/sanandatv/index.m3u8
+- None
 
 ## New backup streams
 
-- **RTV [Backup 4]** — `Bangladesh Backup` — http://iptv.rtv-ooe.at/stream.m3u8
-- **Zee Bangla Sonar [Backup 2]** — `Indian Bangla` — https://d1g8wgjurz8via.cloudfront.net/bpk-tv/NGCHD/default/NGCHD.m3u8
+- **Zee Bangla Cinema [Backup 1]** — `Indian Bangla` — https://d1g8wgjurz8via.cloudfront.net/bpk-tv/ColorsHD/default/Zeebanglahd.m3u8
 
 ## Blocked stream imports
 
@@ -918,7 +913,6 @@ Generated: **2026-09-22T18:25:35.752087+00:00**
 
 ## Rejected candidates
 
-- **Zee Bangla Cinema** — source group `Bangla` — https://d1g8wgjurz8via.cloudfront.net/bpk-tv/ColorsHD/default/Zeebanglahd.m3u8
 - **Deshe Bideshe** — source group `Bangla` — https://dbcanada.sonarbanglatv.com/deshebideshe/dbtv/index.m3u8
 - **Sananda** — source group `Bangla` — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/sanandatv.stream/tracks-v1a1/mono.m3u8
 - **Jonmo Bhumi TV** — source group `Bangla` — https://jtvs.ncare.live/Gznr84Woj7UEye3OPVeWq2ForboWAgdV/jonmobhumitv.stream/tracks-v1a1/mono.m3u8
@@ -929,6 +923,7 @@ Generated: **2026-09-22T18:25:35.752087+00:00**
 - **Ekhon** — source group `Bangladeshi` — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/globaltv.stream/index.m3u8
 - **Asian** — source group `Bangladeshi` — https://mtlivestream.com/hls/asian/ytlive/index.m3u8
 - **R Plus Gold** — source group `Indian Bangla` — https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/cf883da3-f9f5-4c70-b0ef-b3ac2e2ad1e3/index.m3u8
+- **Sananda Tv** — source group `Indian Bangla` — http://live-stream.amarbanglatv.in:8080/hls/sanandatv/index.m3u8
 - **Star Gold HD** — source group `Indian Hindi` — http://66.102.126.10:8000/play/a00f/index.m3u8
 - **& Picture** — source group `Indian Hindi` — https://stream.ottplus.bd/live/and_picture_hd_abr/index.m3u8
 - **Sony Television** — source group `Indian Hindi` — https://stream.ottplus.live/live/sony_ent_sd_abr/index.m3u8
