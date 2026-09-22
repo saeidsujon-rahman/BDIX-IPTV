@@ -2,6 +2,13 @@ name: IPTV Auto Update
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/update-playlist.yml'
+      - 'scripts/sync_logos.py'
+      - 'IPTV Playlist.m3u'
   schedule:
     - cron: '30 2 * * *'
 
@@ -14,10 +21,16 @@ concurrency:
 
 jobs:
   update:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
       AUTO_COMMIT: 'true'
+      MAX_WORKERS: '20'
+      STREAM_TIMEOUT: '5'
+      SOURCE_TIMEOUT: '20'
+      SOURCE_MAX_BYTES: '8388608'
+      MAX_CANDIDATES: '1200'
     steps:
       - uses: actions/checkout@v5
         with:
@@ -29,11 +42,18 @@ jobs:
           set -euo pipefail
           python - <<'PY'
           from __future__ import annotations
-          import json, re, urllib.request
-          from datetime import datetime, timezone
+
+          import json
+          import os
+          import re
+          import time
+          import urllib.request
           from collections import defaultdict
+          from concurrent.futures import ThreadPoolExecutor, as_completed
           from copy import deepcopy
+          from datetime import datetime, timezone
           from pathlib import Path
+          from urllib.parse import parse_qsl, unquote, urlsplit, urlunsplit
 
           MASTER = Path('IPTV Playlist.m3u')
           REPORT = Path('reports/auto-update.md')
@@ -42,12 +62,19 @@ jobs:
               'https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u',
           ]
           GROUPS = [
-              'Bangladesh', 'Indian Bangla', 'Indian Movies', 'Indian Music',
+              'Bangladesh', 'Bangladesh Backup',
+              'Indian Bangla', 'Indian Movies', 'Indian Music',
               'Indian Entertainment', 'International Movies', 'International Music',
-              'Documentary & Wildlife', 'Kids', 'Religious', 'Sports', 'Bangladesh Backup',
+              'Documentary & Wildlife', 'Kids', 'Religious', 'Sports',
           ]
-          # Deliberately conservative: only established/reputed channels may enter
-          # these focused groups. Expand these sets only after manual review.
+
+          MAX_WORKERS = max(1, min(int(os.getenv('MAX_WORKERS', '20')), 32))
+          STREAM_TIMEOUT = max(2, min(int(os.getenv('STREAM_TIMEOUT', '5')), 15))
+          SOURCE_TIMEOUT = max(5, min(int(os.getenv('SOURCE_TIMEOUT', '20')), 60))
+          SOURCE_MAX_BYTES = max(1_048_576, int(os.getenv('SOURCE_MAX_BYTES', '8388608')))
+          MAX_CANDIDATES = max(100, int(os.getenv('MAX_CANDIDATES', '1200')))
+
+          # Deliberately conservative: expand only after manual review.
           MAJOR = {
               'sports': {'espn', 'star sports', 'sony ten', 'sony liv', 't sports',
                          'bein sports', 'sky sports', 'eurosport', 'ptv sports',
@@ -71,13 +98,65 @@ jobs:
                 'ntv','rtv','somoy tv','t sports','independent tv'}
           IN_BANGLA = {'zee bangla','star jalsha','jalsha movies','sony aath',
                        'colors bangla','sun bangla','sangeet bangla','tv9 bangla'}
-          FOREIGN_NEWS = re.compile(r'\b(abp|aaj tak|bbc|cnbc|cnn|dd news|dw|ndtv|news18|republic|sky news|times now|trt world|tv9|wion|zee news)\b', re.I)
+          FOREIGN_NEWS = re.compile(
+              r'\b(abp|aaj tak|bbc|cnbc|cnn|dd news|dw|ndtv|news18|republic|'
+              r'sky news|times now|trt world|tv9|wion|zee news)\b', re.I
+          )
           BLOCKED = ('adult', 'porn', 'xxx', 'proxy', 'filex.me', 'vercel.app')
 
-          # Stream policy applies before BOTH primary and backup admission.
-          # Opaque CDN path IDs alone are not proof of encryption or masking.
+          def attrs(text):
+              return dict(re.findall(r'''([\w-]+)="([^"]*)"''', text))
+
+          def parse(text):
+              entries = []
+              pending = None
+              for raw_line in text.splitlines():
+                  line = raw_line.strip()
+                  if line.startswith('#EXTINF:'):
+                      if pending and pending.get('url'):
+                          entries.append(pending)
+                      if ',' not in line:
+                          pending = None
+                          continue
+                      left, name = line.rsplit(',', 1)
+                      pending = {'attrs': attrs(left), 'name': name.strip(), 'extras': []}
+                  elif pending and line and not line.startswith('#'):
+                      pending['url'] = line
+                      entries.append(pending)
+                      pending = None
+                  elif pending and line.startswith('#'):
+                      pending['extras'].append(line)
+              if pending and pending.get('url'):
+                  entries.append(pending)
+              return entries
+
+          def norm(value):
+              value = re.sub(r'\s*\[(?:backup\s*\d+|primary)\]\s*$', '', value, flags=re.I)
+              return re.sub(r'[^a-z0-9]+', ' ', value.casefold()).strip()
+
+          def base(value):
+              return re.sub(r'\s*\[backup\s*\d+\]\s*$', '', value, flags=re.I).strip()
+
+          def is_backup(value):
+              return bool(re.search(r'\[backup\s*\d+\]$', value, re.I))
+
+          def canonical_url(value):
+              try:
+                  parsed = urlsplit(value.strip())
+                  host = (parsed.hostname or '').lower().rstrip('.')
+                  port = parsed.port
+                  if (parsed.scheme.lower() == 'http' and port == 80) or (
+                      parsed.scheme.lower() == 'https' and port == 443
+                  ):
+                      netloc = host
+                  else:
+                      netloc = parsed.netloc.lower()
+                  return urlunsplit((parsed.scheme.lower(), netloc, parsed.path, parsed.query, ''))
+              except ValueError:
+                  return value.strip()
+
+          # Stream policy applies before both primary and backup admission.
           def blocked_stream_reason(entry):
-              from urllib.parse import urlsplit, parse_qsl, unquote
               url = entry.get('url', '').strip()
               try:
                   parsed = urlsplit(url)
@@ -86,19 +165,29 @@ jobs:
                       return 'invalid or unsupported stream URL'
                   if parsed.username or parsed.password:
                       return 'credential-wrapped URL'
-                  blocked_hosts = ('workers.dev', 'pages.dev', 'vercel.app', 'netlify.app',
-                                   'filex.me', 'tinyurl.com', 'bit.ly', 't.co', 'shorturl.at')
-                  if any(host == h or host.endswith('.' + h) for h in blocked_hosts):
+                  blocked_hosts = (
+                      'workers.dev', 'pages.dev', 'vercel.app', 'netlify.app',
+                      'filex.me', 'tinyurl.com', 'bit.ly', 't.co', 'shorturl.at',
+                      'go.skym3u.dev',
+                  )
+                  if any(host == item or host.endswith('.' + item) for item in blocked_hosts):
                       return 'proxy/masking or URL-shortener host'
                   if any('proxy' in label for label in host.split('.')):
                       return 'proxy hostname'
                   path = unquote(parsed.path).lower()
-                  if re.search(r'(?:^|/)(?:proxy|redirect|decrypt|encrypt|decode|encode)(?:[./_-]|$)', path):
+                  if re.search(
+                      r'(?:^|/)(?:proxy|redirect|decrypt|encrypt|decode|encode)(?:[./_-]|$)',
+                      path,
+                  ):
                       return 'proxy/encoded wrapper path'
                   if re.search(r'\.(?:php|asp|aspx)(?:/|$)', path):
                       return 'dynamic stream wrapper'
-                  if any(k.lower() in {'url','uri','redirect','redirect_url','target','destination','encoded','encrypted','payload','play_token','license','license_key','drm'}
-                         for k, v in parse_qsl(parsed.query, keep_blank_values=True)):
+                  wrapped_keys = {
+                      'url', 'uri', 'redirect', 'redirect_url', 'target', 'destination',
+                      'encoded', 'encrypted', 'payload', 'play_token', 'license',
+                      'license_key', 'drm',
+                  }
+                  if any(key.lower() in wrapped_keys for key, _ in parse_qsl(parsed.query, keep_blank_values=True)):
                       return 'wrapped destination or access/license parameter'
                   extras = '\n'.join(entry.get('extras', []))
                   if re.search(r'(?i)(?:license_type|license_key|widevine|playready|clearkey|drm)', extras):
@@ -107,145 +196,315 @@ jobs:
                   return 'malformed URL'
               return ''
 
-          def stream_is_live(url):
-              # Lightweight availability check before admitting any new primary or backup.
-              # A successful HTTP response with non-empty content is required; this does
-              # not guarantee uninterrupted playback, but filters dead/empty URLs.
-              try:
-                  req=urllib.request.Request(url, headers={'User-Agent':'Mozilla/5.0','Range':'bytes=0-1023'})
-                  with urllib.request.urlopen(req, timeout=6) as r:
-                      if getattr(r, 'status', 200) >= 400:
-                          return False
-                      return bool(r.read(1024))
-              except Exception:
-                  return False
-
-          def attrs(s):
-              # Strictly parse quoted metadata; malformed source lines are not
-              # allowed to become candidates.
-              return dict(re.findall(r'''([\w-]+)="([^"]*)"''', s))
-          def parse(text):
-              out=[]; pending=None; extras=[]
-              for line in text.splitlines():
-                  line=line.strip()
-                  if line.startswith('#EXTINF:'):
-                      if pending: out.append(pending)
-                      left,name=line.rsplit(',',1)
-                      pending={'attrs':attrs(left), 'name':name.strip(), 'extras':[]}
-                  elif pending and line and not line.startswith('#'):
-                      pending['url']=line; out.append(pending); pending=None
-                  elif pending and line.startswith('#'):
-                      pending['extras'].append(line)
-              if pending and pending.get('url'): out.append(pending)
-              return out
-          def norm(s):
-              s=re.sub(r'\s*\[(?:backup\s*\d+|primary)\]\s*$', '', s, flags=re.I)
-              return re.sub(r'[^a-z0-9]+',' ',s.casefold()).strip()
-          def base(s): return re.sub(r'\s*\[backup\s*\d+\]\s*$', '', s, flags=re.I).strip()
-          def is_backup(s): return bool(re.search(r'\[backup\s*\d+\]$', s, re.I))
           def classify(name, supplied=''):
-              n=norm(name); g=norm(supplied)
-              if any(x in n for x in BLOCKED): return None
-              if FOREIGN_NEWS.search(n) and n not in BD: return None
-              if n in BD or n.endswith(' bangla tv') and n in BD: return 'Bangladesh'
-              if n in IN_BANGLA: return 'Indian Bangla'
+              channel = norm(name)
+              supplied_group = norm(supplied)
+              if any(item in channel for item in BLOCKED):
+                  return None
+              if FOREIGN_NEWS.search(channel) and channel not in BD:
+                  return None
+              if channel in BD:
+                  return 'Bangladesh'
+              if channel in IN_BANGLA:
+                  return 'Indian Bangla'
               for group, tokens in MAJOR.items():
-                  if any(t in n for t in tokens): return group.title() if group != 'kids' else 'Kids'
-              # Source group is accepted only after the name passes policy.
-              if g in {norm(x) for x in GROUPS} and g not in {'adult','news'}:
-                  return next(x for x in GROUPS if norm(x)==g)
+                  if any(token in channel for token in tokens):
+                      return group.title() if group != 'kids' else 'Kids'
+              allowed = {norm(group): group for group in GROUPS}
+              if supplied_group in allowed and supplied_group not in {'adult', 'news'}:
+                  return allowed[supplied_group]
               return None
-          def parse_sources():
-              allc=[]
-              for source in SOURCE_URLS:
-                  try:
-                      with urllib.request.urlopen(source, timeout=20) as r:
-                          allc += parse(r.read().decode('utf-8','replace'))
-                  except Exception as e:
-                      print(f'source skipped: {source}: {e}')
-              return allc
-          def serialize(e, number):
-              a=deepcopy(e['attrs']); a.pop('nexus-score', None); a['tvg-name']=e['name']; a['group-title']=e['group']
-              a['tvg-chno']=str(number)
-              if e.get('logo'): a['tvg-logo']=e['logo']
-              a.setdefault('tvg-id', 'local.'+re.sub(r'[^a-z0-9]+','-',norm(e['name'])).strip('-'))
-              order=['tvg-id','tvg-name','tvg-logo','tvg-chno','channel-id','tvg-language','tvg-country']
-              rest=[k for k in a if k not in order and k != 'group-title']
-              ordered=order+rest+['group-title']
-              tail=' '.join(f'{k}="{a[k]}"' for k in ordered if a.get(k,'')!='')
-              return f'#EXTINF:-1 {tail},{e["name"]}'
 
-          current_header=next((x for x in MASTER.read_text(encoding='utf-8-sig').splitlines() if x.startswith('#EXTM3U')), '#EXTM3U')
-          existing=parse(MASTER.read_text(encoding='utf-8-sig'))
-          canonical=defaultdict(list); used=set(); corrected=0; duplicates=0
-          for e in existing:
-              if not e.get('url') or e['url'] in used:
-                  duplicates += 1; continue
-              used.add(e['url']); e['canonical']=base(e['name']); supplied_group=e['attrs'].get('group-title',''); e['group']=supplied_group if supplied_group == 'Bangladesh Backup' else (classify(e['canonical'],supplied_group) or supplied_group or 'Bangladesh')
-              canonical[norm(e['canonical'])].append(e)
-          # Existing entries are authoritative for membership. New source entries
-          # can only add a backup to an existing canonical channel or a channel
-          # explicitly admitted by classify(); fuzzy matching is never used.
-          additions=0; rejected=0; added_backups=[]; added_channels=[]; rejected_names=[]
-          blocked_imports=[]; dead_imports=[]
-          for src in parse_sources():
-              url=src.get('url','').strip(); name=base(src.get('name',''))
-              if not url or url in used: continue
-              reason=blocked_stream_reason(src)
+          def fetch_source(source):
+              started = time.monotonic()
+              try:
+                  request = urllib.request.Request(source, headers={'User-Agent': 'Mozilla/5.0'})
+                  with urllib.request.urlopen(request, timeout=SOURCE_TIMEOUT) as response:
+                      payload = response.read(SOURCE_MAX_BYTES + 1)
+                  if len(payload) > SOURCE_MAX_BYTES:
+                      return source, [], 'source exceeds size limit', time.monotonic() - started
+                  entries = parse(payload.decode('utf-8', 'replace'))
+                  for entry in entries:
+                      entry['_source'] = source
+                  return source, entries, '', time.monotonic() - started
+              except Exception as exc:
+                  return source, [], f'{type(exc).__name__}: {exc}', time.monotonic() - started
+
+          def parse_sources():
+              results = {}
+              workers = min(MAX_WORKERS, max(1, len(SOURCE_URLS)))
+              with ThreadPoolExecutor(max_workers=workers) as executor:
+                  futures = {executor.submit(fetch_source, source): source for source in SOURCE_URLS}
+                  for future in as_completed(futures):
+                      source, entries, error, elapsed = future.result()
+                      results[source] = (entries, error, elapsed)
+              combined = []
+              for source in SOURCE_URLS:
+                  combined.extend(results.get(source, ([], 'missing result', 0))[0])
+              return combined, results
+
+          def stream_check(entry):
+              url = entry['url']
+              started = time.monotonic()
+              try:
+                  request = urllib.request.Request(
+                      url,
+                      headers={'User-Agent': 'Mozilla/5.0', 'Range': 'bytes=0-2047'},
+                  )
+                  with urllib.request.urlopen(request, timeout=STREAM_TIMEOUT) as response:
+                      status = getattr(response, 'status', 200)
+                      final_url = response.geturl()
+                      content_type = (response.headers.get('Content-Type') or '').lower()
+                      payload = response.read(2048)
+                  if status >= 400:
+                      return False, f'HTTP {status}', time.monotonic() - started
+                  redirect_reason = blocked_stream_reason({'url': final_url, 'extras': []})
+                  if redirect_reason:
+                      return False, f'redirected to {redirect_reason}', time.monotonic() - started
+                  if not payload:
+                      return False, 'empty response', time.monotonic() - started
+                  sample = payload.lstrip().lower()
+                  if sample.startswith(b'<!doctype html') or sample.startswith(b'<html'):
+                      return False, 'HTML response', time.monotonic() - started
+                  manifest = payload.lstrip().startswith(b'#EXTM3U')
+                  transport_stream = payload[:1] == b'\x47'
+                  media_segment = payload.startswith(b'ID3') or b'ftyp' in payload[:64]
+                  media_type = any(token in content_type for token in (
+                      'mpegurl', 'video/', 'audio/', 'mp2t', 'octet-stream'
+                  ))
+                  if not (manifest or transport_stream or media_segment or media_type):
+                      return False, f'unrecognized content type: {content_type or "missing"}', time.monotonic() - started
+                  return True, f'HTTP {status}', time.monotonic() - started
+              except Exception as exc:
+                  return False, f'{type(exc).__name__}: {exc}', time.monotonic() - started
+
+          def serialize(entry, number):
+              metadata = deepcopy(entry['attrs'])
+              metadata.pop('nexus-score', None)
+              metadata['tvg-name'] = entry['name']
+              metadata['group-title'] = entry['group']
+              metadata['tvg-chno'] = str(number)
+              if entry.get('logo'):
+                  metadata['tvg-logo'] = entry['logo']
+              metadata.setdefault(
+                  'tvg-id',
+                  'local.' + re.sub(r'[^a-z0-9]+', '-', norm(entry['name'])).strip('-'),
+              )
+              order = [
+                  'tvg-id', 'tvg-name', 'tvg-logo', 'tvg-chno', 'channel-id',
+                  'tvg-language', 'tvg-country',
+              ]
+              remainder = [key for key in metadata if key not in order and key != 'group-title']
+              ordered = order + remainder + ['group-title']
+              tail = ' '.join(
+                  f'{key}="{metadata[key]}"' for key in ordered if metadata.get(key, '') != ''
+              )
+              return f'#EXTINF:-1 {tail},{entry["name"]}'
+
+          master_text = MASTER.read_text(encoding='utf-8-sig')
+          current_header = next(
+              (line for line in master_text.splitlines() if line.startswith('#EXTM3U')),
+              '#EXTM3U',
+          )
+          existing = parse(master_text)
+          canonical = defaultdict(list)
+          used = set()
+          duplicates = 0
+          for entry in existing:
+              url_key = canonical_url(entry.get('url', ''))
+              if not url_key or url_key in used:
+                  duplicates += 1
+                  continue
+              used.add(url_key)
+              entry['canonical'] = base(entry['name'])
+              supplied_group = entry['attrs'].get('group-title', '')
+              entry['group'] = (
+                  supplied_group if supplied_group == 'Bangladesh Backup'
+                  else classify(entry['canonical'], supplied_group) or supplied_group or 'Bangladesh'
+              )
+              canonical[norm(entry['canonical'])].append(entry)
+
+          source_entries, source_results = parse_sources()
+          blocked_imports = []
+          rejected_names = []
+          skipped_duplicates = 0
+          skipped_limits = 0
+          seen_candidates = set()
+          staged_per_name = defaultdict(int)
+          candidates = []
+
+          # Pre-filter before any network validation. Existing-name backups receive
+          # priority, followed by eligible new channels with logos.
+          for source_entry in source_entries:
+              url = source_entry.get('url', '').strip()
+              url_key = canonical_url(url)
+              name = base(source_entry.get('name', ''))
+              if not url or not url_key or url_key in used or url_key in seen_candidates:
+                  skipped_duplicates += 1
+                  continue
+              seen_candidates.add(url_key)
+              reason = blocked_stream_reason(source_entry)
               if reason:
-                  rejected+=1; blocked_imports.append((name,url,reason)); continue
-              key=norm(name); target=canonical.get(key,[])
-              # New entries must pass the dead-stream check before admission.
-              if not stream_is_live(url):
-                  rejected+=1; dead_imports.append((name,url,'dead or empty stream')); continue
+                  blocked_imports.append((name, url, reason))
+                  continue
+              key = norm(name)
+              target = canonical.get(key, [])
               if target:
-                  primary=target[0]; group=primary['group']; limit=4 if group in {'Bangladesh','Bangladesh Backup'} else 2
-                  if len(target)-1 >= limit: continue
-                  number=len(target); e=deepcopy(primary); e['name']=f'{primary["canonical"]} [Backup {number}]'; e['url']=url; e['extras']=deepcopy(src.get('extras',[])); e['group']='Bangladesh Backup' if group == 'Bangladesh' else group; target.append(e); used.add(url); additions+=1; added_backups.append((e['name'],e['group'],url)); continue
-              group=classify(name,src.get('attrs',{}).get('group-title',''))
-              if not group or not src.get('attrs',{}).get('tvg-logo'): rejected+=1; rejected_names.append((name,src.get('attrs',{}).get('group-title',''),url)); continue
-              # Never add a new Bangladeshi primary to the main Bangladesh group.
-              # New Bangladeshi channels belong in the backup/review category.
-              if group == 'Bangladesh': group='Bangladesh Backup'
-              e={'attrs':deepcopy(src['attrs']), 'name':name, 'canonical':name, 'url':url, 'extras':deepcopy(src.get('extras',[])), 'group':group}
-              canonical[key].append(e); used.add(url); additions+=1; added_channels.append((name,group,url))
-          final=[e for bucket in canonical.values() for e in bucket]
-          rank={g:i for i,g in enumerate(GROUPS)}
-          final.sort(key=lambda e:(rank.get(e['group'],999),norm(e['canonical']),0 if not is_backup(e['name']) else int(re.search(r'\d+',e['name']).group()),norm(e['name'])))
-          output=[current_header,'#PLAYLIST-STUDIO-NAME:"SAEID RAHMAN - IPTV Playlist"','#PLAYLIST-STUDIO-CATEGORIES:'+json.dumps(GROUPS)]
-          for i,e in enumerate(final,1): output += [serialize(e,i),*e.get('extras',[]),e['url']]
-          MASTER.write_text('\ufeff'+'\n'.join(output)+'\n',encoding='utf-8')
+                  primary = target[0]
+                  limit = 4 if primary['group'] in {'Bangladesh', 'Bangladesh Backup'} else 2
+                  available = max(0, limit - (len(target) - 1))
+                  # Test a small reserve so a dead first candidate does not prevent
+                  # a later working backup from being considered.
+                  if available == 0 or staged_per_name[key] >= available * 3:
+                      skipped_limits += 1
+                      continue
+                  staged_per_name[key] += 1
+                  candidates.append((0, source_entry, key, 'backup'))
+                  continue
+              group = classify(name, source_entry.get('attrs', {}).get('group-title', ''))
+              logo = source_entry.get('attrs', {}).get('tvg-logo', '').strip()
+              if not group or not logo:
+                  rejected_names.append((name, source_entry.get('attrs', {}).get('group-title', ''), url))
+                  continue
+              candidates.append((1, source_entry, key, 'new'))
+
+          candidates.sort(key=lambda item: item[0])
+          truncated_candidates = max(0, len(candidates) - MAX_CANDIDATES)
+          candidates = candidates[:MAX_CANDIDATES]
+
+          checks = {}
+          check_started = time.monotonic()
+          with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+              future_map = {
+                  executor.submit(stream_check, entry): canonical_url(entry['url'])
+                  for _, entry, _, _ in candidates
+              }
+              for future in as_completed(future_map):
+                  checks[future_map[future]] = future.result()
+          check_elapsed = time.monotonic() - check_started
+
+          added_backups = []
+          added_channels = []
+          dead_imports = []
+          for _, source_entry, key, original_kind in candidates:
+              url = source_entry['url'].strip()
+              url_key = canonical_url(url)
+              live, result, elapsed = checks[url_key]
+              if not live:
+                  dead_imports.append((base(source_entry.get('name', '')), url, result))
+                  continue
+
+              # Re-evaluate membership after earlier candidates have been admitted.
+              # This turns a second URL for a newly added channel into a backup.
+              name = base(source_entry.get('name', ''))
+              target = canonical.get(key, [])
+              if target:
+                  primary = target[0]
+                  group = primary['group']
+                  limit = 4 if group in {'Bangladesh', 'Bangladesh Backup'} else 2
+                  if len(target) - 1 >= limit:
+                      skipped_limits += 1
+                      continue
+                  number = len(target)
+                  entry = deepcopy(primary)
+                  entry['name'] = f'{primary["canonical"]} [Backup {number}]'
+                  entry['url'] = url
+                  entry['extras'] = deepcopy(source_entry.get('extras', []))
+                  entry['group'] = 'Bangladesh Backup' if group == 'Bangladesh' else group
+                  target.append(entry)
+                  used.add(url_key)
+                  added_backups.append((entry['name'], entry['group'], url))
+                  continue
+
+              group = classify(name, source_entry.get('attrs', {}).get('group-title', ''))
+              logo = source_entry.get('attrs', {}).get('tvg-logo', '').strip()
+              if not group or not logo:
+                  rejected_names.append((name, source_entry.get('attrs', {}).get('group-title', ''), url))
+                  continue
+              if group == 'Bangladesh':
+                  group = 'Bangladesh Backup'
+              entry = {
+                  'attrs': deepcopy(source_entry['attrs']),
+                  'name': name,
+                  'canonical': name,
+                  'url': url,
+                  'extras': deepcopy(source_entry.get('extras', [])),
+                  'group': group,
+              }
+              canonical[key].append(entry)
+              used.add(url_key)
+              added_channels.append((name, group, url))
+
+          final = [entry for bucket in canonical.values() for entry in bucket]
+          rank = {group: index for index, group in enumerate(GROUPS)}
+          final.sort(key=lambda entry: (
+              rank.get(entry['group'], 999),
+              norm(entry['canonical']),
+              0 if not is_backup(entry['name']) else int(re.search(r'\d+', entry['name']).group()),
+              norm(entry['name']),
+          ))
+
+          output = [
+              current_header,
+              '#PLAYLIST-STUDIO-NAME:"SAEID RAHMAN - IPTV Playlist"',
+              '#PLAYLIST-STUDIO-CATEGORIES:' + json.dumps(GROUPS),
+          ]
+          for number, entry in enumerate(final, 1):
+              output += [serialize(entry, number), *entry.get('extras', []), entry['url']]
+          MASTER.write_text('\ufeff' + '\n'.join(output) + '\n', encoding='utf-8')
+
           REPORT.parent.mkdir(exist_ok=True)
-          lines=[
-              '# IPTV Auto Update','',
-              f'Generated: **{datetime.now(timezone.utc).isoformat()}**','',
-              '## Summary','',
+          totals = defaultdict(int)
+          for entry in final:
+              totals[entry['group']] += 1
+
+          lines = [
+              '# IPTV Auto Update', '',
+              f'Generated: **{datetime.now(timezone.utc).isoformat()}**', '',
+              '## Summary', '',
               f'- Final playlist entries: **{len(final)}**',
               f'- New primary channels: **{len(added_channels)}**',
               f'- New backup streams: **{len(added_backups)}**',
-              f'- Rejected new candidates: **{rejected}**',
-              f'- Duplicate URLs removed: **{duplicates}**','',
-              '## Category totals','',
+              f'- Duplicate URLs removed from master: **{duplicates}**',
+              f'- Duplicate source candidates skipped: **{skipped_duplicates}**',
+              f'- Candidates blocked before testing: **{len(blocked_imports)}**',
+              f'- Candidates tested concurrently: **{len(candidates)}**',
+              f'- Dead/invalid responses: **{len(dead_imports)}**',
+              f'- Candidates skipped by backup limits: **{skipped_limits}**',
+              f'- Candidates omitted by safety cap: **{truncated_candidates}**',
+              f'- Stream-check workers: **{MAX_WORKERS}**',
+              f'- Parallel stream-check time: **{check_elapsed:.1f}s**', '',
+              '## Source status', '',
           ]
-          totals=defaultdict(int)
-          for e in final: totals[e['group']]+=1
-          lines += [f'- **{g}**: {totals[g]}' for g in GROUPS]
+          for source in SOURCE_URLS:
+              entries, error, elapsed = source_results.get(source, ([], 'missing result', 0))
+              status = error or 'OK'
+              lines.append(f'- **{source}** — {len(entries)} entries — {elapsed:.1f}s — {status}')
+          lines += ['', '## Category totals', '']
+          lines += [f'- **{group}**: {totals[group]}' for group in GROUPS]
           lines += ['', '## New primary channels', '']
-          lines += [f'- **{n}** — `{g}` — {u}' for n,g,u in added_channels] or ['- None']
+          lines += [f'- **{name}** — `{group}` — {url}' for name, group, url in added_channels] or ['- None']
           lines += ['', '## New backup streams', '']
-          lines += [f'- **{n}** — `{g}` — {u}' for n,g,u in added_backups] or ['- None']
+          lines += [f'- **{name}** — `{group}` — {url}' for name, group, url in added_backups] or ['- None']
           lines += ['', '## Blocked stream imports', '']
-          lines += [f'- **{n}** — {reason} — {u}' for n,u,reason in blocked_imports] or ['- None']
-          lines += ['', '## Dead or empty stream imports', '']
-          lines += [f'- **{n}** — {reason} — {u}' for n,u,reason in dead_imports] or ['- None']
+          lines += [f'- **{name}** — {reason} — {url}' for name, url, reason in blocked_imports] or ['- None']
+          lines += ['', '## Dead or invalid stream imports', '']
+          lines += [f'- **{name}** — {reason} — {url}' for name, url, reason in dead_imports] or ['- None']
           lines += ['', '## Rejected candidates', '']
-          lines += [f'- **{n}** — source group `{g}` — {u}' for n,g,u in rejected_names] or ['- None']
-          lines += ['', '## Policy', '', '- Existing membership is authoritative.', '- Candidate identity uses exact normalized base name only.', '- New candidates require an approved category and logo.', '- Proxy/masking hosts, wrapper URLs and explicit DRM settings are rejected before primary or backup admission.', '- Existing entries are preserved; URL checks do not establish playback availability or detect every concealed proxy.']
-          REPORT.write_text('\n'.join(lines)+'\n', encoding='utf-8')
+          lines += [f'- **{name}** — source group `{group}` — {url}' for name, group, url in rejected_names] or ['- None']
+          lines += [
+              '', '## Policy', '',
+              '- Existing membership is authoritative.',
+              '- Candidate identity uses exact normalized base names; fuzzy matching is not used.',
+              '- New candidates require an approved category and a logo.',
+              '- New Bangladeshi channels and backups are placed in `Bangladesh Backup`.',
+              '- Proxy/masking hosts, wrappers, redirects to blocked hosts and explicit DRM settings are rejected.',
+              '- Only media-like responses are accepted; HTML and empty responses are rejected.',
+              '- Existing entries are preserved; a point-in-time URL check cannot guarantee continuous playback.',
+          ]
+          REPORT.write_text('\n'.join(lines) + '\n', encoding='utf-8')
           PY
 
-      # Always enforce local logo priority after building, before committing.
-      # sync_logos.py changes only tvg-logo attributes; other playlist data stays intact.
       - name: Apply repository-first logos with external fallback
         shell: bash
         run: |
@@ -260,4 +519,8 @@ jobs:
           git config user.name 'IPTV Update Bot'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git add 'IPTV Playlist.m3u' reports/auto-update.md
-          git diff --cached --quiet || (git commit -m 'bot: auto-update IPTV playlist' && git push)
+          if ! git diff --cached --quiet; then
+            git commit -m 'bot: auto-update IPTV playlist'
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin HEAD:"${GITHUB_REF_NAME}"
+          fi
