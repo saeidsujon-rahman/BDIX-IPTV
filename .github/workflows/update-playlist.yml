@@ -66,6 +66,9 @@ jobs:
               'https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u',
               'https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u',
           ]
+          MANAGED_SOURCE = 'https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u'
+          MANAGED_SOURCE_ID = 'shakil951-proxy-enable'
+
           GROUPS = [
               'Bangladesh', 'Bangladesh Backup',
               'Indian Bangla', 'Indian Movies', 'Indian Music',
@@ -546,7 +549,29 @@ jobs:
               used.add(url_key)
               added_channels.append((name, group, url))
 
+          # Manually playback-approved streams from the Toffee source keep their
+          # working wrapper URLs. Refresh signed query data by exact source-channel
+          # name on every run instead of accumulating token variants as backups.
+          managed_urls = {
+              base(entry.get('name', '')): entry.get('_wrapper_url', entry.get('url', '')).strip()
+              for entry in source_entries
+              if entry.get('_source') == MANAGED_SOURCE
+          }
+          refreshed_managed = 0
           final = [entry for bucket in canonical.values() for entry in bucket]
+          for entry in final:
+              if entry.get('attrs', {}).get('source-id') != MANAGED_SOURCE_ID:
+                  continue
+              source_channel = entry['attrs'].get('source-channel', '').strip()
+              current = managed_urls.get(source_channel, '')
+              if current and current != entry.get('url', ''):
+                  entry['url'] = current
+                  entry['extras'] = [
+                      line for line in entry.get('extras', [])
+                      if not line.lower().startswith('#extvlcopt:http-cookie=')
+                  ]
+                  refreshed_managed += 1
+
           rank = {group: index for index, group in enumerate(GROUPS)}
           final.sort(key=lambda entry: (
               rank.get(entry['group'], 999),
@@ -576,6 +601,7 @@ jobs:
               f'- Final playlist entries: **{len(final)}**',
               f'- New primary channels: **{len(added_channels)}**',
               f'- New backup streams: **{len(added_backups)}**',
+              f'- Source-managed signed URLs refreshed: **{refreshed_managed}**',
               f'- Exact duplicate URLs removed from master: **{duplicates}**',
               f'- Non-Bangladeshi news entries removed: **{len(removed_foreign_news)}**',
               f'- Non-Islamic religious entries removed: **{len(removed_policy)}**',
@@ -620,6 +646,7 @@ jobs:
               '- Tokenized URLs are preserved when they pass the live media check.',
               '- Existing playback-tested names and URLs remain authoritative.',
               '- Transparent wrappers are tested as direct origins first; a working proxy is retained only as fallback.',
+              '- Manually playback-approved Toffee wrappers are preserved and their signed URLs are refreshed by source-channel name.',
               '- New Bangladeshi channels and backups are placed in `Bangladesh Backup`.',
               '- Public HLS hosts and redirects are accepted when they return valid media; explicit DRM or encrypted payloads remain rejected.',
               '- Only media-like responses are accepted; HTML and empty responses are rejected.',
