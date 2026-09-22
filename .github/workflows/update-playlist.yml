@@ -113,6 +113,11 @@ jobs:
               channel = norm(name)
               return channel not in BD and bool(FOREIGN_NEWS.search(channel))
 
+          APPROVED_SPORTS = re.compile(
+              r'\b(?:t sports|star sports|sony ten|espn|bein sports|sky sports|'
+              r'euro sports?|ptv sports|fox sports|nba tv|nfl network)\b',
+              re.I,
+          )
           NON_ISLAMIC_RELIGIOUS = re.compile(
               r'\b(?:3abn|christ|jesus|gospel|bible|church|hindu|krishna|'
               r'bhakti|aastha|sanskar|buddh|jain|god tv|tbn|daystar|ewtn)\b',
@@ -121,6 +126,12 @@ jobs:
 
           def channel_policy_reason(name, supplied=''):
               channel = norm(name)
+              group = norm(supplied)
+              if group == 'sports':
+                  if re.search(r'(?:\s3){3,}', channel):
+                      return 'malformed repeated sports-channel name'
+                  if not APPROVED_SPORTS.search(channel):
+                      return 'sports channel outside approved major list'
               if NON_ISLAMIC_RELIGIOUS.search(channel):
                   return 'non-Islamic religious channel'
               return ''
