@@ -1,6 +1,6 @@
 # IPTV Auto Update
 
-Generated: **2026-09-22T19:07:44.875867+00:00**
+Generated: **2026-09-22T19:12:08.550952+00:00**
 
 ## Summary
 
@@ -12,20 +12,20 @@ Generated: **2026-09-22T19:07:44.875867+00:00**
 - Non-Islamic religious entries removed: **0**
 - Duplicate source candidates skipped: **508**
 - Candidates blocked before testing: **2**
-- Candidates tested concurrently: **145**
-- Dead/invalid responses: **145**
-- Candidates skipped by backup limits: **101**
+- Candidates tested concurrently: **139**
+- Dead/invalid responses: **139**
+- Candidates skipped by backup limits: **134**
 - Candidates omitted by safety cap: **0**
 - Stream-check workers: **20**
-- Parallel stream-check time: **15.0s**
+- Parallel stream-check time: **14.4s**
 
 ## Source status
 
+- **https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u** — 76 entries — 0.1s — OK
 - **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.1s — OK
 - **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.1s — OK
 - **https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u** — 422 entries — 0.1s — OK
-- **https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u** — 33 entries — 0.2s — OK
-- **https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u** — 76 entries — 0.2s — OK
+- **https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u** — 33 entries — 0.1s — OK
 
 ## Category totals
 
@@ -65,10 +65,31 @@ Generated: **2026-09-22T19:07:44.875867+00:00**
 
 ## Dead or invalid stream imports
 
-- **Asian TV** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/asian-tv-1/index.m3u8
+- **Rajdhani TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/rajdhani_tv/playlist.m3u8
+- **Asian TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/asian_tv/playlist.m3u8
+- **Nexus TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/nexus_tv/playlist.m3u8
+- **Islamic TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/islamic_tv/playlist.m3u8
+- **Ekattor TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/ekattor_tv/playlist.m3u8
+- **Saudi Quran** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/saudi_quran/playlist.m3u8
+- **Sony Ten Sports 1 HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_1_hd/playlist.m3u8
+- **Sony Ten Sports 2 HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_2_hd/playlist.m3u8
+- **Sony Ten Sports 5 HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_5_hd/playlist.m3u8
+- **Cartoon Network HD +** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/cartoon_network_hd/playlist.m3u8
+- **Zee Anmol** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_anmol/playlist.m3u8
+- **Sony SAB HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonysab_hd/playlist.m3u8
+- **Sony MAX 2** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonymax_2/playlist.m3u8
+- **TLC HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/tlc_hd/playlist.m3u8
+- **TLC** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/tlc_sd/playlist.m3u8
+- **Animal Planet HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/animal_planet_hd/playlist.m3u8
+- **Sony BBC Earth HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonybbc_earth_hd/playlist.m3u8
+- **Discovery HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_hd/playlist.m3u8
+- **Discovery** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_sd/playlist.m3u8
+- **Investigation Discovery HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovary_investigation_hd/playlist.m3u8
+- **& Pictures HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/andpicture_hd/playlist.m3u8
+- **Asian TV** — TimeoutError: timed out — https://iptvlive.ahmed-bd-org.workers.dev/asian-tv-1/index.m3u8
 - **Green TV** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/green-tv-1/index.m3u8
 - **Thikana** — HTML response — https://iptvlive.ahmed-bd-org.workers.dev/thikana-1/index.m3u8
-- **BTV News** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/btv-news-1/index.m3u8
+- **BTV News** — TimeoutError: timed out — https://iptvlive.ahmed-bd-org.workers.dev/btv-news-1/index.m3u8
 - **Rongeen** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/rongeen-1/index.m3u8
 - **Nick Bangla** — HTTPError: HTTP Error 500: Internal Server Error — https://iptvlive.ahmed-bd-org.workers.dev/nick-bangla-1/index.m3u8
 - **Colors Bangla HD** — URLError: <urlopen error [Errno 111] Connection refused> — https://iptvlive.ahmed-bd-org.workers.dev/colors-bangla-hd-1/index.m3u8
@@ -134,8 +155,15 @@ Generated: **2026-09-22T19:07:44.875867+00:00**
 - **Green TV HD** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/cLuA3hJR/index.m3u8?e=1784102650&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=4611739ee78a2cc302c5eb6c7e0ec1d9
 - **PTV Sports** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/zY3hJ7pQ2vM5gD8s/index.m3u8?e=1784102651&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&ip=52.157.32.49&token=258517a6abcacd20116947f2c3132059
 - **Espn** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/espn/index.m3u8?e=1784102653&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=fbc560646ea38d9fce118fcd264926c5
-- **Saudi Quran** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/saudi_quran/playlist.m3u8
-- **Sony Ten Sports 2 HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_2_hd/playlist.m3u8
+- **Toffee TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/toffee_drama/playlist.m3u8
+- **Toffee Movies** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/toffee_movie/playlist.m3u8
+- **Saudi Sunnah** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/saudi_sunnah/playlist.m3u8
+- **Sony Ten Cricket** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/ten_cricket/playlist.m3u8
+- **Zing** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zing_sd/playlist.m3u8
+- **Sony PIX HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonypix_hd/playlist.m3u8
+- **Zee Cafe** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_cafe_hd/playlist.m3u8
+- **Discovery Science** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_science/playlist.m3u8
+- **Discovery Turbo** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_turbo/playlist.m3u8
 - **BTV** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/btv-1/index.m3u8
 - **Nikki HD** — HTTPError: HTTP Error 403: Forbidden — https://iptvlive.ahmed-bd-org.workers.dev/nikki-hd-1/index.m3u8
 - **Akash Bangla** — URLError: <urlopen error [Errno 111] Connection refused> — https://iptvlive.ahmed-bd-org.workers.dev/akash-bangla-1/index.m3u8
@@ -149,39 +177,6 @@ Generated: **2026-09-22T19:07:44.875867+00:00**
 - **Kids Pang TV** — URLError: <urlopen error [Errno -2] Name or service not known> — https://newidco-kidspangtv-1-us.roku.wurl.tv/playlist.m3u8
 - **Channel Win** — HTTPError: HTTP Error 404: Not Found — https://cdn-4.pishow.tv/live/229/master.m3u8
 - **T Sports Live 01** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://live.tsports.com/mobile_hls/tsports_live_1/playlist.m3u8
-- **[BD] B4U Music** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/b4u_music/playlist.m3u8
-- **[BD] Zing** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zing_sd/playlist.m3u8
-- **[BD] Sony Entertainment Television HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonyentertainmnt_hd/playlist.m3u8
-- **[BD] Sony SAB HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonysab_hd/playlist.m3u8
-- **[BD] Zee TV HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_tv_hd/playlist.m3u8
-- **[BD] Sony Entertainment Television** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_entertainment/playlist.m3u8
-- **[BD] Islamic TV** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/islamic_tv/playlist.m3u8
-- **[BD] Sony Ten Sports 1 HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_1_hd/playlist.m3u8
-- **[BD] Sony Ten Sports 5 HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_5_hd/playlist.m3u8
-- **[BD] Sony Ten Cricket** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/ten_cricket/playlist.m3u8
-- **[BD] Eurosport HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/euro_sports_hd/playlist.m3u8
-- **[BD] Sony MAX HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_max_hd/playlist.m3u8
-- **[BD] Sony MAX** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_max/playlist.m3u8
-- **[BD] Sony PIX HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonypix_hd/playlist.m3u8
-- **[BD] Zee Cafe** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_cafe_hd/playlist.m3u8
-- **[BD] B4U Movies APAC** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/b4u_movies/playlist.m3u8
-- **[BD] Sony MAX 2** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonymax_2/playlist.m3u8
-- **[BD] Zee Bangla Cinema** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_bangla_cinema/playlist.m3u8
-- **[BD] Zee Cinema HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_cinema_hd/playlist.m3u8
-- **[BD] Zee Bollywood** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_bollywood/playlist.m3u8
-- **[BD] Zee Action** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_action/playlist.m3u8
-- **[BD] Animal Planet** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/animal_planet_sd/playlist.m3u8
-- **[BD] Animal Planet HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/animal_planet_hd/playlist.m3u8
-- **[BD] Sony BBC Earth HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonybbc_earth_hd/playlist.m3u8
-- **[BD] Discovery** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_sd/playlist.m3u8
-- **[BD] Discovery HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_hd/playlist.m3u8
-- **[BD] Discovery Science** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_science/playlist.m3u8
-- **[BD] Discovery Turbo** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_turbo/playlist.m3u8
-- **[BD] Investigation Discovery HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovary_investigation_hd/playlist.m3u8
-- **[BD] Cartoon Network** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/cartoon_network_sd/playlist.m3u8
-- **[BD] Cartoon Network HD +** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/cartoon_network_hd/playlist.m3u8
-- **[BD] Discovery Kids** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_kids/playlist.m3u8
-- **[BD] POGO** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/pogo_sd/playlist.m3u8
 - **Sky Sports Main Event** — URLError: <urlopen error timed out> — https://cdn10.zohanayaan.com:1686/hls/skysme.m3u8?md5=iYkn_7XcftUHH9G1zhY8Nw&expires=1790102125
 - **Sky Sports Golf** — URLError: <urlopen error timed out> — https://cdn10.zohanayaan.com:1686/hls/skysgol.m3u8?md5=2dmbquZei39fQGLN-8NwsQ&expires=1790102130
 - **Sky Sports Premier League** — URLError: <urlopen error timed out> — https://cdn6.zohanayaan.com:1686/hls/skysprem.m3u8?md5=UFC8Js6_vffcW7_s42jDRw&expires=1790102130
@@ -209,10 +204,22 @@ Generated: **2026-09-22T19:07:44.875867+00:00**
 - **Islam TV** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/islam/index.m3u8?e=1784102629&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=08e8a8df941b53b9792355f81b43937e
 - **Assam Talks** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/AssamTalks/index.m3u8?e=1784102635&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c5ae931b66e2b3bb39f8dcc43ef2118d
 - **BT Sports 2** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/btSport2/index.m3u8?e=1784102657&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=adb8565e4802294a0887f78480964696
-- **Saudi Sunnah** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/saudi_sunnah/playlist.m3u8
 
 ## Rejected candidates
 
+- **EPL channel 1** — source group `Live Action` — https://prod-cdn01-live.toffeelive.com/live/EPL-26-27-CH-1/index.m3u8?edge-cache-token=Expires=1790093182~Starts=1790092882~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Data=eyJzdWJzY3JpYmVyX2lkIjoiNTg0NmVmMTAtMzgzYS00YjlhLThhZTAtNGZiMTEzNWIxNTVkIn0~Signature=IATa8UKScOcVxPHcd53O9-YE5FN3rdO_kdG0y-KEY4Fzcc3d9nblZrNGiVsy_lAIr3iN08aaHdyZ_hf0jvEtAw
+- **FC | Live 1** — source group `Sports` — https://prod-cdn01-live.toffeelive.com/live/BFFL-1/index.m3u8?edge-cache-token=Expires=1790100083~Starts=1790092883~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Data=eyJzdWJzY3JpYmVyX2lkIjoiNTg0NmVmMTAtMzgzYS00YjlhLThhZTAtNGZiMTEzNWIxNTVkIn0~Signature=RvrCPELwdwFzxm83cwhob7f7AL9g86l9b8A-6pk84bwIG36JRvUOuuiy_oIgIfvbayjqT857dSla7FtfEdjKAw
+- **WC Match Recap** — source group `Sports` — https://bldcmprod-cdn.toffeelive.com/cdn/live/fifa_world_cup/playlist.m3u8
+- **CNN** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/cnn/playlist.m3u8
+- **Channel News Asia** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/channels_news_asia/playlist.m3u8
+- **TRT World** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/trt_world/playlist.m3u8
+- **DW** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/dw_tv/playlist.m3u8
+- **Russia Today** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/russia_today/playlist.m3u8
+- **France 24** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/france_24/playlist.m3u8
+- **CGTN** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/cgtn/playlist.m3u8
+- **Eurosport HD** — source group `Sports` — https://bldcmprod-cdn.toffeelive.com/cdn/live/euro_sports_hd/playlist.m3u8
+- **HUM Masala** — source group `Drama` — https://bldcmprod-cdn.toffeelive.com/cdn/live/hum_masala/playlist.m3u8
+- **HUM Sitaray** — source group `Drama` — https://bldcmprod-cdn.toffeelive.com/cdn/live/hum_sitaray/playlist.m3u8
 - **Live Cricket** — source group `` — https://iptvlive.ahmed-bd-org.workers.dev/live-cricket-1/index.m3u8
 - **Bangla Vision** — source group `Entertainment` — https://iptvlive.ahmed-bd-org.workers.dev/bangla-vision-1/index.m3u8
 - **Ekattor HD** — source group `News` — https://iptvlive.ahmed-bd-org.workers.dev/ekattor-hd-1/index.m3u8
@@ -1149,40 +1156,8 @@ Generated: **2026-09-22T19:07:44.875867+00:00**
 - **MUSIC BANGLA** — source group `Bangla` — http://live.matribhumitv.com/music-bangla/index.m3u8
 - **MAASRANGA HD** — source group `Bangla` — http://mtv.sunplex.live/MAASRANGA-TV/index.m3u8
 - **T Sports (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3)** — source group `Sports` — https://tvsen5.aynaott.com/TnMn5kZz8aLm/tracks-v1a1/mono.ts.m3u8
-- **[BD] Zee Bangla** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_bangla/playlist.m3u8
-- **[BD] HUM** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/hum_tv/playlist.m3u8
-- **[BD] HUM Masala** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/hum_masala/playlist.m3u8
-- **[BD] HUM Sitaray** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/hum_sitaray/playlist.m3u8
-- **[BD] Toffee TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/toffee_drama/playlist.m3u8
-- **[BD] NTV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/n_tv/playlist.m3u8
-- **[BD] Sony Aath** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonyaath/playlist.m3u8
-- **[BD] Channel i** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/channel_i/playlist.m3u8
-- **[BD] Zee Anmol** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_anmol/playlist.m3u8
-- **[BD] &TV HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/and_tv_hd/playlist.m3u8
-- **[BD] Somoy TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/somoy_tv/playlist.m3u8
-- **[BD] Ekhon TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/ekhon_tv/playlist.m3u8
-- **[BD] Global TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/globaltv/playlist.m3u8
-- **[BD] Toffee Movies** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/toffee_movie/playlist.m3u8
-- **[BD] Jamuna TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/jamuna_tv/playlist.m3u8
-- **[BD] Rajdhani TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/rajdhani_tv/playlist.m3u8
-- **[BD] Bangla TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/bangla_tv/playlist.m3u8
-- **[BD] Independent TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/independent_tv/playlist.m3u8
-- **[BD] Channel S** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/channel_s_tv/playlist.m3u8
-- **[BD] Ekattor TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/ekattor_tv/playlist.m3u8
-- **[BD] Ananda TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/anandatv/playlist.m3u8
-- **[BD] Bijoy TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/bijoytv/playlist.m3u8
-- **[BD] Asian TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/asian_tv/playlist.m3u8
-- **[BD] Desh TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/desh_tv/playlist.m3u8
-- **[BD] Nexus TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/nexus_tv/playlist.m3u8
 - **[BD] Mohona TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/mohona_tv/playlist.m3u8
-- **[BD] Movie Bangla** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/movie_bangla/playlist.m3u8
 - **[BD] EPL channel 1** — source group `[LIVE] BDIX ♛` — https://mprod-cdn.toffeelive.com/live/match-1/index.m3u8
-- **[BD] WC Match Recap** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/fifa_world_cup/playlist.m3u8
-- **[BD] & Pictures HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/andpicture_hd/playlist.m3u8
-- **[BD] CNN** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/cnn/playlist.m3u8
-- **[BD] TLC HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/tlc_hd/playlist.m3u8
-- **[BD] TLC** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/tlc_sd/playlist.m3u8
-- **[BD] Sony YAY** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonyyay/playlist.m3u8
 - **Willow HD** — source group `Sports` — https://cdn3.zohanayaan.com:1686/hls/willowusa.m3u8?md5=_vaVPv6pBh_KE2ptOIx5gQ&expires=1790102123
 - **Willow HD 2** — source group `Sports` — https://cdn5.zohanayaan.com:1686/hls/willowextra.m3u8?md5=8ir-IqX_p3UsCVSzswMBjw&expires=1790102124
 - **Ten Sports** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/tenspk.m3u8?md5=aTbzu_WlloMzhzSHbb25MQ&expires=1790102124
@@ -1318,14 +1293,6 @@ Generated: **2026-09-22T19:07:44.875867+00:00**
 - **Rupashi Bangla TV (720p)** — source group `` — https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/ruposhibangla.stream/playlist.m3u8
 - **Vokta TV (720p)** — source group `` — https://vokta.raytahost.com/live/voktatv/index.m3u8
 - **Matribhumi TV (720p)** — source group `` — http://live.playmax.live/matribhumi/index.m3u8
-- **EPL channel 1** — source group `Live Action` — https://prod-cdn01-live.toffeelive.com/live/EPL-26-27-CH-1/index.m3u8?edge-cache-token=Expires=1790093182~Starts=1790092882~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Data=eyJzdWJzY3JpYmVyX2lkIjoiNTg0NmVmMTAtMzgzYS00YjlhLThhZTAtNGZiMTEzNWIxNTVkIn0~Signature=IATa8UKScOcVxPHcd53O9-YE5FN3rdO_kdG0y-KEY4Fzcc3d9nblZrNGiVsy_lAIr3iN08aaHdyZ_hf0jvEtAw
-- **FC | Live 1** — source group `Sports` — https://prod-cdn01-live.toffeelive.com/live/BFFL-1/index.m3u8?edge-cache-token=Expires=1790100083~Starts=1790092883~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Data=eyJzdWJzY3JpYmVyX2lkIjoiNTg0NmVmMTAtMzgzYS00YjlhLThhZTAtNGZiMTEzNWIxNTVkIn0~Signature=RvrCPELwdwFzxm83cwhob7f7AL9g86l9b8A-6pk84bwIG36JRvUOuuiy_oIgIfvbayjqT857dSla7FtfEdjKAw
-- **Channel News Asia** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/channels_news_asia/playlist.m3u8
-- **TRT World** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/trt_world/playlist.m3u8
-- **DW** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/dw_tv/playlist.m3u8
-- **Russia Today** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/russia_today/playlist.m3u8
-- **France 24** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/france_24/playlist.m3u8
-- **CGTN** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/cgtn/playlist.m3u8
 
 ## Policy
 
