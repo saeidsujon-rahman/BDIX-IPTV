@@ -1,45 +1,46 @@
 # IPTV Auto Update
 
-Generated: **2026-09-22T18:48:51.736880+00:00**
+Generated: **2026-09-22T19:04:39.866657+00:00**
 
 ## Summary
 
-- Final playlist entries: **861**
+- Final playlist entries: **873**
 - New primary channels: **0**
-- New backup streams: **3**
+- New backup streams: **12**
 - Exact duplicate URLs removed from master: **0**
 - Non-Bangladeshi news entries removed: **0**
 - Non-Islamic religious entries removed: **0**
-- Duplicate source candidates skipped: **428**
+- Duplicate source candidates skipped: **496**
 - Candidates blocked before testing: **2**
-- Candidates tested concurrently: **130**
-- Dead/invalid responses: **127**
-- Candidates skipped by backup limits: **90**
+- Candidates tested concurrently: **158**
+- Dead/invalid responses: **146**
+- Candidates skipped by backup limits: **100**
 - Candidates omitted by safety cap: **0**
 - Stream-check workers: **20**
-- Parallel stream-check time: **13.2s**
+- Parallel stream-check time: **14.9s**
 
 ## Source status
 
 - **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.3s — OK
-- **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.2s — OK
-- **https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u** — 422 entries — 0.3s — OK
-- **https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u** — 33 entries — 0.1s — OK
+- **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.3s — OK
+- **https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u** — 422 entries — 0.2s — OK
+- **https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u** — 33 entries — 0.2s — OK
+- **https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u** — 76 entries — 0.3s — OK
 
 ## Category totals
 
 - **Bangladesh**: 54
-- **Bangladesh Backup**: 146
-- **Indian Bangla**: 69
-- **Indian Movies**: 74
-- **Indian Music**: 58
+- **Bangladesh Backup**: 155
+- **Indian Bangla**: 66
+- **Indian Movies**: 77
+- **Indian Music**: 60
 - **Indian Entertainment**: 110
 - **International Movies**: 51
 - **International Music**: 58
-- **Documentary & Wildlife**: 88
+- **Documentary & Wildlife**: 87
 - **Kids**: 78
 - **Religious**: 41
-- **Sports**: 34
+- **Sports**: 36
 
 ## Removed non-Bangladeshi news channels
 
@@ -55,9 +56,18 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 
 ## New backup streams
 
-- **Zee Bangla Cinema [Backup 1]** — `Indian Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/zee-bangla-cinema-1/index.m3u8
-- **Channel S [Backup 4]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/channel-s-1/index.m3u8
-- **Zee Bangla Cinema [Backup 2]** — `Indian Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/zee-bangla-cinema-3/index.m3u8
+- **DBC News [Backup 3]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/dbc-news-hd-1/index.m3u8
+- **Channel 24 [Backup 4]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/channel-24-hd-1/index.m3u8
+- **News 24 [Backup 3]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/news-24-hd-1/index.m3u8
+- **Channel 9 [Backup 2]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/channel-9-hd-1/index.m3u8
+- **Channel I [Backup 3]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/channel-i-hd-1/index.m3u8
+- **Hindi Hits [Backup 1]** — `Indian Music` — https://iptvlive.ahmed-bd-org.workers.dev/hindi-hits-hd-1/index.m3u8
+- **DBC News [Backup 4]** — `Bangladesh Backup` — https://iptv-proxy.ahmed-bd-org.workers.dev/dbc-news/index.m3u8
+- **Channel 9 [Backup 3]** — `Bangladesh Backup` — https://iptv-proxy.ahmed-bd-org.workers.dev/channel-9/index.m3u8
+- **Channel I [Backup 4]** — `Bangladesh Backup` — https://iptv-proxy.ahmed-bd-org.workers.dev/channel-i/index.m3u8
+- **Independent TV [Backup 4]** — `Bangladesh Backup` — https://tvsen6.aynaott.com/Wef2Vj67njeYGDqQNFB9/index.m3u8?e=1784102536&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=faa76e200f238010e464d45a3135f138
+- **Star Sports 2 [Backup 1]** — `Sports` — http://tvsen5.aynascope.net/cXPB2LKkErN9/index.m3u8
+- **Star Sports 1 Hindi [Backup 1]** — `Sports` — http://41.205.93.154/STARSPORTS1/index.m3u8
 
 ## Blocked stream imports
 
@@ -66,14 +76,17 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 
 ## Dead or invalid stream imports
 
-- **Asian TV** — HTTPError: HTTP Error 500: Internal Server Error — https://iptvlive.ahmed-bd-org.workers.dev/asian-tv-1/index.m3u8
+- **Asian TV** — TimeoutError: timed out — https://iptvlive.ahmed-bd-org.workers.dev/asian-tv-1/index.m3u8
 - **Green TV** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/green-tv-1/index.m3u8
 - **Thikana** — HTML response — https://iptvlive.ahmed-bd-org.workers.dev/thikana-1/index.m3u8
 - **BTV News** — TimeoutError: timed out — https://iptvlive.ahmed-bd-org.workers.dev/btv-news-1/index.m3u8
 - **Rongeen** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/rongeen-1/index.m3u8
 - **Nick Bangla** — HTTPError: HTTP Error 500: Internal Server Error — https://iptvlive.ahmed-bd-org.workers.dev/nick-bangla-1/index.m3u8
 - **Colors Bangla HD** — URLError: <urlopen error [Errno 111] Connection refused> — https://iptvlive.ahmed-bd-org.workers.dev/colors-bangla-hd-1/index.m3u8
+- **Star Plus HD** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/star-plus-hd-1/index.m3u8
+- **Star Gold HD** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/star-gold-hd-1/index.m3u8
 - **Sony Max 2** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://iptvlive.ahmed-bd-org.workers.dev/sony-max-2-1/index.m3u8
+- **Sony Sab HD** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://iptvlive.ahmed-bd-org.workers.dev/sony-sab-hd-1/index.m3u8
 - **Sangeet Bangla** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/sangeet-bangla-1/index.m3u8
 - **7S Music** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/7s-music-1/index.m3u8
 - **Music India** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/music-india-1/index.m3u8
@@ -95,7 +108,9 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 - **News 24 Ⓢ** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/news-24-2/index.m3u8
 - **Al Quran Al Kareem TV** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1000)> — https://iptvlive.ahmed-bd-org.workers.dev/al-quran-al-kareem-tv-1/index.m3u8
 - **Thikana** — HTML response — http://sm-monirul.top/@monirul_Islam_SM/proxy.php?id=thikana&format=.m3u
+- **Star Gold HD** — URLError: <urlopen error timed out> — http://66.102.126.10:8000/play/a00f/index.m3u8
 - **Sony Max 2** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://stream.ottplus.bd/live/max_2_abr/live/max_2_720/chunks.m3u8
+- **Sony Sab HD** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://stream.ottplus.bd/live/sub_hd_abr/index.m3u8
 - **Music India** — HTTPError: HTTP Error 404: Not Found — https://cdn-2.pishow.tv/live/226/master.m3u8
 - **PTV Sports** — HTTPError: HTTP Error 403: Forbidden — https://saseries.akamaized.net/hls/live/2110097/2353jkiL-tapmad/master.m3u8
 - **Star Sports 1** — HTTPError: HTTP Error 404: Not Found — http://tvsen7.aynascope.net/sspts1/index.m3u8
@@ -120,39 +135,53 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 - **Espn** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/espn/index.m3u8?e=1784102528&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d701f3665e12964090ddd656a9a89c29
 - **BTV News** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/tV8mB2zP7rX4kL1w/index.m3u8?e=1784102532&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=20448821bed8f397806d492c1b39da46
 - **Channel 24** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/YrVDF8gu/index.m3u8?e=1784102534&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=af07191085f18faa873302c2d8cdff28
-- **Independent TV** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/Wef2Vj67njeYGDqQNFB9/index.m3u8?e=1784102536&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=faa76e200f238010e464d45a3135f138
 - **Channel 9** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/kajlsd57jnkdf/index.m3u8?e=1784102566&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=de9d33cfd8daf9a7f2e56a88534d0548
+- **BTV NATIONAL HD** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/AQLYTPfXtjm5x7zj7AsM/index.m3u8?e=1784102574&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c77a7f71fb9c8690eec45bed699ba960
+- **Green TV HD** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/cLuA3hJR/index.m3u8?e=1784102578&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=57bcdefd396bd85d72461ff29cbde00d
 - **Disney JR** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/disneyjr/index.m3u8?e=1784102580&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=6a87c2e077df270ccd0de2c2e611177c
 - **9X Tashan** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/9X_Tashan/index.m3u8?e=1784102590&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c021d7a607b33144aa5b0b83089b0fb5
 - **MTV** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/mtv/index.m3u8?e=1784102610&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b99f4b905260714794250d1410a936a2
+- **TLC HD** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/tlc_hd/index.m3u8?e=1784102621&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=032b2c039214b5eb81d1d06aac66a512
+- **Peace TV Urdu HD** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/PeaceTVUrduHD/index.m3u8?e=1784102628&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7cf820bc700fe8ed9e8b0084f0c6f84b
+- **Green TV HD** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/cLuA3hJR/index.m3u8?e=1784102650&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=4611739ee78a2cc302c5eb6c7e0ec1d9
 - **PTV Sports** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/zY3hJ7pQ2vM5gD8s/index.m3u8?e=1784102651&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&ip=52.157.32.49&token=258517a6abcacd20116947f2c3132059
 - **Espn** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/espn/index.m3u8?e=1784102653&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=fbc560646ea38d9fce118fcd264926c5
+- **Saudi Quran** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/saudi_quran/playlist.m3u8
+- **Sony Ten Sports 2 HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_2_hd/playlist.m3u8
 - **BTV** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/btv-1/index.m3u8
 - **Nikki HD** — HTTPError: HTTP Error 403: Forbidden — https://iptvlive.ahmed-bd-org.workers.dev/nikki-hd-1/index.m3u8
-- **Star Jalsha HD** — HTTPError: HTTP Error 429: Too Many Requests — https://iptvlive.ahmed-bd-org.workers.dev/star-jalsha-hd-1/index.m3u8
 - **Akash Bangla** — URLError: <urlopen error [Errno 111] Connection refused> — https://iptvlive.ahmed-bd-org.workers.dev/akash-bangla-1/index.m3u8
 - **Khusbo Bangla** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/khusbo-bangla-1/index.m3u8
-- **Star Plus HD** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/star-plus-hd-1/index.m3u8
-- **Sony Sab HD** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://iptvlive.ahmed-bd-org.workers.dev/sony-sab-hd-1/index.m3u8
 - **Kids Pang TV** — URLError: <urlopen error [Errno -2] Name or service not known> — https://iptvlive.ahmed-bd-org.workers.dev/kids-pang-tv-1/index.m3u8
 - **Channel Win** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/channel-win-1/index.m3u8
 - **BTV** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/opREbXLqJ2HFYPCXTJBa/index.m3u8
 - **Nikki HD** — HTTPError: HTTP Error 403: Forbidden — https://nomawnoijl.gpcdn.net/akash/nikky/playlist.m3u8
-- **Star Jalsha HD** — HTTPError: HTTP Error 429: Too Many Requests — http://filex.me:8080/akkvdGtMUWkvVnMvaWx3V2hXa2Nab05VZXFnaEtDN24xQWNxQm5pMVZZY0dqYlZNUFYweExnT3NtUHFpWTFrbA
 - **Akash Bangla** — URLError: <urlopen error [Errno 111] Connection refused> — https://live.thebosstv.com:30443/dwlive/AAKAASH-AATH/playlist.m3u8
 - **Khusbo Bangla** — URLError: <urlopen error timed out> — http://103.175.73.12:8080/live/375/375_0.m3u8
-- **Sony Sab HD** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://stream.ottplus.bd/live/sub_hd_abr/index.m3u8
 - **Kids Pang TV** — URLError: <urlopen error [Errno -2] Name or service not known> — https://newidco-kidspangtv-1-us.roku.wurl.tv/playlist.m3u8
 - **Channel Win** — HTTPError: HTTP Error 404: Not Found — https://cdn-4.pishow.tv/live/229/master.m3u8
 - **T Sports Live 01** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://live.tsports.com/mobile_hls/tsports_live_1/playlist.m3u8
+- **[BD] B4U Music** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/b4u_music/playlist.m3u8
+- **[BD] Zing** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zing_sd/playlist.m3u8
 - **[BD] Sony Entertainment Television HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonyentertainmnt_hd/playlist.m3u8
 - **[BD] Sony SAB HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonysab_hd/playlist.m3u8
 - **[BD] Zee TV HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_tv_hd/playlist.m3u8
 - **[BD] Sony Entertainment Television** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_entertainment/playlist.m3u8
+- **[BD] Islamic TV** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/islamic_tv/playlist.m3u8
 - **[BD] Sony Ten Sports 1 HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_1_hd/playlist.m3u8
 - **[BD] Sony Ten Sports 5 HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_5_hd/playlist.m3u8
 - **[BD] Sony Ten Cricket** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/ten_cricket/playlist.m3u8
 - **[BD] Eurosport HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/euro_sports_hd/playlist.m3u8
+- **[BD] Sony MAX HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_max_hd/playlist.m3u8
+- **[BD] Sony MAX** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_max/playlist.m3u8
+- **[BD] Sony PIX HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonypix_hd/playlist.m3u8
+- **[BD] Zee Cafe** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_cafe_hd/playlist.m3u8
+- **[BD] B4U Movies APAC** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/b4u_movies/playlist.m3u8
+- **[BD] Sony MAX 2** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonymax_2/playlist.m3u8
+- **[BD] Zee Bangla Cinema** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_bangla_cinema/playlist.m3u8
+- **[BD] Zee Cinema HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_cinema_hd/playlist.m3u8
+- **[BD] Zee Bollywood** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_bollywood/playlist.m3u8
+- **[BD] Zee Action** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_action/playlist.m3u8
 - **[BD] Animal Planet** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/animal_planet_sd/playlist.m3u8
 - **[BD] Animal Planet HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/animal_planet_hd/playlist.m3u8
 - **[BD] Sony BBC Earth HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonybbc_earth_hd/playlist.m3u8
@@ -188,30 +217,23 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 - **TAQBEER** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/takbeer/index.m3u8?e=1784102625&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=81782f6025584e79ffd591d834ff3fb0
 - **Eman Channel** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/eman/index.m3u8?e=1784102626&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ac68781519dc02fa881bb036e27720d6
 - **Deen TV** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/deen/index.m3u8?e=1784102626&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=0e3dce4bf23e1ea8b102191022c0dfcc
-- **Peace TV Urdu HD** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/PeaceTVUrduHD/index.m3u8?e=1784102628&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7cf820bc700fe8ed9e8b0084f0c6f84b
 - **RTV Islam** — HTTPError: HTTP Error 404: Not Found — https://protokolldns.xyz/rtvislamweb554/index.m3u8
 - **Islam TV** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/islam/index.m3u8?e=1784102629&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=08e8a8df941b53b9792355f81b43937e
 - **Assam Talks** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/AssamTalks/index.m3u8?e=1784102635&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c5ae931b66e2b3bb39f8dcc43ef2118d
 - **BT Sports 2** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/btSport2/index.m3u8?e=1784102657&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=adb8565e4802294a0887f78480964696
+- **Saudi Sunnah** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/saudi_sunnah/playlist.m3u8
 
 ## Rejected candidates
 
 - **Live Cricket** — source group `` — https://iptvlive.ahmed-bd-org.workers.dev/live-cricket-1/index.m3u8
-- **DBC News HD** — source group `News` — https://iptvlive.ahmed-bd-org.workers.dev/dbc-news-hd-1/index.m3u8
 - **Bangla Vision** — source group `Entertainment` — https://iptvlive.ahmed-bd-org.workers.dev/bangla-vision-1/index.m3u8
 - **Ekattor HD** — source group `News` — https://iptvlive.ahmed-bd-org.workers.dev/ekattor-hd-1/index.m3u8
-- **Channel 24 HD** — source group `News` — https://iptvlive.ahmed-bd-org.workers.dev/channel-24-hd-1/index.m3u8
-- **News 24 HD** — source group `News` — https://iptvlive.ahmed-bd-org.workers.dev/news-24-hd-1/index.m3u8
-- **Deepto TV HD** — source group `Entertainment` — https://iptvlive.ahmed-bd-org.workers.dev/deepto-tv-hd-1/index.m3u8
-- **Channel 9 HD** — source group `Entertainment` — https://iptvlive.ahmed-bd-org.workers.dev/channel-9-hd-1/index.m3u8
-- **Channel I HD** — source group `Entertainment` — https://iptvlive.ahmed-bd-org.workers.dev/channel-i-hd-1/index.m3u8
 - **BTV Shangshad** — source group `News` — https://iptvlive.ahmed-bd-org.workers.dev/btv-shangshad-1/index.m3u8
 - **NRB HD** — source group `Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/nrb-hd-1/index.m3u8
 - **Probashi** — source group `Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/probashi-1/index.m3u8
 - **Deshe Bideshe** — source group `Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/deshe-bideshe-1/index.m3u8
 - **Sananda** — source group `Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/sananda-1/index.m3u8
 - **Jonmo Bhumi TV** — source group `Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/jonmo-bhumi-tv-1/index.m3u8
-- **Mohona TV HD** — source group `Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/mohona-tv-hd-1/index.m3u8
 - **Bangla 1** — source group `Bangladeshi` — https://iptvlive.ahmed-bd-org.workers.dev/bangla-1-1/index.m3u8
 - **Boishakhi** — source group `Bangladeshi` — https://iptvlive.ahmed-bd-org.workers.dev/boishakhi-1/index.m3u8
 - **Ekushe TV** — source group `Bangladeshi` — https://iptvlive.ahmed-bd-org.workers.dev/ekushe-tv-1/index.m3u8
@@ -227,12 +249,9 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 - **Ananda** — source group `Bangladeshi` — https://iptvlive.ahmed-bd-org.workers.dev/ananda-1/index.m3u8
 - **Asian** — source group `Bangladeshi` — https://iptvlive.ahmed-bd-org.workers.dev/asian-1/index.m3u8
 - **R Plus Gold** — source group `Indian Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/r-plus-gold-1/index.m3u8
-- **Star Gold HD** — source group `Indian Hindi` — https://iptvlive.ahmed-bd-org.workers.dev/star-gold-hd-1/index.m3u8
 - **& Picture** — source group `Indian Hindi` — https://iptvlive.ahmed-bd-org.workers.dev/picture-1/index.m3u8
-- **Zee Cinema HD** — source group `Indian Hindi` — https://iptvlive.ahmed-bd-org.workers.dev/zee-cinema-hd-1/index.m3u8
 - **Sony Television** — source group `Indian Hindi` — https://iptvlive.ahmed-bd-org.workers.dev/sony-television-1/index.m3u8
 - **Sony Television HD** — source group `Indian Hindi` — https://iptvlive.ahmed-bd-org.workers.dev/sony-television-hd-1/index.m3u8
-- **Sony Max HD** — source group `Indian Hindi` — https://iptvlive.ahmed-bd-org.workers.dev/sony-max-hd-1/index.m3u8
 - **B4U Movie** — source group `Indian Hindi` — https://iptvlive.ahmed-bd-org.workers.dev/b4u-movie-1/index.m3u8
 - **Shemarooenterta** — source group `Indian Hindi` — https://iptvlive.ahmed-bd-org.workers.dev/shemarooenterta-1/index.m3u8
 - **Bhojopuri Cinema** — source group `Indian Hindi` — https://iptvlive.ahmed-bd-org.workers.dev/bhojopuri-cinema-1/index.m3u8
@@ -247,7 +266,6 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 - **Aaj Tak HD** — source group `Indian News` — https://iptvlive.ahmed-bd-org.workers.dev/aaj-tak-hd-1/index.m3u8
 - **NDTV Hindi** — source group `Indian News` — https://iptvlive.ahmed-bd-org.workers.dev/ndtv-hindi-1/index.m3u8
 - **Zoom** — source group `Music` — https://iptvlive.ahmed-bd-org.workers.dev/zoom-1/index.m3u8
-- **Hindi Hits HD** — source group `Music` — https://iptvlive.ahmed-bd-org.workers.dev/hindi-hits-hd-1/index.m3u8
 - **Sangeet Bhojpuri** — source group `Music` — https://iptvlive.ahmed-bd-org.workers.dev/sangeet-bhojpuri-1/index.m3u8
 - **Ten Cricket** — source group `Sports` — https://iptvlive.ahmed-bd-org.workers.dev/ten-cricket-1/index.m3u8
 - **Willow Sports** — source group `Sports` — https://iptvlive.ahmed-bd-org.workers.dev/willow-sports-1/index.m3u8
@@ -305,7 +323,6 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 - **Sports 18** — source group `` — https://iptvlive.ahmed-bd-org.workers.dev/sports-18-1/index.m3u8
 - **Al Jazeera News** — source group `` — https://iptvlive.ahmed-bd-org.workers.dev/al-jazeera-news-1/index.m3u8
 - **Bangla Jago** — source group `` — https://iptvlive.ahmed-bd-org.workers.dev/bangla-jago-1/index.m3u8
-- **STAR JALSHA HD** — source group `Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/star-jalsha-hd-2/index.m3u8
 - **Enterr 10 Bangla** — source group `` — https://iptvlive.ahmed-bd-org.workers.dev/enterr-10-bangla-1/index.m3u8
 - **Dw News** — source group `` — https://iptvlive.ahmed-bd-org.workers.dev/dw-news-2/index.m3u8
 - **Zee 24 Ghanta** — source group `` — https://iptvlive.ahmed-bd-org.workers.dev/zee-24-ghanta-2/index.m3u8
@@ -691,24 +708,18 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 - **SportOutdoor.tv** — source group `VOD Italy` — https://iptvlive.ahmed-bd-org.workers.dev/sportoutdoortv-1/index.m3u8
 - **CGtv** — source group `VOD Italy` — https://iptvlive.ahmed-bd-org.workers.dev/cgtv-1/index.m3u8
 - **Live Cricket** — source group `` — https://tvsen6.aynaott.com/zv68oqPDu7MZZwmHhRxt/index.m3u8?e=1784102512&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=968935df4fd0678de5d7fe392c0610d9
-- **DBC News HD** — source group `News` — https://iptv-proxy.ahmed-bd-org.workers.dev/dbc-news/index.m3u8
 - **Ekattor HD** — source group `News` — https://iptv-proxy.ahmed-bd-org.workers.dev/ekattor-tv/index.m3u8
-- **Channel 9 HD** — source group `Entertainment` — https://iptv-proxy.ahmed-bd-org.workers.dev/channel-9/index.m3u8
-- **Channel I HD** — source group `Entertainment` — https://iptv-proxy.ahmed-bd-org.workers.dev/channel-i/index.m3u8
 - **BTV Shangshad** — source group `News` — https://iptv-proxy.ahmed-bd-org.workers.dev/btv/index.m3u8
 - **Deshe Bideshe** — source group `Bangla` — https://dbcanada.sonarbanglatv.com/deshebideshe/dbtv/index.m3u8
 - **Sananda** — source group `Bangla` — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/sanandatv.stream/tracks-v1a1/mono.m3u8
 - **Jonmo Bhumi TV** — source group `Bangla` — https://jtvs.ncare.live/Gznr84Woj7UEye3OPVeWq2ForboWAgdV/jonmobhumitv.stream/tracks-v1a1/mono.m3u8
-- **Mohona TV HD** — source group `Bangla` — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/mohonatv.stream/tracks-v1a1/mono.m3u8
 - **Bangla 1** — source group `Bangladeshi` — https://video1.getstreamhosting.com:1936/eycqczsxka/eycqczsxka/playlist.m3u8
 - **Independent** — source group `Bangladeshi` — https://sm-monirul.top/@monirul_Islam_SM/play/independent_tv.m3u8
 - **EP TV** — source group `Bangladeshi` — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/eptv.stream/playlist.m3u8
 - **Asian** — source group `Bangladeshi` — https://mtlivestream.com/hls/asian/ytlive/index.m3u8
 - **R Plus Gold** — source group `Indian Bangla` — https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/cf883da3-f9f5-4c70-b0ef-b3ac2e2ad1e3/index.m3u8
-- **Star Gold HD** — source group `Indian Hindi` — http://66.102.126.10:8000/play/a00f/index.m3u8
 - **& Picture** — source group `Indian Hindi` — https://stream.ottplus.bd/live/and_picture_hd_abr/index.m3u8
 - **Sony Television** — source group `Indian Hindi` — https://stream.ottplus.live/live/sony_ent_sd_abr/index.m3u8
-- **Sony Max HD** — source group `Indian Hindi` — https://stream.ottplus.bd/live/max_hd_abr/live/max_hd_720/chunks.m3u8
 - **B4U Movie** — source group `Indian Hindi` — http://103.175.73.12:8080/live/43/43_0.m3u8
 - **Shemarooenterta** — source group `Indian Hindi` — http://103.175.73.12:8080/live/189/189_0.m3u8
 - **Bhojopuri Cinema** — source group `Indian Hindi` — http://103.175.73.12:8080/live/646/646_0.m3u8
@@ -1159,8 +1170,6 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 - **[BD] Sony Aath** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonyaath/playlist.m3u8
 - **[BD] Channel i** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/channel_i/playlist.m3u8
 - **[BD] Zee Anmol** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_anmol/playlist.m3u8
-- **[BD] B4U Music** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/b4u_music/playlist.m3u8
-- **[BD] Zing** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/zing_sd/playlist.m3u8
 - **[BD] &TV HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/and_tv_hd/playlist.m3u8
 - **[BD] Somoy TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/somoy_tv/playlist.m3u8
 - **[BD] Ekhon TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/ekhon_tv/playlist.m3u8
@@ -1174,7 +1183,6 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 - **[BD] Ekattor TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/ekattor_tv/playlist.m3u8
 - **[BD] Ananda TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/anandatv/playlist.m3u8
 - **[BD] Bijoy TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/bijoytv/playlist.m3u8
-- **[BD] Islamic TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/islamic_tv/playlist.m3u8
 - **[BD] Asian TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/asian_tv/playlist.m3u8
 - **[BD] Desh TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/desh_tv/playlist.m3u8
 - **[BD] Nexus TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/nexus_tv/playlist.m3u8
@@ -1182,17 +1190,7 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 - **[BD] Movie Bangla** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/movie_bangla/playlist.m3u8
 - **[BD] EPL channel 1** — source group `[LIVE] BDIX ♛` — https://mprod-cdn.toffeelive.com/live/match-1/index.m3u8
 - **[BD] WC Match Recap** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/fifa_world_cup/playlist.m3u8
-- **[BD] Sony MAX HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_max_hd/playlist.m3u8
-- **[BD] Sony MAX** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_max/playlist.m3u8
-- **[BD] Sony PIX HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonypix_hd/playlist.m3u8
-- **[BD] Zee Cafe** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_cafe_hd/playlist.m3u8
-- **[BD] B4U Movies APAC** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/b4u_movies/playlist.m3u8
-- **[BD] Sony MAX 2** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonymax_2/playlist.m3u8
-- **[BD] Zee Bangla Cinema** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_bangla_cinema/playlist.m3u8
-- **[BD] Zee Cinema HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_cinema_hd/playlist.m3u8
 - **[BD] & Pictures HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/andpicture_hd/playlist.m3u8
-- **[BD] Zee Bollywood** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_bollywood/playlist.m3u8
-- **[BD] Zee Action** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_action/playlist.m3u8
 - **[BD] CNN** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/cnn/playlist.m3u8
 - **[BD] TLC HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/tlc_hd/playlist.m3u8
 - **[BD] TLC** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/tlc_sd/playlist.m3u8
@@ -1259,11 +1257,8 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 - **Bangla Vision** — source group `Bangla` — https://tvsen5.aynaott.com/banglavision/index.m3u8?e=1784102560&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ddcd867c4b5ff4b8041ee4e513423464
 - **ETV** — source group `Bangla` — https://tvsen6.aynaott.com/y4mEVZNAbeNWTbd6Z2Pw/index.m3u8?e=1784102562&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7e70b215021d5b63d625a677bec65a1d
 - **IBTV USA** — source group `Bangla` — https://tvsen7.aynaott.com/ibtvusa/index.m3u8?e=1784102566&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3bc7a2a5fe20a69e8fadc40261b2cbba
-- **Peace TV Bangla HD** — source group `Bangla` — https://tvsen7.aynaott.com/xM9hpJpqLqs83ZrvkeBG/index.m3u8?e=1784102568&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=90ea05f54cbc7e469d26591ca7a526e4
-- **BTV NATIONAL HD** — source group `Bangla` — https://tvsen6.aynaott.com/AQLYTPfXtjm5x7zj7AsM/index.m3u8?e=1784102574&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c77a7f71fb9c8690eec45bed699ba960
 - **BTV World** — source group `Bangla` — https://tvsen6.aynaott.com/opREbXLqJ2HFYPCXTJBa/index.m3u8?e=1784102575&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c85b53f4cee30af4a19d4b9ad0cd60c7
 - **BTV CTG** — source group `Bangla` — https://tvsen6.aynaott.com/TjGR1GcxKetHNVcMVxbq/index.m3u8?e=1784102576&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=901c0ca2f1ba54041a543dce43641c12
-- **Green TV HD** — source group `Bangla` — https://tvsen6.aynaott.com/cLuA3hJR/index.m3u8?e=1784102578&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=57bcdefd396bd85d72461ff29cbde00d
 - **3ABN Kids** — source group `Kids` — https://tvsen6.aynaott.com/3abnkids/index.m3u8?e=1784102588&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3a88dd05abf3d2a88da7c3754b99c5e6
 - **Network 10** — source group `Hindi` — https://tvsen6.aynaott.com/Network10/index.m3u8?e=1784102589&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ce8f95de4868ba48e754638e36f90109
 - **Shemaroo TV** — source group `Hindi` — https://tvsen6.aynaott.com/D3NDt6gn/index.m3u8?e=1784102595&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=2347b8a1b6f0ba558b12440528ea38a5
@@ -1288,7 +1283,6 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 - **YTV** — source group `English` — https://tvsen6.aynaott.com/ytv/index.m3u8?e=1784102618&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=984e9148885e8c2f8cc1fbbf456eaa27
 - **BRAVO** — source group `English` — https://tvsen7.aynaott.com/bravo/index.m3u8?e=1784102619&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3b78032bd928888aede14d2a4c6d4232
 - **COOKING TV** — source group `English` — https://tvsen7.aynaott.com/cooking/index.m3u8?e=1784102620&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=5b879064b7a6da5ae5e100c1f71ad522
-- **TLC HD** — source group `English` — https://tvsen6.aynaott.com/tlc_hd/index.m3u8?e=1784102621&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=032b2c039214b5eb81d1d06aac66a512
 - **COMEDY CENTRAL** — source group `English` — https://tvsen7.aynaott.com/comedycentral/index.m3u8?e=1784102621&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=27fa1c9d3a8441fe7c5b8c05a081c9b5
 - **Food Network** — source group `English` — https://tvsen6.aynaott.com/foodnetwork/index.m3u8?e=1784102622&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=dabd0667017770543635be4bb1f63c22
 - **LAFF TV** — source group `English` — https://tvsen7.aynaott.com/laff/index.m3u8?e=1784102623&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=faf783961c7c677ea0d1dfef140ad3ca
@@ -1306,7 +1300,6 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 - **Bangla Radio** — source group `Radio` — https://apollo.ihostman.com:8002/stream?icy=https
 - **Unite8 Sports 1** — source group `Latest` — https://tvsen6.aynaott.com/superlaliga/index.m3u8?e=1784102646&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ca6007374eda23b74a8328c74fb0adf0
 - **Unite8 Sports 2** — source group `Latest` — https://tvsen7.aynaott.com/Sports1/index.m3u8?e=1784102646&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&ip=52.157.32.49&token=6e80b0021171278f37f9970c64f7e10f
-- **Green TV HD** — source group `Latest` — https://tvsen6.aynaott.com/cLuA3hJR/index.m3u8?e=1784102650&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=4611739ee78a2cc302c5eb6c7e0ec1d9
 - **A sports** — source group `Cricket` — https://tvsen6.aynaott.com/zv68oqPDu7MZZwmHhRxt/index.m3u8?e=1784102655&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=833b5dd42540ad3eaf690e4b371d5fec
 - **Cricket Gold** — source group `Cricket` — https://tvsen6.aynaott.com/M2W2UR49dmeKbZnmdRzN/index.m3u8?e=1784102657&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=46102f1b8150e3d7fda5eb1ee9ffd94e
 - **Willow TV** — source group `Cricket` — https://tvsen5.aynaott.com/willowhd/index.m3u8?e=1784102658&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=a9cdf8d7d3bacb7c8aea83611a6c3906
@@ -1315,11 +1308,9 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 - **RTV (720p)** — source group `Unknown` — https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/rtv-sg.stream/index.m3u8
 - **MTRSPT** — source group `Sports` — https://amg02873-kravemedia-mtrspt1-sportstribal-ajosc.amagi.tv/playlist/amg02873-kravemedia-mtrspt1-sportstribal/playlist.m3u8
 - **Sony TV HD** — source group `India` — http://premimum.online:80/live/jen12345/jen54321/98854.ts
-- **Star Sports 2 HD** — source group `Sports` — http://tvsen5.aynascope.net/cXPB2LKkErN9/index.m3u8
 - **Horse & Country** — source group `Sports` — https://hncfree-samsungau.amagi.tv/playlist.m3u8
 - **A Sports** — source group `Sports` — https://tvsen6.aynaott.com/zv68oqPDu7MZZwmHhRxt/index.m3u8
 - **Cricket Gold** — source group `Sports` — https://tvsen6.aynaott.com/M2W2UR49dmeKbZnmdRzN/index.m3u8
-- **Star Sports 1 Hindi HD** — source group `Sports` — http://41.205.93.154/STARSPORTS1/index.m3u8
 - **Music TV** — source group `Music` — http://bitcdn-kronehit.bitmovin.com/v2/hls/chunklist_b3128000.m3u8
 - **Trace Sport** — source group `Sports` — https://lightning-tracesport-samsungau.amagi.tv/playlist.m3u8
 - **Radio BBC** — source group `Radio` — https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_vlow_sbr_v1/cfs/bbc_world_service_news_internet.m3u8
@@ -1339,6 +1330,14 @@ Generated: **2026-09-22T18:48:51.736880+00:00**
 - **Rupashi Bangla TV (720p)** — source group `` — https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/ruposhibangla.stream/playlist.m3u8
 - **Vokta TV (720p)** — source group `` — https://vokta.raytahost.com/live/voktatv/index.m3u8
 - **Matribhumi TV (720p)** — source group `` — http://live.playmax.live/matribhumi/index.m3u8
+- **EPL channel 1** — source group `Live Action` — https://prod-cdn01-live.toffeelive.com/live/EPL-26-27-CH-1/index.m3u8?edge-cache-token=Expires=1790093182~Starts=1790092882~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Data=eyJzdWJzY3JpYmVyX2lkIjoiNTg0NmVmMTAtMzgzYS00YjlhLThhZTAtNGZiMTEzNWIxNTVkIn0~Signature=IATa8UKScOcVxPHcd53O9-YE5FN3rdO_kdG0y-KEY4Fzcc3d9nblZrNGiVsy_lAIr3iN08aaHdyZ_hf0jvEtAw
+- **FC | Live 1** — source group `Sports` — https://prod-cdn01-live.toffeelive.com/live/BFFL-1/index.m3u8?edge-cache-token=Expires=1790100083~Starts=1790092883~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Data=eyJzdWJzY3JpYmVyX2lkIjoiNTg0NmVmMTAtMzgzYS00YjlhLThhZTAtNGZiMTEzNWIxNTVkIn0~Signature=RvrCPELwdwFzxm83cwhob7f7AL9g86l9b8A-6pk84bwIG36JRvUOuuiy_oIgIfvbayjqT857dSla7FtfEdjKAw
+- **Channel News Asia** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/channels_news_asia/playlist.m3u8
+- **TRT World** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/trt_world/playlist.m3u8
+- **DW** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/dw_tv/playlist.m3u8
+- **Russia Today** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/russia_today/playlist.m3u8
+- **France 24** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/france_24/playlist.m3u8
+- **CGTN** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/cgtn/playlist.m3u8
 
 ## Policy
 
