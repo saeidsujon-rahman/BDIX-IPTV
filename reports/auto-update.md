@@ -1,46 +1,47 @@
 # IPTV Auto Update
 
-Generated: **2026-09-22T19:12:08.550952+00:00**
+Generated: **2026-09-22T19:41:35.136694+00:00**
 
 ## Summary
 
-- Final playlist entries: **873**
+- Final playlist entries: **893**
 - New primary channels: **0**
 - New backup streams: **0**
+- Source-managed signed URLs refreshed: **0**
 - Exact duplicate URLs removed from master: **0**
 - Non-Bangladeshi news entries removed: **0**
 - Non-Islamic religious entries removed: **0**
 - Duplicate source candidates skipped: **508**
 - Candidates blocked before testing: **2**
-- Candidates tested concurrently: **139**
-- Dead/invalid responses: **139**
-- Candidates skipped by backup limits: **134**
+- Candidates tested concurrently: **128**
+- Dead/invalid responses: **128**
+- Candidates skipped by backup limits: **145**
 - Candidates omitted by safety cap: **0**
 - Stream-check workers: **20**
-- Parallel stream-check time: **14.4s**
+- Parallel stream-check time: **14.3s**
 
 ## Source status
 
-- **https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u** — 76 entries — 0.1s — OK
-- **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.1s — OK
-- **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.1s — OK
-- **https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u** — 422 entries — 0.1s — OK
-- **https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u** — 33 entries — 0.1s — OK
+- **https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u** — 76 entries — 0.4s — OK
+- **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.3s — OK
+- **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.3s — OK
+- **https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u** — 422 entries — 0.2s — OK
+- **https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u** — 33 entries — 0.2s — OK
 
 ## Category totals
 
 - **Bangladesh**: 54
-- **Bangladesh Backup**: 155
+- **Bangladesh Backup**: 158
 - **Indian Bangla**: 66
-- **Indian Movies**: 77
-- **Indian Music**: 60
+- **Indian Movies**: 80
+- **Indian Music**: 61
 - **Indian Entertainment**: 110
 - **International Movies**: 51
 - **International Music**: 58
-- **Documentary & Wildlife**: 87
+- **Documentary & Wildlife**: 92
 - **Kids**: 78
-- **Religious**: 41
-- **Sports**: 36
+- **Religious**: 44
+- **Sports**: 41
 
 ## Removed non-Bangladeshi news channels
 
@@ -65,25 +66,28 @@ Generated: **2026-09-22T19:12:08.550952+00:00**
 
 ## Dead or invalid stream imports
 
+- **Toffee TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/toffee_drama/playlist.m3u8
+- **Toffee Movies** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/toffee_movie/playlist.m3u8
 - **Rajdhani TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/rajdhani_tv/playlist.m3u8
 - **Asian TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/asian_tv/playlist.m3u8
 - **Nexus TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/nexus_tv/playlist.m3u8
-- **Islamic TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/islamic_tv/playlist.m3u8
 - **Ekattor TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/ekattor_tv/playlist.m3u8
+- **Saudi Sunnah** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/saudi_sunnah/playlist.m3u8
 - **Saudi Quran** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/saudi_quran/playlist.m3u8
 - **Sony Ten Sports 1 HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_1_hd/playlist.m3u8
-- **Sony Ten Sports 2 HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_2_hd/playlist.m3u8
-- **Sony Ten Sports 5 HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_5_hd/playlist.m3u8
+- **Sony Ten Cricket** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/ten_cricket/playlist.m3u8
 - **Cartoon Network HD +** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/cartoon_network_hd/playlist.m3u8
 - **Zee Anmol** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_anmol/playlist.m3u8
+- **Zing** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zing_sd/playlist.m3u8
 - **Sony SAB HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonysab_hd/playlist.m3u8
+- **Sony PIX HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonypix_hd/playlist.m3u8
+- **Zee Cafe** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_cafe_hd/playlist.m3u8
 - **Sony MAX 2** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonymax_2/playlist.m3u8
-- **TLC HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/tlc_hd/playlist.m3u8
-- **TLC** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/tlc_sd/playlist.m3u8
 - **Animal Planet HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/animal_planet_hd/playlist.m3u8
-- **Sony BBC Earth HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonybbc_earth_hd/playlist.m3u8
 - **Discovery HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_hd/playlist.m3u8
 - **Discovery** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_sd/playlist.m3u8
+- **Discovery Science** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_science/playlist.m3u8
+- **Discovery Turbo** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_turbo/playlist.m3u8
 - **Investigation Discovery HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovary_investigation_hd/playlist.m3u8
 - **& Pictures HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/andpicture_hd/playlist.m3u8
 - **Asian TV** — TimeoutError: timed out — https://iptvlive.ahmed-bd-org.workers.dev/asian-tv-1/index.m3u8
@@ -106,8 +110,6 @@ Generated: **2026-09-22T19:12:08.550952+00:00**
 - **Star Sports SL 1** — URLError: <urlopen error [Errno -3] Temporary failure in name resolution> — https://iptvlive.ahmed-bd-org.workers.dev/star-sports-sl-1-1/index.m3u8
 - **Star Sports SL 2** — URLError: <urlopen error [Errno -3] Temporary failure in name resolution> — https://iptvlive.ahmed-bd-org.workers.dev/star-sports-sl-2-1/index.m3u8
 - **Sony Ten 1** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://iptvlive.ahmed-bd-org.workers.dev/sony-ten-1-1/index.m3u8
-- **Sony Ten 2** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://iptvlive.ahmed-bd-org.workers.dev/sony-ten-2-1/index.m3u8
-- **Sony Ten 5** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://iptvlive.ahmed-bd-org.workers.dev/sony-ten-5-1/index.m3u8
 - **National Geographic HD** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/national-geographic-hd-1/index.m3u8
 - **Travel XP HD** — URLError: <urlopen error [Errno 111] Connection refused> — https://iptvlive.ahmed-bd-org.workers.dev/travel-xp-hd-1/index.m3u8
 - **PTV Sports** — HTML response — https://iptvlive.ahmed-bd-org.workers.dev/ptv-sports-2/index.m3u8
@@ -127,8 +129,6 @@ Generated: **2026-09-22T19:12:08.550952+00:00**
 - **Star Sports SL 1** — URLError: <urlopen error [Errno -3] Temporary failure in name resolution> — https://yowaimo.in/Sflex-ArtlPVT0719/STAR_SPORTS_SELECT_1_HD.m3u8
 - **Star Sports SL 2** — URLError: <urlopen error [Errno -3] Temporary failure in name resolution> — https://yowaimo.in/Sflex-ArtlPVT0719/STAR_SPORTS_SELECT_2_HD.m3u8
 - **Sony Ten 1** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://stream.ottplus.bd/live/ten_1_hd_abr/index.m3u8
-- **Sony Ten 2** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://stream.ottplus.bd/live/ten_2_hd_abr/index.m3u8
-- **Sony Ten 5** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://stream.ottplus.bd/live/ten_5_hd_abr/index.m3u8
 - **Bein Sports** — HTTPError: HTTP Error 403: Forbidden — https://messi.damitv.st/papi/ts/beinsports-usa/playlist.m3u8
 - **National Geographic HD** — HTTPError: HTTP Error 404: Not Found — http://40.160.24.53/NAT_GEO/index.m3u8
 - **PTV Sports** — HTML response — http://sm-monirul.top/@monirul_Islam_SM/proxy.php?id=ptv_sports&format=.m3u8
@@ -150,20 +150,10 @@ Generated: **2026-09-22T19:12:08.550952+00:00**
 - **Disney JR** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/disneyjr/index.m3u8?e=1784102580&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=6a87c2e077df270ccd0de2c2e611177c
 - **9X Tashan** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/9X_Tashan/index.m3u8?e=1784102590&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c021d7a607b33144aa5b0b83089b0fb5
 - **MTV** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/mtv/index.m3u8?e=1784102610&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b99f4b905260714794250d1410a936a2
-- **TLC HD** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/tlc_hd/index.m3u8?e=1784102621&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=032b2c039214b5eb81d1d06aac66a512
 - **Peace TV Urdu HD** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/PeaceTVUrduHD/index.m3u8?e=1784102628&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7cf820bc700fe8ed9e8b0084f0c6f84b
 - **Green TV HD** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/cLuA3hJR/index.m3u8?e=1784102650&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=4611739ee78a2cc302c5eb6c7e0ec1d9
 - **PTV Sports** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/zY3hJ7pQ2vM5gD8s/index.m3u8?e=1784102651&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&ip=52.157.32.49&token=258517a6abcacd20116947f2c3132059
 - **Espn** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/espn/index.m3u8?e=1784102653&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=fbc560646ea38d9fce118fcd264926c5
-- **Toffee TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/toffee_drama/playlist.m3u8
-- **Toffee Movies** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/toffee_movie/playlist.m3u8
-- **Saudi Sunnah** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/saudi_sunnah/playlist.m3u8
-- **Sony Ten Cricket** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/ten_cricket/playlist.m3u8
-- **Zing** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zing_sd/playlist.m3u8
-- **Sony PIX HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonypix_hd/playlist.m3u8
-- **Zee Cafe** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_cafe_hd/playlist.m3u8
-- **Discovery Science** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_science/playlist.m3u8
-- **Discovery Turbo** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_turbo/playlist.m3u8
 - **BTV** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/btv-1/index.m3u8
 - **Nikki HD** — HTTPError: HTTP Error 403: Forbidden — https://iptvlive.ahmed-bd-org.workers.dev/nikki-hd-1/index.m3u8
 - **Akash Bangla** — URLError: <urlopen error [Errno 111] Connection refused> — https://iptvlive.ahmed-bd-org.workers.dev/akash-bangla-1/index.m3u8
@@ -1305,6 +1295,7 @@ Generated: **2026-09-22T19:12:08.550952+00:00**
 - Tokenized URLs are preserved when they pass the live media check.
 - Existing playback-tested names and URLs remain authoritative.
 - Transparent wrappers are tested as direct origins first; a working proxy is retained only as fallback.
+- Manually playback-approved Toffee wrappers are preserved and their signed URLs are refreshed by source-channel name.
 - New Bangladeshi channels and backups are placed in `Bangladesh Backup`.
 - Public HLS hosts and redirects are accepted when they return valid media; explicit DRM or encrypted payloads remain rejected.
 - Only media-like responses are accepted; HTML and empty responses are rejected.
