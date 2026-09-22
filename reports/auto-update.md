@@ -1,31 +1,31 @@
 # IPTV Auto Update
 
-Generated: **2026-09-22T19:04:39.866657+00:00**
+Generated: **2026-09-22T19:07:44.875867+00:00**
 
 ## Summary
 
 - Final playlist entries: **873**
 - New primary channels: **0**
-- New backup streams: **12**
+- New backup streams: **0**
 - Exact duplicate URLs removed from master: **0**
 - Non-Bangladeshi news entries removed: **0**
 - Non-Islamic religious entries removed: **0**
-- Duplicate source candidates skipped: **496**
+- Duplicate source candidates skipped: **508**
 - Candidates blocked before testing: **2**
-- Candidates tested concurrently: **158**
-- Dead/invalid responses: **146**
-- Candidates skipped by backup limits: **100**
+- Candidates tested concurrently: **145**
+- Dead/invalid responses: **145**
+- Candidates skipped by backup limits: **101**
 - Candidates omitted by safety cap: **0**
 - Stream-check workers: **20**
-- Parallel stream-check time: **14.9s**
+- Parallel stream-check time: **15.0s**
 
 ## Source status
 
-- **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.3s — OK
-- **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.3s — OK
-- **https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u** — 422 entries — 0.2s — OK
+- **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.1s — OK
+- **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.1s — OK
+- **https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u** — 422 entries — 0.1s — OK
 - **https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u** — 33 entries — 0.2s — OK
-- **https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u** — 76 entries — 0.3s — OK
+- **https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u** — 76 entries — 0.2s — OK
 
 ## Category totals
 
@@ -56,18 +56,7 @@ Generated: **2026-09-22T19:04:39.866657+00:00**
 
 ## New backup streams
 
-- **DBC News [Backup 3]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/dbc-news-hd-1/index.m3u8
-- **Channel 24 [Backup 4]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/channel-24-hd-1/index.m3u8
-- **News 24 [Backup 3]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/news-24-hd-1/index.m3u8
-- **Channel 9 [Backup 2]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/channel-9-hd-1/index.m3u8
-- **Channel I [Backup 3]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/channel-i-hd-1/index.m3u8
-- **Hindi Hits [Backup 1]** — `Indian Music` — https://iptvlive.ahmed-bd-org.workers.dev/hindi-hits-hd-1/index.m3u8
-- **DBC News [Backup 4]** — `Bangladesh Backup` — https://iptv-proxy.ahmed-bd-org.workers.dev/dbc-news/index.m3u8
-- **Channel 9 [Backup 3]** — `Bangladesh Backup` — https://iptv-proxy.ahmed-bd-org.workers.dev/channel-9/index.m3u8
-- **Channel I [Backup 4]** — `Bangladesh Backup` — https://iptv-proxy.ahmed-bd-org.workers.dev/channel-i/index.m3u8
-- **Independent TV [Backup 4]** — `Bangladesh Backup` — https://tvsen6.aynaott.com/Wef2Vj67njeYGDqQNFB9/index.m3u8?e=1784102536&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=faa76e200f238010e464d45a3135f138
-- **Star Sports 2 [Backup 1]** — `Sports` — http://tvsen5.aynascope.net/cXPB2LKkErN9/index.m3u8
-- **Star Sports 1 Hindi [Backup 1]** — `Sports` — http://41.205.93.154/STARSPORTS1/index.m3u8
+- None
 
 ## Blocked stream imports
 
@@ -76,10 +65,10 @@ Generated: **2026-09-22T19:04:39.866657+00:00**
 
 ## Dead or invalid stream imports
 
-- **Asian TV** — TimeoutError: timed out — https://iptvlive.ahmed-bd-org.workers.dev/asian-tv-1/index.m3u8
+- **Asian TV** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/asian-tv-1/index.m3u8
 - **Green TV** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/green-tv-1/index.m3u8
 - **Thikana** — HTML response — https://iptvlive.ahmed-bd-org.workers.dev/thikana-1/index.m3u8
-- **BTV News** — TimeoutError: timed out — https://iptvlive.ahmed-bd-org.workers.dev/btv-news-1/index.m3u8
+- **BTV News** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/btv-news-1/index.m3u8
 - **Rongeen** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/rongeen-1/index.m3u8
 - **Nick Bangla** — HTTPError: HTTP Error 500: Internal Server Error — https://iptvlive.ahmed-bd-org.workers.dev/nick-bangla-1/index.m3u8
 - **Colors Bangla HD** — URLError: <urlopen error [Errno 111] Connection refused> — https://iptvlive.ahmed-bd-org.workers.dev/colors-bangla-hd-1/index.m3u8
@@ -134,7 +123,6 @@ Generated: **2026-09-22T19:04:39.866657+00:00**
 - **Bein Sports** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/beinsports/index.m3u8?e=1784102515&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=67d5960a5b93b5cfcf562312b4627330
 - **Espn** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/espn/index.m3u8?e=1784102528&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d701f3665e12964090ddd656a9a89c29
 - **BTV News** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/tV8mB2zP7rX4kL1w/index.m3u8?e=1784102532&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=20448821bed8f397806d492c1b39da46
-- **Channel 24** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/YrVDF8gu/index.m3u8?e=1784102534&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=af07191085f18faa873302c2d8cdff28
 - **Channel 9** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/kajlsd57jnkdf/index.m3u8?e=1784102566&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=de9d33cfd8daf9a7f2e56a88534d0548
 - **BTV NATIONAL HD** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/AQLYTPfXtjm5x7zj7AsM/index.m3u8?e=1784102574&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c77a7f71fb9c8690eec45bed699ba960
 - **Green TV HD** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/cLuA3hJR/index.m3u8?e=1784102578&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=57bcdefd396bd85d72461ff29cbde00d
@@ -146,8 +134,8 @@ Generated: **2026-09-22T19:04:39.866657+00:00**
 - **Green TV HD** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/cLuA3hJR/index.m3u8?e=1784102650&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=4611739ee78a2cc302c5eb6c7e0ec1d9
 - **PTV Sports** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/zY3hJ7pQ2vM5gD8s/index.m3u8?e=1784102651&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&ip=52.157.32.49&token=258517a6abcacd20116947f2c3132059
 - **Espn** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/espn/index.m3u8?e=1784102653&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=fbc560646ea38d9fce118fcd264926c5
-- **Saudi Quran** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/saudi_quran/playlist.m3u8
-- **Sony Ten Sports 2 HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_2_hd/playlist.m3u8
+- **Saudi Quran** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/saudi_quran/playlist.m3u8
+- **Sony Ten Sports 2 HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_2_hd/playlist.m3u8
 - **BTV** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/btv-1/index.m3u8
 - **Nikki HD** — HTTPError: HTTP Error 403: Forbidden — https://iptvlive.ahmed-bd-org.workers.dev/nikki-hd-1/index.m3u8
 - **Akash Bangla** — URLError: <urlopen error [Errno 111] Connection refused> — https://iptvlive.ahmed-bd-org.workers.dev/akash-bangla-1/index.m3u8
@@ -221,7 +209,7 @@ Generated: **2026-09-22T19:04:39.866657+00:00**
 - **Islam TV** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/islam/index.m3u8?e=1784102629&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=08e8a8df941b53b9792355f81b43937e
 - **Assam Talks** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/AssamTalks/index.m3u8?e=1784102635&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c5ae931b66e2b3bb39f8dcc43ef2118d
 - **BT Sports 2** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/btSport2/index.m3u8?e=1784102657&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=adb8565e4802294a0887f78480964696
-- **Saudi Sunnah** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/saudi_sunnah/playlist.m3u8
+- **Saudi Sunnah** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/saudi_sunnah/playlist.m3u8
 
 ## Rejected candidates
 
@@ -1342,14 +1330,14 @@ Generated: **2026-09-22T19:04:39.866657+00:00**
 ## Policy
 
 - Existing membership is authoritative.
-- Candidate identity uses exact normalized base names; fuzzy matching is not used.
+- Candidate identity uses normalized names plus conservative quality-label aliases.
 - New candidates require an approved category and a logo.
 - Non-Bangladeshi news channels are rejected from both existing and imported entries.
 - Non-Islamic religious channels are rejected.
 - Approved major sports channels are allowed.
 - Tokenized URLs are preserved when they pass the live media check.
 - Existing playback-tested names and URLs remain authoritative.
-- Transparent wrappers with a public URL parameter are replaced by that direct URL.
+- Transparent wrappers are tested as direct origins first; a working proxy is retained only as fallback.
 - New Bangladeshi channels and backups are placed in `Bangladesh Backup`.
 - Public HLS hosts and redirects are accepted when they return valid media; explicit DRM or encrypted payloads remain rejected.
 - Only media-like responses are accepted; HTML and empty responses are rejected.
