@@ -1,18 +1,18 @@
 # IPTV Auto Update
 
-Generated: **2026-09-22T18:02:52.169989+00:00**
+Generated: **2026-09-22T18:05:51.247975+00:00**
 
 ## Summary
 
-- Final playlist entries: **788**
-- New primary channels: **0**
+- Final playlist entries: **801**
+- New primary channels: **1**
 - New backup streams: **5**
 - Duplicate URLs removed from master: **0**
-- Non-Bangladeshi news entries removed: **16**
-- Duplicate source candidates skipped: **351**
+- Non-Bangladeshi news entries removed: **4**
+- Duplicate source candidates skipped: **356**
 - Candidates blocked before testing: **701**
-- Candidates tested concurrently: **128**
-- Dead/invalid responses: **123**
+- Candidates tested concurrently: **131**
+- Dead/invalid responses: **125**
 - Candidates skipped by backup limits: **24**
 - Candidates omitted by safety cap: **0**
 - Stream-check workers: **20**
@@ -20,48 +20,36 @@ Generated: **2026-09-22T18:02:52.169989+00:00**
 
 ## Source status
 
-- **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.1s — OK
-- **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.3s — OK
-- **https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u** — 422 entries — 0.1s — OK
-- **https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u** — 33 entries — 0.1s — OK
+- **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.4s — OK
+- **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.4s — OK
+- **https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u** — 422 entries — 0.4s — OK
+- **https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u** — 33 entries — 0.4s — OK
 
 ## Category totals
 
-- **Bangladesh**: 51
-- **Bangladesh Backup**: 99
-- **Indian Bangla**: 57
+- **Bangladesh**: 54
+- **Bangladesh Backup**: 103
+- **Indian Bangla**: 58
 - **Indian Movies**: 71
 - **Indian Music**: 54
 - **Indian Entertainment**: 110
 - **International Movies**: 46
 - **International Music**: 53
-- **Documentary & Wildlife**: 79
+- **Documentary & Wildlife**: 84
 - **Kids**: 75
 - **Religious**: 35
 - **Sports**: 58
 
 ## Removed non-Bangladeshi news channels
 
-- **BTV News** — https://btv.hridoytv-channel.workers.dev/news.m3u8
-- **Jago News 24** — https://app.ncare.live/live-orgin/jagonews24.stream/playlist.m3u8
-- **News 21 Bangla TV** — http://103.190.133.68:1935/news21live/live/playlist.m3u8
-- **BTV News** — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/btvbd-office-sg.stream/index.m3u8
-- **Star News** — https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/starnewsbd.stream/playlist.m3u8
-- **Star News** — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/starnewsbd.stream/playlist.m3u8
-- **Star News** — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/starnewsbd.stream/tracks-v1a1/mono.m3u8
 - **kolkata TV** — https://tvsen6.aynaott.com/kolkatatv/index.m3u8?e=1784102634&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7dd61eff112afc871fa5ff030faacde9
 - **R Plus Gold** — https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/cf883da3-f9f5-4c70-b0ef-b3ac2e2ad1e3/index.m3u8
 - **R Plus Gold** — https://thelegitpro.in/pntv/rplusnews24x7/tracks-v1a1/mono.m3u8
 - **Zee 24 Ghanta** — https://tvsen6.aynaott.com/DpPnXP9r/index.m3u8?e=1784102633&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=4dfe1eedcd3d06e8d4e5f73751abcf2a
-- **BBC Earth** — https://amg00793-amg00793c6-xumo-us-2669.playouts.now.amagi.tv/BBCStudios-BBCEarthA-hls/playlist.m3u8
-- **BBC Earth** — http://202.70.146.135:8000/play/a067/index.m3u8
-- **BBC Earth** — https://amg00793-amg00793c6-xumo-us-2669.playouts.now.amagi.tv/BBCStudios-BBCEarthA-hls/playlist540p.m3u8
-- **Sony BBC Earth** — https://amg00793-bbcstudios-amg00793c3-lg-us-2528.playouts.now.amagi.tv/playlist/amg00793-bbcstudios-bbcearta-lgus/playlist.m3u8
-- **Sony BBC Earth** — https://stream.ottplus.live/live/bbc_earth_hd_abr/index.m3u8
 
 ## New primary channels
 
-- None
+- **Khushboo** — `Indian Bangla` — https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8?e=1784102631&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=98108f8c82a0dc91e30e52fe77713a09
 
 ## New backup streams
 
@@ -798,6 +786,8 @@ Generated: **2026-09-22T18:02:52.169989+00:00**
 - **Sky Sports Action** — URLError: <urlopen error timed out> — https://cdn1.zohanayaan.com:1686/hls/skysact.m3u8?md5=LDZAVKww5Yv3zoAZBn9ULQ&expires=1790102130
 - **Sky Sports Football** — URLError: <urlopen error timed out> — https://cdn10.zohanayaan.com:1686/hls/skysfott.m3u8?md5=EKyM62L1vIyQQm-ScX1u2A&expires=1790102131
 - **Espn** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/espn/index.m3u8?e=1784102528&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d701f3665e12964090ddd656a9a89c29
+- **BTV News** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/tV8mB2zP7rX4kL1w/index.m3u8?e=1784102532&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=20448821bed8f397806d492c1b39da46
+- **Star News** — HTTPError: HTTP Error 403: Forbidden — https://owrcovcrpy.gpcdn.net/bpk-tv/1710/output/1701.m3u8
 - **Channel 24** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/YrVDF8gu/index.m3u8?e=1784102534&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=af07191085f18faa873302c2d8cdff28
 - **Independent TV** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/Wef2Vj67njeYGDqQNFB9/index.m3u8?e=1784102536&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=faa76e200f238010e464d45a3135f138
 - **Channel 9** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/kajlsd57jnkdf/index.m3u8?e=1784102566&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=de9d33cfd8daf9a7f2e56a88534d0548
@@ -831,6 +821,7 @@ Generated: **2026-09-22T18:02:52.169989+00:00**
 - **[BD] Eurosport HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/euro_sports_hd/playlist.m3u8
 - **[BD] Animal Planet** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/animal_planet_sd/playlist.m3u8
 - **[BD] Animal Planet HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/animal_planet_hd/playlist.m3u8
+- **[BD] Sony BBC Earth HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonybbc_earth_hd/playlist.m3u8
 - **[BD] Discovery** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_sd/playlist.m3u8
 - **[BD] Discovery HD** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_hd/playlist.m3u8
 - **[BD] Discovery Science** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_science/playlist.m3u8
@@ -897,25 +888,19 @@ Generated: **2026-09-22T18:02:52.169989+00:00**
 - **Peace TV Urdu HD** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/PeaceTVUrduHD/index.m3u8?e=1784102628&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7cf820bc700fe8ed9e8b0084f0c6f84b
 - **RTV Islam** — HTTPError: HTTP Error 404: Not Found — https://protokolldns.xyz/rtvislamweb554/index.m3u8
 - **Islam TV** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/islam/index.m3u8?e=1784102629&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=08e8a8df941b53b9792355f81b43937e
-- **Khushboo** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8?e=1784102631&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=98108f8c82a0dc91e30e52fe77713a09
 - **Assam Talks** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/AssamTalks/index.m3u8?e=1784102635&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c5ae931b66e2b3bb39f8dcc43ef2118d
 - **BT Sports 2** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/btSport2/index.m3u8?e=1784102657&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=adb8565e4802294a0887f78480964696
 
 ## Rejected candidates
 
 - **Live Cricket** — source group `` — https://tvsen6.aynaott.com/zv68oqPDu7MZZwmHhRxt/index.m3u8?e=1784102512&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=968935df4fd0678de5d7fe392c0610d9
-- **Star News** — source group `News` — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/starnewsbd.stream/tracks-v1a1/mono.m3u8
-- **Jago News 24** — source group `Bangla` — https://app.ncare.live/live-orgin/jagonews24.stream/playlist.m3u8
 - **Deshe Bideshe** — source group `Bangla` — https://dbcanada.sonarbanglatv.com/deshebideshe/dbtv/index.m3u8
 - **Sananda** — source group `Bangla` — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/sanandatv.stream/tracks-v1a1/mono.m3u8
 - **Jonmo Bhumi TV** — source group `Bangla` — https://jtvs.ncare.live/Gznr84Woj7UEye3OPVeWq2ForboWAgdV/jonmobhumitv.stream/tracks-v1a1/mono.m3u8
 - **Mohona TV HD** — source group `Bangla` — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/mohonatv.stream/tracks-v1a1/mono.m3u8
-- **BTV News** — source group `Bangladeshi` — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/btvbd-office-sg.stream/index.m3u8
 - **Bangla 1** — source group `Bangladeshi` — https://video1.getstreamhosting.com:1936/eycqczsxka/eycqczsxka/playlist.m3u8
 - **Independent** — source group `Bangladeshi` — https://sm-monirul.top/@monirul_Islam_SM/play/independent_tv.m3u8
-- **Star News** — source group `Bangladeshi` — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/starnewsbd.stream/playlist.m3u8
 - **EP TV** — source group `Bangladeshi` — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/eptv.stream/playlist.m3u8
-- **News 21 Bangla TV** — source group `Bangladeshi` — http://103.190.133.68:1935/news21live/live/playlist.m3u8
 - **Asian** — source group `Bangladeshi` — https://mtlivestream.com/hls/asian/ytlive/index.m3u8
 - **R Plus Gold** — source group `Indian Bangla` — https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/cf883da3-f9f5-4c70-b0ef-b3ac2e2ad1e3/index.m3u8
 - **Star Gold HD** — source group `Indian Hindi` — http://66.102.126.10:8000/play/a00f/index.m3u8
@@ -1386,10 +1371,7 @@ Generated: **2026-09-22T18:02:52.169989+00:00**
 - **[BD] CNN** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/cnn/playlist.m3u8
 - **[BD] TLC HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/tlc_hd/playlist.m3u8
 - **[BD] TLC** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/tlc_sd/playlist.m3u8
-- **[BD] Sony BBC Earth HD** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonybbc_earth_hd/playlist.m3u8
 - **[BD] Sony YAY** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonyyay/playlist.m3u8
-- **BTV News** — source group `News` — https://tvsen6.aynaott.com/tV8mB2zP7rX4kL1w/index.m3u8?e=1784102532&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=20448821bed8f397806d492c1b39da46
-- **Star News** — source group `News` — https://owrcovcrpy.gpcdn.net/bpk-tv/1710/output/1701.m3u8
 - **News 24 BD** — source group `News` — https://tvsen6.aynaott.com/cdgr3tw6WoG7JyRnLbi0/index.m3u8?e=1784102534&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ff40b53535a0e90b724ac25ff41c590c
 - **BBC News** — source group `News` — https://tvsen6.aynaott.com/bbcnews/index.m3u8?e=1784102536&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=5e9078a7846dc502cd318c96824709e2
 - **CNN** — source group `News` — https://tvsen6.aynaott.com/cnn/index.m3u8?e=1784102537&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3d319d99045811bace569a7cc2885eb3
