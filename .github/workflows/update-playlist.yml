@@ -58,11 +58,13 @@ jobs:
           MASTER = Path('IPTV Playlist.m3u')
           REPORT = Path('reports/auto-update.md')
           SOURCE_URLS = [
+              # Put the requested wrapper-aware source first so its cookie metadata
+              # wins URL deduplication over origin-only mirrors.
+              'https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u',
               'https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u',
               'https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u',
               'https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u',
               'https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u',
-              'https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u',
           ]
           GROUPS = [
               'Bangladesh', 'Bangladesh Backup',
