@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 import re, urllib.request, urllib.error, socket
+from collections import Counter
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
 PLAYLIST=Path("IPTV Playlist.m3u")
+REPORT=Path("reports/auto-update.md")
 SOURCES=[
  "https://dearbulut.github.io/iptv/playlists/online.m3u",
  "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8",
@@ -72,6 +75,18 @@ def fetch(url):
     with urllib.request.urlopen(req,timeout=35) as r:
         return r.read().decode("utf-8","replace")
 
+def safe_markdown(s):
+    return str(s).replace("|","\\|").replace("\n"," ")
+
+def added_section(title,items):
+    lines=[f"## {title}",""]
+    if not items:
+        return lines+["- None",""]
+    for info,u in items:
+        a=attrs(info)
+        lines.append(f'- **{safe_markdown(name_of(info))}** — `{safe_markdown(a.get("group-title","Uncategorized"))}` — {u}')
+    return lines+[""]
+
 base=PLAYLIST.read_text(encoding="utf-8-sig")
 existing=entries(base)
 urls={u for _,u in existing}
@@ -82,23 +97,37 @@ for info,u in existing:
     if cid and not cid.startswith("local."): by_id.setdefault(cid,[]).append(u)
     by_name.setdefault(norm(n),[]).append(u)
 
-candidates=[]
+candidates=[]; source_status=[]
 for source in SOURCES:
     try:
-        candidates.extend(entries(fetch(source)))
+        source_entries=entries(fetch(source))
+        candidates.extend(source_entries)
+        source_status.append((source,len(source_entries),"OK"))
     except Exception as e:
+        error=f"{type(e).__name__}: {e}"
+        source_status.append((source,0,error))
         print("SOURCE ERROR",source,e)
 
+stats=Counter()
 new=[]; backups=[]; seen=set(urls)
 for info,u in candidates:
-    if u in seen or blocked(info): continue
+    if u in seen:
+        stats["duplicate_urls"]+=1
+        continue
+    if blocked(info):
+        stats["blocked"]+=1
+        continue
     a=attrs(info); n=name_of(info); cid=a.get("tvg-id","")
     same=(cid and not cid.startswith("local.") and cid in by_id) or norm(n) in by_name
     target=backups if same else new
     limit=MAX_BACKUP if same else MAX_NEW
-    if len(target)>=limit: continue
+    if len(target)>=limit:
+        stats["backup_limit" if same else "new_limit"]+=1
+        continue
     # Never insert an untested candidate.
-    if not reachable(u): continue
+    if not reachable(u):
+        stats["unreachable"]+=1
+        continue
     target.append((clean_info(info,BACKUP_GROUP if same else NEW_GROUP),u))
     seen.add(u)
 
@@ -111,4 +140,49 @@ out=append_group(base,new)
 out=append_group(out,backups)
 if out!=base:
     PLAYLIST.write_text(out,encoding="utf-8",newline="\n")
+
+final_entries=entries(out)
+categories=Counter(attrs(info).get("group-title","") or "Uncategorized" for info,_ in final_entries)
+generated=datetime.now(timezone.utc).isoformat(timespec="seconds")
+report=[
+    "# IPTV Auto Update",
+    "",
+    f"Generated: **{generated}**",
+    "",
+    "## Summary",
+    "",
+    f"- Final playlist entries: **{len(final_entries)}**",
+    f"- New channels added: **{len(new)}**",
+    f"- Backup streams added: **{len(backups)}**",
+    f"- Exact duplicate URLs skipped: **{stats['duplicate_urls']}**",
+    f"- Policy-blocked candidates skipped: **{stats['blocked']}**",
+    f"- Unreachable candidates skipped: **{stats['unreachable']}**",
+    f"- Candidates skipped by new-channel limit: **{stats['new_limit']}**",
+    f"- Candidates skipped by backup limit: **{stats['backup_limit']}**",
+    "",
+    "## Source status",
+    "",
+]
+for source,count,status in source_status:
+    report.append(f"- **{source}** — {count} entries — {safe_markdown(status)}")
+report.extend(["","## Category totals",""])
+for group,count in categories.items():
+    report.append(f"- **{safe_markdown(group)}**: {count}")
+report.append("")
+report.extend(added_section("New channels added",new))
+report.extend(added_section("New backup streams added",backups))
+report.extend([
+    "## Active policy",
+    "",
+    "- Existing playlist entries are preserved.",
+    "- New candidates are added only after a successful HTTP check.",
+    "- Exact duplicate stream URLs are not added.",
+    "- News, non-Islamic religious, radio, VOD, webcam, trailer, promo, and test entries are excluded from automatic additions.",
+    "- Adult channels remain permitted by the current policy.",
+    f"- New entries are capped at {MAX_NEW}; backup entries are capped at {MAX_BACKUP} per run.",
+    "",
+])
+REPORT.parent.mkdir(parents=True,exist_ok=True)
+REPORT.write_text("\n".join(report),encoding="utf-8",newline="\n")
 print(f"Added {len(new)} new channels to {NEW_GROUP}; {len(backups)} backups to {BACKUP_GROUP}.")
+print(f"Updated {REPORT}.")
