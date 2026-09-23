@@ -15,6 +15,7 @@ NEW_GROUP="New Channels"
 BACKUP_GROUP="Backup"
 MAX_NEW=30
 MAX_BACKUP=60
+NO_BACKUP_GROUPS={"Sports","Kids","Religious","Documentary & Wildlife"}
 
 NEWS_WORDS={"news","noticias","actualité","actualites","haber","samachar","khabar","সংবাদ"}
 NON_ISLAMIC_RELIGION={"christian","christianity","church","jesus","gospel","catholic","bible","hindu","hinduism","krishna","temple","buddhist","buddhism","sikh","sikhism","gurudwara","jain","jainism","torah","jewish","judaism"}
@@ -90,12 +91,15 @@ def added_section(title,items):
 base=PLAYLIST.read_text(encoding="utf-8-sig")
 existing=entries(base)
 urls={u for _,u in existing}
-by_id={}; by_name={}
+by_id={}; by_name={}; no_backup_ids=set(); no_backup_names=set()
 for info,u in existing:
     a=attrs(info); n=name_of(info)
     cid=a.get("tvg-id","")
     if cid and not cid.startswith("local."): by_id.setdefault(cid,[]).append(u)
     by_name.setdefault(norm(n),[]).append(u)
+    if a.get("group-title","") in NO_BACKUP_GROUPS:
+        no_backup_names.add(norm(n))
+        if cid and not cid.startswith("local."): no_backup_ids.add(cid)
 
 candidates=[]; source_status=[]
 for source in SOURCES:
@@ -119,6 +123,9 @@ for info,u in candidates:
         continue
     a=attrs(info); n=name_of(info); cid=a.get("tvg-id","")
     same=(cid and not cid.startswith("local.") and cid in by_id) or norm(n) in by_name
+    if same and ((cid and not cid.startswith("local.") and cid in no_backup_ids) or norm(n) in no_backup_names):
+        stats["excluded_backup_category"]+=1
+        continue
     target=backups if same else new
     limit=MAX_BACKUP if same else MAX_NEW
     if len(target)>=limit:
@@ -156,6 +163,7 @@ report=[
     f"- Backup streams added: **{len(backups)}**",
     f"- Exact duplicate URLs skipped: **{stats['duplicate_urls']}**",
     f"- Policy-blocked candidates skipped: **{stats['blocked']}**",
+    f"- Sports, Kids, Religious, and Documentary backups skipped: **{stats['excluded_backup_category']}**",
     f"- Unreachable candidates skipped: **{stats['unreachable']}**",
     f"- Candidates skipped by new-channel limit: **{stats['new_limit']}**",
     f"- Candidates skipped by backup limit: **{stats['backup_limit']}**",
@@ -177,6 +185,7 @@ report.extend([
     "- Existing playlist entries are preserved.",
     "- New candidates are added only after a successful HTTP check.",
     "- Exact duplicate stream URLs are not added.",
+    "- Backups are not added for Sports, Kids, Religious, or Documentary & Wildlife channels.",
     "- News, non-Islamic religious, radio, VOD, webcam, trailer, promo, and test entries are excluded from automatic additions.",
     "- Adult channels remain permitted by the current policy.",
     f"- New entries are capped at {MAX_NEW}; backup entries are capped at {MAX_BACKUP} per run.",
