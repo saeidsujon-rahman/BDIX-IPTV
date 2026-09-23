@@ -61,6 +61,7 @@ jobs:
               # Put the requested wrapper-aware source first so its cookie metadata
               # wins URL deduplication over origin-only mirrors.
               'https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u',
+              'https://raw.githubusercontent.com/Rangon500/1234556/main/BDIX.m3u',
               'https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u',
               'https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u',
               'https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u',
