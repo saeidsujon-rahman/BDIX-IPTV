@@ -62,6 +62,12 @@ def choose_logo(cid):
     ),reverse=True)
     return cand[0].get("url")
 
+# Verified fallback mappings for channels absent from/mismatched in iptv-org.
+# Only add mappings after manual verification; backups inherit the base channel mapping.
+MANUAL = {
+    "ARY Q TV": "https://i.imgur.com/eP2OW5S.png",
+}
+
 added=[]; unresolved=[]
 for idx,name,tvgid,oldlogo in missing:
     clean=re.sub(r"\s*\[Backup[^]]*\]\s*","",name,flags=re.I).strip()
@@ -70,7 +76,7 @@ for idx,name,tvgid,oldlogo in missing:
     if not cid:
         hits=ids_by_name.get(slug(clean),[])
         if len(hits)==1: cid=hits[0]
-    url=choose_logo(cid) if cid else None
+    url=choose_logo(cid) if cid else None\n    if not url: url=MANUAL.get(clean)
     if not url:
         unresolved.append(name); continue
     try:
