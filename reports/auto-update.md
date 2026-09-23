@@ -1,49 +1,49 @@
 # IPTV Auto Update
 
-Generated: **2026-09-23T03:14:18.414179+00:00**
+Generated: **2026-09-23T06:05:46.734253+00:00**
 
 ## Summary
 
-- Final playlist entries: **897**
-- New primary channels: **2**
-- New backup streams: **0**
-- Source-managed signed URLs refreshed: **0**
-- Missing source logos resolved from catalog: **2**
+- Final playlist entries: **817**
+- New primary channels: **8**
+- New backup streams: **88**
+- Source-managed signed URLs refreshed: **13**
+- Missing source logos resolved from catalog: **8**
 - Exact duplicate URLs removed from master: **0**
 - Non-Bangladeshi news entries removed: **0**
 - Non-Islamic religious entries removed: **0**
-- Duplicate source candidates skipped: **1266**
+- Duplicate source candidates skipped: **1101**
 - Candidates blocked before testing: **2**
-- Candidates tested concurrently: **130**
-- Dead/invalid responses: **128**
-- Candidates skipped by backup limits: **145**
+- Candidates tested concurrently: **327**
+- Dead/invalid responses: **221**
+- Candidates skipped by backup limits: **90**
 - Candidates omitted by safety cap: **0**
 - Stream-check workers: **20**
-- Parallel stream-check time: **14.2s**
+- Parallel stream-check time: **25.1s**
 
 ## Source status
 
-- **https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u** — 76 entries — 0.5s — OK
-- **https://raw.githubusercontent.com/Rangon500/1234556/main/BDIX.m3u** — 764 entries — 0.3s — OK
-- **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.3s — OK
+- **https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u** — 76 entries — 0.2s — OK
+- **https://raw.githubusercontent.com/Rangon500/1234556/main/BDIX.m3u** — 764 entries — 0.2s — OK
+- **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.2s — OK
 - **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.2s — OK
 - **https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u** — 428 entries — 0.2s — OK
 - **https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u** — 33 entries — 0.2s — OK
 
 ## Category totals
 
-- **Bangladesh**: 54
-- **Bangladesh Backup**: 161
-- **Indian Bangla**: 67
-- **Indian Movies**: 80
-- **Indian Music**: 61
-- **Indian Entertainment**: 110
-- **International Movies**: 51
+- **Bangladesh**: 51
+- **Bangladesh Backup**: 148
+- **Indian Bangla**: 42
+- **Indian Movies**: 66
+- **Indian Music**: 42
+- **Indian Entertainment**: 94
+- **International Movies**: 45
 - **International Music**: 58
-- **Documentary & Wildlife**: 92
-- **Kids**: 78
-- **Religious**: 44
-- **Sports**: 41
+- **Documentary & Wildlife**: 81
+- **Kids**: 72
+- **Religious**: 28
+- **Sports**: 32
 
 ## Removed non-Bangladeshi news channels
 
@@ -55,12 +55,105 @@ Generated: **2026-09-23T03:14:18.414179+00:00**
 
 ## New primary channels
 
-- **Gazi TV** — `Bangladesh Backup` — https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/gazibdz.stream/live-orgin/gazibdz.stream/playlist.m3u8
+- **beIN SPORTS XTRA** — `Sports` — https://bein-esp-xumo.amagi.tv/playlistR1080p.m3u8
+- **Star Sports 1** — `Sports` — https://flussonic.defineatoz.com/Starsports1/tracks-v1a1/mono.m3u8
+- **Duronto TV** — `Bangladesh Backup` — https://tvsen6.aynaott.com/6xyZ3N4oHv2KBJdB6W4p/index.m3u8
+- **Bein Sports** — `Sports` — https://iptvlive.ahmed-bd-org.workers.dev/bein-sports-1/index.m3u8
+- **Travel XP** — `Documentary & Wildlife` — https://iptvlive.ahmed-bd-org.workers.dev/travel-xp-1/index.m3u8
+- **Enter 10 Bangla** — `Indian Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/enter-10-bangla-2/index.m3u8
+- **PBS Kids** — `Kids` — https://2-fss-2.streamhoster.com/pl_140/amlst:200914-1298290/playlist.m3u8
 - **CTVN AKD Plus** — `Indian Bangla` — https://live.legitpro.co.in/ctvnakdplus/index.m3u8
 
 ## New backup streams
 
-- None
+- **Deepto TV [Backup 3]** — `Bangladesh Backup` — https://tvsen5.aynaott.com/tK2BNdfsdfsdf/index.m3u8
+- **DD Bangla [Backup 2]** — `Indian Bangla` — https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/7ff57cc9046b4c188b51a0d506f36e7f/index_3.m3u8
+- **Zee Bangla HD [Backup 2]** — `Indian Bangla` — https://flussonic.defineatoz.com/zeebangla/tracks-v1a1/mono.m3u8
+- **Action Hollywood Movies [Backup 1]** — `International Movies` — https://amg01076-lightningintern-actionhollywood-samsungnz-82rry.amagi.tv/playlist/amg01076-lightningintern-actionhollywood-samsungnz/playlist.m3u8
+- **MNX [Backup 1]** — `International Movies` — http://59.103.38.46:8000/play/a052/index.m3u8
+- **Star Movies [Backup 1]** — `International Movies` — http://202.70.146.135:8000/play/a06r/index.m3u8
+- **Baraza Music TV [Backup 1]** — `International Music` — https://rtmp.streams.ovh:1936/barazarelax/barazazararelax/barazarelax/playlist.m3u8
+- **NOW 70s [Backup 1]** — `International Music` — https://lightning-now70s-samsungnz.amagi.tv/playlist.m3u8
+- **NOW 80's [Backup 1]** — `International Music` — https://lightning-now80s-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-lightning-now80s-rakuten/CDN/playlist.m3u8
+- **RDS Social TV [Backup 1]** — `International Music` — https://stream.rdstv.radio/index.m3u8
+- **XITE Hits [Backup 1]** — `International Music` — https://amg01243-xitenetworksint-hitsuk-samsunguk-mvovq.amagi.tv/playlist/amg01243-xitenetworksint-hitsuk-samsunguk/playlist.m3u8
+- **Animal Planet [Backup 2]** — `Documentary & Wildlife` — http://27.124.71.27/Animal_Planet/index.m3u8
+- **BBC Earth [Backup 1]** — `Documentary & Wildlife` — http://202.70.146.135:8000/play/a067/index.m3u8
+- **BBC Earth [Backup 2]** — `Documentary & Wildlife` — https://amg00793-amg00793c6-xumo-us-2669.playouts.now.amagi.tv/BBCStudios-BBCEarthA-hls/playlist540p.m3u8
+- **CGTN Documentary [Backup 1]** — `Documentary & Wildlife` — https://0472.org/hls/cgtnd.m3u8
+- **Discovery Kids [Backup 1]** — `Documentary & Wildlife` — https://drk6xq0vhn.gpcdn.net/live/discovery_kids_abr/index.m3u8
+- **Discovery Kids [Backup 2]** — `Documentary & Wildlife` — https://vodzong.mjunoon.tv:8087/streamtest/disckids-157-1/playlist.m3u8
+- **Discovery Pakistan [Backup 2]** — `Documentary & Wildlife` — https://livecdn.live247stream.com/discoverpakistan/web/playlist.m3u8
+- **History [Backup 1]** — `Documentary & Wildlife` — https://n18syndication.akamaized.net/bpk-tv/History_TV18_Hindi_NW18_MOB/output01/master.m3u8
+- **INWILD [Backup 1]** — `Documentary & Wildlife` — https://amg00861-terninternation-inwild-samsunguk-w5wic.amagi.tv/playlist/amg00861-terninternation-inwild-samsunguk/playlist.m3u8
+- **Love Nature [Backup 2]** — `Documentary & Wildlife` — https://cdn1.logichost.in/ajmantv/live/playlist.m3u8
+- **Солнце [Backup 1]** — `Kids` — https://ctv.dc.beltelecom.by/ctv/ctv.stream/playlist.m3u8
+- **Солнце [Backup 2]** — `Kids` — http://zdravkin.hugo.mk:1935/live/zdravkin/playlist.m3u8
+- **Baby Shark TV [Backup 1]** — `Kids` — https://c0c65b821b3542c3a4dca92702f59944.mediatailor.us-east-1.amazonaws.com/v1/master/04fd913bb278d8775298c26fdca9d9841f37601f/RakutenTV-eu_BabySharkTV/playlist.m3u8
+- **Cartoon Network [Backup 1]** — `Kids` — https://stream.ottplus.live/live/cn_sd_abr/index.m3u8
+- **Cartoon Network [Backup 2]** — `Kids` — https://s3.ideationtec.live/Cartoon_Network/Cartoon_Network.m3u8
+- **Minimax [Backup 1]** — `Kids` — https://s2.ideationtec.live/MiniMax/MiniMax.m3u8
+- **Moonbug Kids [Backup 1]** — `Kids` — https://dq2a9ghraf7sw.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-zxq18dopv0o6q/Moonbug.m3u8
+- **Mr Bean Animated [Backup 1]** — `Kids` — https://amg00627-amg00627c30-rakuten-es-3990.playouts.now.amagi.tv/playlist/amg00627-banijayfast-mrbeanescc-rakutenes/playlist.m3u8
+- **Pogo [Backup 1]** — `Kids` — https://drk6xq0vhn.gpcdn.net/live/pogo_sd_abr/index.m3u8
+- **Sonic The Hedgehog [Backup 1]** — `Kids` — https://d2f1o3sb3u36tf.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-99j9k8uxi8rc2/master.m3u8?useRelativeUrls=true&skipBeacons=true&declaredCC1Language=en&ads.device_did=%7BPSID%7D&ads.device_dnt=%7BTARGETOPT%7D&ads.app_domain=%7BAPP_DOMAIN%7D&ads.app_name=%7BAPP_NAME%7D&ads.consent=%7BTC_STRING%7D&ads.ssai_vendor=SSSLIVE&ads.service_id=GB370000369
+- **Sony Yay [Backup 1]** — `Kids` — https://stream.ottplus.live/live/sony_yay_abr/live/sony_yay_720/chunks.m3u8
+- **The LEGO Channel [Backup 1]** — `Kids` — https://dh18i7whff86v.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-pslwq5nud9zg9/index.m3u8
+- **Toon Goggles [Backup 2]** — `Kids` — https://stream-us-east-1.getpublica.com/playlist.m3u8?network_id=36
+- **Toon Goggles Junior [Backup 1]** — `Kids` — https://d3i6upqaqzosi1.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-9k42dil136v1e-prod/tg/jr_us/tg_jr_us.m3u8
+- **ZooMoo [Backup 1]** — `Kids` — https://amg01553-blueantmediaasi-zoomoonz-samsungnz-rdufn.amagi.tv/playlist/amg01553-blueantmediaasi-zoomoonz-samsungnz/playlist.m3u8
+- **ION TV UK [Backup 1]** — `Bangladesh Backup` — https://app.ncare.live/live-orgin/iontvuk.stream/playlist.m3u8
+- **Peace TV Bangla [Backup 2]** — `Religious` — https://dzkyvlfyge.erbvr.com/PeaceTvBangla/tracks-v3a1/mono.m3u8
+- **beIN Sports 1 [Backup 1]** — `Sports` — http://ua102.online24.pm:8222/1101/video.m3u8?token=350B326FB34F4B8
+- **beIN Sports 1 [Backup 2]** — `Sports` — http://host.phorious.art/validation/377?deviceMac=10:27:BE:25:67:80&split=33da9c80155413830543e27c8520ba99&smart=1
+- **Sony Ten 2 [Backup 1]** — `Sports` — https://drk6xq0vhn.gpcdn.net/live/ten_2_hd_720/index.m3u8
+- **Sony Ten 5 [Backup 1]** — `Sports` — https://drk6xq0vhn.gpcdn.net/live/ten_5_hd_720/index.m3u8
+- **Deepto TV [Backup 4]** — `Bangladesh Backup` — https://byphdgllyk.gpcdn.net/hls/deeptotv/index.m3u8
+- **News 24 [Backup 3]** — `Bangladesh Backup` — https://tv.balkanweb.com/news24/livestream/playlist.m3u8
+- **RTV [Backup 4]** — `Bangladesh Backup` — https://tvsen5.aynaott.com/RtvHD/index.m3u8?e=1753741197&u=9a031201-22d8-4f7e-9516-7d246a8fedc3&token=603a6374cb20aa96f523c1c04e820f85
+- **Maasranga TV [Backup 4]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/maasranga-tv-1/index.m3u8
+- **Independent TV [Backup 2]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/independent-tv-1/index.m3u8
+- **Channel 9 [Backup 2]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/channel-9-hd-1/index.m3u8
+- **Bijoy TV [Backup 4]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/bijoy-tv-1/index.m3u8
+- **Movie Bangla [Backup 4]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/movie-bangla-2/index.m3u8
+- **Iqra Bangla [Backup 1]** — `Religious` — https://iptvlive.ahmed-bd-org.workers.dev/iqra-bangla-1/index.m3u8
+- **Quran TV [Backup 1]** — `Religious` — https://iptvlive.ahmed-bd-org.workers.dev/quran-tv-1/index.m3u8
+- **Iqraa TV [Backup 1]** — `Religious` — https://iptvlive.ahmed-bd-org.workers.dev/iqraa-tv-1/index.m3u8
+- **Sony Yay [Backup 2]** — `Kids` — https://iptvlive.ahmed-bd-org.workers.dev/sony-yay-1/index.m3u8
+- **Pogo [Backup 2]** — `Kids` — https://iptvlive.ahmed-bd-org.workers.dev/pogo-1/index.m3u8
+- **Sony AATH [Backup 2]** — `Indian Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/sony-aath-1/index.m3u8
+- **Zee TV [Backup 2]** — `Indian Entertainment` — https://iptvlive.ahmed-bd-org.workers.dev/zee-tv-1/index.m3u8
+- **T Sports HD [Backup 1]** — `Sports` — https://iptvlive.ahmed-bd-org.workers.dev/t-sports-hd-1/index.m3u8
+- **Discovery [Backup 1]** — `Documentary & Wildlife` — https://iptvlive.ahmed-bd-org.workers.dev/discovery-hd-1/index.m3u8
+- **T Sports HD [Backup 2]** — `Sports` — https://iptvlive.ahmed-bd-org.workers.dev/t-sports-hd-2/index.m3u8
+- **MovieSphere [Backup 1]** — `International Movies` — https://iptvlive.ahmed-bd-org.workers.dev/moviesphere-1/index.m3u8
+- **Rakuten Movies [Backup 1]** — `International Movies` — https://iptvlive.ahmed-bd-org.workers.dev/rakuten-movies-1/index.m3u8
+- **World War TV [Backup 1]** — `Documentary & Wildlife` — https://iptvlive.ahmed-bd-org.workers.dev/world-war-tv-1/index.m3u8
+- **Cowboy Movie Channel [Backup 1]** — `International Movies` — https://iptvlive.ahmed-bd-org.workers.dev/cowboy-movie-channel-1/index.m3u8
+- **Action Hollywood Movies [Backup 2]** — `International Movies` — https://iptvlive.ahmed-bd-org.workers.dev/action-hollywood-movies-1/index.m3u8
+- **Dios Te Ve Kids [Backup 1]** — `Kids` — https://iptvlive.ahmed-bd-org.workers.dev/dios-te-ve-kids-1/index.m3u8
+- **TVCARiB Kids & Teens [Backup 1]** — `Kids` — https://iptvlive.ahmed-bd-org.workers.dev/tvcarib-kids-teens-1/index.m3u8
+- **Persiana Kore [Backup 1]** — `International Movies` — https://iptvlive.ahmed-bd-org.workers.dev/persiana-kore-1/index.m3u8
+- **1Mus [Backup 1]** — `International Music` — https://iptvlive.ahmed-bd-org.workers.dev/1mus-1/index.m3u8
+- **CMC TV [Backup 1]** — `International Music` — https://iptvlive.ahmed-bd-org.workers.dev/cmc-tv-1/index.m3u8
+- **Oxygen Music [Backup 1]** — `International Music` — https://iptvlive.ahmed-bd-org.workers.dev/oxygen-music-1/index.m3u8
+- **Dance TV [Backup 1]** — `International Music` — https://iptvlive.ahmed-bd-org.workers.dev/dance-tv-1/index.m3u8
+- **RDS Social TV [Backup 2]** — `International Music` — https://iptvlive.ahmed-bd-org.workers.dev/rds-social-tv-1/index.m3u8
+- **Independent TV [Backup 3]** — `Bangladesh Backup` — https://iptv-proxy.ahmed-bd-org.workers.dev/independent-tv/index.m3u8
+- **Channel 9 [Backup 3]** — `Bangladesh Backup` — https://iptv-proxy.ahmed-bd-org.workers.dev/channel-9/index.m3u8
+- **Bangla Tv [Backup 3]** — `Bangladesh Backup` — https://tvsen6.aynaott.com/39ee93nUbCCmm5LsyD4t/index.m3u8?e=1784102569&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=fb1f6e0c49c7406611ea2bbd605ed275
+- **Nexus TV [Backup 2]** — `Bangladesh Backup` — https://tvsen6.aynaott.com/Epm7WrFa/index.m3u8?e=1784102571&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=61db2452abffc778eb75333c98c136a2
+- **My TV [Backup 3]** — `Bangladesh Backup` — https://tvsen6.aynaott.com/XMpHaEf0ANBhv8w6NWR7/index.m3u8?e=1784102573&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ae3f9c12e1d065b5ae78d27fb2e192fc
+- **Goldmines Movies [Backup 1]** — `Indian Movies` — https://tvsen6.aynaott.com/FsD43fcG/index.m3u8?e=1784102593&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=5da1770fba3540984206a834fafb382a
+- **Goldmines Bollywood [Backup 2]** — `Indian Movies` — https://tvsen6.aynaott.com/55xNrLdf/index.m3u8?e=1784102593&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=bdf9e0d52656d2f220337254a719a208
+- **NTV [Backup 4]** — `Bangladesh Backup` — https://tvsen5.aynaott.com/xV4jEKf3D9zc/tracks-v1a1/mono.ts.m3u8
+- **Star Sports 2 [Backup 1]** — `Sports` — http://tvsen5.aynascope.net/cXPB2LKkErN9/index.m3u8
+- **beIN SPORTS XTRA [Backup 1]** — `Sports` — https://bein-esp-xumo.amagi.tv/playlistR720P.m3u8
+- **Duronto TV [Backup 1]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/duronto-tv-1/index.m3u8
+- **Duronto TV [Backup 2]** — `Bangladesh Backup` — https://iptvlive.ahmed-bd-org.workers.dev/duronto-tv-2/index.m3u8
+- **Travel XP [Backup 1]** — `Documentary & Wildlife` — https://iptvlive.ahmed-bd-org.workers.dev/travel-xp-2/index.m3u8
+- **Duronto TV [Backup 3]** — `Bangladesh Backup` — https://iptv-proxy.ahmed-bd-org.workers.dev/duronto-tv/index.m3u8
+- **Duronto TV [Backup 4]** — `Bangladesh Backup` — https://tvsen5.aynaott.com/6xyZ3N4oHv2KBJdB6W4p/index.fmp4.m3u8?token=26849003e1fe1bed0b0c40f6d3be853eb9a2b4f7-6a6a5971089a426fc1829aad7d929e8a-1784095967-1784095067&remote=no_check_ip
 
 ## Blocked stream imports
 
@@ -69,107 +162,198 @@ Generated: **2026-09-23T03:14:18.414179+00:00**
 
 ## Dead or invalid stream imports
 
-- **Toffee TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/toffee_drama/playlist.m3u8
 - **Toffee Movies** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/toffee_movie/playlist.m3u8
+- **Somoy TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/somoy_tv/playlist.m3u8
+- **Ananda TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/anandatv/playlist.m3u8
+- **Bijoy TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/bijoytv/playlist.m3u8
+- **NTV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/n_tv/playlist.m3u8
 - **Rajdhani TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/rajdhani_tv/playlist.m3u8
+- **Bangla TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/bangla_tv/playlist.m3u8
 - **Asian TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/asian_tv/playlist.m3u8
+- **Movie Bangla** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/movie_bangla/playlist.m3u8
 - **Nexus TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/nexus_tv/playlist.m3u8
+- **Islamic TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/islamic_tv/playlist.m3u8
+- **Independent TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/independent_tv/playlist.m3u8
 - **Ekattor TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/ekattor_tv/playlist.m3u8
 - **Saudi Sunnah** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/saudi_sunnah/playlist.m3u8
 - **Saudi Quran** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/saudi_quran/playlist.m3u8
 - **Sony Ten Sports 1 HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_1_hd/playlist.m3u8
+- **Sony Ten Sports 2 HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_2_hd/playlist.m3u8
+- **Sony Ten Sports 5 HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_sports_5_hd/playlist.m3u8
 - **Sony Ten Cricket** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/ten_cricket/playlist.m3u8
 - **Cartoon Network HD +** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/cartoon_network_hd/playlist.m3u8
+- **Cartoon Network** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/cartoon_network_sd/playlist.m3u8
+- **POGO** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/pogo_sd/playlist.m3u8
+- **Discovery Kids** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_kids/playlist.m3u8
+- **Sony YAY** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonyyay/playlist.m3u8
 - **Zee Anmol** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_anmol/playlist.m3u8
 - **Zing** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zing_sd/playlist.m3u8
+- **Sony Aath** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonyaath/playlist.m3u8
+- **B4U Music** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/b4u_music/playlist.m3u8
 - **Sony SAB HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonysab_hd/playlist.m3u8
+- **Zee TV HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_tv_hd/playlist.m3u8
+- **Zee Bangla Cinema** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_bangla_cinema/playlist.m3u8
 - **Sony PIX HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonypix_hd/playlist.m3u8
 - **Zee Cafe** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_cafe_hd/playlist.m3u8
 - **Sony MAX 2** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/sonymax_2/playlist.m3u8
+- **TLC HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/tlc_hd/playlist.m3u8
+- **TLC** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/tlc_sd/playlist.m3u8
+- **Animal Planet** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/animal_planet_sd/playlist.m3u8
 - **Animal Planet HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/animal_planet_hd/playlist.m3u8
 - **Discovery HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_hd/playlist.m3u8
 - **Discovery** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_sd/playlist.m3u8
 - **Discovery Science** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_science/playlist.m3u8
 - **Discovery Turbo** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovery_turbo/playlist.m3u8
 - **Investigation Discovery HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovary_investigation_hd/playlist.m3u8
-- **& Pictures HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/andpicture_hd/playlist.m3u8
-- **Asian TV** — TimeoutError: timed out — https://iptvlive.ahmed-bd-org.workers.dev/asian-tv-1/index.m3u8
+- **&TV HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/and_tv_hd/playlist.m3u8
+- **Ruposhi Bangla** — URLError: <urlopen error timed out> — http://103.175.73.12:8080/live/664/664_0.m3u8
+- **Sony AATH** — HTTPError: HTTP Error 502: Bad Gateway — https://digitalotthub.com/tv/toffee-by-maruf/live.php?id=sonyaath&e=.m3u8
+- **MBC Bollywood** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1000)> — https://shls-mbcbollywood-prod-dub.shahid.net/out/v1/a79c9d7ef2a64a54a64d5c4567b3462a/index.m3u8
+- **Star Gold** — HTTPError: HTTP Error 404: Not Found — http://202.70.146.135:8000/play/a02a/index.m3u8
+- **B4U Music** — URLError: <urlopen error timed out> — http://103.175.73.12:8080/live/157/master.m3u8
+- **Colors Bangla HD** — URLError: <urlopen error [Errno 111] Connection refused> — http://103.151.61.12/COLORS_BANHLA/tracks-v1a1/mono.m3u8
+- **Star Plus** — HTTPError: HTTP Error 404: Not Found — http://202.70.146.135:8000/play/a009/index.m3u8
+- **&TV** — HTTPError: HTTP Error 404: Not Found — http://202.70.146.135:8000/play/a06c/index.m3u8
+- **Zee TV** — HTTPError: HTTP Error 404: Not Found — http://41.205.93.154/ZEE-TV/index.m3u8
+- **National Geographic HD** — TimeoutError: The read operation timed out — https://tvsen3.aynaott.com/7mm4pwCy/index.m3u8
+- **TLC** — HTTPError: HTTP Error 404: Not Found — http://202.70.146.135:8000/play/a05i/index.m3u8
+- **Al Quran Al Kareem TV** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1000)> — https://al-ekhbaria-prod-dub.shahid.net/out/v1/9885cab0a3ec4008b53bae57a27ca76b/index.m3u8
+- **Makkah Live** — URLError: <urlopen error timed out> — https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/makkah.stream/index.m3u8
+- **Medina Live** — URLError: <urlopen error timed out> — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/madina.stream/playlist.m3u8
+- **Medina Live** — URLError: <urlopen error timed out> — https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/madina.stream/playlist.m3u8
+- **Quran** — HTTPError: HTTP Error 404: Not Found — http://m.live.net.sa:1935/live/quran/playlist.m3u8
+- **Saudi Quran** — HTTPError: HTTP Error 404: Not Found — http://bigenterprise.live:8080/live/00612533/17905940/1172576.ts
+- **Ananda TV** — URLError: <urlopen error timed out> — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/anandatv.stream/tracks-v1a1/mono.m3u8
+- **Asian TV** — URLError: <urlopen error timed out> — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/asian-test-sample-ok-d.stream/tracks-v1a1/mono.m3u8
+- **Channel 1** — URLError: <urlopen error timed out> — https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/channel1bd.stream/playlist.m3u8
+- **G TV** — URLError: <urlopen error timed out> — https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/gazibdz.stream/playlist.m3u8
+- **Green TV** — HTTPError: HTTP Error 404: Not Found — https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/greentv.stream/playlist.m3u8
+- **Movie Bangla** — URLError: <urlopen error timed out> — https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/moviebanglalink2.stream/tracks-v1a1/mono.m3u8
+- **My Tv** — URLError: <urlopen error timed out> — https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/mytv-up-off.stream/index.m3u8
+- **My TV** — URLError: <urlopen error timed out> — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/mytv-up-off.stream/tracks-v1a1/mono.m3u8
+- **Somoy TV** — URLError: <urlopen error [Errno 111] Connection refused> — https://live.thebosstv.com:30443/dwlive/Somoy-TV/chunks.m3u8
+- **Star News** — URLError: <urlopen error timed out> — https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/starnewsbd.stream/playlist.m3u8
+- **SOMOY TV** — URLError: <urlopen error [Errno 111] Connection refused> — https://iptvlive.ahmed-bd-org.workers.dev/somoy-tv-1/index.m3u8
+- **Asian TV** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/asian-tv-1/index.m3u8
+- **Sananda** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/sananda-1/index.m3u8
+- **Ananda TV** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/ananda-tv-1/index.m3u8
+- **Mohona TV** — HTML response — https://iptvlive.ahmed-bd-org.workers.dev/mohona-tv-1/index.m3u8
+- **MY TV** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/my-tv-1/index.m3u8
 - **Green TV** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/green-tv-1/index.m3u8
+- **Mohona TV HD** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/mohona-tv-hd-1/index.m3u8
 - **Thikana** — HTML response — https://iptvlive.ahmed-bd-org.workers.dev/thikana-1/index.m3u8
-- **BTV News** — TimeoutError: timed out — https://iptvlive.ahmed-bd-org.workers.dev/btv-news-1/index.m3u8
-- **Rongeen** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/rongeen-1/index.m3u8
-- **Nick Bangla** — HTTPError: HTTP Error 500: Internal Server Error — https://iptvlive.ahmed-bd-org.workers.dev/nick-bangla-1/index.m3u8
+- **BTV News** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/btv-news-1/index.m3u8
+- **RTV** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/rtv-2/index.m3u8
+- **My Tv** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/my-tv-2/index.m3u8
+- **Makkah Live** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/makkah-live-1/index.m3u8
+- **Medina Live** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/medina-live-1/index.m3u8
+- **Islamic TV** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/islamic-tv-1/index.m3u8
+- **Zee Bangla HD** — URLError: <urlopen error [Errno 111] Connection refused> — https://iptvlive.ahmed-bd-org.workers.dev/zee-bangla-hd-1/index.m3u8
 - **Colors Bangla HD** — URLError: <urlopen error [Errno 111] Connection refused> — https://iptvlive.ahmed-bd-org.workers.dev/colors-bangla-hd-1/index.m3u8
+- **Ruposhi Bangla** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/ruposhi-bangla-1/index.m3u8
 - **Star Plus HD** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/star-plus-hd-1/index.m3u8
 - **Star Gold HD** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/star-gold-hd-1/index.m3u8
+- **& Tv** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/tv-1/index.m3u8
 - **Sony Max 2** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://iptvlive.ahmed-bd-org.workers.dev/sony-max-2-1/index.m3u8
 - **Sony Sab HD** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://iptvlive.ahmed-bd-org.workers.dev/sony-sab-hd-1/index.m3u8
 - **Sangeet Bangla** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/sangeet-bangla-1/index.m3u8
+- **B4U Music** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/b4u-music-1/index.m3u8
 - **7S Music** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/7s-music-1/index.m3u8
 - **Music India** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/music-india-1/index.m3u8
-- **PTV Sports** — HTTPError: HTTP Error 403: Forbidden — https://iptvlive.ahmed-bd-org.workers.dev/ptv-sports-1/index.m3u8
-- **Star Sports 1** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/star-sports-1-1/index.m3u8
 - **Star Sports 2** — HTTPError: HTTP Error 403: Forbidden — https://iptvlive.ahmed-bd-org.workers.dev/star-sports-2-1/index.m3u8
 - **Star Sports SL 1** — URLError: <urlopen error [Errno -3] Temporary failure in name resolution> — https://iptvlive.ahmed-bd-org.workers.dev/star-sports-sl-1-1/index.m3u8
-- **Star Sports SL 2** — URLError: <urlopen error [Errno -3] Temporary failure in name resolution> — https://iptvlive.ahmed-bd-org.workers.dev/star-sports-sl-2-1/index.m3u8
 - **Sony Ten 1** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://iptvlive.ahmed-bd-org.workers.dev/sony-ten-1-1/index.m3u8
+- **Sony Ten 2** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://iptvlive.ahmed-bd-org.workers.dev/sony-ten-2-1/index.m3u8
+- **Sony Ten 5** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://iptvlive.ahmed-bd-org.workers.dev/sony-ten-5-1/index.m3u8
 - **National Geographic HD** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/national-geographic-hd-1/index.m3u8
-- **Travel XP HD** — URLError: <urlopen error [Errno 111] Connection refused> — https://iptvlive.ahmed-bd-org.workers.dev/travel-xp-hd-1/index.m3u8
-- **PTV Sports** — HTML response — https://iptvlive.ahmed-bd-org.workers.dev/ptv-sports-2/index.m3u8
+- **Bein Sports 1** — HTML response — https://iptvlive.ahmed-bd-org.workers.dev/bein-sports-1-2/index.m3u8
 - **Espn** — HTML response — https://iptvlive.ahmed-bd-org.workers.dev/espn-1/index.m3u8
 - **Sangeet Bangla** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/sangeet-bangla-2/index.m3u8
 - **Music India** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/music-india-2/index.m3u8
-- **Khushboo** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/khushboo-1/index.m3u8
+- **Discovery Kids** — URLError: <urlopen error [Errno -2] Name or service not known> — https://iptvlive.ahmed-bd-org.workers.dev/discovery-kids-2/index.m3u8
 - **News 24 Ⓢ** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/news-24-2/index.m3u8
+- **СТВ** — UnicodeEncodeError: 'ascii' codec can't encode characters in position 5-7: ordinal not in range(128) — https://iptvlive.ahmed-bd-org.workers.dev/ств-1/index.m3u8
+- **Телевизија Здравкин** — UnicodeEncodeError: 'ascii' codec can't encode characters in position 5-14: ordinal not in range(128) — https://iptvlive.ahmed-bd-org.workers.dev/телевизија-здравкин-1/index.m3u8
+- **Вистел** — UnicodeEncodeError: 'ascii' codec can't encode characters in position 5-10: ordinal not in range(128) — https://iptvlive.ahmed-bd-org.workers.dev/вистел-1/index.m3u8
+- **Первый канал** — UnicodeEncodeError: 'ascii' codec can't encode characters in position 5-10: ordinal not in range(128) — https://iptvlive.ahmed-bd-org.workers.dev/первый-канал-1/index.m3u8
 - **Al Quran Al Kareem TV** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1000)> — https://iptvlive.ahmed-bd-org.workers.dev/al-quran-al-kareem-tv-1/index.m3u8
+- **MBC Bollywood** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1000)> — https://iptvlive.ahmed-bd-org.workers.dev/mbc-bollywood-1/index.m3u8
+- **Sananda** — URLError: <urlopen error timed out> — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/sanandatv.stream/tracks-v1a1/mono.m3u8
+- **Mohona TV** — HTML response — http://sm-monirul.top/@monirul_Islam_SM/proxy.php?id=mohona_tv&format=.m3u8
 - **Thikana** — HTML response — http://sm-monirul.top/@monirul_Islam_SM/proxy.php?id=thikana&format=.m3u
+- **Zee Bangla HD** — URLError: <urlopen error [Errno 111] Connection refused> — http://103.159.180.34:5001/live/625.m3u8
 - **Star Gold HD** — URLError: <urlopen error timed out> — http://66.102.126.10:8000/play/a00f/index.m3u8
 - **Sony Max 2** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://stream.ottplus.bd/live/max_2_abr/live/max_2_720/chunks.m3u8
 - **Sony Sab HD** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://stream.ottplus.bd/live/sub_hd_abr/index.m3u8
 - **Music India** — HTTPError: HTTP Error 404: Not Found — https://cdn-2.pishow.tv/live/226/master.m3u8
-- **PTV Sports** — HTTPError: HTTP Error 403: Forbidden — https://saseries.akamaized.net/hls/live/2110097/2353jkiL-tapmad/master.m3u8
-- **Star Sports 1** — HTTPError: HTTP Error 404: Not Found — http://tvsen7.aynascope.net/sspts1/index.m3u8
 - **Star Sports SL 1** — URLError: <urlopen error [Errno -3] Temporary failure in name resolution> — https://yowaimo.in/Sflex-ArtlPVT0719/STAR_SPORTS_SELECT_1_HD.m3u8
-- **Star Sports SL 2** — URLError: <urlopen error [Errno -3] Temporary failure in name resolution> — https://yowaimo.in/Sflex-ArtlPVT0719/STAR_SPORTS_SELECT_2_HD.m3u8
 - **Sony Ten 1** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://stream.ottplus.bd/live/ten_1_hd_abr/index.m3u8
-- **Bein Sports** — HTTPError: HTTP Error 403: Forbidden — https://messi.damitv.st/papi/ts/beinsports-usa/playlist.m3u8
+- **Sony Ten 2** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://stream.ottplus.bd/live/ten_2_hd_abr/index.m3u8
+- **Sony Ten 5** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'stream.ottplus.bd'. (_ssl.c:1000)> — https://stream.ottplus.bd/live/ten_5_hd_abr/index.m3u8
 - **National Geographic HD** — HTTPError: HTTP Error 404: Not Found — http://40.160.24.53/NAT_GEO/index.m3u8
-- **PTV Sports** — HTML response — http://sm-monirul.top/@monirul_Islam_SM/proxy.php?id=ptv_sports&format=.m3u8
+- **Bein Sports 1** — HTML response — http://sm-monirul.top/@monirul_Islam_SM/proxy.php?id=bein_sports_1&format=.m3u8
 - **Espn** — HTML response — http://sm-monirul.top/@monirul_Islam_SM/proxy.php?id=espn&format=.m3u8
 - **Sangeet Bangla** — HTTPError: HTTP Error 404: Not Found — https://cdn-4.pishow.tv/live/1143/master.m3u8
-- **Khushboo** — HTTPError: HTTP Error 404: Not Found — https://cdn-4.pishow.tv/live/1473/master.m3u8
-- **Star Sports 1** — URLError: <urlopen error timed out> — https://cdn5.zohanayaan.com:1686/hls/star1in.m3u8?md5=sJkYpIQ3t1coZeB3GtIGzw&expires=1790130919
+- **Discovery Kids** — URLError: <urlopen error [Errno -2] Name or service not known> — https://discoverfilm-discoverfilm-1-nl.samsung.wurl.tv/playlist.m3u8
+- **MY TV** — URLError: <urlopen error timed out> — https://mytvbangla.com/0.m3u8
 - **Star Sports 1 Hindi** — URLError: <urlopen error timed out> — https://cdn3.zohanayaan.com:1686/hls/starhindi.m3u8?md5=Ai5ZYKAX_zaYryOyJ2Ebmw&expires=1790130919
-- **PTV Sports** — URLError: <urlopen error timed out> — https://cdn8.zohanayaan.com:1686/hls/ptvpk.m3u8?md5=737fOkj0xFEXXU3fQCJOoA&expires=1790130920
 - **Sky Sports Cricket** — URLError: <urlopen error timed out> — https://cdn6.zohanayaan.com:1686/hls/skyscric.m3u8?md5=HEl9gThWPw4-t6gNuaGjHA&expires=1790130921
 - **Sky Sports Action** — URLError: <urlopen error timed out> — https://cdn4.zohanayaan.com:1686/hls/skysact.m3u8?md5=P8cM2zb70CowoRCZdunUCA&expires=1790130924
 - **Sky Sports Football** — URLError: <urlopen error timed out> — https://cdn9.zohanayaan.com:1686/hls/skysfott.m3u8?md5=XEoK70zWSYCVSFRizDb9eA&expires=1790130925
-- **Bein Sports** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/beinsports/index.m3u8?e=1784102515&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=67d5960a5b93b5cfcf562312b4627330
+- **Bein Sports 1** — HTTPError: HTTP Error 403: Forbidden — https://1nyaler.streamhostingcdn.top/stream/23/index.m3u8
 - **Espn** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/espn/index.m3u8?e=1784102528&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d701f3665e12964090ddd656a9a89c29
 - **BTV News** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/tV8mB2zP7rX4kL1w/index.m3u8?e=1784102532&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=20448821bed8f397806d492c1b39da46
+- **Star News** — HTTPError: HTTP Error 403: Forbidden — https://owrcovcrpy.gpcdn.net/bpk-tv/1710/output/1701.m3u8
+- **Independent TV** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/Wef2Vj67njeYGDqQNFB9/index.m3u8?e=1784102536&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=faa76e200f238010e464d45a3135f138
+- **Gazi TV** — TimeoutError: The read operation timed out — https://tvsen5.aynaott.com/Ravc7gPCZpxk/index.m3u8?e=1784102565&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=36497099fc726a799b13d41016259efc
 - **Channel 9** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/kajlsd57jnkdf/index.m3u8?e=1784102566&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=de9d33cfd8daf9a7f2e56a88534d0548
+- **Peace TV Bangla HD** — HTTPError: HTTP Error 404: Not Found — https://tvsen7.aynaott.com/xM9hpJpqLqs83ZrvkeBG/index.m3u8?e=1784102568&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=90ea05f54cbc7e469d26591ca7a526e4
 - **BTV NATIONAL HD** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/AQLYTPfXtjm5x7zj7AsM/index.m3u8?e=1784102574&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c77a7f71fb9c8690eec45bed699ba960
 - **Green TV HD** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/cLuA3hJR/index.m3u8?e=1784102578&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=57bcdefd396bd85d72461ff29cbde00d
+- **Cartoon Network** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/cartoonnetwork/index.m3u8?e=1784102579&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=9563d33da06516fd262e9156a110a8d8
 - **Disney JR** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/disneyjr/index.m3u8?e=1784102580&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=6a87c2e077df270ccd0de2c2e611177c
 - **9X Tashan** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/9X_Tashan/index.m3u8?e=1784102590&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c021d7a607b33144aa5b0b83089b0fb5
+- **Goldmines** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/hKrngve2/index.m3u8?e=1784102592&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c2995b4981869497cd8659e3a739f2d1
+- **Dangal 2** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/U8SSRsqP/index.m3u8?e=1784102594&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=e51e1a1419a8e13a78b319b915184125
+- **Dangal** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/uS9QwrbB/index.m3u8?e=1784102594&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=1f2a210560b673b66b0d398f2d6fc2fd
 - **MTV** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/mtv/index.m3u8?e=1784102610&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b99f4b905260714794250d1410a936a2
+- **TLC HD** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/tlc_hd/index.m3u8?e=1784102621&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=032b2c039214b5eb81d1d06aac66a512
+- **Deen TV** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/deen/index.m3u8?e=1784102626&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=0e3dce4bf23e1ea8b102191022c0dfcc
 - **Peace TV Urdu HD** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/PeaceTVUrduHD/index.m3u8?e=1784102628&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7cf820bc700fe8ed9e8b0084f0c6f84b
 - **Green TV HD** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/cLuA3hJR/index.m3u8?e=1784102650&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=4611739ee78a2cc302c5eb6c7e0ec1d9
-- **PTV Sports** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/zY3hJ7pQ2vM5gD8s/index.m3u8?e=1784102651&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&ip=52.157.32.49&token=258517a6abcacd20116947f2c3132059
 - **Espn** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/espn/index.m3u8?e=1784102653&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=fbc560646ea38d9fce118fcd264926c5
+- **Toffee TV** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/toffee_drama/playlist.m3u8
+- **Doyel TV** — HTTPError: HTTP Error 404: Not Found — https://3d46w.doyeltv.com/memfs/aa3aa6f7-ec12-41a2-8183-a891e157bbf8.m3u8
+- **News 21 Bangla TV** — URLError: <urlopen error timed out> — http://103.190.133.68:1935/news21live/live/playlist.m3u8
+- **SONIC** — HTTPError: HTTP Error 404: Not Found — http://202.70.146.135:8000/play/a02t/index.m3u8
 - **BTV** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/btv-1/index.m3u8
+- **News 21 Bangla TV** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/news-21-bangla-tv-1/index.m3u8
+- **Rongeen** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/rongeen-1/index.m3u8
 - **Nikki HD** — HTTPError: HTTP Error 403: Forbidden — https://iptvlive.ahmed-bd-org.workers.dev/nikki-hd-1/index.m3u8
+- **Nick Bangla** — HTTPError: HTTP Error 500: Internal Server Error — https://iptvlive.ahmed-bd-org.workers.dev/nick-bangla-1/index.m3u8
 - **Akash Bangla** — URLError: <urlopen error [Errno 111] Connection refused> — https://iptvlive.ahmed-bd-org.workers.dev/akash-bangla-1/index.m3u8
 - **Khusbo Bangla** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/khusbo-bangla-1/index.m3u8
+- **PTV Sports** — HTTPError: HTTP Error 403: Forbidden — https://iptvlive.ahmed-bd-org.workers.dev/ptv-sports-1/index.m3u8
+- **Star Sports 1** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/star-sports-1-1/index.m3u8
+- **Star Sports SL 2** — URLError: <urlopen error [Errno -3] Temporary failure in name resolution> — https://iptvlive.ahmed-bd-org.workers.dev/star-sports-sl-2-1/index.m3u8
+- **Travel XP HD** — URLError: <urlopen error [Errno 111] Connection refused> — https://iptvlive.ahmed-bd-org.workers.dev/travel-xp-hd-1/index.m3u8
+- **PTV Sports** — HTML response — https://iptvlive.ahmed-bd-org.workers.dev/ptv-sports-2/index.m3u8
 - **Kids Pang TV** — URLError: <urlopen error [Errno -2] Name or service not known> — https://iptvlive.ahmed-bd-org.workers.dev/kids-pang-tv-1/index.m3u8
 - **Channel Win** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/channel-win-1/index.m3u8
 - **BTV** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/opREbXLqJ2HFYPCXTJBa/index.m3u8
 - **Nikki HD** — HTTPError: HTTP Error 403: Forbidden — https://nomawnoijl.gpcdn.net/akash/nikky/playlist.m3u8
 - **Akash Bangla** — URLError: <urlopen error [Errno 111] Connection refused> — https://live.thebosstv.com:30443/dwlive/AAKAASH-AATH/playlist.m3u8
 - **Khusbo Bangla** — URLError: <urlopen error timed out> — http://103.175.73.12:8080/live/375/375_0.m3u8
+- **PTV Sports** — HTTPError: HTTP Error 403: Forbidden — https://saseries.akamaized.net/hls/live/2110097/2353jkiL-tapmad/master.m3u8
+- **Star Sports 1** — HTTPError: HTTP Error 404: Not Found — http://tvsen7.aynascope.net/sspts1/index.m3u8
+- **Star Sports SL 2** — URLError: <urlopen error [Errno -3] Temporary failure in name resolution> — https://yowaimo.in/Sflex-ArtlPVT0719/STAR_SPORTS_SELECT_2_HD.m3u8
+- **Bein Sports** — HTTPError: HTTP Error 403: Forbidden — https://messi.damitv.st/papi/ts/beinsports-usa/playlist.m3u8
+- **PTV Sports** — HTML response — http://sm-monirul.top/@monirul_Islam_SM/proxy.php?id=ptv_sports&format=.m3u8
 - **Kids Pang TV** — URLError: <urlopen error [Errno -2] Name or service not known> — https://newidco-kidspangtv-1-us.roku.wurl.tv/playlist.m3u8
 - **Channel Win** — HTTPError: HTTP Error 404: Not Found — https://cdn-4.pishow.tv/live/229/master.m3u8
 - **T Sports Live 01** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://live.tsports.com/mobile_hls/tsports_live_1/playlist.m3u8
+- **Star Sports 1** — URLError: <urlopen error timed out> — https://cdn5.zohanayaan.com:1686/hls/star1in.m3u8?md5=sJkYpIQ3t1coZeB3GtIGzw&expires=1790130919
+- **PTV Sports** — URLError: <urlopen error timed out> — https://cdn8.zohanayaan.com:1686/hls/ptvpk.m3u8?md5=737fOkj0xFEXXU3fQCJOoA&expires=1790130920
 - **Sky Sports Main Event** — URLError: <urlopen error timed out> — https://cdn4.zohanayaan.com:1686/hls/skysme.m3u8?md5=8fs9vSPlhA_dDdGTYnT2Yw&expires=1790130921
 - **Sky Sports Golf** — URLError: <urlopen error timed out> — https://cdn3.zohanayaan.com:1686/hls/skysgol.m3u8?md5=jhzWdRLnQaHWjFcXlM9Pcg&expires=1790130924
 - **Sky Sports Premier League** — URLError: <urlopen error timed out> — https://cdn9.zohanayaan.com:1686/hls/skysprem.m3u8?md5=IOS67tlTA3daXCxuXEQARQ&expires=1790130925
@@ -180,8 +364,8 @@ Generated: **2026-09-23T03:14:18.414179+00:00**
 - **Sky Sports Mix** — URLError: <urlopen error timed out> — https://cdn1.zohanayaan.com:1686/hls/skysmixx.m3u8?md5=k75QZDEI3a3iNg6RkgE7NQ&expires=1790130926
 - **Sky Sports Tennis** — URLError: <urlopen error timed out> — https://cdn3.zohanayaan.com:1686/hls/skystennis.m3u8?md5=LignEpn_16_-QyXPgkg1HQ&expires=1790130926
 - **Fox Sports 2** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/foxsports2/index.m3u8?e=1784102513&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d99d64707b3804bb93d8e2a7dc7c2ec3
+- **Bein Sports** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/beinsports/index.m3u8?e=1784102515&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=67d5960a5b93b5cfcf562312b4627330
 - **NFL Network** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/nfl/index.m3u8?e=1784102521&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b788fb69852f06155761f8a22c9676c4
-- **Gazi TV** — TimeoutError: The read operation timed out — https://tvsen5.aynaott.com/Ravc7gPCZpxk/index.m3u8?e=1784102565&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=36497099fc726a799b13d41016259efc
 - **Nicktoons** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/nicktoons/index.m3u8?e=1784102580&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=8eaa14af29c832e9b2b22399a5dfd762
 - **Nickjr** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/nickjr/index.m3u8?e=1784102581&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=1a9cf0bc5e79f08de29d345545216d31
 - **Discovery Family** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/discoveryfamily/index.m3u8?e=1784102581&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=7551ec4daacd3d773ab2a992615f1f6c
@@ -192,16 +376,18 @@ Generated: **2026-09-23T03:14:18.414179+00:00**
 - **Teen Nick** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/teennick/index.m3u8?e=1784102584&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d43b3bb62ef7f77b2a1199b0cbd11f74
 - **TAQBEER** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/takbeer/index.m3u8?e=1784102625&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=81782f6025584e79ffd591d834ff3fb0
 - **Eman Channel** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/eman/index.m3u8?e=1784102626&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ac68781519dc02fa881bb036e27720d6
-- **Deen TV** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/deen/index.m3u8?e=1784102626&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=0e3dce4bf23e1ea8b102191022c0dfcc
 - **RTV Islam** — HTTPError: HTTP Error 404: Not Found — https://protokolldns.xyz/rtvislamweb554/index.m3u8
 - **Islam TV** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/islam/index.m3u8?e=1784102629&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=08e8a8df941b53b9792355f81b43937e
+- **Khushboo** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/mzwbzfZ4/index.m3u8?e=1784102631&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=98108f8c82a0dc91e30e52fe77713a09
 - **Assam Talks** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/AssamTalks/index.m3u8?e=1784102635&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c5ae931b66e2b3bb39f8dcc43ef2118d
+- **PTV Sports** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/zY3hJ7pQ2vM5gD8s/index.m3u8?e=1784102651&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&ip=52.157.32.49&token=258517a6abcacd20116947f2c3132059
 - **BT Sports 2** — TimeoutError: The read operation timed out — https://tvsen6.aynaott.com/btSport2/index.m3u8?e=1784102657&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=adb8565e4802294a0887f78480964696
+- **PTV Sports** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/zY3hJ7pQ2vM5gD8s/index.m3u8?e=1784102658&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&ip=52.157.32.49&token=b75669e4aa0dd58c602b637ab66af304
 
 ## Rejected candidates
 
-- **EPL channel 1** — source group `Live Action` — https://prod-cdn01-live.toffeelive.com/live/EPL-26-27-CH-1/index.m3u8?edge-cache-token=Expires=1790107573~Starts=1790107273~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Data=eyJzdWJzY3JpYmVyX2lkIjoiNTg0NmVmMTAtMzgzYS00YjlhLThhZTAtNGZiMTEzNWIxNTVkIn0~Signature=0elNp6XNY2PghleYMOkEwb374enikeShBt6U04-PznSHUdPGBoZPG9-URdxybWKoJuLPJtILIFTCvqjBwPWdDw
-- **FC | Live 1** — source group `Sports` — https://prod-cdn01-live.toffeelive.com/live/BFFL-1/index.m3u8?edge-cache-token=Expires=1790114473~Starts=1790107273~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Data=eyJzdWJzY3JpYmVyX2lkIjoiNTg0NmVmMTAtMzgzYS00YjlhLThhZTAtNGZiMTEzNWIxNTVkIn0~Signature=YBVoHRa3sXZYptkUHI9xHSBtFEr43cMe_wKYwXUGIBrGPH50K1Za7m6vqPM6qYO21DQdbqytLN_9S9uGoBUYDg
+- **EPL channel 1** — source group `Live Action` — https://prod-cdn01-live.toffeelive.com/live/EPL-26-27-CH-1/index.m3u8?edge-cache-token=Expires=1790121968~Starts=1790121668~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Data=eyJzdWJzY3JpYmVyX2lkIjoiNTg0NmVmMTAtMzgzYS00YjlhLThhZTAtNGZiMTEzNWIxNTVkIn0~Signature=u-pLOBK3mGHmaopQtgR9sKzeaWcb8BiMLmXGuhhXfoLlPOedTDOfEGpMoho8iwZW7F-C_iUaqcXiAQi9x4fcAA
+- **FC | Live 1** — source group `Sports` — https://prod-cdn01-live.toffeelive.com/live/BFFL-1/index.m3u8?edge-cache-token=Expires=1790128869~Starts=1790121669~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Data=eyJzdWJzY3JpYmVyX2lkIjoiNTg0NmVmMTAtMzgzYS00YjlhLThhZTAtNGZiMTEzNWIxNTVkIn0~Signature=MASCJc7_GQxDUkb2MZy3e7BM7qDegeeAi4XfMqa-OCqRrR_atHiSWEckfyabvR-T5_1ncBhuP0wfUiDXhfqiAQ
 - **WC Match Recap** — source group `Sports` — https://bldcmprod-cdn.toffeelive.com/cdn/live/fifa_world_cup/playlist.m3u8
 - **CNN** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/cnn/playlist.m3u8
 - **Channel News Asia** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/channels_news_asia/playlist.m3u8
@@ -213,11 +399,41 @@ Generated: **2026-09-23T03:14:18.414179+00:00**
 - **Eurosport HD** — source group `Sports` — https://bldcmprod-cdn.toffeelive.com/cdn/live/euro_sports_hd/playlist.m3u8
 - **HUM Masala** — source group `Drama` — https://bldcmprod-cdn.toffeelive.com/cdn/live/hum_masala/playlist.m3u8
 - **HUM Sitaray** — source group `Drama` — https://bldcmprod-cdn.toffeelive.com/cdn/live/hum_sitaray/playlist.m3u8
+- **& Pictures HD** — source group `Movies` — https://bldcmprod-cdn.toffeelive.com/cdn/live/andpicture_hd/playlist.m3u8
 - **R Plus Gold** — source group `` — https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/cf883da3-f9f5-4c70-b0ef-b3ac2e2ad1e3/index.m3u8
 - **R Plus Gold** — source group `` — https://thelegitpro.in/pntv/rplusnews24x7/tracks-v1a1/mono.m3u8
+- **Star Bangla** — source group `` — http://103.151.60.162:2122/play/a0f5/index.m3u8?hls
+- **ETV Cinema** — source group `` — https://d27zlkxhgwrfgo.cloudfront.net/v1/master/9d43eacaed199f8d5883927e7aef514a8a08e108/ETV_CINEMA_H264_cloud_in/index.m3u8
+- **& Pictures** — source group `` — http://202.70.146.135:8000/play/a06b/index.m3u8
+- **Raj Digital Plus** — source group `` — https://livestream.rajtv.tv/hlslive/Admin/px08241087/live/RajTV_Digital_plus/master_1.m3u8
+- **Zee Talkies** — source group `` — http://107.167.16.138/zeetalkies/index.m3u8?token=test
+- **Raj Musix Tamil** — source group `` — https://livestream.rajtv.tv/hlslive/Admin/px08241087/live/Raj_Musix/master_1.m3u8
+- **AMG TV (Classic)** — source group `` — https://2-fss-2.streamhoster.com/pl_138/201660-1270634-1/playlist.m3u8
+- **Ava Family** — source group `` — https://familyhls.avatv.live/hls/stream.m3u8
+- **LoL TV** — source group `` — https://streams2.sofast.tv/ptnr-yupptv/title-LOL-TV-ENG_yupptv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/fc63d5fd-b50e-4d3e-abdf-697d9b6cbf70/manifest.m3u8
+- **MOVIES NOW HD** — source group `` — http://202.70.146.135:8000/play/a057/index.m3u8
+- **Red Carpet TV International** — source group `` — https://fast-rakuten.okast.tv/fa2e8c4385712f9a9076eaf728c751de/channels/1a6ecfaa-40c6-41b8-8634-595c424f856e/21f67fd1-4d21-43ba-8ad8-3afac9982c25/master.m3u8
+- **ROMEDY NOW** — source group `` — http://202.70.146.135:8000/play/a05x/index.m3u8
+- **60 Days In by A&E** — source group `` — https://d2b8jic9gadlvy.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-kvf8znfz3byu4/v1/aenetworks_60daysin_1/samsungheadend_us/latest/main/hls/playlist.m3u8
+- **Documentary+ International** — source group `` — https://1d153317c8db4250b3789601274e2402.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-887-DOCUMENTARYINTERNATIONAL-DOCUMENTARYPLUS/mt/documentaryplus/887/hls/master/playlist.m3u8
+- **Gyandarshan** — source group `` — https://mumt05.tangotv.in/87NeALx2GYANDARSHAN/index.m3u8
+- **TRAVEL XP** — source group `` — https://27c980761ff9437d929e64647afe183a.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/RakutenTV-eu_TravelXP/playlist.m3u8
+- **Travel XP HD** — source group `` — http://103.159.180.34:5001/live/562.m3u8
+- **Witness to Justice** — source group `` — https://dxwldsv8fdzik.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-l2dz2a7mdvmzc/v1/aenetworks_witnesstojustice_1/samsungheadend_us/latest/main/hls/playlist.m3u8
 - **3ABN Kids** — source group `` — https://tvsen6.aynaott.com/3abnkids/index.m3u8?e=1784102588&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3a88dd05abf3d2a88da7c3754b99c5e6
+- **Doraemon** — source group `` — https://live20.bozztv.com/giatvplayout7/giatv-209902/index.m3u8
+- **Hot Wheels Action** — source group `` — https://dtz4aepbew7ez.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-j02089jh4uhwc/hotwh.m3u8
+- **Nick Bangla** — source group `` — http://live.balajibroadband.com:3500/live/1341.m3u8
+- **Rongeen** — source group `` — http://103.175.73.12:8080/live/202/202_0.m3u8
+- **Al Sunnah TV** — source group `` — http://m.live.net.sa:1935/live/sunnah/playlist.m3u8
+- **Al-Zahra TV Turkic** — source group `` — https://live.al-zahratv.com/live/playlist.m3u8
+- **Dua Channel** — source group `` — https://newyork.zeuscdn724.com/H9/index.m3u8
+- **Quran Live** — source group `` — https://live.kwikmotion.com/sharjahtvquranlive/shqurantv.smil/playlist.m3u8
+- **Salaam TV** — source group `` — https://d2o3r1shda7xvv.cloudfront.net/index_5.m3u8
+- **Sky Life Bd Al Quran** — source group `` — https://live.kwikmotion.com/sbrksaquranradiolive/srpksaquranradio/playlist.m3u8
 - **A Sports HD** — source group `` — https://tvsen6.aynaott.com/zv68oqPDu7MZZwmHhRxt/tracks-v1a1/mono.ts.m3u8
 - **Bahrain Sports 1** — source group `` — https://5c7b683162943.streamlock.net/live/ngrp:sportsone_all/playlist.m3u8
+- **Euro Sports HD** — source group `` — https://drk6xq0vhn.gpcdn.net/live/euro_sports_hd_abr/index.m3u8
 - **Fight Network** — source group `` — https://amg00966-amg00966c10-amgplt0201.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg00966-amg00966c10-amgplt0201/playlist.m3u8
 - **Golf Network** — source group `` — https://streams2.sofast.tv/ptnr-sportstribal/genre-Sports/lang-English/ctgr-Sport/title-Golf_Network/sofastplayout/b7500c3f-bd94-4725-abfd-2644e004132c/manifest.m3u8
 - **KTV Sport Plus** — source group `` — https://kwtsplta.cdn.mangomolo.com/spl/smil:spl.stream.smil/chunklist.m3u8
@@ -230,11 +446,14 @@ Generated: **2026-09-23T03:14:18.414179+00:00**
 - **PTV** — source group `` — https://flussonic.defineatoz.com/PTV/index.m3u8
 - **Speed Sports 1** — source group `` — https://linear-599.frequency.stream/dist/stirr/599/hls/master/playlist.m3u8
 - **Sports First TV** — source group `` — https://d4ddgdmj1cvnm.cloudfront.net/scheduler/scheduleMaster/409.m3u8
+- **Star Sports 2 Hindi (720p)** — source group `` — https://tvsen5.aynaott.com/cXPB2LKkErN9/index.m3u8
+- **Star Sports SL 2** — source group `` — https://flussonic.defineatoz.com/starsportsselect2sw/tracks-v1a1/mono.m3u8
 - **Trace Sport Stars** — source group `` — https://lightning-tracesport-samsungau.amagi.tv/playlist.m3u8
 - **Willow Sports** — source group `` — https://tvsen5.aynaott.com/willowhd/index.m3u8
 - **WOF 1** — source group `` — https://rakutenaa-mainstreammediafreesportsintl-rakuten-t7dc0.amagi.tv/playlist/rakutenAA-mainstreammediafreesportsintl-rakuten/playlist.m3u8
 - **WOF 1** — source group `` — https://mainstreammedia-worldoffreesportsintl-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-mainstreammediafreesportsintl-rakuten/CDN/master.m3u8
 - **Xtream Sports** — source group `` — https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/e0b81a5c-6ab5-48cd-aaa9-f82de4ab5bf9/manifest.m3u8
+- **#EXTVLCOPT:http-user-agent=oxoo/1.3.9.d (Linux;Android 7.1.2) ExoPlayerLib/2.14.1** — source group `` — https://cdn.ghuddi.live/Bangla_TV/Bangla_TV_BD/playlist.m3u8
 - **Live Cricket** — source group `` — https://iptvlive.ahmed-bd-org.workers.dev/live-cricket-1/index.m3u8
 - **Bangla Vision** — source group `Entertainment` — https://iptvlive.ahmed-bd-org.workers.dev/bangla-vision-1/index.m3u8
 - **Ekattor HD** — source group `News` — https://iptvlive.ahmed-bd-org.workers.dev/ekattor-hd-1/index.m3u8
@@ -242,7 +461,6 @@ Generated: **2026-09-23T03:14:18.414179+00:00**
 - **NRB HD** — source group `Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/nrb-hd-1/index.m3u8
 - **Probashi** — source group `Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/probashi-1/index.m3u8
 - **Deshe Bideshe** — source group `Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/deshe-bideshe-1/index.m3u8
-- **Sananda** — source group `Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/sananda-1/index.m3u8
 - **Jonmo Bhumi TV** — source group `Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/jonmo-bhumi-tv-1/index.m3u8
 - **Bangla 1** — source group `Bangladeshi` — https://iptvlive.ahmed-bd-org.workers.dev/bangla-1-1/index.m3u8
 - **Boishakhi** — source group `Bangladeshi` — https://iptvlive.ahmed-bd-org.workers.dev/boishakhi-1/index.m3u8
@@ -317,6 +535,7 @@ Generated: **2026-09-23T03:14:18.414179+00:00**
 - **CMAC TV** — source group `Channels` — https://iptvlive.ahmed-bd-org.workers.dev/cmac-tv-1/index.m3u8
 - **Court TV** — source group `English` — https://iptvlive.ahmed-bd-org.workers.dev/court-tv-1/index.m3u8
 - **ShemarooTV** — source group `Hindi` — https://iptvlive.ahmed-bd-org.workers.dev/shemarootv-1/index.m3u8
+- **Khushboo** — source group `Hindi` — https://iptvlive.ahmed-bd-org.workers.dev/khushboo-1/index.m3u8
 - **Awaaz India** — source group `Hindi` — https://iptvlive.ahmed-bd-org.workers.dev/awaaz-india-1/index.m3u8
 - **Saudia Radio** — source group `Latest` — https://iptvlive.ahmed-bd-org.workers.dev/saudia-radio-1/index.m3u8
 - **ABN** — source group `Latest` — https://iptvlive.ahmed-bd-org.workers.dev/abn-1/index.m3u8
@@ -721,7 +940,6 @@ Generated: **2026-09-23T03:14:18.414179+00:00**
 - **Ekattor HD** — source group `News` — https://iptv-proxy.ahmed-bd-org.workers.dev/ekattor-tv/index.m3u8
 - **BTV Shangshad** — source group `News` — https://iptv-proxy.ahmed-bd-org.workers.dev/btv/index.m3u8
 - **Deshe Bideshe** — source group `Bangla` — https://dbcanada.sonarbanglatv.com/deshebideshe/dbtv/index.m3u8
-- **Sananda** — source group `Bangla` — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/sanandatv.stream/tracks-v1a1/mono.m3u8
 - **Jonmo Bhumi TV** — source group `Bangla` — https://jtvs.ncare.live/Gznr84Woj7UEye3OPVeWq2ForboWAgdV/jonmobhumitv.stream/tracks-v1a1/mono.m3u8
 - **Bangla 1** — source group `Bangladeshi` — https://video1.getstreamhosting.com:1936/eycqczsxka/eycqczsxka/playlist.m3u8
 - **Independent** — source group `Bangladeshi` — https://sm-monirul.top/@monirul_Islam_SM/play/independent_tv.m3u8
@@ -770,6 +988,7 @@ Generated: **2026-09-23T03:14:18.414179+00:00**
 - **CMAC TV** — source group `Channels` — https://reflect-vod-cmac.cablecast.tv/live-11/live/stream-2/live.m3u8
 - **Court TV** — source group `English` — https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01438-ewscrippscompan-courttv-tablo/playlist.m3u8
 - **ShemarooTV** — source group `Hindi` — https://cdn-3.pishow.tv/live/230/master.m3u8
+- **Khushboo** — source group `Hindi` — https://cdn-4.pishow.tv/live/1473/master.m3u8
 - **Awaaz India** — source group `Hindi` — http://awaazindia.livebox.co.in/AwaazIndaTVhls/Live.m3u8
 - **Saudia Radio** — source group `Latest` — https://live.kwikmotion.com/sbrksasaudiaradiolive/srpksasaudiaradio/playlist.m3u8
 - **ABN** — source group `Latest` — https://mediaserver.abnvideos.com/streams/abnurdu.m3u8
