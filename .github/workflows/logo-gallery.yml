@@ -32,13 +32,15 @@ jobs:
               key=lambda p: p.name.lower()
           )
 
+          owner_repo = "${{ github.repository }}"
+          branch = "${{ github.ref_name }}"
           cols = 6
           out = [
               "# Channel Logo Gallery",
               "",
               f"**Total logos: {len(files)}**",
               "",
-              "Visual index of the actual files in this folder. Delete the PNG/JPG file itself to remove an unwanted or fake logo.",
+              "Click **🗑 Delete** below a wrong/fake logo. GitHub will open that exact file; use the trash/delete control on the file page and commit the deletion.",
               "",
               "<table>"
           ]
@@ -48,11 +50,14 @@ jobs:
               out.append("<tr>")
               for p in row:
                   src = quote(p.name)
+                  fullpath = quote(f"logos/{p.name}", safe="/")
+                  file_url = f"https://github.com/{owner_repo}/blob/{branch}/{fullpath}"
                   label = re.sub(r"[-_]+", " ", p.stem).strip()
                   out.append(
-                      f'<td align="center" width="16%"><a href="{src}">'
+                      f'<td align="center" width="16%"><a href="{file_url}">'
                       f'<img src="{src}" width="110" height="80" style="object-fit:contain"></a>'
-                      f'<br><sub>{label}</sub><br><code>{p.name}</code></td>'
+                      f'<br><sub>{label}</sub><br><code>{p.name}</code>'
+                      f'<br><a href="{file_url}">🗑 Delete</a></td>'
                   )
               out.append("</tr>")
 
