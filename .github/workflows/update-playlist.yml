@@ -69,6 +69,8 @@ jobs:
           ]
           MANAGED_SOURCE = 'https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u'
           MANAGED_SOURCE_ID = 'shakil951-proxy-enable'
+          LOGO_CHANNELS_API = 'https://iptv-org.github.io/api/channels.json'
+          LOGO_CATALOG_API = 'https://iptv-org.github.io/api/logos.json'
 
           GROUPS = [
               'Bangladesh', 'Bangladesh Backup',
@@ -280,6 +282,58 @@ jobs:
                   return allowed[supplied_group]
               return None
 
+          def logo_catalog():
+              if hasattr(logo_catalog, '_cache'):
+                  return logo_catalog._cache
+              catalog = {}
+              try:
+                  def fetch_json(url):
+                      request = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+                      with urllib.request.urlopen(request, timeout=SOURCE_TIMEOUT) as response:
+                          return json.loads(response.read(32 * 1024 * 1024).decode('utf-8'))
+
+                  channels = fetch_json(LOGO_CHANNELS_API)
+                  logos = fetch_json(LOGO_CATALOG_API)
+                  preferred = {}
+                  scores = {}
+                  for logo in logos:
+                      channel_id = logo.get('channel', '')
+                      url = logo.get('url', '')
+                      if not channel_id or not logo.get('in_use') or not url.startswith('https://'):
+                          continue
+                      score = (
+                          2 if logo.get('feed') is None else 0,
+                          1 if logo.get('format') in {'PNG', 'SVG', 'WebP'} else 0,
+                          int(logo.get('width') or 0) * int(logo.get('height') or 0),
+                      )
+                      if score > scores.get(channel_id, (-1, -1, -1)):
+                          scores[channel_id] = score
+                          preferred[channel_id] = url
+
+                  name_channels = defaultdict(set)
+                  for channel in channels:
+                      channel_id = channel.get('id', '')
+                      if channel_id not in preferred:
+                          continue
+                      for label in [channel.get('name', ''), *channel.get('alt_names', [])]:
+                          key = norm(label)
+                          if key:
+                              name_channels[key].add(channel_id)
+                  for key, channel_ids in name_channels.items():
+                      # Avoid assigning a wrong regional logo when a name is ambiguous.
+                      if len(channel_ids) == 1:
+                          catalog[key] = preferred[next(iter(channel_ids))]
+              except Exception:
+                  catalog = {}
+              logo_catalog._cache = catalog
+              return catalog
+
+          def source_logo(name, supplied):
+              supplied = supplied.strip()
+              if supplied:
+                  return supplied
+              return logo_catalog().get(norm(name), '')
+
           def fetch_source(source):
               started = time.monotonic()
               try:
@@ -444,6 +498,7 @@ jobs:
           rejected_names = []
           skipped_duplicates = 0
           skipped_limits = 0
+          sourced_logos = 0
           seen_candidates = set()
           staged_per_name = defaultdict(int)
           candidates = []
@@ -477,11 +532,14 @@ jobs:
                   candidates.append((0, source_entry, key, 'backup'))
                   continue
               group = classify(name, source_entry.get('attrs', {}).get('group-title', ''))
-              logo = source_entry.get('attrs', {}).get('tvg-logo', '').strip()
-              if not group or not logo:
-                  rejected_names.append((name, source_entry.get('attrs', {}).get('group-title', ''), url))
+              logo = source_logo(name, source_entry.get('attrs', {}).get('tvg-logo', '')) if group else ''
+              if group and logo:
+                  if not source_entry.get('attrs', {}).get('tvg-logo', '').strip():
+                      source_entry['attrs']['tvg-logo'] = logo
+                      sourced_logos += 1
+                  candidates.append((1, source_entry, key, 'new'))
                   continue
-              candidates.append((1, source_entry, key, 'new'))
+              rejected_names.append((name, source_entry.get('attrs', {}).get('group-title', ''), url))
 
           candidates.sort(key=lambda item: item[0])
           truncated_candidates = max(0, len(candidates) - MAX_CANDIDATES)
@@ -603,6 +661,7 @@ jobs:
               f'- New primary channels: **{len(added_channels)}**',
               f'- New backup streams: **{len(added_backups)}**',
               f'- Source-managed signed URLs refreshed: **{refreshed_managed}**',
+              f'- Missing source logos resolved from catalog: **{sourced_logos}**',
               f'- Exact duplicate URLs removed from master: **{duplicates}**',
               f'- Non-Bangladeshi news entries removed: **{len(removed_foreign_news)}**',
               f'- Non-Islamic religious entries removed: **{len(removed_policy)}**',
@@ -640,7 +699,7 @@ jobs:
               '', '## Policy', '',
               '- Existing membership is authoritative.',
               '- Candidate identity uses normalized names plus conservative quality-label aliases.',
-              '- New candidates require an approved category and a logo.',
+              '- New candidates require an approved category and a logo; missing logos are resolved by conservative exact-name matching against the iptv-org catalog.',
               '- Non-Bangladeshi news channels are rejected from both existing and imported entries.',
               '- Non-Islamic religious channels are rejected.',
               '- Approved major sports channels are allowed.',
