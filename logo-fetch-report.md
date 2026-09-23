@@ -1,11 +1,11 @@
 # Missing Logo Fetch Report
 
 Found missing: **14**  
-Downloaded: **0**  
-Unresolved: **14**
+Downloaded: **1**  
+Unresolved: **13**
 
 ## Downloaded
-- None
+- MH One Prime → \`logos/mh-one-prime.png\` (Mh1Prime.in)
 
 ## Unresolved
 - ME TV
@@ -14,7 +14,6 @@ Unresolved: **14**
 - Jtv Classic
 - SNB Cinema
 - MH One Movies
-- MH One Prime
 - Bon Voyage
 - House of Crime
 - Islamic TV
