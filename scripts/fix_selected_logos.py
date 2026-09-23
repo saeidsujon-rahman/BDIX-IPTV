@@ -29,6 +29,12 @@ TARGETS = {
     "local.358fe4699222": ("robot-wars-by-mech.png", "https://i.imgur.com/vGqha3k.png"),
     "local.4e794cea4ffe": ("disney-jr.png", "logos/disney-jr-044dc1f3.svg"),
     "ZooMoo.sg": ("zoomoo.png", "https://i.imgur.com/ciTJrnl.png"),
+    "Sony PIX HD": ("sony-pix-hd.png", None),
+    "UFCTV.us": ("ufc-tv.png", None),
+    "Mh1Prime.in": ("mh1-prime.png", "https://objectstorage.ap-mumbai-1.oraclecloud.com/p/5AitQDLSHGLXO5gFCchmHLS5RHNzYqrbWIOmvSO3VbjKQ0iV877xDvEMn_IDjR7d/n/bmaqqlwez184/b/GTPL_CHANNEL_LOGO/o/gtpl/MH%20ONE%20DIL%20SE.png"),
+    "4Music.fr": ("4-music.png", None),
+    "6WiseTv.us": ("6-wise-tv.png", "https://jrlist70.pages.dev/list/wise.png"),
+    "local.86529dbe4f63": ("solnce.png", "https://i.imgur.com/HCefxaK.png"),
 }
 
 
@@ -75,6 +81,10 @@ def png_bytes(source):
 DISPLAY_NAMES = {
     "BHI Channel": "BHI CHANNEL",
     "7X Music": "7X PUNJABI",
+    "Mh1Prime.in": "MH1 PRIME",
+    "4Music.fr": "4 MUSIC",
+    "6WiseTv.us": "6 WISE TV",
+    "local.86529dbe4f63": "СОЛНЦЕ",
 }
 
 
@@ -114,7 +124,11 @@ for channel_id, (filename, source) in TARGETS.items():
         if not path.exists() or path.read_bytes() != data:
             path.write_bytes(data)
     except Exception as exc:
-        errors.append(f"{channel_id}: {exc}")
+        if channel_id in DISPLAY_NAMES:
+            path.write_bytes(generated_wordmark(channel_id))
+            print(f"Used generated fallback for {channel_id}: {exc}")
+        else:
+            errors.append(f"{channel_id}: {exc}")
 
 if errors:
     raise SystemExit("Logo repair failed:\n- " + "\n- ".join(errors))
@@ -141,5 +155,42 @@ missing_entries = sorted(set(TARGETS) - updated)
 if missing_entries:
     raise SystemExit("Target playlist entries not found: " + ", ".join(missing_entries))
 
+# Convert every repository-hosted non-PNG logo referenced by the playlist.
+converted = {}
+conversion_errors = []
+for index, line in enumerate(lines):
+    if not line.startswith("#EXTINF"):
+        continue
+    logo_match = re.search(r'tvg-logo="([^"]*)"', line)
+    if not logo_match:
+        continue
+    logo_url = logo_match.group(1)
+    if not logo_url.startswith(RAW_BASE):
+        continue
+    clean_url = logo_url.split("?", 1)[0].split("#", 1)[0]
+    relative = clean_url[len(RAW_BASE):]
+    source_path = LOGO_DIR / relative
+    if source_path.suffix.lower() == ".png":
+        continue
+    output_path = source_path.with_suffix(".png")
+    try:
+        if source_path not in converted:
+            if not source_path.exists():
+                raise FileNotFoundError(f"referenced logo does not exist: {source_path}")
+            data = png_bytes(str(source_path))
+            if not output_path.exists() or output_path.read_bytes() != data:
+                output_path.write_bytes(data)
+            converted[source_path] = output_path
+        new_url = RAW_BASE + converted[source_path].relative_to(LOGO_DIR).as_posix()
+        lines[index] = line.replace(logo_url, new_url, 1)
+    except Exception as exc:
+        conversion_errors.append(f"{source_path}: {exc}")
+
+if conversion_errors:
+    raise SystemExit("Non-PNG conversion failed:\n- " + "\n- ".join(conversion_errors))
+
 PLAYLIST.write_text("\n".join(lines), encoding="utf-8", newline="\n")
-print(f"Repaired {len(updated)} selected channel logo mappings with PNG assets.")
+print(
+    f"Repaired {len(updated)} selected channel logo mappings and converted "
+    f"{len(converted)} unique non-PNG assets."
+)
