@@ -21,7 +21,7 @@ FALLBACK_URLS = {
     "https://raw.githubusercontent.com/StarFlixofficial/Personal-File/refs/heads/main/Channels%20Logo/Music/Mon%20Bangla%20.png": "https://i.imgur.com/8eftKdr.jpeg",
     "https://www.google.com/s2/favicons?domain=bozztv.com&sz=256": "https://imglink.cc/cdn/cScI5tEUjV.png",
     "https://imgur.com/79g2kMA.pn": "https://i.imgur.com/79g2kMA.png",
-    "https://www.aparatchi.com/images/chanells-logo/4kurd.svg": "https://www.aparatchi.com/images/TV/4kurd-hd.png",
+    "https://www.aparatchi.com/images/chanells-logo/4kurd.svg": "https://raw.githubusercontent.com/shayanline/iptv-iran/main/assets/logos/4Kurd.fr.png",
 }
 
 
