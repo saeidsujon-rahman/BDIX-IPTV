@@ -1,12 +1,12 @@
 # IPTV Auto Update
 
-Generated: **2026-09-23T06:05:46.734253+00:00**
+Generated: **2026-09-23T06:26:19.517853+00:00**
 
 ## Summary
 
-- Final playlist entries: **817**
+- Final playlist entries: **815**
 - New primary channels: **8**
-- New backup streams: **88**
+- New backup streams: **86**
 - Source-managed signed URLs refreshed: **13**
 - Missing source logos resolved from catalog: **8**
 - Exact duplicate URLs removed from master: **0**
@@ -15,15 +15,15 @@ Generated: **2026-09-23T06:05:46.734253+00:00**
 - Duplicate source candidates skipped: **1101**
 - Candidates blocked before testing: **2**
 - Candidates tested concurrently: **327**
-- Dead/invalid responses: **221**
-- Candidates skipped by backup limits: **90**
+- Dead/invalid responses: **222**
+- Candidates skipped by backup limits: **91**
 - Candidates omitted by safety cap: **0**
 - Stream-check workers: **20**
-- Parallel stream-check time: **25.1s**
+- Parallel stream-check time: **27.1s**
 
 ## Source status
 
-- **https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u** — 76 entries — 0.2s — OK
+- **https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u** — 76 entries — 0.4s — OK
 - **https://raw.githubusercontent.com/Rangon500/1234556/main/BDIX.m3u** — 764 entries — 0.2s — OK
 - **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.2s — OK
 - **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.2s — OK
@@ -35,7 +35,7 @@ Generated: **2026-09-23T06:05:46.734253+00:00**
 - **Bangladesh**: 51
 - **Bangladesh Backup**: 148
 - **Indian Bangla**: 42
-- **Indian Movies**: 66
+- **Indian Movies**: 64
 - **Indian Music**: 42
 - **Indian Entertainment**: 94
 - **International Movies**: 45
@@ -68,6 +68,7 @@ Generated: **2026-09-23T06:05:46.734253+00:00**
 
 - **Deepto TV [Backup 3]** — `Bangladesh Backup` — https://tvsen5.aynaott.com/tK2BNdfsdfsdf/index.m3u8
 - **DD Bangla [Backup 2]** — `Indian Bangla` — https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/7ff57cc9046b4c188b51a0d506f36e7f/index_3.m3u8
+- **Sony AATH [Backup 2]** — `Indian Bangla` — https://digitalotthub.com/tv/toffee-by-maruf/live.php?id=sonyaath&e=.m3u8
 - **Zee Bangla HD [Backup 2]** — `Indian Bangla` — https://flussonic.defineatoz.com/zeebangla/tracks-v1a1/mono.m3u8
 - **Action Hollywood Movies [Backup 1]** — `International Movies` — https://amg01076-lightningintern-actionhollywood-samsungnz-82rry.amagi.tv/playlist/amg01076-lightningintern-actionhollywood-samsungnz/playlist.m3u8
 - **MNX [Backup 1]** — `International Movies` — http://59.103.38.46:8000/play/a052/index.m3u8
@@ -121,7 +122,6 @@ Generated: **2026-09-23T06:05:46.734253+00:00**
 - **Iqraa TV [Backup 1]** — `Religious` — https://iptvlive.ahmed-bd-org.workers.dev/iqraa-tv-1/index.m3u8
 - **Sony Yay [Backup 2]** — `Kids` — https://iptvlive.ahmed-bd-org.workers.dev/sony-yay-1/index.m3u8
 - **Pogo [Backup 2]** — `Kids` — https://iptvlive.ahmed-bd-org.workers.dev/pogo-1/index.m3u8
-- **Sony AATH [Backup 2]** — `Indian Bangla` — https://iptvlive.ahmed-bd-org.workers.dev/sony-aath-1/index.m3u8
 - **Zee TV [Backup 2]** — `Indian Entertainment` — https://iptvlive.ahmed-bd-org.workers.dev/zee-tv-1/index.m3u8
 - **T Sports HD [Backup 1]** — `Sports` — https://iptvlive.ahmed-bd-org.workers.dev/t-sports-hd-1/index.m3u8
 - **Discovery [Backup 1]** — `Documentary & Wildlife` — https://iptvlive.ahmed-bd-org.workers.dev/discovery-hd-1/index.m3u8
@@ -144,8 +144,6 @@ Generated: **2026-09-23T06:05:46.734253+00:00**
 - **Bangla Tv [Backup 3]** — `Bangladesh Backup` — https://tvsen6.aynaott.com/39ee93nUbCCmm5LsyD4t/index.m3u8?e=1784102569&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=fb1f6e0c49c7406611ea2bbd605ed275
 - **Nexus TV [Backup 2]** — `Bangladesh Backup` — https://tvsen6.aynaott.com/Epm7WrFa/index.m3u8?e=1784102571&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=61db2452abffc778eb75333c98c136a2
 - **My TV [Backup 3]** — `Bangladesh Backup` — https://tvsen6.aynaott.com/XMpHaEf0ANBhv8w6NWR7/index.m3u8?e=1784102573&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ae3f9c12e1d065b5ae78d27fb2e192fc
-- **Goldmines Movies [Backup 1]** — `Indian Movies` — https://tvsen6.aynaott.com/FsD43fcG/index.m3u8?e=1784102593&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=5da1770fba3540984206a834fafb382a
-- **Goldmines Bollywood [Backup 2]** — `Indian Movies` — https://tvsen6.aynaott.com/55xNrLdf/index.m3u8?e=1784102593&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=bdf9e0d52656d2f220337254a719a208
 - **NTV [Backup 4]** — `Bangladesh Backup` — https://tvsen5.aynaott.com/xV4jEKf3D9zc/tracks-v1a1/mono.ts.m3u8
 - **Star Sports 2 [Backup 1]** — `Sports` — http://tvsen5.aynascope.net/cXPB2LKkErN9/index.m3u8
 - **beIN SPORTS XTRA [Backup 1]** — `Sports` — https://bein-esp-xumo.amagi.tv/playlistR720P.m3u8
@@ -207,11 +205,10 @@ Generated: **2026-09-23T06:05:46.734253+00:00**
 - **Investigation Discovery HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/discovary_investigation_hd/playlist.m3u8
 - **&TV HD** — origin: URLError: <urlopen error [Errno -5] No address associated with hostname>; proxy: HTTPError: HTTP Error 530: <none> — https://bldcmprod-cdn.toffeelive.com/cdn/live/and_tv_hd/playlist.m3u8
 - **Ruposhi Bangla** — URLError: <urlopen error timed out> — http://103.175.73.12:8080/live/664/664_0.m3u8
-- **Sony AATH** — HTTPError: HTTP Error 502: Bad Gateway — https://digitalotthub.com/tv/toffee-by-maruf/live.php?id=sonyaath&e=.m3u8
 - **MBC Bollywood** — URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1000)> — https://shls-mbcbollywood-prod-dub.shahid.net/out/v1/a79c9d7ef2a64a54a64d5c4567b3462a/index.m3u8
 - **Star Gold** — HTTPError: HTTP Error 404: Not Found — http://202.70.146.135:8000/play/a02a/index.m3u8
 - **B4U Music** — URLError: <urlopen error timed out> — http://103.175.73.12:8080/live/157/master.m3u8
-- **Colors Bangla HD** — URLError: <urlopen error [Errno 111] Connection refused> — http://103.151.61.12/COLORS_BANHLA/tracks-v1a1/mono.m3u8
+- **Colors Bangla HD** — URLError: <urlopen error timed out> — http://103.151.61.12/COLORS_BANHLA/tracks-v1a1/mono.m3u8
 - **Star Plus** — HTTPError: HTTP Error 404: Not Found — http://202.70.146.135:8000/play/a009/index.m3u8
 - **&TV** — HTTPError: HTTP Error 404: Not Found — http://202.70.146.135:8000/play/a06c/index.m3u8
 - **Zee TV** — HTTPError: HTTP Error 404: Not Found — http://41.205.93.154/ZEE-TV/index.m3u8
@@ -249,7 +246,7 @@ Generated: **2026-09-23T06:05:46.734253+00:00**
 - **Medina Live** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/medina-live-1/index.m3u8
 - **Islamic TV** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/islamic-tv-1/index.m3u8
 - **Zee Bangla HD** — URLError: <urlopen error [Errno 111] Connection refused> — https://iptvlive.ahmed-bd-org.workers.dev/zee-bangla-hd-1/index.m3u8
-- **Colors Bangla HD** — URLError: <urlopen error [Errno 111] Connection refused> — https://iptvlive.ahmed-bd-org.workers.dev/colors-bangla-hd-1/index.m3u8
+- **Colors Bangla HD** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/colors-bangla-hd-1/index.m3u8
 - **Ruposhi Bangla** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/ruposhi-bangla-1/index.m3u8
 - **Star Plus HD** — HTTPError: HTTP Error 404: Not Found — https://iptvlive.ahmed-bd-org.workers.dev/star-plus-hd-1/index.m3u8
 - **Star Gold HD** — URLError: <urlopen error timed out> — https://iptvlive.ahmed-bd-org.workers.dev/star-gold-hd-1/index.m3u8
@@ -314,6 +311,8 @@ Generated: **2026-09-23T06:05:46.734253+00:00**
 - **Disney JR** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/disneyjr/index.m3u8?e=1784102580&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=6a87c2e077df270ccd0de2c2e611177c
 - **9X Tashan** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/9X_Tashan/index.m3u8?e=1784102590&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c021d7a607b33144aa5b0b83089b0fb5
 - **Goldmines** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/hKrngve2/index.m3u8?e=1784102592&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c2995b4981869497cd8659e3a739f2d1
+- **Goldmines Movies** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/FsD43fcG/index.m3u8?e=1784102593&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=5da1770fba3540984206a834fafb382a
+- **Goldmines Bollywood** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/55xNrLdf/index.m3u8?e=1784102593&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=bdf9e0d52656d2f220337254a719a208
 - **Dangal 2** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/U8SSRsqP/index.m3u8?e=1784102594&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=e51e1a1419a8e13a78b319b915184125
 - **Dangal** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/uS9QwrbB/index.m3u8?e=1784102594&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=1f2a210560b673b66b0d398f2d6fc2fd
 - **MTV** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/mtv/index.m3u8?e=1784102610&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b99f4b905260714794250d1410a936a2
