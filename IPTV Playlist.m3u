@@ -129,6 +129,8 @@ https://iptvlive.ahmed-bd-org.workers.dev/enter-10-bangla-1/index.m3u8
 http://livetv.akr4m.com:8080/bdtv/restrem/27.m3u8
 #EXTINF:-1 tvg-id="JhankarTV.ca" tvg-name="Jhankar TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/jhankar-tv.png" tvg-chno="244" channel-id="JhankarTV.ca" group-title="Indian Bangla",Jhankar TV
 https://dbcanada.sonarbanglatv.com/jhankartv/jtv/index.m3u8
+#EXTINF:-1 channel-id="local.13a774fd5195" tvg-id="local.13a774fd5195" tvg-name="Jtv Classic" tvg-chno="306" group-title="Indian Bangla",Jtv Classic
+http://103.67.97.46/0.ts
 #EXTINF:-1 tvg-id="KhushbooBangla.in" tvg-name="Khushboo Bangla" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/khushboo-bangla.png" tvg-chno="246" channel-id="KhushbooBangla.in" tvg-language="ben" tvg-country="IN" group-title="Indian Bangla",Khushboo Bangla
 https://mumt01.tangotv.in/O5aw8Zn3KHUSHBOOTVBANGLA/index.m3u8
 #EXTINF:-1 tvg-id="MONTVBangla.in" tvg-name="Mon Bangla" tvg-logo="https://raw.githubusercontent.com/StarFlixofficial/Personal-File/refs/heads/main/Channels%20Logo/Music/Mon%20Bangla%20.png" tvg-chno="247" channel-id="MONTVBangla.in" group-title="Indian Bangla",Mon Bangla
@@ -191,8 +193,6 @@ https://streams.tangotv.in/GOLDMINEMOVIES/ORIGIN/index.m3u8
 https://vods2.aynaott.com/hindimovies/index.m3u8
 #EXTINF:-1 tvg-id="Hindi Movies" tvg-name="Hindi Movies" tvg-logo="https://www.google.com/s2/favicons?domain=bozztv.com&sz=256" tvg-chno="305" channel-id="Hindi Movies" group-title="Indian Movies",Hindi Movies
 https://live20.bozztv.com/giatvplayout7/giatv-209612/tracks-v1a1/mono.ts.m3u8
-#EXTINF:-1 channel-id="local.13a774fd5195" tvg-id="local.13a774fd5195" tvg-name="Jtv Classic" tvg-chno="306" group-title="Indian Movies",Jtv Classic
-http://103.67.97.46/0.ts
 #EXTINF:-1 tvg-id="KairaliArabia.in" tvg-name="Kairali Arabia" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/kairali-arabia.png" tvg-chno="307" channel-id="KairaliArabia.in" group-title="Indian Movies",Kairali Arabia
 https://mumt03.tangotv.in/Dsly5z3HKAIRALIARABIA/index.m3u8
 #EXTINF:-1 tvg-id="KairaliTV.in" tvg-name="Kairali TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/kairali-tv.png" tvg-chno="308" channel-id="KairaliTV.in" group-title="Indian Movies",Kairali TV
@@ -511,8 +511,6 @@ https://mumt04.tangotv.in/m18aqlK4VASANTHTV/index.m3u8
 https://mumt04.tangotv.in/m18aqlK4VENDHARTV/index.m3u8
 #EXTINF:-1 tvg-id="VissaTV.in" tvg-name="Vissa TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/vissa-tv.png" tvg-chno="525" channel-id="VissaTV.in" group-title="Indian Entertainment",Vissa TV
 https://mumt07.tangotv.in/zHjX9OFlVISSATV/index.m3u8
-#EXTINF:-1 tvg-id="local.8f8217e68126" tvg-name="Win TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/win-tv.png" tvg-chno="526" channel-id="local.8f8217e68126" group-title="Indian Entertainment",Win TV
-https://mumt06.tangotv.in/qYyB8fXVWINTV/index.m3u8
 #EXTINF:-1 tvg-id="AnmolTV.in" tvg-name="Zee Anmol" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/zee-anmol.png" tvg-chno="527" channel-id="AnmolTV.in" group-title="Indian Entertainment",Zee Anmol
 http://rgkkw.live/live/1Aoen7elp5/IgMJ60tmAa/203.ts
 #EXTINF:-1 tvg-id="ZeeKannada.in" tvg-name="Zee Kannada" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/zee-kannada.png" tvg-chno="528" channel-id="ZeeKannada.in" group-title="Indian Entertainment",Zee Kannada
@@ -744,8 +742,6 @@ https://mumt03.tangotv.in/Dsly5z3HFOODFOOD/index.m3u8
 https://d1nhni5l2n8hjt.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-rzh07me7cf8x7/gf.m3u8
 #EXTINF:-1 tvg-id="History.us" tvg-name="History" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/history.png" tvg-chno="680" channel-id="History.us" group-title="Documentary & Wildlife",History
 http://202.70.146.135:8000/play/a065/index.m3u8
-#EXTINF:-1 tvg-id="local.f3918206c8ca" tvg-name="History & Warfare Now" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/history-warfare-now.png" tvg-chno="683" channel-id="local.f3918206c8ca" group-title="Documentary & Wildlife",History & Warfare Now
-https://d1nzda2a2b3swt.cloudfront.net/History_Warfare_Now.m3u8
 #EXTINF:-1 tvg-id="HistoryHit.uk" tvg-name="History Hit" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/history-hit.png" tvg-chno="682" channel-id="HistoryHit.uk" group-title="Documentary & Wildlife",History Hit
 https://ldsaaaaaa-timeline-samsung-uk-azlgu.amagi.tv/ts-eu-w1-n2/playlist/ldsAAAAAA-timeline-samsung-uk/playlist.m3u8
 #EXTINF:-1 tvg-id="local.1ed74477f967" tvg-name="House of Crime" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/house-of-crime.png" tvg-chno="684" channel-id="local.1ed74477f967" group-title="Documentary & Wildlife",House of Crime
@@ -928,7 +924,7 @@ https://jmc-live.ercdn.net/alistiqama/alistiqama.m3u8
 https://streamer3.premio.link/alqamar/playlist.m3u8
 #EXTINF:-1 tvg-id="AlQuranAlKareemTV.sa" tvg-name="Al Quran Al Kareem TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/al-quran-al-kareem-tv.png" tvg-chno="815" channel-id="AlQuranAlKareemTV.sa" group-title="Religious",Al Quran Al Kareem TV
 https://cdn-globecast.akamaized.net/live/eds/saudi_quran/hls_roku/index.m3u8
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/ary-q-tv.png" channel-id="local.f2281c686246" tvg-id="local.f2281c686246" tvg-name="ARY Q TV" tvg-chno="819" group-title="Religious",ARY Q TV
+#EXTINF:-1 channel-id="local.f2281c686246" tvg-id="local.f2281c686246" tvg-name="ARY Q TV" tvg-chno="819" group-title="Religious",ARY Q TV
 https://aryqtvm.aryzap.com/v1/0183ea2a0eec0b8ed5941a38bc76/0183ea2a4e470b8ed5aa4d793457/ARYQTVH264_1080p.m3u8
 #EXTINF:-1 tvg-id="AzanTV.ca" tvg-name="Azan TV" tvg-logo="https://i.imgur.com/JlqS6I4.jpeg" tvg-chno="820" channel-id="AzanTV.ca" group-title="Religious",Azan TV
 https://dbcanada.sonarbanglatv.com/azantv/atv/index.m3u8
