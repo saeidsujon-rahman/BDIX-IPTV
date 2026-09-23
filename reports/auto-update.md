@@ -1,30 +1,31 @@
 # IPTV Auto Update
 
-Generated: **2026-09-23T03:06:57.805257+00:00**
+Generated: **2026-09-23T03:14:18.414179+00:00**
 
 ## Summary
 
-- Final playlist entries: **895**
-- New primary channels: **0**
-- New backup streams: **2**
-- Source-managed signed URLs refreshed: **20**
+- Final playlist entries: **897**
+- New primary channels: **2**
+- New backup streams: **0**
+- Source-managed signed URLs refreshed: **0**
+- Missing source logos resolved from catalog: **2**
 - Exact duplicate URLs removed from master: **0**
 - Non-Bangladeshi news entries removed: **0**
 - Non-Islamic religious entries removed: **0**
-- Duplicate source candidates skipped: **1264**
+- Duplicate source candidates skipped: **1266**
 - Candidates blocked before testing: **2**
 - Candidates tested concurrently: **130**
 - Dead/invalid responses: **128**
 - Candidates skipped by backup limits: **145**
 - Candidates omitted by safety cap: **0**
 - Stream-check workers: **20**
-- Parallel stream-check time: **14.7s**
+- Parallel stream-check time: **14.2s**
 
 ## Source status
 
-- **https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u** — 76 entries — 0.3s — OK
-- **https://raw.githubusercontent.com/Rangon500/1234556/main/BDIX.m3u** — 764 entries — 0.4s — OK
-- **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.6s — OK
+- **https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u** — 76 entries — 0.5s — OK
+- **https://raw.githubusercontent.com/Rangon500/1234556/main/BDIX.m3u** — 764 entries — 0.3s — OK
+- **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.3s — OK
 - **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.2s — OK
 - **https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u** — 428 entries — 0.2s — OK
 - **https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u** — 33 entries — 0.2s — OK
@@ -32,8 +33,8 @@ Generated: **2026-09-23T03:06:57.805257+00:00**
 ## Category totals
 
 - **Bangladesh**: 54
-- **Bangladesh Backup**: 160
-- **Indian Bangla**: 66
+- **Bangladesh Backup**: 161
+- **Indian Bangla**: 67
 - **Indian Movies**: 80
 - **Indian Music**: 61
 - **Indian Entertainment**: 110
@@ -54,12 +55,12 @@ Generated: **2026-09-23T03:06:57.805257+00:00**
 
 ## New primary channels
 
-- None
+- **Gazi TV** — `Bangladesh Backup` — https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/gazibdz.stream/live-orgin/gazibdz.stream/playlist.m3u8
+- **CTVN AKD Plus** — `Indian Bangla` — https://live.legitpro.co.in/ctvnakdplus/index.m3u8
 
 ## New backup streams
 
-- **BTV National [Backup 1]** — `Bangladesh Backup` — https://btv.hridoytv-channel.workers.dev/btv.m3u8
-- **BTV News [Backup 1]** — `Bangladesh Backup` — https://btv.hridoytv-channel.workers.dev/news.m3u8
+- None
 
 ## Blocked stream imports
 
@@ -1273,9 +1274,7 @@ Generated: **2026-09-23T03:06:57.805257+00:00**
 - **Cricket Gold** — source group `Cricket` — https://tvsen6.aynaott.com/M2W2UR49dmeKbZnmdRzN/index.m3u8?e=1784102657&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=46102f1b8150e3d7fda5eb1ee9ffd94e
 - **Willow TV** — source group `Cricket` — https://tvsen5.aynaott.com/willowhd/index.m3u8?e=1784102658&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=a9cdf8d7d3bacb7c8aea83611a6c3906
 - **Deshi TV (720p)** — source group `Unknown` — https://deshitv.deshitv24.net/live/myStream/playlist.m3u8
-- **Gazi TV** — source group `Unknown` — https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/gazibdz.stream/live-orgin/gazibdz.stream/playlist.m3u8
 - **RTV (720p)** — source group `Unknown` — https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/rtv-sg.stream/index.m3u8
-- **CTVN AKD Plus** — source group `Indian Bangla` — https://live.legitpro.co.in/ctvnakdplus/index.m3u8
 - **Sony TV HD** — source group `India` — http://premimum.online:80/live/jen12345/jen54321/98854.ts
 - **MTRSPT** — source group `Sports` — https://amg02873-kravemedia-mtrspt1-sportstribal-ajosc.amagi.tv/playlist/amg02873-kravemedia-mtrspt1-sportstribal/playlist.m3u8
 - **Horse & Country** — source group `Sports` — https://hncfree-samsungau.amagi.tv/playlist.m3u8
@@ -1302,7 +1301,7 @@ Generated: **2026-09-23T03:06:57.805257+00:00**
 
 - Existing membership is authoritative.
 - Candidate identity uses normalized names plus conservative quality-label aliases.
-- New candidates require an approved category and a logo.
+- New candidates require an approved category and a logo; missing logos are resolved by conservative exact-name matching against the iptv-org catalog.
 - Non-Bangladeshi news channels are rejected from both existing and imported entries.
 - Non-Islamic religious channels are rejected.
 - Approved major sports channels are allowed.
