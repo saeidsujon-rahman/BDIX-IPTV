@@ -1784,7 +1784,7 @@ http://stream.mcquack.net/257/index.m3u8
 http://stream.mcquack.net/259/index.m3u8
 #EXTINF:-1 tvg-id="4FunKids.pl" tvg-name="4 Fun Kids" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/4-fun-kids-576i-64da9e594d.png" tvg-country="PL" tvg-language="pol" nexus-score="100" group-title="New Channels",4 Fun Kids (576i)
 https://stream.4fun.tv:8889/hls/4fk_high/index.m3u8
-#EXTINF:-1 tvg-id="4Kurd.fr" tvg-name="4Kurd" tvg-logo="https://www.aparatchi.com/images/chanells-logo/4kurd.svg" tvg-country="FR" tvg-language="kur;fas" nexus-score="100" group-title="New Channels",4Kurd
+#EXTINF:-1 tvg-id="4Kurd.fr" tvg-name="4Kurd" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/4kurd-fc0383f503.png" tvg-country="FR" tvg-language="kur;fas" nexus-score="100" group-title="New Channels",4Kurd
 https://4kuhls.persiana.live/hls/stream.m3u8
 #EXTINF:-1 tvg-id="4Music.fr" tvg-name="4 Music" tvg-country="FR" tvg-language="fas" nexus-score="100" group-title="New Channels",4 Music
 https://musichls.persiana.live/hls/stream.m3u8
