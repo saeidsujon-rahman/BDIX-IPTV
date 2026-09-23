@@ -5,6 +5,11 @@ on:
     - cron: '0 8 * * *'
       timezone: 'Asia/Dhaka'
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/migrate_external_logos.py'
 
 permissions:
   contents: write
@@ -29,16 +34,20 @@ jobs:
           python-version: '3.12'
 
       - name: Discover new and backup streams
+        if: github.event_name != 'push'
         run: python scripts/update_playlist.py
 
-      - name: Commit playlist and report changes
+      - name: Migrate external channel logos
+        run: python scripts/migrate_external_logos.py
+
+      - name: Commit playlist, logo, and report changes
         run: |
-          if git diff --quiet -- "IPTV Playlist.m3u" "reports/auto-update.md"; then
-            echo "No playlist or report changes."
+          if git diff --quiet -- "IPTV Playlist.m3u" "reports/auto-update.md" "reports/logo-migration.md" "logos"; then
+            echo "No playlist, logo, or report changes."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "IPTV Playlist.m3u" "reports/auto-update.md"
-          git commit -m "Daily playlist and report update"
+          git add "IPTV Playlist.m3u" "reports/auto-update.md" "reports/logo-migration.md" "logos"
+          git commit -m "Update playlist, logos, and reports"
           git push
