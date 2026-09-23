@@ -1,20 +1,12 @@
 # Missing Logo Fetch Report
 
-Found missing: **26**  
-Downloaded: **10**  
-Unresolved: **16**
+Found missing: **16**  
+Downloaded: **2**  
+Unresolved: **14**
 
 ## Downloaded
-- Epic TV Digital → \`logos/epic-tv-digital.jpg\` (None)
-- Crime & Justice → \`logos/crime-and-justice.png\` (None)
-- Crime Scene TV → \`logos/crime-scene-tv.png\` (None)
-- Life+Style → \`logos/life-style.png\` (None)
-- Wild Flix Hindi → \`logos/wild-flix-hindi.png\` (None)
-- Wild Planet → \`logos/wild-planet.png\` (None)
-- World War TV → \`logos/world-war-tv.png\` (None)
-- XXTreme Jobs Hindi → \`logos/xxtreme-jobs-hindi.png\` (None)
-- KidDo MATIX → \`logos/kiddo-matix.png\` (None)
-- ARY Q TV → \`logos/ary-q-tv.png\` (None)
+- Powerkids Kartoon Channel → \`logos/powerkids-kartoon-channel.png\` (None)
+- SuperToons TV → \`logos/supertoons-tv.png\` (None)
 
 ## Unresolved
 - ME TV
@@ -26,8 +18,6 @@ Unresolved: **16**
 - MH One Prime
 - Bon Voyage
 - House of Crime
-- Powerkids Kartoon Channel
-- SuperToons TV
 - Islamic TV
 - Islamic TV [Backup 1]
 - ME TV [Backup 1]
