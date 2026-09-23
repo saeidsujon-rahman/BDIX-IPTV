@@ -129,7 +129,7 @@ https://iptvlive.ahmed-bd-org.workers.dev/enter-10-bangla-1/index.m3u8
 http://livetv.akr4m.com:8080/bdtv/restrem/27.m3u8
 #EXTINF:-1 tvg-id="JhankarTV.ca" tvg-name="Jhankar TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/jhankar-tv.png" tvg-chno="244" channel-id="JhankarTV.ca" group-title="Indian Bangla",Jhankar TV
 https://dbcanada.sonarbanglatv.com/jhankartv/jtv/index.m3u8
-#EXTINF:-1 channel-id="local.13a774fd5195" tvg-id="local.13a774fd5195" tvg-name="Jtv Classic" tvg-chno="306" group-title="Indian Bangla",Jtv Classic
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/jtv-classic.png" channel-id="local.13a774fd5195" tvg-id="local.13a774fd5195" tvg-name="Jtv Classic" tvg-chno="306" group-title="Indian Bangla",Jtv Classic
 http://103.67.97.46/0.ts
 #EXTINF:-1 tvg-id="KhushbooBangla.in" tvg-name="Khushboo Bangla" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/khushboo-bangla.png" tvg-chno="246" channel-id="KhushbooBangla.in" tvg-language="ben" tvg-country="IN" group-title="Indian Bangla",Khushboo Bangla
 https://mumt01.tangotv.in/O5aw8Zn3KHUSHBOOTVBANGLA/index.m3u8
@@ -143,7 +143,7 @@ https://mumt05.tangotv.in/87NeALx2RUPASIBANGLA/index.m3u8
 https://iptvlive.ahmed-bd-org.workers.dev/sun-bangla-1/index.m3u8
 #EXTINF:-1 tvg-id="SangeetBangla.in" tvg-name="Sangeet Bangla" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sangeet-bangla.png" tvg-chno="255" channel-id="SangeetBangla.in" group-title="Indian Bangla",Sangeet Bangla
 https://mumt05.tangotv.in/87NeALx2SANGEETBANGLA/index.m3u8
-#EXTINF:-1 channel-id="local.2480c4fd00cb" tvg-id="local.2480c4fd00cb" tvg-name="SNB Cinema" tvg-chno="257" group-title="Indian Bangla",SNB Cinema
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/snb-cinema.png" channel-id="local.2480c4fd00cb" tvg-id="local.2480c4fd00cb" tvg-name="SNB Cinema" tvg-chno="257" group-title="Indian Bangla",SNB Cinema
 http://103.182.83.246/hls/snbcinema.m3u8
 #EXTINF:-1 tvg-id="SonyAath.in" tvg-name="Sony AATH" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sony-aath.png" tvg-chno="258" channel-id="SonyAath.in" group-title="Indian Bangla",Sony AATH
 https://live20.bozztv.com/giatvplayout7/giatv-209611/index.m3u8
