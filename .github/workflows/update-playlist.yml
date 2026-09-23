@@ -17,7 +17,7 @@ permissions:
 
 concurrency:
   group: iptv-playlist-and-epg
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   update:
@@ -73,11 +73,11 @@ jobs:
           LOGO_CATALOG_API = 'https://iptv-org.github.io/api/logos.json'
 
           GROUPS = [
-              'Bangladesh', 'Bangladesh Backup',
+              'Bangladesh',
               'Indian Bangla', 'Indian Movies', 'Indian Music',
               'Indian Entertainment', 'International Movies', 'International Music',
               'Documentary & Wildlife', 'Kids', 'Religious', 'Sports',
-              'Indian Backup',
+              'Bangladesh Backup', 'Indian Backup',
           ]
 
           MAX_WORKERS = max(1, min(int(os.getenv('MAX_WORKERS', '20')), 32))
@@ -803,9 +803,20 @@ jobs:
           set -euo pipefail
           git config user.name 'IPTV Update Bot'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
+
+          # Generated files cannot be safely rebased. If main advanced while this
+          # run was building, a newer push-triggered run owns the update.
+          git fetch origin "${GITHUB_REF_NAME}"
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse "origin/${GITHUB_REF_NAME}")" ]; then
+            echo "::notice::Skipping stale generated output because ${GITHUB_REF_NAME} advanced."
+            exit 0
+          fi
+
           git add 'IPTV Playlist.m3u' reports/auto-update.md
           if ! git diff --cached --quiet; then
             git commit -m 'bot: auto-update IPTV playlist'
-            git pull --rebase origin "${GITHUB_REF_NAME}"
-            git push origin HEAD:"${GITHUB_REF_NAME}"
+            if ! git push origin HEAD:"${GITHUB_REF_NAME}"; then
+              echo "::notice::Push skipped because ${GITHUB_REF_NAME} advanced after validation."
+              exit 0
+            fi
           fi
