@@ -69,7 +69,7 @@ MANUAL = {
     "Powerkids Kartoon Channel": "https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IN2500003JW_20240912T093645SQUARE.png",
     "ARY Q TV": "https://i.imgur.com/eP2OW5S.png",
     "Epic TV Digital": "https://static.wikia.nocookie.net/logopedia/images/4/41/Epic_TV_%282021%29.jpg",
-    "MH One Prime": "https://www.tvlogo.org/logo/mh-one-prime-in.png",
+    "MH One Prime": "https://www.tvlogo.org/india/mh-one-prime-in.png",
     "Crime & Justice": "https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD260000189_20250107T030614SQUARE.png",
     "Crime Scene TV": "https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IN24000030L_20250811T033443SQUARE.png",
     "Life+Style": "https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IN2400001L0_20250811T033504SQUARE.png",
