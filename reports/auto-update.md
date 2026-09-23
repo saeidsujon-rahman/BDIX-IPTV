@@ -1,37 +1,38 @@
 # IPTV Auto Update
 
-Generated: **2026-09-22T19:41:35.136694+00:00**
+Generated: **2026-09-23T03:06:57.805257+00:00**
 
 ## Summary
 
-- Final playlist entries: **893**
+- Final playlist entries: **895**
 - New primary channels: **0**
-- New backup streams: **0**
-- Source-managed signed URLs refreshed: **0**
+- New backup streams: **2**
+- Source-managed signed URLs refreshed: **20**
 - Exact duplicate URLs removed from master: **0**
 - Non-Bangladeshi news entries removed: **0**
 - Non-Islamic religious entries removed: **0**
-- Duplicate source candidates skipped: **508**
+- Duplicate source candidates skipped: **1264**
 - Candidates blocked before testing: **2**
-- Candidates tested concurrently: **128**
+- Candidates tested concurrently: **130**
 - Dead/invalid responses: **128**
 - Candidates skipped by backup limits: **145**
 - Candidates omitted by safety cap: **0**
 - Stream-check workers: **20**
-- Parallel stream-check time: **14.3s**
+- Parallel stream-check time: **14.7s**
 
 ## Source status
 
-- **https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u** — 76 entries — 0.4s — OK
-- **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.3s — OK
-- **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.3s — OK
-- **https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u** — 422 entries — 0.2s — OK
+- **https://raw.githubusercontent.com/shakil951/proxy-enable/main/playlist.m3u** — 76 entries — 0.3s — OK
+- **https://raw.githubusercontent.com/Rangon500/1234556/main/BDIX.m3u** — 764 entries — 0.4s — OK
+- **https://raw.githubusercontent.com/ahmedstore75/Bdixplaylist/main/playlist.m3u** — 669 entries — 0.6s — OK
+- **https://raw.githubusercontent.com/ahmedstore75/Iptvbdlive/main/mixiptvchannel.m3u** — 669 entries — 0.2s — OK
+- **https://raw.githubusercontent.com/abusaeeidx/Mrgify-BDIX-IPTV/main/playlist.m3u** — 428 entries — 0.2s — OK
 - **https://raw.githubusercontent.com/iptv-org/iptv/master/streams/bd.m3u** — 33 entries — 0.2s — OK
 
 ## Category totals
 
 - **Bangladesh**: 54
-- **Bangladesh Backup**: 158
+- **Bangladesh Backup**: 160
 - **Indian Bangla**: 66
 - **Indian Movies**: 80
 - **Indian Music**: 61
@@ -57,7 +58,8 @@ Generated: **2026-09-22T19:41:35.136694+00:00**
 
 ## New backup streams
 
-- None
+- **BTV National [Backup 1]** — `Bangladesh Backup` — https://btv.hridoytv-channel.workers.dev/btv.m3u8
+- **BTV News [Backup 1]** — `Bangladesh Backup` — https://btv.hridoytv-channel.workers.dev/news.m3u8
 
 ## Blocked stream imports
 
@@ -135,12 +137,12 @@ Generated: **2026-09-22T19:41:35.136694+00:00**
 - **Espn** — HTML response — http://sm-monirul.top/@monirul_Islam_SM/proxy.php?id=espn&format=.m3u8
 - **Sangeet Bangla** — HTTPError: HTTP Error 404: Not Found — https://cdn-4.pishow.tv/live/1143/master.m3u8
 - **Khushboo** — HTTPError: HTTP Error 404: Not Found — https://cdn-4.pishow.tv/live/1473/master.m3u8
-- **Star Sports 1** — URLError: <urlopen error timed out> — https://cdn6.zohanayaan.com:1686/hls/star1in.m3u8?md5=z01bfeJKZboZw759qZ_TTw&expires=1790102122
-- **Star Sports 1 Hindi** — URLError: <urlopen error timed out> — https://cdn8.zohanayaan.com:1686/hls/starhindi.m3u8?md5=ICl-zC6TxMiNyAJSpq88Gw&expires=1790102123
-- **PTV Sports** — URLError: <urlopen error timed out> — https://cdn7.zohanayaan.com:1686/hls/ptvpk.m3u8?md5=d80nnMfudOW5JE3rN9Fr2w&expires=1790102123
-- **Sky Sports Cricket** — URLError: <urlopen error timed out> — https://cdn2.zohanayaan.com:1686/hls/skyscric.m3u8?md5=ZEToDsjDzRkwBdFSye_e7Q&expires=1790102125
-- **Sky Sports Action** — URLError: <urlopen error timed out> — https://cdn1.zohanayaan.com:1686/hls/skysact.m3u8?md5=LDZAVKww5Yv3zoAZBn9ULQ&expires=1790102130
-- **Sky Sports Football** — URLError: <urlopen error timed out> — https://cdn10.zohanayaan.com:1686/hls/skysfott.m3u8?md5=EKyM62L1vIyQQm-ScX1u2A&expires=1790102131
+- **Star Sports 1** — URLError: <urlopen error timed out> — https://cdn5.zohanayaan.com:1686/hls/star1in.m3u8?md5=sJkYpIQ3t1coZeB3GtIGzw&expires=1790130919
+- **Star Sports 1 Hindi** — URLError: <urlopen error timed out> — https://cdn3.zohanayaan.com:1686/hls/starhindi.m3u8?md5=Ai5ZYKAX_zaYryOyJ2Ebmw&expires=1790130919
+- **PTV Sports** — URLError: <urlopen error timed out> — https://cdn8.zohanayaan.com:1686/hls/ptvpk.m3u8?md5=737fOkj0xFEXXU3fQCJOoA&expires=1790130920
+- **Sky Sports Cricket** — URLError: <urlopen error timed out> — https://cdn6.zohanayaan.com:1686/hls/skyscric.m3u8?md5=HEl9gThWPw4-t6gNuaGjHA&expires=1790130921
+- **Sky Sports Action** — URLError: <urlopen error timed out> — https://cdn4.zohanayaan.com:1686/hls/skysact.m3u8?md5=P8cM2zb70CowoRCZdunUCA&expires=1790130924
+- **Sky Sports Football** — URLError: <urlopen error timed out> — https://cdn9.zohanayaan.com:1686/hls/skysfott.m3u8?md5=XEoK70zWSYCVSFRizDb9eA&expires=1790130925
 - **Bein Sports** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/beinsports/index.m3u8?e=1784102515&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=67d5960a5b93b5cfcf562312b4627330
 - **Espn** — HTTPError: HTTP Error 404: Not Found — https://tvsen5.aynaott.com/espn/index.m3u8?e=1784102528&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d701f3665e12964090ddd656a9a89c29
 - **BTV News** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/tV8mB2zP7rX4kL1w/index.m3u8?e=1784102532&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=20448821bed8f397806d492c1b39da46
@@ -167,15 +169,15 @@ Generated: **2026-09-22T19:41:35.136694+00:00**
 - **Kids Pang TV** — URLError: <urlopen error [Errno -2] Name or service not known> — https://newidco-kidspangtv-1-us.roku.wurl.tv/playlist.m3u8
 - **Channel Win** — HTTPError: HTTP Error 404: Not Found — https://cdn-4.pishow.tv/live/229/master.m3u8
 - **T Sports Live 01** — URLError: <urlopen error [Errno -5] No address associated with hostname> — https://live.tsports.com/mobile_hls/tsports_live_1/playlist.m3u8
-- **Sky Sports Main Event** — URLError: <urlopen error timed out> — https://cdn10.zohanayaan.com:1686/hls/skysme.m3u8?md5=iYkn_7XcftUHH9G1zhY8Nw&expires=1790102125
-- **Sky Sports Golf** — URLError: <urlopen error timed out> — https://cdn10.zohanayaan.com:1686/hls/skysgol.m3u8?md5=2dmbquZei39fQGLN-8NwsQ&expires=1790102130
-- **Sky Sports Premier League** — URLError: <urlopen error timed out> — https://cdn6.zohanayaan.com:1686/hls/skysprem.m3u8?md5=UFC8Js6_vffcW7_s42jDRw&expires=1790102130
-- **Sky Sports Plus** — URLError: <urlopen error timed out> — https://cdn8.zohanayaan.com:1686/hls/skysare.m3u8?md5=3SVPiK86kH689nlvHw--cg&expires=1790102131
-- **Sky Sports F1** — URLError: <urlopen error timed out> — https://cdn6.zohanayaan.com:1686/hls/skysfor1.m3u8?md5=CUU8lWOB8VdImR0rIKPvyg&expires=1790102131
-- **ESPN 1** — URLError: <urlopen error timed out> — https://cdn2.zohanayaan.com:1686/hls/espnusa.m3u8?md5=ZtQZWDriRXFUwu8tzaC1xw&expires=1790102134
-- **ESPN 2** — URLError: <urlopen error timed out> — https://cdn6.zohanayaan.com:1686/hls/espn2.m3u8?md5=KWy3hl6Jkl7I_7ZiVROuPw&expires=1790102134
-- **Sky Sports Mix** — URLError: <urlopen error timed out> — https://cdn1.zohanayaan.com:1686/hls/skysmixx.m3u8?md5=xhiJUX6hW1vx8YsyZDUXig&expires=1790102134
-- **Sky Sports Tennis** — URLError: <urlopen error timed out> — https://cdn10.zohanayaan.com:1686/hls/skystennis.m3u8?md5=GVQh78Pyf-wVv3j4OFr2iA&expires=1790102135
+- **Sky Sports Main Event** — URLError: <urlopen error timed out> — https://cdn4.zohanayaan.com:1686/hls/skysme.m3u8?md5=8fs9vSPlhA_dDdGTYnT2Yw&expires=1790130921
+- **Sky Sports Golf** — URLError: <urlopen error timed out> — https://cdn3.zohanayaan.com:1686/hls/skysgol.m3u8?md5=jhzWdRLnQaHWjFcXlM9Pcg&expires=1790130924
+- **Sky Sports Premier League** — URLError: <urlopen error timed out> — https://cdn9.zohanayaan.com:1686/hls/skysprem.m3u8?md5=IOS67tlTA3daXCxuXEQARQ&expires=1790130925
+- **Sky Sports Plus** — URLError: <urlopen error timed out> — https://cdn5.zohanayaan.com:1686/hls/skysare.m3u8?md5=LTF53I_No1Dkj5ohQkiGPQ&expires=1790130925
+- **Sky Sports F1** — URLError: <urlopen error timed out> — https://cdn7.zohanayaan.com:1686/hls/skysfor1.m3u8?md5=AvKaD0Mj5w_jYVLIys99Qw&expires=1790130925
+- **ESPN 1** — URLError: <urlopen error timed out> — https://cdn9.zohanayaan.com:1686/hls/espnusa.m3u8?md5=qtWJV4izjiBeZ7_WyB5sIg&expires=1790130926
+- **ESPN 2** — URLError: <urlopen error timed out> — https://cdn5.zohanayaan.com:1686/hls/espn2.m3u8?md5=IfuDzS-AhkaL_krs1J3o_g&expires=1790130926
+- **Sky Sports Mix** — URLError: <urlopen error timed out> — https://cdn1.zohanayaan.com:1686/hls/skysmixx.m3u8?md5=k75QZDEI3a3iNg6RkgE7NQ&expires=1790130926
+- **Sky Sports Tennis** — URLError: <urlopen error timed out> — https://cdn3.zohanayaan.com:1686/hls/skystennis.m3u8?md5=LignEpn_16_-QyXPgkg1HQ&expires=1790130926
 - **Fox Sports 2** — HTTPError: HTTP Error 403: Forbidden — https://tvsen7.aynaott.com/foxsports2/index.m3u8?e=1784102513&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=d99d64707b3804bb93d8e2a7dc7c2ec3
 - **NFL Network** — HTTPError: HTTP Error 404: Not Found — https://tvsen6.aynaott.com/nfl/index.m3u8?e=1784102521&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b788fb69852f06155761f8a22c9676c4
 - **Gazi TV** — TimeoutError: The read operation timed out — https://tvsen5.aynaott.com/Ravc7gPCZpxk/index.m3u8?e=1784102565&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=36497099fc726a799b13d41016259efc
@@ -197,8 +199,8 @@ Generated: **2026-09-22T19:41:35.136694+00:00**
 
 ## Rejected candidates
 
-- **EPL channel 1** — source group `Live Action` — https://prod-cdn01-live.toffeelive.com/live/EPL-26-27-CH-1/index.m3u8?edge-cache-token=Expires=1790093182~Starts=1790092882~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Data=eyJzdWJzY3JpYmVyX2lkIjoiNTg0NmVmMTAtMzgzYS00YjlhLThhZTAtNGZiMTEzNWIxNTVkIn0~Signature=IATa8UKScOcVxPHcd53O9-YE5FN3rdO_kdG0y-KEY4Fzcc3d9nblZrNGiVsy_lAIr3iN08aaHdyZ_hf0jvEtAw
-- **FC | Live 1** — source group `Sports` — https://prod-cdn01-live.toffeelive.com/live/BFFL-1/index.m3u8?edge-cache-token=Expires=1790100083~Starts=1790092883~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Data=eyJzdWJzY3JpYmVyX2lkIjoiNTg0NmVmMTAtMzgzYS00YjlhLThhZTAtNGZiMTEzNWIxNTVkIn0~Signature=RvrCPELwdwFzxm83cwhob7f7AL9g86l9b8A-6pk84bwIG36JRvUOuuiy_oIgIfvbayjqT857dSla7FtfEdjKAw
+- **EPL channel 1** — source group `Live Action` — https://prod-cdn01-live.toffeelive.com/live/EPL-26-27-CH-1/index.m3u8?edge-cache-token=Expires=1790107573~Starts=1790107273~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Data=eyJzdWJzY3JpYmVyX2lkIjoiNTg0NmVmMTAtMzgzYS00YjlhLThhZTAtNGZiMTEzNWIxNTVkIn0~Signature=0elNp6XNY2PghleYMOkEwb374enikeShBt6U04-PznSHUdPGBoZPG9-URdxybWKoJuLPJtILIFTCvqjBwPWdDw
+- **FC | Live 1** — source group `Sports` — https://prod-cdn01-live.toffeelive.com/live/BFFL-1/index.m3u8?edge-cache-token=Expires=1790114473~Starts=1790107273~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Data=eyJzdWJzY3JpYmVyX2lkIjoiNTg0NmVmMTAtMzgzYS00YjlhLThhZTAtNGZiMTEzNWIxNTVkIn0~Signature=YBVoHRa3sXZYptkUHI9xHSBtFEr43cMe_wKYwXUGIBrGPH50K1Za7m6vqPM6qYO21DQdbqytLN_9S9uGoBUYDg
 - **WC Match Recap** — source group `Sports` — https://bldcmprod-cdn.toffeelive.com/cdn/live/fifa_world_cup/playlist.m3u8
 - **CNN** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/cnn/playlist.m3u8
 - **Channel News Asia** — source group `Documentary` — https://bldcmprod-cdn.toffeelive.com/cdn/live/channels_news_asia/playlist.m3u8
@@ -210,6 +212,28 @@ Generated: **2026-09-22T19:41:35.136694+00:00**
 - **Eurosport HD** — source group `Sports` — https://bldcmprod-cdn.toffeelive.com/cdn/live/euro_sports_hd/playlist.m3u8
 - **HUM Masala** — source group `Drama` — https://bldcmprod-cdn.toffeelive.com/cdn/live/hum_masala/playlist.m3u8
 - **HUM Sitaray** — source group `Drama` — https://bldcmprod-cdn.toffeelive.com/cdn/live/hum_sitaray/playlist.m3u8
+- **R Plus Gold** — source group `` — https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/cf883da3-f9f5-4c70-b0ef-b3ac2e2ad1e3/index.m3u8
+- **R Plus Gold** — source group `` — https://thelegitpro.in/pntv/rplusnews24x7/tracks-v1a1/mono.m3u8
+- **3ABN Kids** — source group `` — https://tvsen6.aynaott.com/3abnkids/index.m3u8?e=1784102588&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3a88dd05abf3d2a88da7c3754b99c5e6
+- **A Sports HD** — source group `` — https://tvsen6.aynaott.com/zv68oqPDu7MZZwmHhRxt/tracks-v1a1/mono.ts.m3u8
+- **Bahrain Sports 1** — source group `` — https://5c7b683162943.streamlock.net/live/ngrp:sportsone_all/playlist.m3u8
+- **Fight Network** — source group `` — https://amg00966-amg00966c10-amgplt0201.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg00966-amg00966c10-amgplt0201/playlist.m3u8
+- **Golf Network** — source group `` — https://streams2.sofast.tv/ptnr-sportstribal/genre-Sports/lang-English/ctgr-Sport/title-Golf_Network/sofastplayout/b7500c3f-bd94-4725-abfd-2644e004132c/manifest.m3u8
+- **KTV Sport Plus** — source group `` — https://kwtsplta.cdn.mangomolo.com/spl/smil:spl.stream.smil/chunklist.m3u8
+- **Laliga HD** — source group `` — https://rmtv.akamaized.net/hls/live/2043154/rmtv-en-web/bitrate_3.m3u8
+- **More Than Sports TV** — source group `` — https://mts1.iptv-playoutcenter.de/mts/mts-web/playlist.m3u8
+- **Mundial** — source group `` — https://s2.bufaloweb.com/bufalo9/tracks-v4a1/mono.ts.m3u8
+- **NBC Sports** — source group `` — https://xumo-xumoent-vc-122-sjv70.fast.nbcuni.com/live/master.m3u8
+- **NHL Network** — source group `` — https://nhl-firetv.amagi.tv/playlist.m3u8
+- **Oman Sports TV** — source group `` — https://partneta.cdn.mgmlcdn.com/omsport/smil:omsport.stream.smil/chunklist.m3u8
+- **PTV** — source group `` — https://flussonic.defineatoz.com/PTV/index.m3u8
+- **Speed Sports 1** — source group `` — https://linear-599.frequency.stream/dist/stirr/599/hls/master/playlist.m3u8
+- **Sports First TV** — source group `` — https://d4ddgdmj1cvnm.cloudfront.net/scheduler/scheduleMaster/409.m3u8
+- **Trace Sport Stars** — source group `` — https://lightning-tracesport-samsungau.amagi.tv/playlist.m3u8
+- **Willow Sports** — source group `` — https://tvsen5.aynaott.com/willowhd/index.m3u8
+- **WOF 1** — source group `` — https://rakutenaa-mainstreammediafreesportsintl-rakuten-t7dc0.amagi.tv/playlist/rakutenAA-mainstreammediafreesportsintl-rakuten/playlist.m3u8
+- **WOF 1** — source group `` — https://mainstreammedia-worldoffreesportsintl-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-mainstreammediafreesportsintl-rakuten/CDN/master.m3u8
+- **Xtream Sports** — source group `` — https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/e0b81a5c-6ab5-48cd-aaa9-f82de4ab5bf9/manifest.m3u8
 - **Live Cricket** — source group `` — https://iptvlive.ahmed-bd-org.workers.dev/live-cricket-1/index.m3u8
 - **Bangla Vision** — source group `Entertainment` — https://iptvlive.ahmed-bd-org.workers.dev/bangla-vision-1/index.m3u8
 - **Ekattor HD** — source group `News` — https://iptvlive.ahmed-bd-org.workers.dev/ekattor-hd-1/index.m3u8
@@ -702,7 +726,6 @@ Generated: **2026-09-22T19:41:35.136694+00:00**
 - **Independent** — source group `Bangladeshi` — https://sm-monirul.top/@monirul_Islam_SM/play/independent_tv.m3u8
 - **EP TV** — source group `Bangladeshi` — http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/eptv.stream/playlist.m3u8
 - **Asian** — source group `Bangladeshi` — https://mtlivestream.com/hls/asian/ytlive/index.m3u8
-- **R Plus Gold** — source group `Indian Bangla` — https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/cf883da3-f9f5-4c70-b0ef-b3ac2e2ad1e3/index.m3u8
 - **& Picture** — source group `Indian Hindi` — https://stream.ottplus.bd/live/and_picture_hd_abr/index.m3u8
 - **Sony Television** — source group `Indian Hindi` — https://stream.ottplus.live/live/sony_ent_sd_abr/index.m3u8
 - **B4U Movie** — source group `Indian Hindi` — http://103.175.73.12:8080/live/43/43_0.m3u8
@@ -723,7 +746,6 @@ Generated: **2026-09-22T19:41:35.136694+00:00**
 - **Willow Sports** — source group `Sports` — https://mflixott.com/tv/dd/live.php/346.m3u8
 - **Willow Sports 2** — source group `Sports` — https://mflixott.com/tv/dd/live.php/598.m3u8
 - **TUDN** — source group `Sports` — https://messi.damitv.st/papi/ts/tudn-usa/playlist.m3u8
-- **Mundial** — source group `Sports` — https://s2.bufaloweb.com/bufalo9/tracks-v4a1/mono.ts.m3u8
 - **AlJazeera** — source group `News` — https://live-hls-apps-aje-fa.getaj.net/AJE/index.m3u8
 - **DW News** — source group `News` — https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/master.m3u8
 - **Wion** — source group `News` — https://d7x8z4yuq42qn.cloudfront.net/index_7.m3u8
@@ -737,16 +759,7 @@ Generated: **2026-09-22T19:41:35.136694+00:00**
 - **TSN 3** — source group `` — http://sm-monirul.top/@monirul_Islam_SM/proxy.php?id=tsn_3&format=.m3u8
 - **Willow TV** — source group `` — http://sm-monirul.top/@monirul_Islam_SM/proxy.php?id=willow_tv&format=.m3u8
 - **Bleav Football** — source group `Sports` — https://linear-493.frequency.stream/dist/glewedtv/493/hls/master/playlist.m3u8
-- **KTV Sport Plus** — source group `Sports` — https://kwtsplta.cdn.mangomolo.com/spl/smil:spl.stream.smil/chunklist.m3u8
-- **SPORTS FIRST TV** — source group `Sports` — https://d4ddgdmj1cvnm.cloudfront.net/scheduler/scheduleMaster/409.m3u8
-- **Xtream Sports** — source group `Sports` — https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/e0b81a5c-6ab5-48cd-aaa9-f82de4ab5bf9/manifest.m3u8
-- **Bahrain Sports 1** — source group `Sports` — https://5c7b683162943.streamlock.net/live/ngrp:sportsone_all/playlist.m3u8
 - **DD Sports** — source group `Sports` — https://cdn-6.pishow.tv/live/13/master.m3u8
-- **NBC Sports** — source group `Sports` — https://xumo-xumoent-vc-122-sjv70.fast.nbcuni.com/live/master.m3u8
-- **WOF 1** — source group `Sports` — https://mainstreammedia-worldoffreesportsintl-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-mainstreammediafreesportsintl-rakuten/CDN/master.m3u8
-- **speed sports 1** — source group `Sports` — https://linear-599.frequency.stream/dist/stirr/599/hls/master/playlist.m3u8
-- **MORE THEN SPORTS TV** — source group `Sports` — https://mts1.iptv-playoutcenter.de/mts/mts-web/playlist.m3u8
-- **Oman Sports TV** — source group `Sports` — https://partneta.cdn.mgmlcdn.com/omsport/smil:omsport.stream.smil/chunklist.m3u8
 - **Goal TV** — source group `Channels` — https://streams2.sofast.tv/sofastplayout/WiseM3U8_1/master.m3u8
 - **TBS** — source group `Channels` — https://cdntv.tbs.seoul.kr/tbs/tbs_tv_web.smil/playlist.m3u8
 - **4k Travel TV** — source group `Channels` — https://streams2.sofast.tv/sofastplayout/33c31ac4-51fa-46ae-afd0-0d1fe5e60a80_0_HLS/master.m3u8
@@ -1141,36 +1154,40 @@ Generated: **2026-09-22T19:41:35.136694+00:00**
 - **SportOutdoor.tv** — source group `VOD Italy` — https://gto2000-sportoutdoortv-1-it.samsung.wurl.tv/playlist.m3u8
 - **CGtv** — source group `VOD Italy` — https://cgentertainment-cgtv-1-it.samsung.wurl.tv/playlist.m3u8
 - **Welcome to PlayZ TV** — source group `Welcome to PlayZ TV | New App` — https://playztv.pages.dev/promo/master.m3u8
-- **1st ODI - 22 Sep 2026 [ENG] - Sri Lanka Tour of England 2026** — source group `Live Event` — https://sonydaimenew.akamaized.net/hls/live/2120299/criclive2209/ENG/std_lrh-800300010.m3u8?hdnea=exp=1790140493~acl=/*~id=68744441848678176763016238437858~hmac=5e98e4518b4eece2c71c3ad9b0f5adba09c574dbebbbce29e3c510dc9d2a01ed
+- **India vs Phillippines - Men's Team Regu - Sepaktakraw - 23 Sep 2026 [ENG] - 20th Asian Games Aichi-Nagoya 2026** — source group `Live Event` — https://sonydaimenew.akamaized.net/hls/live/2120306/AG_Strea2209/ENG/std_lrh-800300010.m3u8?hdnea=exp=1790169633~acl=/*~id=98331778054177473900649470364582~hmac=8a5c58cbca850cca5d37588564427fc70bea123685231af634df75e22a9e99ad
+- **India vs Phillippines - Men's Team Regu - Sepaktakraw - 23 Sep 2026 [TAM] - 20th Asian Games Aichi-Nagoya 2026** — source group `Live Event` — https://sonydaimenew.akamaized.net/hls/live/2120305/AG_Strea2209/TAM/std_lrh-800300010.m3u8?hdnea=exp=1790169633~acl=/*~id=98331778054177473900649470364582~hmac=8a5c58cbca850cca5d37588564427fc70bea123685231af634df75e22a9e99ad
+- **India vs Phillippines - Men's Team Regu - Sepaktakraw - 23 Sep 2026 [TEL] - 20th Asian Games Aichi-Nagoya 2026** — source group `Live Event` — https://sonydaimenew.akamaized.net/hls/live/2120304/AG_Strea2209/TEL/std_lrh-800300010.m3u8?hdnea=exp=1790169633~acl=/*~id=98331778054177473900649470364582~hmac=8a5c58cbca850cca5d37588564427fc70bea123685231af634df75e22a9e99ad
+- **India vs Phillippines - Men's Team Regu - Sepaktakraw - 23 Sep 2026 [KAN] - 20th Asian Games Aichi-Nagoya 2026** — source group `Live Event` — https://sonydaimenew.akamaized.net/hls/live/2120307/AG_Strea2209/KAN/std_lrh-800300010.m3u8?hdnea=exp=1790169633~acl=/*~id=98331778054177473900649470364582~hmac=8a5c58cbca850cca5d37588564427fc70bea123685231af634df75e22a9e99ad
 - **BBC News** — source group `Akash Go` — https://cdn4.skygo.mn/live/disk1/BBC_News/HLSv3-FTA/BBC_News-avc1_3000000=8-mp4a_208000_eng=2.m3u8
 - **MUSIC BANGLA** — source group `Bangla` — http://live.matribhumitv.com/music-bangla/index.m3u8
 - **MAASRANGA HD** — source group `Bangla` — http://mtv.sunplex.live/MAASRANGA-TV/index.m3u8
-- **T Sports (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3)** — source group `Sports` — https://tvsen5.aynaott.com/TnMn5kZz8aLm/tracks-v1a1/mono.ts.m3u8
+- **T Sports (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3)** — source group `Sports` — https://tvsen5.aynaott.com/TnMn5kZz8aLm/tracks-v1a1/mono.ts.m3u8
 - **[BD] Mohona TV** — source group `[LIVE] BDIX ♛` — https://bldcmprod-cdn.toffeelive.com/cdn/live/mohona_tv/playlist.m3u8
 - **[BD] EPL channel 1** — source group `[LIVE] BDIX ♛` — https://mprod-cdn.toffeelive.com/live/match-1/index.m3u8
-- **Willow HD** — source group `Sports` — https://cdn3.zohanayaan.com:1686/hls/willowusa.m3u8?md5=_vaVPv6pBh_KE2ptOIx5gQ&expires=1790102123
-- **Willow HD 2** — source group `Sports` — https://cdn5.zohanayaan.com:1686/hls/willowextra.m3u8?md5=8ir-IqX_p3UsCVSzswMBjw&expires=1790102124
-- **Ten Sports** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/tenspk.m3u8?md5=aTbzu_WlloMzhzSHbb25MQ&expires=1790102124
-- **A Sports HD** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/asportshd.m3u8?md5=CI6ifIvcCe5GWBUwxtUcRQ&expires=1790102125
-- **TNT 1** — source group `Sports` — https://cdn2.zohanayaan.com:1686/hls/bbtsp1.m3u8?md5=xnsR0KIDtXpqRLXPFOrg_g&expires=1790102126
-- **TNT 2** — source group `Sports` — https://cdn1.zohanayaan.com:1686/hls/bbtsp2.m3u8?md5=j8ysQx1eKjyl22g3exhIXg&expires=1790102126
-- **TNT 3** — source group `Sports` — https://cdn8.zohanayaan.com:1686/hls/bbtsp3.m3u8?md5=1gdIUnjqguQmzgUB3bng2Q&expires=1790102126
-- **TNT 4** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/bbtespn.m3u8?md5=TmOYLN9bCvjuOsVEpyIDqQ&expires=1790102127
-- **Sky Sport Nz 1** — source group `Sports` — https://cdn2.zohanayaan.com:1686/hls/sky1nz.m3u8?md5=mfO-IQ4RfCiSnIwBKFLfjA&expires=1790102127
-- **Sky Sport Nz 2** — source group `Sports` — https://cdn8.zohanayaan.com:1686/hls/sky2nz.m3u8?md5=kT3fm7TX39CWhS6rMsDojg&expires=1790102127
-- **Sky Sport Nz 3** — source group `Sports` — https://cdn1.zohanayaan.com:1686/hls/sky3nz.m3u8?md5=oCckffALCFO3PyPTJeGTMw&expires=1790102127
-- **Sky Sport Nz 4** — source group `Sports` — https://cdn3.zohanayaan.com:1686/hls/sky4nz.m3u8?md5=iXfVYquEgvDEbIEnW0f1eg&expires=1790102128
-- **Sky Sport Nz 5** — source group `Sports` — https://cdn9.zohanayaan.com:1686/hls/sky5nz.m3u8?md5=dd_gK8ReJAQ_zDhL40e0Rg&expires=1790102128
-- **Sky Sport 6 Nz** — source group `Sports` — https://cdn8.zohanayaan.com:1686/hls/sky6nz.m3u8?md5=iV0Lc8eSe5VTfEYwqJfqyQ&expires=1790102128
-- **Sky Sport Nz 7** — source group `Sports` — https://cdn3.zohanayaan.com:1686/hls/sky7nz.m3u8?md5=rnKKGfvFZnqNEwZcwH0dnw&expires=1790102129
-- **Sky Sport Nz 8** — source group `Sports` — https://cdn3.zohanayaan.com:1686/hls/sky8nz.m3u8?md5=UUi2J0I4gkaQuO6pWW-Yzw&expires=1790102129
-- **Sky Sport Nz 9** — source group `Sports` — https://cdn9.zohanayaan.com:1686/hls/sky9nz.m3u8?md5=n5g_gH1haNTqTJVXx5J60A&expires=1790102129
-- **LaLiGA** — source group `Sports` — https://cdn8.zohanayaan.com:1686/hls/laligauk.m3u8?md5=cbfMUDbzc7VvDeecH5i6cw&expires=1790102132
-- **Premier Sports 1** — source group `Sports` — https://cdn5.zohanayaan.com:1686/hls/premieruk.m3u8?md5=l9qgmfjnzVKNeHzU5eU8EQ&expires=1790102132
-- **Premier Sports 2** — source group `Sports` — https://cdn3.zohanayaan.com:1686/hls/hdchnl2.m3u8?md5=WB-cHrMYna9n3mNtK9r9WA&expires=1790102132
-- **Super Premier League** — source group `Sports` — https://cdn7.zohanayaan.com:1686/hls/superpremier.m3u8?md5=wbEj-jABLkEjw4tj1I9YXw&expires=1790102133
-- **Astro Cricket** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/fox501.m3u8?md5=OYE4Bd5N8SJ-cqiat0jgGQ&expires=1790102133
-- **Sony Sports3** — source group `Sports` — https://cdn2.zohanayaan.com:1686/hls/ten1hd.m3u8?md5=tvp6iLVS2fb0tyWX9CHXLw&expires=1790102135
+- **Willow HD** — source group `Sports` — https://cdn2.zohanayaan.com:1686/hls/willowusa.m3u8?md5=G2UA_mltp_7MwmHSi-uekg&expires=1790130920
+- **Willow HD 2** — source group `Sports` — https://cdn9.zohanayaan.com:1686/hls/willowextra.m3u8?md5=yPSXP7c93GS-60FJ2M2MWw&expires=1790130920
+- **Ten Sports** — source group `Sports` — https://cdn3.zohanayaan.com:1686/hls/tenspk.m3u8?md5=TQpu8gjeYVMkkWtcfm2UbA&expires=1790130920
+- **A Sports HD** — source group `Sports` — https://cdn7.zohanayaan.com:1686/hls/asportshd.m3u8?md5=grn-P_vszgb6ylEvj1gWGQ&expires=1790130921
+- **TNT 1** — source group `Sports` — https://cdn1.zohanayaan.com:1686/hls/bbtsp1.m3u8?md5=_RlEo2h8cKJGrJCdGR6_HA&expires=1790130921
+- **TNT 2** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/bbtsp2.m3u8?md5=JMDEcTiY09lWw5UavoTkiQ&expires=1790130922
+- **TNT 3** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/bbtsp3.m3u8?md5=XAvBd9XlqOZSii4AkbWZkA&expires=1790130922
+- **TNT 4** — source group `Sports` — https://cdn7.zohanayaan.com:1686/hls/bbtespn.m3u8?md5=vVhX-GZfFsmGLW_VsFK9KQ&expires=1790130922
+- **Sky Sport Nz 1** — source group `Sports` — https://cdn6.zohanayaan.com:1686/hls/sky1nz.m3u8?md5=wpjd40necxGchxYHuKmWaw&expires=1790130922
+- **Sky Sport Nz 2** — source group `Sports` — https://cdn6.zohanayaan.com:1686/hls/sky2nz.m3u8?md5=inmAOK0QOKEva-FlwZfFmw&expires=1790130923
+- **Sky Sport Nz 3** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/sky3nz.m3u8?md5=WgpZKo6_BJvbGf2vqAl7PA&expires=1790130923
+- **Sky Sport Nz 4** — source group `Sports` — https://cdn5.zohanayaan.com:1686/hls/sky4nz.m3u8?md5=xiclzuTOBzlStCjkpcQN0g&expires=1790130923
+- **Sky Sport Nz 5** — source group `Sports` — https://cdn3.zohanayaan.com:1686/hls/sky5nz.m3u8?md5=7PPiXTKDg9s9zU5WAImNxw&expires=1790130923
+- **Sky Sport 6 Nz** — source group `Sports` — https://cdn1.zohanayaan.com:1686/hls/sky6nz.m3u8?md5=pqGBrFxB11lH4kUsj3I-sA&expires=1790130923
+- **Sky Sport Nz 7** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/sky7nz.m3u8?md5=_tm0j0jV7fEtiOdJo9Twyg&expires=1790130924
+- **Sky Sport Nz 8** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/sky8nz.m3u8?md5=WwOJcrygLMWjADbVEEdryg&expires=1790130924
+- **Sky Sport Nz 9** — source group `Sports` — https://cdn10.zohanayaan.com:1686/hls/sky9nz.m3u8?md5=KUt4h5TlvnswiHFGvnpI4A&expires=1790130924
+- **LaLiGA** — source group `Sports` — https://cdn4.zohanayaan.com:1686/hls/laligauk.m3u8?md5=O_bbJDC4m9wqwGB9r5Aszw&expires=1790130925
+- **Premier Sports 1** — source group `Sports` — https://cdn8.zohanayaan.com:1686/hls/premieruk.m3u8?md5=ztCSR5MKMW_OOU78tOf91A&expires=1790130925
+- **Premier Sports 2** — source group `Sports` — https://cdn4.zohanayaan.com:1686/hls/hdchnl2.m3u8?md5=sDYn_JyfqCnNiXr3dwCZWg&expires=1790130925
+- **Super Football** — source group `Sports` — https://cdn1.zohanayaan.com:1686/hls/superfotball.m3u8?md5=WFaju5xEvtCu4w1C-uUP5A&expires=1790130925
+- **Super Premier League** — source group `Sports` — https://cdn8.zohanayaan.com:1686/hls/superpremier.m3u8?md5=hzB2L4memGes2j0dggAlew&expires=1790130925
+- **Astro Cricket** — source group `Sports` — https://cdn7.zohanayaan.com:1686/hls/fox501.m3u8?md5=_8DalNLqArWvFQq331sZCg&expires=1790130925
+- **Sony Sports3** — source group `Sports` — https://cdn7.zohanayaan.com:1686/hls/ten1hd.m3u8?md5=SFGzEGR6jA_pET1Fyf150A&expires=1790130926
 - **Unite8 Sports 1** — source group `Sports` — https://tvsen6.aynaott.com/superlaliga/index.m3u8?e=1784102509&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=b6e220b27addbd7e852fe6671bff5738
 - **Unite8 Sports 2** — source group `Sports` — https://tvsen7.aynaott.com/Sports1/index.m3u8?e=1784102510&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&ip=52.157.32.49&token=3d148447575a06fa99eb4be6e5d9a318
 - **FIFA+** — source group `Sports` — https://4397879b.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWRlX0ZJRkFQbHVzR2VybWFuX0hMUw/playlist.m3u8
@@ -1212,7 +1229,6 @@ Generated: **2026-09-22T19:41:35.136694+00:00**
 - **IBTV USA** — source group `Bangla` — https://tvsen7.aynaott.com/ibtvusa/index.m3u8?e=1784102566&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3bc7a2a5fe20a69e8fadc40261b2cbba
 - **BTV World** — source group `Bangla` — https://tvsen6.aynaott.com/opREbXLqJ2HFYPCXTJBa/index.m3u8?e=1784102575&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=c85b53f4cee30af4a19d4b9ad0cd60c7
 - **BTV CTG** — source group `Bangla` — https://tvsen6.aynaott.com/TjGR1GcxKetHNVcMVxbq/index.m3u8?e=1784102576&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=901c0ca2f1ba54041a543dce43641c12
-- **3ABN Kids** — source group `Kids` — https://tvsen6.aynaott.com/3abnkids/index.m3u8?e=1784102588&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=3a88dd05abf3d2a88da7c3754b99c5e6
 - **Network 10** — source group `Hindi` — https://tvsen6.aynaott.com/Network10/index.m3u8?e=1784102589&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ce8f95de4868ba48e754638e36f90109
 - **Shemaroo TV** — source group `Hindi` — https://tvsen6.aynaott.com/D3NDt6gn/index.m3u8?e=1784102595&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=2347b8a1b6f0ba558b12440528ea38a5
 - **The Q** — source group `Hindi` — https://tvsen6.aynaott.com/3PjZZahm/index.m3u8?e=1784102596&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=92ddc6a5821e135aef133dbd8b8b6fc7
@@ -1259,18 +1275,16 @@ Generated: **2026-09-22T19:41:35.136694+00:00**
 - **Deshi TV (720p)** — source group `Unknown` — https://deshitv.deshitv24.net/live/myStream/playlist.m3u8
 - **Gazi TV** — source group `Unknown` — https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/gazibdz.stream/live-orgin/gazibdz.stream/playlist.m3u8
 - **RTV (720p)** — source group `Unknown` — https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/rtv-sg.stream/index.m3u8
-- **MTRSPT** — source group `Sports` — https://amg02873-kravemedia-mtrspt1-sportstribal-ajosc.amagi.tv/playlist/amg02873-kravemedia-mtrspt1-sportstribal/playlist.m3u8
+- **CTVN AKD Plus** — source group `Indian Bangla` — https://live.legitpro.co.in/ctvnakdplus/index.m3u8
 - **Sony TV HD** — source group `India` — http://premimum.online:80/live/jen12345/jen54321/98854.ts
+- **MTRSPT** — source group `Sports` — https://amg02873-kravemedia-mtrspt1-sportstribal-ajosc.amagi.tv/playlist/amg02873-kravemedia-mtrspt1-sportstribal/playlist.m3u8
 - **Horse & Country** — source group `Sports` — https://hncfree-samsungau.amagi.tv/playlist.m3u8
 - **A Sports** — source group `Sports` — https://tvsen6.aynaott.com/zv68oqPDu7MZZwmHhRxt/index.m3u8
-- **Cricket Gold** — source group `Sports` — https://tvsen6.aynaott.com/M2W2UR49dmeKbZnmdRzN/index.m3u8
-- **Music TV** — source group `Music` — http://bitcdn-kronehit.bitmovin.com/v2/hls/chunklist_b3128000.m3u8
-- **Trace Sport** — source group `Sports` — https://lightning-tracesport-samsungau.amagi.tv/playlist.m3u8
 - **Radio BBC** — source group `Radio` — https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_vlow_sbr_v1/cfs/bbc_world_service_news_internet.m3u8
 - **Willow Extra** — source group `Sports` — http://27.124.71.27/Willow_Extra/index.m3u8
-- **Sony Sports 2 HD** — source group `Sports` — https://stream.ottplus.live/live/ten_2_hd_abr/live/ten_2_hd_720/chunks.m3u8
-- **CNBC TV 18** — source group `Others` — https://n18syndication.akamaized.net/bpk-tv/CNBC_TV18_NW18_MOB/output01/index.m3u8
 - **Sony Sports 5 HD** — source group `Sports` — https://stream.ottplus.live/live/ten_5_hd_abr/live/ten_5_hd_720/chunks.m3u8
+- **Sony Sports 2 HD** — source group `Sports` — https://stream.ottplus.live/live/ten_2_hd_abr/live/ten_2_hd_720/chunks.m3u8
+- **Music TV** — source group `Music` — http://bitcdn-kronehit.bitmovin.com/v2/hls/chunklist_b3128000.m3u8
 - **Digital Fashion** — source group `Others` — http://115.187.41.216:8080/hls/digitalfashion/index.m3u8
 - **Gopal Bhar** — source group `Cartoons | 24/7` — https://live20.bozztv.com/giatvplayout7/giatv-209611/tracks-v1a1/mono.ts.m3u8
 - **Ananda TV (480p)** — source group `` — http://103.99.249.139/anandatv/index.m3u8
