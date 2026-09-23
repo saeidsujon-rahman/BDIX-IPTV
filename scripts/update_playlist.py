@@ -13,7 +13,7 @@ SOURCES=[
 ]
 NEW_GROUP="New Channels"
 BACKUP_GROUP="Backup"
-MAX_NEW=30
+MAX_NEW=0
 MAX_BACKUP=60
 NO_BACKUP_GROUPS={"Sports","Kids","Religious","Documentary & Wildlife"}
 
