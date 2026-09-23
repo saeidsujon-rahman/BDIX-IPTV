@@ -31,14 +31,14 @@ jobs:
       - name: Discover new and backup streams
         run: python scripts/update_playlist.py
 
-      - name: Commit playlist changes
+      - name: Commit playlist and report changes
         run: |
-          if git diff --quiet -- "IPTV Playlist.m3u"; then
-            echo "No playlist changes."
+          if git diff --quiet -- "IPTV Playlist.m3u" "reports/auto-update.md"; then
+            echo "No playlist or report changes."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "IPTV Playlist.m3u"
-          git commit -m "Daily playlist update"
+          git add "IPTV Playlist.m3u" "reports/auto-update.md"
+          git commit -m "Daily playlist and report update"
           git push
