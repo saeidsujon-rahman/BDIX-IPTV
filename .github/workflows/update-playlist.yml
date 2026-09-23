@@ -77,6 +77,7 @@ jobs:
               'Indian Bangla', 'Indian Movies', 'Indian Music',
               'Indian Entertainment', 'International Movies', 'International Music',
               'Documentary & Wildlife', 'Kids', 'Religious', 'Sports',
+              'Indian Backup',
           ]
 
           MAX_WORKERS = max(1, min(int(os.getenv('MAX_WORKERS', '20')), 32))
@@ -282,6 +283,68 @@ jobs:
                   return allowed[supplied_group]
               return None
 
+          INDIAN_PRIMARY_GROUPS = {
+              'Indian Bangla', 'Indian Movies', 'Indian Music', 'Indian Entertainment',
+          }
+          INDIAN_DESTINATION_GROUPS = INDIAN_PRIMARY_GROUPS | {'Indian Backup'}
+          INDIAN_GROUP_HINT = re.compile(
+              r'\b(?:india|indian|hindi|bengali|tamil|telugu|malayalam|kannada|'
+              r'marathi|bhojpuri|punjabi|odia|assamese)\b',
+              re.I,
+          )
+          INDIAN_RELIGIOUS_HINT = re.compile(
+              r'\b(?:religious|islam|islamic|quran|sunnah|deen|iqra|madani|'
+              r'makkah|mecca|medina|peace tv|ary q)\b',
+              re.I,
+          )
+          INDIAN_CHANNEL_TOKENS = set().union(
+              IN_BANGLA,
+              MAJOR['indian movies'],
+              MAJOR['indian music'],
+              MAJOR['indian entertainment'],
+          )
+
+          def is_indian_candidate(name, supplied=''):
+              channel = norm(name)
+              supplied_group = norm(supplied)
+              if is_foreign_news(channel) or NON_ISLAMIC_RELIGIOUS.search(channel):
+                  return False
+              # The user does not want new Indian news or religious channels,
+              # including Islamic religious channels.
+              if supplied_group == 'religious' or INDIAN_RELIGIOUS_HINT.search(channel):
+                  return False
+              if channel in IN_BANGLA:
+                  return True
+              if supplied_group in {norm(group) for group in INDIAN_DESTINATION_GROUPS}:
+                  return True
+              if INDIAN_GROUP_HINT.search(supplied_group):
+                  return True
+              return any(token in channel for token in INDIAN_CHANNEL_TOKENS)
+
+          def import_group(name, supplied=''):
+              channel = norm(name)
+              if any(item in channel for item in BLOCKED):
+                  return None
+              if channel_policy_reason(channel, supplied) or is_foreign_news(channel):
+                  return None
+              if is_indian_candidate(name, supplied):
+                  return 'Indian Backup'
+              if APPROVED_SPORTS.search(channel):
+                  return 'Sports'
+              # Bangladesh, every primary Indian group, and all international
+              # categories are locked against new automatic primary imports.
+              return None
+
+          def backup_destination(primary):
+              group = primary.get('group', '')
+              if group in INDIAN_DESTINATION_GROUPS:
+                  return 'Indian Backup'
+              if group == 'Sports' and APPROVED_SPORTS.search(norm(primary['canonical'])):
+                  return 'Sports'
+              # Bangladesh Backup is deliberately locked so manually deleted
+              # channels or streams cannot be rediscovered and re-added.
+              return None
+
           def logo_catalog():
               if hasattr(logo_catalog, '_cache'):
                   return logo_catalog._cache
@@ -465,8 +528,10 @@ jobs:
                   removed_policy.append((entry['canonical'], entry.get('url', ''), policy_reason))
                   continue
               used.add(url_key)
+              # The user's current category placement is authoritative, including
+              # intentional backups kept in a primary category.
               entry['group'] = (
-                  supplied_group if supplied_group == 'Bangladesh Backup'
+                  supplied_group if supplied_group in GROUPS
                   else classify(entry['canonical'], supplied_group) or supplied_group or 'Bangladesh'
               )
               canonical[norm(entry['canonical'])].append(entry)
@@ -498,6 +563,7 @@ jobs:
           rejected_names = []
           skipped_duplicates = 0
           skipped_limits = 0
+          skipped_locked_categories = 0
           sourced_logos = 0
           seen_candidates = set()
           staged_per_name = defaultdict(int)
@@ -521,7 +587,11 @@ jobs:
               target = canonical.get(key, [])
               if target:
                   primary = target[0]
-                  limit = 4 if primary['group'] in {'Bangladesh', 'Bangladesh Backup'} else 2
+                  destination = backup_destination(primary)
+                  if not destination:
+                      skipped_locked_categories += 1
+                      continue
+                  limit = 4 if destination == 'Indian Backup' else 2
                   available = max(0, limit - (len(target) - 1))
                   # Test a small reserve so a dead first candidate does not prevent
                   # a later working backup from being considered.
@@ -531,7 +601,7 @@ jobs:
                   staged_per_name[key] += 1
                   candidates.append((0, source_entry, key, 'backup'))
                   continue
-              group = classify(name, source_entry.get('attrs', {}).get('group-title', ''))
+              group = import_group(name, source_entry.get('attrs', {}).get('group-title', ''))
               logo = source_logo(name, source_entry.get('attrs', {}).get('tvg-logo', '')) if group else ''
               if group and logo:
                   if not source_entry.get('attrs', {}).get('tvg-logo', '').strip():
@@ -573,8 +643,11 @@ jobs:
               target = canonical.get(key, [])
               if target:
                   primary = target[0]
-                  group = primary['group']
-                  limit = 4 if group in {'Bangladesh', 'Bangladesh Backup'} else 2
+                  destination = backup_destination(primary)
+                  if not destination:
+                      skipped_locked_categories += 1
+                      continue
+                  limit = 4 if destination == 'Indian Backup' else 2
                   if len(target) - 1 >= limit:
                       skipped_limits += 1
                       continue
@@ -583,19 +656,17 @@ jobs:
                   entry['name'] = f'{primary["canonical"]} [Backup {number}]'
                   entry['url'] = url
                   entry['extras'] = deepcopy(source_entry.get('extras', []))
-                  entry['group'] = 'Bangladesh Backup' if group == 'Bangladesh' else group
+                  entry['group'] = destination
                   target.append(entry)
                   used.add(url_key)
                   added_backups.append((entry['name'], entry['group'], url))
                   continue
 
-              group = classify(name, source_entry.get('attrs', {}).get('group-title', ''))
+              group = import_group(name, source_entry.get('attrs', {}).get('group-title', ''))
               logo = source_entry.get('attrs', {}).get('tvg-logo', '').strip()
               if not group or not logo:
                   rejected_names.append((name, source_entry.get('attrs', {}).get('group-title', ''), url))
                   continue
-              if group == 'Bangladesh':
-                  group = 'Bangladesh Backup'
               entry = {
                   'attrs': deepcopy(source_entry['attrs']),
                   'name': name,
@@ -670,6 +741,7 @@ jobs:
               f'- Candidates tested concurrently: **{len(candidates)}**',
               f'- Dead/invalid responses: **{len(dead_imports)}**',
               f'- Candidates skipped by backup limits: **{skipped_limits}**',
+              f'- Candidates skipped because their categories are locked: **{skipped_locked_categories}**',
               f'- Candidates omitted by safety cap: **{truncated_candidates}**',
               f'- Stream-check workers: **{MAX_WORKERS}**',
               f'- Parallel stream-check time: **{check_elapsed:.1f}s**', '',
@@ -697,9 +769,13 @@ jobs:
           lines += [f'- **{name}** — source group `{group}` — {url}' for name, group, url in rejected_names] or ['- None']
           lines += [
               '', '## Policy', '',
-              '- Existing membership is authoritative.',
+              '- Existing membership and the current category order are authoritative.',
               '- Candidate identity uses normalized names plus conservative quality-label aliases.',
               '- New candidates require an approved category and a logo; missing logos are resolved by conservative exact-name matching against the iptv-org catalog.',
+              '- Bangladesh and Bangladesh Backup are locked against automatic imports, so manually removed Bangladesh Backup entries cannot return.',
+              '- Indian primary categories are locked; eligible new Indian channels and their backups are routed to the bottom `Indian Backup` category.',
+              '- New Indian news and religious channels are rejected.',
+              '- International Movies, International Music, Documentary & Wildlife, Kids, and Religious are locked against automatic imports.',
               '- Non-Bangladeshi news channels are rejected from both existing and imported entries.',
               '- Non-Islamic religious channels are rejected.',
               '- Approved major sports channels are allowed.',
@@ -707,7 +783,6 @@ jobs:
               '- Existing playback-tested names and URLs remain authoritative.',
               '- Transparent wrappers are tested as direct origins first; a working proxy is retained only as fallback.',
               '- Manually playback-approved Toffee wrappers are preserved and their signed URLs are refreshed by source-channel name.',
-              '- New Bangladeshi channels and backups are placed in `Bangladesh Backup`.',
               '- Public HLS hosts and redirects are accepted when they return valid media; explicit DRM or encrypted payloads remain rejected.',
               '- Only media-like responses are accepted; HTML and empty responses are rejected.',
               '- Existing entries are preserved; a point-in-time URL check cannot guarantee continuous playback.',
