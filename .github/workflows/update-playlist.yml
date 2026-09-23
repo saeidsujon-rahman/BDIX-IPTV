@@ -1,0 +1,44 @@
+name: Playlist Update
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+      timezone: 'Asia/Dhaka'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: playlist-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Discover new and backup streams
+        run: python scripts/update_playlist.py
+
+      - name: Commit playlist changes
+        run: |
+          if git diff --quiet -- "IPTV Playlist.m3u"; then
+            echo "No playlist changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "IPTV Playlist.m3u"
+          git commit -m "Daily playlist update"
+          git push
