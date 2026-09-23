@@ -68,6 +68,17 @@ def choose_logo(cid):
 # Verified fallback mappings for channels absent from/mismatched in iptv-org. Updated via reviewed source assets.
 # Only add mappings after manual verification; backups inherit the base channel mapping.
 MANUAL = {
+    "7X Punjabi": "https://static.iptv-epg.com/in/7XMusic.in.png",
+    "BHI Channel": "https://static.wikia.nocookie.net/etv-gspn-bangla/images/0/0e/BHI_Channel_logo_2008.png",
+    "Cinemax Moremax": "https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/united-states/cinemax-moremax-us.png",
+    "FX 1 Movies": "https://www.lyngsat.com/logo/tv/ff/fx-1.png",
+    "Fon Music Tnt Music": "https://static.tildacdn.com/tild3066-6239-4663-a237-663963353330/_FonMusic.jpg",
+    "Geo Kahani": "https://static.wikia.nocookie.net/logopedia/images/d/d8/Geo_Kahani.png",
+    "Grand Cinema": "https://www.lyngsat.com/logo/tv/gg/grand-cinema.png",
+    "Only Music": "https://jiotv.catchup.cdn.jio.com/dare_images/images/Only_Music.png",
+    "Rouge TV [Switzerland]": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rouge_Tv-_cmjn.png",
+    "Shemaroo Bollywood": "https://xstreamcp-assets-msp.streamready.in/assets/DISTROTV/LIVECHANNEL/66698972bac4421ebc5336cc/images/logo_20240206_185308_68.png",
+    "Sony Yay": "https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_SONY_YAY/images/LOGO_HD/image.png",
     "ME TV": "https://www.metvbd.com/media/common/logo.png",
     "House of Crime": "https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IN4600004HW_20250416T005413SQUARE.png",
     "Islamic TV": "https://cdn.jagonews24.com/media/imgAllNew/BG/2015October/itv20151025125118.jpg",
