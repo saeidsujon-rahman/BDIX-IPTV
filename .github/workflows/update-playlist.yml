@@ -10,6 +10,7 @@ on:
       - main
     paths:
       - 'scripts/migrate_external_logos.py'
+      - 'scripts/fix_selected_logos.py'
 
 permissions:
   contents: write
@@ -33,12 +34,21 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Install logo conversion tools
+        run: python -m pip install --disable-pip-version-check pillow cairosvg
+
       - name: Discover new and backup streams
         if: github.event_name != 'push'
         run: python scripts/update_playlist.py
 
       - name: Migrate external channel logos
         run: python scripts/migrate_external_logos.py
+
+      - name: Repair selected channel logos
+        run: |
+          if [ -f scripts/fix_selected_logos.py ]; then
+            python scripts/fix_selected_logos.py
+          fi
 
       - name: Commit playlist, logo, and report changes
         run: |
