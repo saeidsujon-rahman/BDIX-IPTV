@@ -65,7 +65,7 @@ def choose_logo(cid):
     ),reverse=True)
     return cand[0].get("url")
 
-# Verified fallback mappings for channels absent from/mismatched in iptv-org.
+# Verified fallback mappings for channels absent from/mismatched in iptv-org. Updated via reviewed source assets.
 # Only add mappings after manual verification; backups inherit the base channel mapping.
 MANUAL = {
     "ME TV": "https://www.metvbd.com/media/common/logo.png",
