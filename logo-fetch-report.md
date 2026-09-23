@@ -1,12 +1,11 @@
 # Missing Logo Fetch Report
 
-Found missing: **16**  
-Downloaded: **2**  
+Found missing: **14**  
+Downloaded: **0**  
 Unresolved: **14**
 
 ## Downloaded
-- Powerkids Kartoon Channel → \`logos/powerkids-kartoon-channel.png\` (None)
-- SuperToons TV → \`logos/supertoons-tv.png\` (None)
+- None
 
 ## Unresolved
 - ME TV
