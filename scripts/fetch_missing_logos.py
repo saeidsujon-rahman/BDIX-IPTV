@@ -89,7 +89,7 @@ for idx,name,tvgid,oldlogo in missing:
         hits=ids_by_name.get(slug(clean),[])
         if len(hits)==1: cid=hits[0]
     url=choose_logo(cid) if cid else None
-    if not url: url=MANUAL.get(clean)
+    if not url: url=MANUAL.get(clean_name(clean))
     if not url:
         unresolved.append(name); continue
     try:
