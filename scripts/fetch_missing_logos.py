@@ -65,6 +65,8 @@ def choose_logo(cid):
 # Verified fallback mappings for channels absent from/mismatched in iptv-org.
 # Only add mappings after manual verification; backups inherit the base channel mapping.
 MANUAL = {
+    "SuperToons TV": "https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD5100001HL_20240214T034917SQUARE.png_20240214034918.png",
+    "Powerkids Kartoon Channel": "https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IN2500003JW_20240912T093645SQUARE.png",
     "ARY Q TV": "https://i.imgur.com/eP2OW5S.png",
     "Epic TV Digital": "https://static.wikia.nocookie.net/logopedia/images/4/41/Epic_TV_%282021%29.jpg",
     "MH One Prime": "https://www.tvlogo.org/logo/mh-one-prime-in.png",
