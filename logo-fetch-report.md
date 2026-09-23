@@ -1,11 +1,11 @@
 # Missing Logo Fetch Report
 
 Found missing: **36**  
-Downloaded: **0**  
-Unresolved: **36**
+Downloaded: **1**  
+Unresolved: **35**
 
 ## Downloaded
-
+- FOX Sports → \`logos/fox-sports.png\` (FoxSports.ar)
 
 ## Unresolved
 - ME TV
@@ -40,7 +40,6 @@ Unresolved: **36**
 - ARY Q TV
 - Islamic TV
 - Islamic TV [Backup 1]
-- FOX Sports
 - ME TV [Backup 1]
 - ME TV [Backup 2]
 - ME TV [Backup 3]
