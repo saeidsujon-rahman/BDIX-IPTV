@@ -43,7 +43,8 @@ def entries(text):
 def blocked(info):
     a=attrs(info); name=name_of(info); group=a.get("group-title","")
     hay=(name+" "+group).lower()
-    # Adult channels are allowed by policy.\n    if any(w in hay for w in NON_TV_WORDS): return True
+    # Adult channels are allowed by policy.
+    if any(w in hay for w in NON_TV_WORDS): return True
     if any(w in hay for w in NEWS_WORDS): return True
     if any(w in hay for w in NON_ISLAMIC_RELIGION): return True
     return False
@@ -96,9 +97,8 @@ for info,u in candidates:
     target=backups if same else new
     limit=MAX_BACKUP if same else MAX_NEW
     if len(target)>=limit: continue
-    # Prefer the online health-checked source; verify other-source candidates directly.
-    trusted="dearbulut.github.io/iptv/playlists/online.m3u" in SOURCES[0]
-    if source != SOURCES[0] and not reachable(u): continue
+    # Never insert an untested candidate.
+    if not reachable(u): continue
     target.append((clean_info(info,BACKUP_GROUP if same else NEW_GROUP),u))
     seen.add(u)
 
