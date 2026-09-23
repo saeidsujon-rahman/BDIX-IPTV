@@ -17,6 +17,23 @@ MAX_NEW=30
 MAX_BACKUP=60
 NO_BACKUP_GROUPS={"Sports","Kids","Religious","Documentary & Wildlife"}
 
+# New, unmatched channels are admitted only when their normalized name is in
+# this deliberately conservative allowlist. Add a name here only after manual
+# review; existing channels and eligible backup streams do not need this list.
+RENOWNED_NEW_CHANNELS={
+    "andpictures","amc","axn","bbcearth","bbcfirst","beinsports","beinsports1",
+    "beinsports2","beinsports3","beinsportsxtra","cartoonnetwork","cinemax",
+    "colors","colorsbangla","colorscineplex","discoverychannel","discoveryscience",
+    "disneychannel","disneyjunior","enter10bangla","espn","espn2","eurosport",
+    "foxsports","hbo","hbo2","hbofamily","hbohits","history","mnx","moviesnow",
+    "mtv","mtv80s","mtv90s","mtvlive","nationalgeographic","natgeowild",
+    "nbatv","nflnetwork","nickelodeon","nickjr","now70s","now80s","now90s",
+    "paramountnetwork","sonyaath","sonymax","sonymax2","sonymovies","sonypix",
+    "sonysab","sonyten1","sonyten2","sonyten3","sonyten5","sonytv","starfilms",
+    "starjalsha","starmovies","starplus","starsports1","starsports2","traceurban",
+    "ufctv","vh1","wwenetwork","xite","zeebangla","zeecinema","zeetv",
+}
+
 NEWS_WORDS={"news","noticias","actualité","actualites","haber","samachar","khabar","সংবাদ"}
 NON_ISLAMIC_RELIGION={"christian","christianity","church","jesus","gospel","catholic","bible","hindu","hinduism","krishna","temple","buddhist","buddhism","sikh","sikhism","gurudwara","jain","jainism","torah","jewish","judaism"}
 NON_TV_WORDS={"vod","video on demand","podcast","radio","webcam","cctv","camera","trailer","promo","test channel","test stream"}
@@ -127,6 +144,9 @@ for info,u in candidates:
     if same and ((cid and not cid.startswith("local.") and cid in no_backup_ids) or (nkey and nkey in no_backup_names)):
         stats["excluded_backup_category"]+=1
         continue
+    if not same and nkey not in RENOWNED_NEW_CHANNELS:
+        stats["not_renowned"]+=1
+        continue
     target=backups if same else new
     limit=MAX_BACKUP if same else MAX_NEW
     if len(target)>=limit:
@@ -164,6 +184,7 @@ report=[
     f"- Backup streams added: **{len(backups)}**",
     f"- Exact duplicate URLs skipped: **{stats['duplicate_urls']}**",
     f"- Policy-blocked candidates skipped: **{stats['blocked']}**",
+    f"- Unmatched channels outside the renowned allowlist skipped: **{stats['not_renowned']}**",
     f"- Sports, Kids, Religious, and Documentary backups skipped: **{stats['excluded_backup_category']}**",
     f"- Unreachable candidates skipped: **{stats['unreachable']}**",
     f"- Candidates skipped by new-channel limit: **{stats['new_limit']}**",
@@ -184,6 +205,7 @@ report.extend([
     "## Active policy",
     "",
     "- Existing playlist entries are preserved.",
+    "- An unmatched channel can enter `New Channels` only when its normalized name is in the curated renowned-channel allowlist.",
     "- New candidates are added only after a successful HTTP check.",
     "- Exact duplicate stream URLs are not added.",
     "- Backups are not added for Sports, Kids, Religious, or Documentary & Wildlife channels.",
