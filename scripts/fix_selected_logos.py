@@ -69,7 +69,11 @@ def png_bytes(source):
     with Image.open(io.BytesIO(data)) as image:
         image.load()
         if image.width < 32 or image.height < 32:
-            raise ValueError("image dimensions are too small")
+            scale = max(64 / max(image.width, 1), 64 / max(image.height, 1))
+            image = image.resize(
+                (max(64, round(image.width * scale)), max(64, round(image.height * scale))),
+                Image.Resampling.LANCZOS,
+            )
         image.thumbnail((1600, 1600), Image.Resampling.LANCZOS)
         if image.mode not in {"RGB", "RGBA"}:
             image = image.convert("RGBA")
