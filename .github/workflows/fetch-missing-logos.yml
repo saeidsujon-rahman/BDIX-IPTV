@@ -2,6 +2,9 @@ name: Fetch Missing Channel Logos
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/fetch_missing_logos.py'
 
 permissions:
   contents: write
