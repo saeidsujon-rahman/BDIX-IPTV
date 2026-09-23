@@ -65,7 +65,8 @@ def choose_logo(cid):
     ),reverse=True)
     return cand[0].get("url")
 
-# Verified fallback mappings for channels absent from/mismatched in iptv-org. Updated via reviewed source assets.
+# Verified fallback mappings
+# Batch refresh 2026-09-23 for channels absent from/mismatched in iptv-org. Updated via reviewed source assets.
 # Only add mappings after manual verification; backups inherit the base channel mapping.
 MANUAL = {
     "7X Punjabi": "https://static.iptv-epg.com/in/7XMusic.in.png",
