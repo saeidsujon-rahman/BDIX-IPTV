@@ -1,33 +1,31 @@
 # Missing Logo Fetch Report
 
-Found missing: **28**  
-Downloaded: **1**  
-Unresolved: **27**
+Found missing: **26**  
+Downloaded: **10**  
+Unresolved: **16**
 
 ## Downloaded
+- Epic TV Digital → \`logos/epic-tv-digital.jpg\` (None)
+- Crime & Justice → \`logos/crime-and-justice.png\` (None)
+- Crime Scene TV → \`logos/crime-scene-tv.png\` (None)
+- Life+Style → \`logos/life-style.png\` (None)
+- Wild Flix Hindi → \`logos/wild-flix-hindi.png\` (None)
+- Wild Planet → \`logos/wild-planet.png\` (None)
+- World War TV → \`logos/world-war-tv.png\` (None)
+- XXTreme Jobs Hindi → \`logos/xxtreme-jobs-hindi.png\` (None)
+- KidDo MATIX → \`logos/kiddo-matix.png\` (None)
 - ARY Q TV → \`logos/ary-q-tv.png\` (None)
 
 ## Unresolved
 - ME TV
 - Thikana
 - Bangla Plus
-- SNB Cinema
 - Jtv Classic
+- SNB Cinema
 - MH One Movies
-- Epic TV Digital
 - MH One Prime
-- Win TV
 - Bon Voyage
-- Crime & Justice
-- Crime Scene TV
-- History & Warfare Now
 - House of Crime
-- Life+Style
-- Wild Flix Hindi
-- Wild Planet
-- World War TV
-- XXTreme Jobs Hindi
-- KidDo MATIX
 - Powerkids Kartoon Channel
 - SuperToons TV
 - Islamic TV
