@@ -15,7 +15,7 @@ MAX_BACKUP=60
 
 NEWS_WORDS={"news","noticias","actualité","actualites","haber","samachar","khabar","সংবাদ"}
 NON_ISLAMIC_RELIGION={"christian","christianity","church","jesus","gospel","catholic","bible","hindu","hinduism","krishna","temple","buddhist","buddhism","sikh","sikhism","gurudwara","jain","jainism","torah","jewish","judaism"}
-ADULT_WORDS={"adult","xxx","porn","erotic","18+"}
+NON_TV_WORDS={"vod","video on demand","podcast","radio","webcam","cctv","camera","trailer","promo","test channel","test stream"}
 
 def norm(s):
     s=re.sub(r"\([^)]*\)|\[[^]]*\]"," ",s.lower())
@@ -43,7 +43,7 @@ def entries(text):
 def blocked(info):
     a=attrs(info); name=name_of(info); group=a.get("group-title","")
     hay=(name+" "+group).lower()
-    if any(w in hay for w in ADULT_WORDS): return True
+    # Adult channels are allowed by policy.\n    if any(w in hay for w in NON_TV_WORDS): return True
     if any(w in hay for w in NEWS_WORDS): return True
     if any(w in hay for w in NON_ISLAMIC_RELIGION): return True
     return False
