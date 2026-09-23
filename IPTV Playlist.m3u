@@ -123,7 +123,7 @@ https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/7ff57cc9046b4c188b51a0d506f36e7f/in
 https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/52b998e9510d41c29ad2ceca8ea3d849/index.m3u8
 #EXTINF:-1 tvg-id="DhoomMusic.in" tvg-name="Dhoom Music Bangla" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/dhoom-music-bangla.png" tvg-chno="233" channel-id="DhoomMusic.in" tvg-language="ben" tvg-country="IN" group-title="Indian Bangla",Dhoom Music Bangla
 https://mumt06.tangotv.in/qYyB8fXVDHOOMMUSIC/index.m3u8
-#EXTINF:-1 channel-id="local.enter-10-bangla" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/enter10-bangla-e1b04d22.png" tvg-id="local.enter-10-bangla" tvg-name="Enter10 Bangla" tvg-chno="234" group-title="Indian Bangla",Enter10 Bangla
+#EXTINF:-1 channel-id="local.enter-10-bangla" tvg-id="local.enter-10-bangla" tvg-name="Enter10 Bangla" tvg-chno="234" group-title="Indian Bangla",Enter10 Bangla
 https://iptvlive.ahmed-bd-org.workers.dev/enter-10-bangla-1/index.m3u8
 #EXTINF:-1 tvg-id="local.285a6aa870f3" tvg-name="Jalsha Movies HD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/jalsha-movies-hd.png" tvg-chno="241" channel-id="local.285a6aa870f3" group-title="Indian Bangla",Jalsha Movies HD
 http://livetv.akr4m.com:8080/bdtv/restrem/27.m3u8
@@ -239,7 +239,7 @@ https://drk6xq0vhn.gpcdn.net/live/sony_max_sd_abr/index.m3u8
 https://drk6xq0vhn.gpcdn.net/live/max_2_abr/index.m3u8
 #EXTINF:-1 tvg-id="local.f84628a5cf6e" tvg-name="Sony Max 2 [US]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sony-max-2-us.png" tvg-chno="333" channel-id="local.f84628a5cf6e" group-title="Indian Movies",Sony Max 2 [US]
 http://fortv.cc:8080/live/yd6H5yb2kK/nrkVd2ex3X/125795.ts
-#EXTINF:-1 channel-id="local.sony-pix-hd" tvg-id="Sony PIX HD" tvg-name="Sony PIX HD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sony-pix-hd-3b3eb806.webp" tvg-chno="334" source-id="shakil951-proxy-enable" source-channel="Sony PIX HD" group-title="Indian Movies",Sony PIX HD
+#EXTINF:-1 channel-id="local.sony-pix-hd" tvg-id="Sony PIX HD" tvg-name="Sony PIX HD" tvg-chno="334" source-id="shakil951-proxy-enable" source-channel="Sony PIX HD" group-title="Indian Movies",Sony PIX HD
 https://toffee-proxy.usergamil15.workers.dev/?url=https%3A%2F%2Fbldcmprod-cdn.toffeelive.com%2Fcdn%2Flive%2Fsonypix_hd%2Fplaylist.m3u8&cookie=Edge-Cache-Cookie%3DURLPrefix%3DaHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t%3AExpires%3D1790280072%3AKeyName%3Dprod_linear%3ASignature%3DbRcAAIc3v4rZ68CME6uweFSYsmJSYE6J7lT5ozwo9rPgr5ydoPFtPqRe1Gqntvmuvvz8wjB6MmVnQcqnRYHZDQ&secret_key=FS_LIVE_TV_SECRET_2026&dummy=.m3u8
 #EXTINF:-1 tvg-id="South Movies" tvg-name="South Movies" tvg-logo="https://www.google.com/s2/favicons?domain=bozztv.com&sz=256" tvg-chno="335" channel-id="South Movies" group-title="Indian Movies",South Movies
 https://live20.bozztv.com/giatvplayout7/giatv-209593/tracks-v1a1/mono.ts.m3u8
@@ -1060,7 +1060,7 @@ https://mycoffeetime.net/play/tSDRdsaoGGQ2qYgRPDEe9q-qMIzoahbJArH3W3vOiEaB97nXMp
 https://tvsen5.aynaott.com/TnMn5kZz8aLm/index.m3u8
 #EXTINF:-1 channel-id="TenSports.pk" tvg-id="TenSports.pk" tvg-name="Ten Sports HD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/ten-sports-hd-d3126ed9.png" group-title="Sports" tvg-chno="905",Ten Sports HD
 http://rgkkw.live:8080/live/4dfoydR2gZ/clever3still/98.ts
-#EXTINF:-1 channel-id="UFCTV.us" tvg-id="UFCTV.us" tvg-name="UFC TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/ufc-tv-30672de6.png" group-title="Sports" tvg-chno="900",UFC TV
+#EXTINF:-1 channel-id="UFCTV.us" tvg-id="UFCTV.us" tvg-name="UFC TV" group-title="Sports" tvg-chno="900",UFC TV
 https://linear-893.frequency.stream/mt/plex/893/hls/master/playlist_640x360.m3u8
 #EXTINF:-1 channel-id="WipeoutXtra.uk" tvg-id="WipeoutXtra.uk" tvg-name="Wipeout Xtra Powered by Banijay" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/wipeout-xtra-powered-by-banijay-efac5b76.png" group-title="Sports" tvg-chno="910",Wipeout Xtra Powered by Banijay
 https://d36nnn435goed2.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-skhf82opa3tf4/WipeoutXtraPoweredbyBanijay_GB.m3u8
