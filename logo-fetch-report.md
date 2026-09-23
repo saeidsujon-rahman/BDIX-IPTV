@@ -1,11 +1,14 @@
 # Missing Logo Fetch Report
 
-Found missing: **0**  
-Downloaded: **0**  
-Unresolved: **0**
+Found missing: **5**  
+Downloaded: **2**  
+Unresolved: **3**
 
 ## Downloaded
-- None
+- Metro TV → \`logos/metro-tv.png\` (MetroTV.in)
+- RDS Social TV → \`logos/rds-social-tv.png\` (RDSSocialTV.it)
 
 ## Unresolved
-- None
+- Enter10 Bangla
+- Sony PIX HD
+- UFC TV
