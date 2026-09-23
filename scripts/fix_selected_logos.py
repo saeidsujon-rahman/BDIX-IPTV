@@ -6,7 +6,7 @@ import urllib.request
 from pathlib import Path
 
 import cairosvg
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 
 PLAYLIST = Path("IPTV Playlist.m3u")
 LOGO_DIR = Path("logos")
@@ -14,17 +14,17 @@ RAW_BASE = "https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/l
 
 # Exact IDs prevent similarly named channels from being modified.
 TARGETS = {
-    "BHI Channel": ("bhi-channel.png", "https://static.wikia.nocookie.net/etv-gspn-bangla/images/0/0e/BHI_Channel_logo_2008.png"),
+    "BHI Channel": ("bhi-channel.png", None),
     "local.enter-10-bangla": ("enterr10-bangla.png", None),
-    "7X Music": ("7x-punjabi.png", "https://static.iptv-epg.com/in/7XMusic.in.png"),
+    "7X Music": ("7x-punjabi.png", None),
     "HindiHits.in": ("hindi-hits.png", "logos/hindi-hits-5806dc82.svg"),
     "MovieSphereUK": ("moviesphere-uk.png", "logos/moviesphere-uk-df69e7c9.svg"),
     "MoviesThriller.in": ("movies-thriller.png", "https://media.info/l/f/6/6444.1478301773.png"),
     "HBOMovies.us": ("hbo-movies.png", "logos/hbo-movies-fbbc0604.svg"),
     "KCine.pt": ("k-cine.png", "logos/k-cine-b59bf8eb.svg"),
-    "GrandCinema.tr": ("grand-cinema.png", "https://www.lyngsat.com/logo/tv/gg/grand-cinema.png"),
-    "FX 1": ("fx-1-movies.png", "https://www.lyngsat.com/logo/tv/ff/fx-1.png"),
-    "MoreMax..Eastern.us": ("cinemax-moremax.png", "https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/united-states/cinemax-moremax-us.png"),
+    "GrandCinema.tr": ("grand-cinema.png", "https://www.parsatv.com/index_files/channels/grandcinema.png"),
+    "FX 1": ("fx-1-movies.png", "https://www.parsatv.com/index_files/channels/fx1.png"),
+    "MoreMax..Eastern.us": ("cinemax-moremax.png", "https://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s10121_dark_360w_270h.png"),
     "AtomicTV(Romania)": ("atomic-tv-romania.png", "logos/atomic-tv-romania-10e12a92.svg"),
     "local.358fe4699222": ("robot-wars-by-mech.png", "https://i.imgur.com/vGqha3k.png"),
     "local.4e794cea4ffe": ("disney-jr.png", "logos/disney-jr-044dc1f3.svg"),
@@ -72,13 +72,42 @@ def png_bytes(source):
         return output.getvalue()
 
 
+DISPLAY_NAMES = {
+    "BHI Channel": "BHI CHANNEL",
+    "7X Music": "7X PUNJABI",
+}
+
+
+def generated_wordmark(channel_id):
+    """Create a dependable local PNG when an obscure channel has no stable logo host."""
+    label = DISPLAY_NAMES.get(channel_id, channel_id)
+    image = Image.new("RGBA", (640, 360), (12, 18, 32, 255))
+    draw = ImageDraw.Draw(image)
+    draw.rounded_rectangle((18, 18, 622, 342), radius=42, fill=(24, 34, 55, 255),
+                           outline=(0, 196, 180, 255), width=8)
+    font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+    size = 86 if len(label) <= 11 else 66
+    try:
+        font = ImageFont.truetype(font_path, size)
+    except OSError:
+        font = ImageFont.load_default()
+    draw.text((320, 180), label, font=font, fill=(255, 255, 255, 255),
+              anchor="mm", stroke_width=2, stroke_fill=(0, 0, 0, 220))
+    output = io.BytesIO()
+    image.save(output, format="PNG", optimize=True)
+    return output.getvalue()
+
+
 LOGO_DIR.mkdir(parents=True, exist_ok=True)
 errors = []
 for channel_id, (filename, source) in TARGETS.items():
     path = LOGO_DIR / filename
     if source is None:
         if not path.exists():
-            errors.append(f"{channel_id}: existing reusable logo is missing ({path})")
+            if channel_id in DISPLAY_NAMES:
+                path.write_bytes(generated_wordmark(channel_id))
+            else:
+                errors.append(f"{channel_id}: existing reusable logo is missing ({path})")
         continue
     try:
         data = png_bytes(source)
