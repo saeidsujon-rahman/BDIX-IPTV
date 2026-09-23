@@ -66,6 +66,16 @@ def choose_logo(cid):
 # Only add mappings after manual verification; backups inherit the base channel mapping.
 MANUAL = {
     "ARY Q TV": "https://i.imgur.com/eP2OW5S.png",
+    "Epic TV Digital": "https://static.wikia.nocookie.net/logopedia/images/4/41/Epic_TV_%282021%29.jpg",
+    "MH One Prime": "https://www.tvlogo.org/logo/mh-one-prime-in.png",
+    "Crime & Justice": "https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD260000189_20250107T030614SQUARE.png",
+    "Crime Scene TV": "https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IN24000030L_20250811T033443SQUARE.png",
+    "Life+Style": "https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IN2400001L0_20250811T033504SQUARE.png",
+    "Wild Flix Hindi": "https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IN460000585_20250416T020413SQUARE.png",
+    "Wild Planet": "https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBB5000002PL_20250107T025838SQUARE.png",
+    "World War TV": "https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD1100001UI_20250527T014801SQUARE.png",
+    "XXTreme Jobs Hindi": "https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IN46000011Q_20250205T004626SQUARE.png",
+    "KidDo MATIX": "https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IN4600008T4_20250122T004833SQUARE.png",
 }
 
 added=[]; unresolved=[]
