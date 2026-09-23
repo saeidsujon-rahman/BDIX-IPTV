@@ -20,6 +20,9 @@ def get(url,timeout=25):
 
 def attrs(line): return dict(re.findall(r'(\S+?)="([^"]*)"',line))
 
+def clean_name(name):
+    return re.sub(r"\\s*\\[Backup[^]]*\\]\\s*", "", name, flags=re.I).strip()
+
 text=PLAYLIST.read_text(encoding="utf-8-sig"); lines=text.splitlines(); entries=[]
 for i,line in enumerate(lines):
     if line.startswith("#EXTINF"):
