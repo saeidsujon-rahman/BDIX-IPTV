@@ -928,7 +928,7 @@ https://jmc-live.ercdn.net/alistiqama/alistiqama.m3u8
 https://streamer3.premio.link/alqamar/playlist.m3u8
 #EXTINF:-1 tvg-id="AlQuranAlKareemTV.sa" tvg-name="Al Quran Al Kareem TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/al-quran-al-kareem-tv.png" tvg-chno="815" channel-id="AlQuranAlKareemTV.sa" group-title="Religious",Al Quran Al Kareem TV
 https://cdn-globecast.akamaized.net/live/eds/saudi_quran/hls_roku/index.m3u8
-#EXTINF:-1 channel-id="local.f2281c686246" tvg-id="local.f2281c686246" tvg-name="ARY Q TV" tvg-chno="819" group-title="Religious",ARY Q TV
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/ary-q-tv.png" channel-id="local.f2281c686246" tvg-id="local.f2281c686246" tvg-name="ARY Q TV" tvg-chno="819" group-title="Religious",ARY Q TV
 https://aryqtvm.aryzap.com/v1/0183ea2a0eec0b8ed5941a38bc76/0183ea2a4e470b8ed5aa4d793457/ARYQTVH264_1080p.m3u8
 #EXTINF:-1 tvg-id="AzanTV.ca" tvg-name="Azan TV" tvg-logo="https://i.imgur.com/JlqS6I4.jpeg" tvg-chno="820" channel-id="AzanTV.ca" group-title="Religious",Azan TV
 https://dbcanada.sonarbanglatv.com/azantv/atv/index.m3u8
