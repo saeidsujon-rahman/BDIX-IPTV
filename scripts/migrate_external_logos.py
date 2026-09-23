@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import hashlib
 import html
+import io
 import re
 import time
 import unicodedata
@@ -10,6 +11,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlsplit
+
+import cairosvg
 
 PLAYLIST = Path("IPTV Playlist.m3u")
 LOGO_DIR = Path("logos")
@@ -198,6 +201,13 @@ for url in unique_urls:
     if error:
         failures.append((names_by_url[url], url, error))
         continue
+    if ext == "svg":
+        try:
+            data = cairosvg.svg2png(bytestring=data)
+            ext = "png"
+        except Exception as exc:
+            failures.append((names_by_url[url], url, f"SVG conversion failed: {exc}"))
+            continue
     digest = hashlib.sha256(url.encode("utf-8")).hexdigest()[:10]
     filename = f"{slugify(names_by_url[url])}-{digest}.{ext}"
     path = LOGO_DIR / filename
