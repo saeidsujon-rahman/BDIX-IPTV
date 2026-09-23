@@ -1173,16 +1173,6 @@ https://tvsen6.aynaott.com/1d3uG9VCgrR9DRtWZM57/index.m3u8?e=1784102570&u=ee5437
 https://iptvlive.ahmed-bd-org.workers.dev/boishakhi-tv-1/index.m3u8
 #EXTINF:-1 tvg-id="BoishakhiTV.bd" tvg-name="Boishakhi TV [Backup 4]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/boishakhi-tv.png" tvg-chno="85" channel-id="BoishakhiTV.bd" group-title="Backup",Boishakhi TV [Backup 4]
 https://iptvlive.ahmed-bd-org.workers.dev/boishakhi-tv-2/index.m3u8
-#EXTINF:-1 tvg-id="local.0646349a4378" tvg-name="BTV News" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/btv-news.png" tvg-chno="12" channel-id="local.0646349a4378" group-title="Backup",BTV News
-http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/btvbd-office-sg.stream/index.m3u8
-#EXTINF:-1 tvg-id="local.a9570e029843" tvg-name="Channel 1 [Backup 1]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/channel-1.png" tvg-chno="89" channel-id="local.a9570e029843" group-title="Backup",Channel 1 [Backup 1]
-#https://akash.sm-monirul.top/channel_1.m3u8
-http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/channel1bd.stream/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-id="local.a9570e029843" tvg-name="Channel 1 [Backup 3]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/channel-1.png" tvg-chno="90" channel-id="local.a9570e029843" group-title="Backup",Channel 1 [Backup 3]
-#https://akash.sm-monirul.top/channel_1.m3u8
-https://iptvlive.ahmed-bd-org.workers.dev/channel-1-1/index.m3u8
-#EXTINF:-1 tvg-id="local.a9570e029843" tvg-name="Channel 1 [Backup 4]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/channel-1.png" tvg-chno="91" channel-id="local.a9570e029843" group-title="Backup",Channel 1 [Backup 4]
-https://iptvlive.ahmed-bd-org.workers.dev/channel-1-2/index.m3u8
 #EXTINF:-1 tvg-id="Channel9.au" tvg-name="Channel 9" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/channel-9-720p-4976239118.png" tvg-country="AU" tvg-language="eng" nexus-score="100" group-title="Backup",Channel 9 (720p)
 https://9now-livestreams-fhd-t.akamaized.net/u/prod/simulcast/adl/ch9/hls/r1/index.m3u8
 #EXTINF:-1 tvg-id="Channel9.bd" tvg-name="Channel 9 [Backup 1]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/channel-9.png" tvg-chno="97" channel-id="Channel9.bd" group-title="Backup",Channel 9 [Backup 1]
@@ -1601,8 +1591,6 @@ http://45.177.114.115/SONY_MOVIES/index.m3u8
 https://cloudplay-sonyliv.pages.dev/pixhd.m3u8
 #EXTINF:-1 tvg-id="SonySAB.in" tvg-name="Sony SAB" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sony-sab-1080p-c0e78788c4.png" tvg-country="IN" tvg-language="hin" nexus-score="100" group-title="Backup",Sony SAB (1080p)
 https://cloudplay-sonyliv.pages.dev/sabhd.m3u8
-#EXTINF:-1 tvg-id="local.264717e2eb10" tvg-name="SRK [Backup 1]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/srk.png" tvg-chno="208" channel-id="local.264717e2eb10" group-title="Backup",SRK [Backup 1]
-https://iptvlive.ahmed-bd-org.workers.dev/srk-1/index.m3u8
 #EXTINF:-1 tvg-id="StarJalsha.in" tvg-name="Star Jalsha [Backup 1]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/star-jalsha.png" tvg-chno="263" channel-id="StarJalsha.in" group-title="Backup",Star Jalsha [Backup 1]
 http://premiumtvs.space/live/YqXTywueEV/damp2purchase/198.ts
 #EXTINF:-1 channel-id="StarJalsha.in" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/star-jalsha.png" tvg-id="StarJalsha.in" tvg-name="Star Jalsha [Backup 2]" tvg-chno="266" group-title="Backup",Star Jalsha [Backup 2]
