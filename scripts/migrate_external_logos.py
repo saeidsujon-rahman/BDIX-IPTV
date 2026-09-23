@@ -2,7 +2,9 @@
 import hashlib
 import html
 import re
+import time
 import unicodedata
+import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
@@ -14,7 +16,13 @@ LOGO_DIR = Path("logos")
 REPORT = Path("reports/logo-migration.md")
 RAW_PREFIX = "https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/"
 MAX_BYTES = 6 * 1024 * 1024
-WORKERS = 16
+WORKERS = 6
+FALLBACK_URLS = {
+    "https://raw.githubusercontent.com/StarFlixofficial/Personal-File/refs/heads/main/Channels%20Logo/Music/Mon%20Bangla%20.png": "https://i.imgur.com/8eftKdr.jpeg",
+    "https://www.google.com/s2/favicons?domain=bozztv.com&sz=256": "https://imglink.cc/cdn/cScI5tEUjV.png",
+    "https://imgur.com/79g2kMA.pn": "https://i.imgur.com/79g2kMA.png",
+    "https://www.aparatchi.com/images/chanells-logo/4kurd.svg": "https://www.aparatchi.com/images/TV/4kurd-hd.png",
+}
 
 
 def is_local_logo(url):
@@ -37,6 +45,17 @@ def is_local_logo(url):
 
 def channel_name(line):
     return line.rsplit(",", 1)[-1].strip() or "channel"
+
+
+def attr(line, key):
+    match = re.search(rf'{re.escape(key)}="([^"]*)"', line)
+    return match.group(1).strip() if match else ""
+
+
+def normalized_name(value):
+    value = re.sub(r"\([^)]*\)|\[[^]]*\]", " ", value.lower())
+    value = re.sub(r"\b(uhd|fhd|hd|sd|4k|1080p|720p|480p|backup|east|west)\b", " ", value)
+    return re.sub(r"[^a-z0-9\u0980-\u09ff]+", "", value)
 
 
 def slugify(value):
@@ -71,29 +90,70 @@ def image_extension(data, content_type, url):
     return None
 
 
+def wikimedia_original(url):
+    parsed = urlsplit(url)
+    if parsed.hostname != "upload.wikimedia.org" or "/thumb/" not in parsed.path:
+        return None
+    original_path = parsed.path.replace("/thumb/", "/", 1).rsplit("/", 1)[0]
+    return f"{parsed.scheme}://{parsed.netloc}{original_path}"
+
+
 def download(url):
-    try:
-        safe_url = html.unescape(url).replace(" ", "%20")
-        req = urllib.request.Request(safe_url, headers={
-            "User-Agent": "Mozilla/5.0 (compatible; BDIX-IPTV-Logo-Migrator/1.0)",
-            "Accept": "image/avif,image/webp,image/svg+xml,image/*,*/*;q=0.8",
-        })
-        with urllib.request.urlopen(req, timeout=25) as response:
-            data = response.read(MAX_BYTES + 1)
-            content_type = response.headers.get("Content-Type", "")
-        if not data: return None, None, "empty response"
-        if len(data) > MAX_BYTES: return None, None, "larger than 6 MiB"
-        ext = image_extension(data, content_type, safe_url)
-        if not ext: return None, None, f"not a recognized image ({content_type or 'unknown type'})"
-        return data, ext, ""
-    except Exception as exc:
-        return None, None, f"{type(exc).__name__}: {exc}"
+    candidates = []
+    if url in FALLBACK_URLS:
+        candidates.append(FALLBACK_URLS[url])
+    original = wikimedia_original(url)
+    if original:
+        candidates.append(original)
+    candidates.append(url)
+    errors = []
+    for candidate in dict.fromkeys(candidates):
+        safe_url = html.unescape(candidate).replace(" ", "%20")
+        for attempt in range(3):
+            try:
+                req = urllib.request.Request(safe_url, headers={
+                    "User-Agent": "BDIX-IPTV-Logo-Migrator/1.1 (https://github.com/saeidsujon-rahman/BDIX-IPTV)",
+                    "Accept": "image/avif,image/webp,image/svg+xml,image/*,*/*;q=0.8",
+                })
+                with urllib.request.urlopen(req, timeout=30) as response:
+                    data = response.read(MAX_BYTES + 1)
+                    content_type = response.headers.get("Content-Type", "")
+                if not data: raise ValueError("empty response")
+                if len(data) > MAX_BYTES: raise ValueError("larger than 6 MiB")
+                ext = image_extension(data, content_type, safe_url)
+                if not ext: raise ValueError(f"not a recognized image ({content_type or 'unknown type'})")
+                return data, ext, ""
+            except urllib.error.HTTPError as exc:
+                errors.append(f"{safe_url}: HTTP {exc.code}")
+                if exc.code not in {429, 500, 502, 503, 504}:
+                    break
+            except Exception as exc:
+                errors.append(f"{safe_url}: {type(exc).__name__}: {exc}")
+                break
+            time.sleep(2 * (attempt + 1))
+    return None, None, "; ".join(errors[-3:])
 
 
 text = PLAYLIST.read_text(encoding="utf-8-sig")
 lines = text.replace("\r", "").split("\n")
+local_by_id = {}
+local_by_name = {}
+for line in lines:
+    if not line.startswith("#EXTINF"):
+        continue
+    logo = attr(line, "tvg-logo")
+    if not logo or not is_local_logo(logo):
+        continue
+    channel_id = attr(line, "tvg-id")
+    name_key = normalized_name(channel_name(line))
+    if channel_id and not channel_id.startswith("local."):
+        local_by_id.setdefault(channel_id, logo)
+    if name_key:
+        local_by_name.setdefault(name_key, logo)
+
 references = []
 names_by_url = {}
+reuse_by_index = {}
 for index, line in enumerate(lines):
     if not line.startswith("#EXTINF"):
         continue
@@ -103,8 +163,19 @@ for index, line in enumerate(lines):
     url = match.group(1).strip()
     if not url or is_local_logo(url):
         continue
+    name = channel_name(line)
+    channel_id = attr(line, "tvg-id")
+    name_key = normalized_name(name)
+    reusable = ""
+    if channel_id and not channel_id.startswith("local."):
+        reusable = local_by_id.get(channel_id, "")
+    if not reusable and name_key:
+        reusable = local_by_name.get(name_key, "")
+    if reusable:
+        reuse_by_index[index] = reusable
+    else:
+        names_by_url.setdefault(url, name)
     references.append((index, url))
-    names_by_url.setdefault(url, channel_name(line))
 
 if not references:
     print("No external logo references found.")
@@ -137,7 +208,7 @@ for url in unique_urls:
 
 updated_references = 0
 for index, url in references:
-    raw_url = url_to_raw.get(url)
+    raw_url = reuse_by_index.get(index) or url_to_raw.get(url)
     if not raw_url:
         continue
     old = f'tvg-logo="{url}"'
@@ -159,6 +230,7 @@ report = [
     f"- External references found: **{len(references)}**",
     f"- Unique external URLs: **{len(unique_urls)}**",
     f"- References migrated to `/logos`: **{updated_references}**",
+    f"- References reused from an existing local logo: **{len(reuse_by_index)}**",
     f"- Logo files created or refreshed: **{created}**",
     f"- External references left unchanged: **{remaining}**",
     "",
