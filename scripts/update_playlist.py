@@ -159,6 +159,28 @@ for info,u in candidates:
     target.append((clean_info(info,BACKUP_GROUP if same else NEW_GROUP),u))
     seen.add(u)
 
+def sort_dynamic_groups(text):
+    lines=text.replace("\\r","").split("\\n")
+    header=[]; blocks=[]; i=0
+    while i<len(lines) and not lines[i].startswith("#EXTINF"):
+        if lines[i].strip(): header.append(lines[i])
+        i+=1
+    while i<len(lines):
+        if not lines[i].startswith("#EXTINF"):
+            i+=1; continue
+        block=[lines[i]]; i+=1
+        while i<len(lines) and not lines[i].startswith("#EXTINF"):
+            if lines[i].strip(): block.append(lines[i])
+            if lines[i].strip().startswith(("http://","https://","rtmp://","rtsp://","udp://")):
+                i+=1; break
+            i+=1
+        info=block[0]; a=attrs(info); blocks.append([a.get("group-title",""),name_of(info),block])
+    for group in (NEW_GROUP,BACKUP_GROUP):
+        chosen=sorted((x for x in blocks if x[0]==group),key=lambda x:x[1].casefold())
+        it=iter(chosen)
+        blocks=[next(it) if x[0]==group else x for x in blocks]
+    return "\\n".join(header)+"\\n"+"\\n".join("\\n".join(x[2]) for x in blocks)+"\\n"
+
 def append_group(text,items):
     if not items: return text
     if not text.endswith("\n"): text+="\n"
