@@ -1,0 +1,72 @@
+name: Build Logo Gallery
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'logos/**.png'
+      - 'logos/**.jpg'
+      - 'logos/**.jpeg'
+      - 'logos/**.webp'
+
+permissions:
+  contents: write
+
+jobs:
+  gallery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate visual logo gallery
+        shell: python
+        run: |
+          from pathlib import Path
+          from urllib.parse import quote
+          import re
+
+          folder = Path("logos")
+          exts = {".png", ".jpg", ".jpeg", ".webp"}
+          files = sorted(
+              [p for p in folder.iterdir() if p.is_file() and p.suffix.lower() in exts],
+              key=lambda p: p.name.lower()
+          )
+
+          cols = 6
+          out = [
+              "# Channel Logo Gallery",
+              "",
+              f"**Total logos: {len(files)}**",
+              "",
+              "Visual index of the actual files in this folder. Delete the PNG/JPG file itself to remove an unwanted or fake logo.",
+              "",
+              "<table>"
+          ]
+
+          for i in range(0, len(files), cols):
+              row = files[i:i+cols]
+              out.append("<tr>")
+              for p in row:
+                  src = quote(p.name)
+                  label = re.sub(r"[-_]+", " ", p.stem).strip()
+                  out.append(
+                      f'<td align="center" width="16%"><a href="{src}">'
+                      f'<img src="{src}" width="110" height="80" style="object-fit:contain"></a>'
+                      f'<br><sub>{label}</sub><br><code>{p.name}</code></td>'
+                  )
+              out.append("</tr>")
+
+          out += ["</table>", ""]
+          (folder / "README.md").write_text("\n".join(out), encoding="utf-8")
+
+      - name: Commit gallery
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add logos/README.md
+          if git diff --cached --quiet; then
+            echo "Gallery already up to date."
+            exit 0
+          fi
+          git commit -m "Update logo gallery"
+          git push
