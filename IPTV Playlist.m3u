@@ -1667,3 +1667,185 @@ https://cdn.pishow.tv/ott/live/1473/master.m3u8
 https://dltiqboxjw21d.cloudfront.net/index.m3u8
 #EXTINF:-1 tvg-id="LoveNature.ca" tvg-name="Love Nature" tvg-logo="https://tv.lovenature.com/wp-content/uploads/2024/10/LoveNature2024_Logo_full_colour-copy.png" tvg-country="CA" tvg-language="eng;zho;tur;bul;ces;hun;rus;spa" nexus-score="100" group-title="Backup",Love Nature (1080p)
 https://aegis-cloudfront-1.tubi.video/6d6d0f24-8445-4b4c-bdf6-44f9e38beaa4/playlist.m3u8
+
+#EXTINF:-1 tvg-id="2900Happiness.se" tvg-name="2900 Happiness" tvg-logo="https://images.pluto.tv/channels/6720bc6cdaad7f000872a6e2/colorLogoPNG.png" tvg-country="SE" tvg-language="eng;dan" nexus-score="79" group-title="New Channels",2900 Happiness
+https://jmp2.uk/plu-6720bc6cdaad7f000872a6e2.m3u8
+#EXTINF:-1 tvg-id="2M.ma" tvg-name="2M" tvg-logo="https://i.imgur.com/PJYTfHi.png" tvg-country="MA" tvg-language="ara" nexus-score="100" group-title="New Channels",2M (576p)
+http://185.9.2.18/chid_218/index.m3u8
+#EXTINF:-1 tvg-id="2MMonde.ma" tvg-name="2M Monde" tvg-logo="https://i.imgur.com/MvpntzA.png" tvg-country="MA" tvg-language="ara;fra" nexus-score="100" group-title="New Channels",2M Monde (1080p)
+https://d2qh3gh0k5vp3v.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-n6pess5lwbghr/2M_ES.m3u8
+#EXTINF:-1 tvg-id="2Plus2.ua" tvg-name="2+2" tvg-logo="https://i.imgur.com/v6KBgqk.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="New Channels",2+2 (1080p)
+http://str2.iptvhd.ru:8080/2plus2/index.m3u8
+#EXTINF:-1 tvg-id="2Plus2Marathon.ua" tvg-name="2+2 Marathon" tvg-logo="https://i.imgur.com/v6KBgqk.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="New Channels",2+2 Marathon (1080p)
+https://lowa8026-cmyk.github.io/Ukraine/Edyni_Novyny/2Plus2Marafon.m3u8
+#EXTINF:-1 tvg-id="2TV.ge" tvg-name="2 TV" tvg-logo="https://i.imgur.com/FJBL6zI.png" tvg-country="GE" tvg-language="kat" nexus-score="100" group-title="New Channels",2 TV (720p)
+https://tv.cdn.xsg.ge/gpb-2tv/index.m3u8
+#EXTINF:-1 tvg-id="2x2.ru" tvg-name="2x2" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/2x2_TV_Logo.svg/1920px-2x2_TV_Logo.svg.png" tvg-country="RU" tvg-language="rus" nexus-score="100" group-title="New Channels",2x2 (1080p)
+http://185.23.80.23:8080/2x2/index.m3u8
+#EXTINF:-1 tvg-id="30ADarcizzleOffshore.us" tvg-name="30A Darcizzle Offshore" tvg-logo="https://i.imgur.com/Q4l2uao.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",30A Darcizzle Offshore (720p)
+https://30a-tv.com/darcizzle.m3u8
+#EXTINF:-1 tvg-id="30AGeorgiaHollywoodReview.us" tvg-name="30A Georgia Hollywood Review" tvg-logo="https://images.axios.com/JiG3RuYBwpU_WZFeU6HHjt03FAU=/111x0:1191x1080/320x320/2023/11/09/1699558891265.jpg" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",30A Georgia Hollywood Review (720p)
+https://30a-tv.com/gh.m3u8
+#EXTINF:-1 tvg-id="30AGolfKingdom.us" tvg-name="30A Golf Kingdom" tvg-logo="https://i.imgur.com/Lv53nh4.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",30A Golf Kingdom (720p)
+https://30a-tv.com/feeds/vidaa/golf.m3u8
+#EXTINF:-1 tvg-id="30AInvestmentPitch.us" tvg-name="30A Investment Pitch" tvg-logo="https://i.imgur.com/CKCtZo7.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",30A Investment Pitch (720p)
+https://30a-tv.com/feeds/xodglobal/30atv.m3u8
+#EXTINF:-1 tvg-id="30ALuxeLifeDiscovered.us" tvg-name="30A Luxe Life Discovered" tvg-logo="https://m.media-amazon.com/images/I/51FJ5A0mEyL.jpg" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",30A Luxe Life Discovered (720p)
+https://30a-tv.com/feeds/vidaa/luxelife.m3u8
+#EXTINF:-1 tvg-id="30ARidiculousTV.us" tvg-name="30A Ridiculous TV" tvg-logo="https://30a.media/wp-content/uploads/2023/08/pzaz-30atv-2-230x366-ridiculous.jpg" tvg-country="US" tvg-language="eng" nexus-score="97" group-title="New Channels",30A Ridiculous TV (720p)
+https://30a-tv.com/feeds/720p/63.m3u8
+#EXTINF:-1 tvg-id="30ASidewalks.us" tvg-name="30A Sidewalks" tvg-logo="https://i.imgur.com/HSdwqZN.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",30A Sidewalks (720p)
+https://30a-tv.com/sidewalks.m3u8
+#EXTINF:-1 tvg-id="30ATelevisionChannel.us" tvg-name="30A Television Channel" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTHiYfIB01K44LIBG81aEGAmDuIWw8MA0f2w&s" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",30A Television Channel (720p)
+https://30a-tv.com/feeds/masters/30atv.m3u8
+#EXTINF:-1 tvg-id="30ATheBeachShow.us" tvg-name="30A The Beach Show" tvg-logo="https://i.imgur.com/0j5Aget.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",30A The Beach Show (720p)
+https://30a-tv.com/beachy.m3u8
+#EXTINF:-1 tvg-id="30AWeLoveCars.us" tvg-name="30A We Love Cars" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxroqfE_hvEApKMQx03sSYXPeEh4ClaF5QSa8XfRwJW_So3vfSN0CjqzxN30H-qEBswqU&usqp=CAU" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",30A We Love Cars (720p)
+https://30a-tv.com/feeds/vidaa/cars.m3u8
+#EXTINF:-1 tvg-id="31Kanal.kz" tvg-name="31 Kanal" tvg-logo="https://31.kz/noimage.png" tvg-country="KZ" tvg-language="kaz;rus" nexus-score="100" group-title="New Channels",31 Kanal (576p)
+http://stream.mcquack.net/388/index.m3u8
+#EXTINF:-1 tvg-id="360.ru" tvg-name="360°" tvg-logo="https://i.imgur.com/VTJqdoX.png" tvg-country="RU" tvg-language="rus" nexus-score="100" group-title="New Channels",360° (1080p)
+https://live-vgtrksmotrim.cdnvideo.ru/vgtrksmotrim/smotrim-live-04-srt.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="360RFTV.cr" tvg-name="360 RFTV" tvg-logo="https://i.imgur.com/EBtgnxR.png" tvg-country="CR" tvg-language="spa" nexus-score="100" group-title="New Channels",360 RFTV (576p)
+https://acceso.mediosdecostarica.com:3638/live/360rftvcrlive.m3u8
+#EXTINF:-1 tvg-id="360TuneBox.nl" tvg-name="360TuneBox" tvg-logo="https://i.imgur.com/1Fyezng.png" tvg-country="NL" tvg-language="eng" nexus-score="100" group-title="New Channels",360TuneBox (1080p)
+https://dash3.antik.sk/live/test_360_tunebox_medium_atk/playlist.m3u8
+#EXTINF:-1 tvg-id="365daysTV.ru" tvg-name="365 days TV" tvg-logo="https://i.imgur.com/NfnAiTR.png" tvg-country="RU" tvg-language="rus" nexus-score="100" group-title="New Channels",365 days TV (576p)
+https://stream8.cinerama.uz/1242/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-id="366TV.ua" tvg-name="36.6 TV" tvg-logo="https://i.imgur.com/sC0K5BZ.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="New Channels",36.6 TV
+https://dash2.antik.sk/live/test_tridsatsest_hd_atktv/playlist.m3u8
+#EXTINF:-1 tvg-id="36TVHuacho.pe" tvg-name="36 TV Huacho" tvg-logo="https://i.imgur.com/F4NZM3s.jpeg" tvg-country="PE" tvg-language="spa" nexus-score="95" group-title="New Channels",36 TV Huacho (1080p)
+https://live-evg10.tv360.bitel.com.pe/bitel/36tvSRT/playlist.m3u8
+#EXTINF:-1 tvg-id="3ABNCanada.ca" tvg-name="3ABN Canada" tvg-logo="https://i.imgur.com/U99CsEc.png" tvg-country="CA" tvg-language="eng" nexus-score="100" group-title="New Channels",3ABN Canada (720p)
+https://3abn.bozztv.com/3abncanada/3ABN/master.m3u8
+#EXTINF:-1 tvg-id="3ABNEnglish.us" tvg-name="3ABN English" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/3ABN_logo.svg/960px-3ABN_logo.svg.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",3ABN English (720p)
+https://3abn.bozztv.com/3abn2/3abn_live/smil:3abn_live.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="3ABNFrench.us" tvg-name="3ABN French" tvg-logo="https://i.imgur.com/B5gsM7m.png" tvg-country="US" tvg-language="fra" nexus-score="98" group-title="New Channels",3ABN French (720p)
+https://3abn.bozztv.com/3abn2/Fre_live/smil:Fre_live.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="3ABNInternational.us" tvg-name="3ABN International" tvg-logo="https://i.imgur.com/IecOZHR.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",3ABN International (576p)
+https://3abn.bozztv.com/3abn2/Int_live/smil:Int_live.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="3ABNKids.us" tvg-name="3ABN Kids" tvg-logo="https://i.imgur.com/z3npqO1.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",3ABN Kids (720p)
+https://3abn.bozztv.com/3abn2/Kids_live/smil:Kids_live.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="3ABNLatino.us" tvg-name="3ABN Latino" tvg-logo="https://i.imgur.com/Ugb4AFo.png" tvg-country="US" tvg-language="spa;eng" nexus-score="100" group-title="New Channels",3ABN Latino (720p)
+https://3abn.bozztv.com/3abn2/Lat_live/smil:Lat_live.smil/playlist.m3u8
+
+#EXTINF:-1 tvg-id="MadaniTV.id" tvg-name="Madani TV" tvg-logo="https://i.imgur.com/8aonQ0v.png" tvg-country="ID" tvg-language="ind" nexus-score="100" group-title="Backup",Madani TV (720p)
+https://stream.asianastream.com/madani/madanitv.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="MahaaMax.in" tvg-name="Mahaa Max" tvg-logo="https://objectstorage.ap-mumbai-1.oraclecloud.com/p/7Eg7LPw1gBcncVDrfwf__7yyrg13awaU6DmMk4gutavGYZgoAuAziv8e0aSEdU4G/n/bmaqqlwez184/b/GTPL_CHANNEL_LOGO/o/gtpl/MAHAA+MAX+LOGO.png" tvg-country="IN" tvg-language="tel" nexus-score="100" group-title="Backup",Mahaa Max (360p)
+https://mumbai-edge.smartplaytv.in/MahaMax/index.m3u8
+#EXTINF:-1 tvg-id="ManoranjanPrime.in" tvg-name="Manoranjan Prime" tvg-logo="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrGNUi4TMw8UslbIJF1ja-NrA1Ps656h9cxrj6aTfl3Cm-_C2gxtBBAKz-fLdPk7rJ0YrXfNvcQaBSDFTUdPgSYt8sBA0xn4aSMPnl-J2hiKa7P3Ybjd3BlE3XjoAJ0d7HNvhy8mZFDbf1JfAdMVBpdnPBuim3y3x0zMw1D3ryOw3NCoOsPA5fMMplPbU/s500/manoranjan-prime-tv-schedule-on-dd-freedish.jpg" tvg-country="IN" tvg-language="bho" nexus-score="100" group-title="Backup",Manoranjan Prime (576p)
+https://cdn.pishow.tv/ott/live/1474/master.m3u8
+#EXTINF:-1 tvg-id="MetroTV.hn" tvg-name="Metro TV" tvg-logo="https://i.imgur.com/BqS8BHi.png" tvg-country="HN" tvg-language="spa" nexus-score="100" group-title="Backup",Metro TV (1080p)
+https://s.emisoras.tv:8081/metrotv/index.m3u8
+#EXTINF:-1 tvg-id="MeTV.us" tvg-name="MeTV" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/5/55/MeTV_Logo.svg/960px-MeTV_Logo.svg.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="Backup",MeTV (720p)
+http://4.30.180.36:8420/metv/index.m3u8?token=test
+#EXTINF:-1 tvg-id="Mh1Prime.in" tvg-name="Mh 1 Prime" tvg-country="IN" tvg-language="hin" nexus-score="100" group-title="Backup",Mh 1 Prime (360p)
+https://mumt04.tangotv.in/m18aqlK4MHONE/index.m3u8
+#EXTINF:-1 tvg-id="Minimax.hu" tvg-name="Minimax" tvg-logo="https://i.imgur.com/WWOlm1x.png" tvg-country="HU" tvg-language="hun" nexus-score="100" group-title="Backup",Minimax
+http://88.212.15.19/live/minimax_hun/index.m3u8
+#EXTINF:-1 tvg-id="Minimax.pk" tvg-name="Minimax" tvg-logo="https://i.imgur.com/TJvf8vd.png" tvg-country="PK" tvg-language="urd" nexus-score="100" group-title="Backup",Minimax (360p)
+https://vodzong.mjunoon.tv:8087/streamtest/disckids-157-1/playlist.m3u8
+#EXTINF:-1 tvg-id="Minimax.ro" tvg-name="Minimax" tvg-logo="https://upload.wikimedia.org/wikipedia/en/b/ba/Minimax_2021.svg" tvg-country="RO" tvg-language="ron;hun;eng" nexus-score="100" group-title="Backup",Minimax
+https://atlantida1.aquax1.cfd/minimaxy/usergendxny9zrnd.m3u8
+#EXTINF:-1 tvg-id="MKSix.in" tvg-name="MK Six" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/MK_Six.png" tvg-country="IN" tvg-language="tam" nexus-score="100" group-title="Backup",MK Six (576p)
+https://cdn.pishow.tv/ott/live/1253/master.m3u8
+#EXTINF:-1 tvg-id="MNTV.mz" tvg-name="MNTV" tvg-logo="https://mntv.co.mz/wp-content/uploads/2025/11/Prancheta-4_1-1.png" tvg-country="MZ" tvg-language="por" nexus-score="70" group-title="Backup",MNTV
+https://www.khuwemultimedia.com/hls/mntv/mntv.m3u8
+#EXTINF:-1 tvg-id="MNX.in" tvg-name="MNX" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/TIMESPLAY/LIVECHANNEL/6904ba3a39f3b175376a61da/images/LOGO_HD/LOGO_HD_4wImHDNGh_MNX1_1.png" tvg-country="IN" tvg-language="eng" nexus-score="100" group-title="Backup",MNX (576p)
+http://59.103.38.46:8000/play/a052/index.m3u8
+#EXTINF:-1 tvg-id="MoonbugKids.uk" tvg-name="Moonbug Kids" tvg-logo="https://i.imgur.com/vZHtxQb.png" tvg-country="UK" tvg-language="eng" nexus-score="100" group-title="Backup",Moonbug Kids (1080p)
+https://dq2a9ghraf7sw.cloudfront.net/Moonbug.m3u8
+#EXTINF:-1 tvg-id="MovieSphere.us" tvg-name="MovieSphere" tvg-logo="https://i.imgur.com/0sfk3yp.png" tvg-country="US" tvg-language="eng;por;deu;spa;fra" nexus-score="100" group-title="Backup",MovieSphere (1080p)
+https://aegis-cloudfront-1.tubi.video/8b127a5b-3054-4f39-93a2-1c4aab9ef5ff/playlist.m3u8
+#EXTINF:-1 tvg-id="MTV.de" tvg-name="MTV" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/MTV_2021_%28brand_version%29.svg/960px-MTV_2021_%28brand_version%29.svg.png" tvg-country="DE" tvg-language="eng" nexus-score="100" group-title="Backup",MTV
+https://ma.anixa.tv/clips/stream/mtv/playlist.php
+#EXTINF:-1 tvg-id="MTV.fr" tvg-name="MTV" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/MTV_2021_%28brand_version%29.svg/960px-MTV_2021_%28brand_version%29.svg.png" tvg-country="FR" tvg-language="fra" nexus-score="77" group-title="Backup",MTV (720p)
+http://99.27.51.147:8080/MTV/index.m3u8
+#EXTINF:-1 tvg-id="MTV.us" tvg-name="MTV" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/MTV_2021_%28brand_version%29.svg/960px-MTV_2021_%28brand_version%29.svg.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="Backup",MTV (1080p)
+http://23.237.104.106:8080/USA_MTV/index.m3u8
+#EXTINF:-1 tvg-id="MusicIndia.in" tvg-name="Music India" tvg-logo="https://dtil.tmsimg.com/assets/s143563_ld_h15_aa.png?lock=720x540" tvg-country="IN" tvg-language="hin" nexus-score="100" group-title="Backup",Music India (576p)
+https://cdn.pishow.tv/ott/live/226/master.m3u8
+#EXTINF:-1 tvg-id="Mythbusters.us" tvg-name="Mythbusters" tvg-logo="https://i.imgur.com/wzzjvcH.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="Backup",Mythbusters (1080p)
+https://amg00627-banijay-amg00627c14-samsung-nz-2342.playouts.now.amagi.tv/playlist/amg00627-banijayfast-mythbusters-samsungnz/playlist.m3u8
+#EXTINF:-1 tvg-id="MyTimeMovieNetwork.br" tvg-name="MyTime Movie Network" tvg-logo="https://i.imgur.com/aiGQtzI.png" tvg-country="BR" tvg-language="por" nexus-score="100" group-title="Backup",MyTime Movie Network (720p)
+https://appletree-mytime-samsungbrazil.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="MyTimeMovieNetwork.es" tvg-name="MyTime Movie Network" tvg-logo="https://i.imgur.com/pw4NZK1.png" tvg-country="ES" tvg-language="spa" nexus-score="100" group-title="Backup",MyTime Movie Network (1080p)
+https://appletree-mytimespain-rakuten.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="MyTimeMovieNetwork.mx" tvg-name="MyTime Movie Network" tvg-logo="https://i.imgur.com/pw4NZK1.png" tvg-country="MX" tvg-language="spa" nexus-score="100" group-title="Backup",MyTime Movie Network (720p)
+https://appletree-mytime-samsungmexico.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="MyTimeMovieNetwork.uk" tvg-name="MyTime Movie Network" tvg-logo="https://i.imgur.com/pw4NZK1.png" tvg-country="UK" tvg-language="eng" nexus-score="100" group-title="Backup",MyTime Movie Network (1080p)
+https://appletree-mytimeuk-rakuten.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="NationalGeographic.cz" tvg-name="National Geographic" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" tvg-country="CZ" tvg-language="ces" nexus-score="100" group-title="Backup",National Geographic
+http://88.212.15.19/live/test_ngc/playlist.m3u8
+#EXTINF:-1 tvg-id="NationalGeographic.hr" tvg-name="National Geographic" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" tvg-country="HR" tvg-language="hrv" nexus-score="100" group-title="Backup",National Geographic (1080p)
+http://176.61.157.250/NationalGeographic/index.m3u8
+#EXTINF:-1 tvg-id="NationalGeographic.hu" tvg-name="National Geographic" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" tvg-country="HU" tvg-language="hun" nexus-score="100" group-title="Backup",National Geographic
+http://88.212.15.19/live/ngc_hun/index.m3u8
+#EXTINF:-1 tvg-id="NationalGeographic.mx" tvg-name="National Geographic" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" tvg-country="MX" tvg-language="spa" nexus-score="100" group-title="Backup",National Geographic (1080p)
+http://138.121.15.230:9002/NAT-GEO/index.m3u8
+#EXTINF:-1 tvg-id="NationalGeographic.nl" tvg-name="National Geographic" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" tvg-country="NL" tvg-language="nld" nexus-score="100" group-title="Backup",National Geographic (1080p)
+http://46.32.176.50/NationalGeographicHD/index.m3u8
+#EXTINF:-1 tvg-id="NationalGeographic.ro" tvg-name="National Geographic" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" tvg-country="RO" tvg-language="ron;eng" nexus-score="100" group-title="Backup",National Geographic
+https://onyx1.mofta1.cfd/ngeo/usergenrnd84oeigt.m3u8
+#EXTINF:-1 tvg-id="NationalGeographic.ru" tvg-name="National Geographic" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" tvg-country="RU" tvg-language="rus" nexus-score="100" group-title="Backup",National Geographic (1080p)
+http://stream.mcquack.net/116/index.m3u8
+#EXTINF:-1 tvg-id="NationalGeographic.us" tvg-name="National Geographic" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="Backup",National Geographic (720p)
+http://198.58.104.90:8989/natgeo/index.m3u8
+#EXTINF:-1 tvg-id="NBATV.us" tvg-name="NBA TV" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/NBA_TV.svg/960px-NBA_TV.svg.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="Backup",NBA TV (1080p)
+http://23.237.104.106:8080/USA_NBA/index.m3u8
+#EXTINF:-1 tvg-id="NHBollyFlix.in" tvg-name="NH BollyFlix" tvg-logo="https://i.ibb.co/yF9MPTDK/blyflx.png" tvg-country="IN" tvg-language="hin" nexus-score="100" group-title="Backup",NH BollyFlix (1080p)
+https://jmp2.uk/stvp-IN46000140Q
+#EXTINF:-1 tvg-id="NHBollyRaga.in" tvg-name="NH BollyRaga" tvg-logo="https://i.ibb.co/BKB9mv1K/NH-Bolly-Raga.png" tvg-country="IN" tvg-language="hin" nexus-score="96" group-title="Backup",NH BollyRaga (1080p)
+https://jmp2.uk/stvp-IN460001373
+#EXTINF:-1 tvg-id="NickJr.cz" tvg-name="Nick Jr." tvg-logo="https://i.imgur.com/KT4tdQs.png" tvg-country="CZ" tvg-language="eng" nexus-score="100" group-title="Backup",Nick Jr.
+http://88.212.15.19/live/test_nick_jr/playlist.m3u8
+#EXTINF:-1 tvg-id="NickJr.hr" tvg-name="Nick Jr." tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nick_Jr._logo_2023_(outline).svg/960px-Nick_Jr._logo_2023_(outline).svg.png" tvg-country="HR" tvg-language="hrv" nexus-score="100" group-title="Backup",Nick Jr. (576p)
+http://176.61.157.250/NickJr/index.m3u8
+#EXTINF:-1 tvg-id="NickJr.hu" tvg-name="Nick Jr." tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nick_Jr._logo_2023_(outline).svg/960px-Nick_Jr._logo_2023_(outline).svg.png" tvg-country="HU" tvg-language="hun" nexus-score="100" group-title="Backup",Nick Jr.
+http://88.212.15.19/live/nick_junior_hun/index.m3u8
+#EXTINF:-1 tvg-id="NickJr.il" tvg-name="Nick Jr." tvg-logo="https://i.imgur.com/KT4tdQs.png" tvg-country="IL" tvg-language="eng" nexus-score="100" group-title="Backup",Nick Jr. (360p)
+http://str2.iptvhd.ru:8080/nickjr/index.m3u8
+#EXTINF:-1 tvg-id="NickJr.it" tvg-name="Nick Jr." tvg-logo="https://i.imgur.com/6p3eFgf.png" tvg-country="IT" tvg-language="ita;eng" nexus-score="100" group-title="Backup",Nick Jr. (720p)
+http://102.129.186.182:81/nick/index.m3u8
+#EXTINF:-1 tvg-id="NickJr.ru" tvg-name="Nick Jr." tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nick_Jr._logo_2023_(outline).svg/960px-Nick_Jr._logo_2023_(outline).svg.png" tvg-country="RU" tvg-language="rus" nexus-score="100" group-title="Backup",Nick Jr. (576p)
+http://stream.mcquack.net/220/index.m3u8
+#EXTINF:-1 tvg-id="NickJr.us" tvg-name="Nick Jr." tvg-logo="https://i.imgur.com/KT4tdQs.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="Backup",Nick Jr. (1080p)
+http://107.167.16.138/nickjr/index.m3u8?token=test
+#EXTINF:-1 tvg-id="Now70s.uk" tvg-name="Now 70s" tvg-logo="https://i.imgur.com/qiCCX5X.png" tvg-country="UK" tvg-language="eng" nexus-score="100" group-title="Backup",Now 70s (720p)
+https://amg01076-amg01076c1-samsung-gb-6682.playouts.now.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="Now80s.uk" tvg-name="Now 80s" tvg-logo="https://i.imgur.com/YyPnMeB.png" tvg-country="UK" tvg-language="eng" nexus-score="100" group-title="Backup",Now 80s (1080p)
+https://lightningnow80-samsungau.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="NRBTV.us" tvg-name="NRBTV" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/NRB_blue-768x530-1.png/960px-NRB_blue-768x530-1.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="Backup",NRBTV (720p)
+https://uni6rtmp.tulix.tv/nrbnetwork/myStream.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="NTV.br" tvg-name="NTV" tvg-logo="https://i.imgur.com/n79nkVC.png" tvg-country="BR" tvg-language="por" nexus-score="100" group-title="Backup",NTV (720p)
+https://cdn.livespanel.com/nossatv/nossatv/playlist.m3u8
+#EXTINF:-1 tvg-id="NTV.ca" tvg-name="NTV" tvg-logo="https://i.imgur.com/KQtQg5y.png" tvg-country="CA" tvg-language="eng" nexus-score="100" group-title="Backup",NTV (480p)
+https://2-fss-1.streamhoster.com/pl_122/201748-1431018-1/playlist.m3u8
+#EXTINF:-1 tvg-id="NTV.ci" tvg-name="NTV" tvg-logo="https://i.imgur.com/qqLXdHz.png" tvg-country="CI" tvg-language="fra" nexus-score="50" group-title="Backup",NTV (1080p)
+https://strhlslb01.streamakaci.tv/str_ntv_ntv/str_ntv_ntv_multi/playlist.m3u8
+#EXTINF:-1 tvg-id="ntv.de" tvg-name="n-tv" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/N-tv_logo-september2017.svg/960px-N-tv_logo-september2017.svg.png" tvg-country="DE" tvg-language="deu" nexus-score="100" group-title="Backup",n-tv
+https://dash4.antik.sk/live/test_ntv_tizen/playlist.m3u8
+#EXTINF:-1 tvg-id="NTV.mn" tvg-name="NTV" tvg-logo="https://www.mongolsat.mn/assets/img/channel/10.png" tvg-country="MN" tvg-language="mon" nexus-score="100" group-title="Backup",NTV (1080p)
+https://cdn4.skygo.mn/live/disk1/NTVHD/DASH-FTA/NTVHD.mpd
+#EXTINF:-1 tvg-id="NTV.mv" tvg-name="NTV" tvg-logo="https://i.imgur.com/jnXpcwV.png" tvg-country="MV" tvg-language="div" nexus-score="100" group-title="Backup",NTV
+https://sunplay-cdn.bitratelabs.com/live/local-channel/ntv-e3d4300b49c8c901e9339174215d7580/index.m3u8
+#EXTINF:-1 tvg-id="NTV.ru" tvg-name="NTV" tvg-logo="https://i.imgur.com/9r1BKzK.png" tvg-country="RU" tvg-language="rus" nexus-score="100" group-title="Backup",NTV (1080p)
+http://flussonic.linkintel.ru/ntv/index.m3u8
+#EXTINF:-1 tvg-id="NTV.tr" tvg-name="NTV" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/NTV_%28Turkey%29_logo.svg/960px-NTV_%28Turkey%29_logo.svg.png" tvg-country="TR" tvg-language="tur" nexus-score="100" group-title="Backup",NTV (1080p)
+https://dogus.daioncdn.net/ntv/ntv.m3u8?app=ntv_web
+#EXTINF:-1 tvg-id="NTVPlus.ca" tvg-name="NTV+" tvg-logo="https://i.imgur.com/YEUhPBv.png" tvg-country="CA" tvg-language="eng" nexus-score="100" group-title="Backup",NTV+
+https://2-fss-1.streamhoster.com/pl_122/201748-1431018-1/chunklist.m3u8
+#EXTINF:-1 tvg-id="OckoExpres.cz" tvg-name="Ocko Expres" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/%C3%93%C4%8Dko_Expres_logo.png/960px-%C3%93%C4%8Dko_Expres_logo.png" tvg-country="CZ" tvg-language="ces" nexus-score="100" group-title="Backup",Ocko Expres (576p)
+https://ocko-live.ssl.cdn.cra.cz/channels/ocko_expres/playlist.m3u8
+#EXTINF:-1 tvg-id="OutdoorChannel.us" tvg-name="Outdoor Channel" tvg-logo="https://i.imgur.com/Kh4MWaY.png" tvg-country="US" tvg-language="eng;vie" nexus-score="100" group-title="Backup",Outdoor Channel (1080p)
+http://23.237.104.106:8080/USA_OUTDOOR/index.m3u8
+#EXTINF:-1 tvg-id="OuterSphere.us" tvg-name="OuterSphere" tvg-logo="https://provider-static.plex.tv/epg/cms/production/f162df8b-6532-43fe-9202-83a658090651/OuterSphere_1500x1000_Logo_Dark_-_Chris_Connors__1_.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="Backup",OuterSphere (1080p)
+https://d3o593mz1glx8d.cloudfront.net/OuterSphere_US.m3u8
+#EXTINF:-1 tvg-id="Pitaara.in" tvg-name="Pitaara" tvg-logo="https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Pitaara-Logo_2000_X_1125_Transpharent.png" tvg-country="IN" tvg-language="pan" nexus-score="100" group-title="Backup",Pitaara (720p)
+https://streams.tangotv.in/PITAARA/ORIGIN/index.m3u8
+#EXTINF:-1 tvg-id="Pop.uk" tvg-name="Pop" tvg-logo="https://i.imgur.com/fGUlCY3.png" tvg-country="UK" tvg-language="eng" nexus-score="100" group-title="Backup",Pop (1080p)
+https://narrative-popkids-rakuten.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="PowerTurkTV.tr" tvg-name="PowerTurk TV" tvg-logo="https://i.imgur.com/9OPoXQG.png" tvg-country="TR" tvg-language="tur" nexus-score="100" group-title="Backup",PowerTurk TV (1080p)
+https://live.artidijitalmedya.com/artidijital_powerturktv/powerturktv/playlist.m3u8
+#EXTINF:-1 tvg-id="PublicMusic.in" tvg-name="Public Music" tvg-logo="https://dtil.tmsimg.com/assets/s143687_ld_h15_aa.png?lock=720x540" tvg-country="IN" tvg-language="kan" nexus-score="100" group-title="Backup",Public Music (576p)
+https://cdn.pishow.tv/ott/live/441/master.m3u8
