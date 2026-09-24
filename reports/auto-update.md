@@ -1,6 +1,6 @@
 # IPTV Auto Update
 
-Generated: **2026-09-24T15:26:05+00:00**
+Generated: **2026-09-24T15:53:44+00:00**
 
 ## Summary
 
@@ -9,12 +9,12 @@ Generated: **2026-09-24T15:26:05+00:00**
 - Added South Indian music channels: **1**
 - Added adult/erotic channels: **0**
 - Added general New Channels: **30**
-- Total eligible candidate pool: **639**
-- Candidates not selected due to category limits: **600**
-- Rejected source candidates: **9194**
-- Unreachable candidates: **137**
-- Duplicate candidates: **556**
-- Already-present candidates: **327**
+- Total eligible candidate pool: **610**
+- Candidates not selected due to category limits: **571**
+- Rejected source candidates: **9193**
+- Unreachable candidates: **134**
+- Duplicate candidates: **588**
+- Already-present candidates: **328**
 - Source errors: **0**
 
 ## Selection method
@@ -73,155 +73,155 @@ Generated: **2026-09-24T15:26:05+00:00**
 - TVG ID: `RajMusixTelugu.in@SD`
 - Stream: `https://cdn.pishow.tv/ott/live/1213/master.m3u8`
 
-### 10. Little Guyana TV (720p)
+### 10. M»Net Info
 - Group: `New Channels`
-- TVG ID: `LittleGuyanaTV.us`
-- Stream: `https://video1.getstreamhosting.com:1936/8122/8122/playlist.m3u8`
+- TVG ID: `info.mnet.mk`
+- Stream: `http://ares.mnet.mk/hls/mnet-info.m3u8`
 
-### 11. Efarina TV (720p)
+### 11. Zee TV Asia Pacific (720p)
 - Group: `New Channels`
-- TVG ID: `EfarinaTV.id`
-- Stream: `https://live.efarinatv.com/hls/bgtaufikganteng.m3u8`
+- TVG ID: `ZeeTVAsiaPacific.sg`
+- Stream: `https://raw.githubusercontent.com/amazeyourself/adaptive-streams/refs/heads/main/streams/sg/YuppTV/ZeeTVHDAPAC.m3u8`
 
-### 12. Kanal D2 (360p)
+### 12. TV Universal (480p)
 - Group: `New Channels`
-- TVG ID: `KanalD2.ro`
-- Stream: `https://stream2.kanald.ro/iphone/knd2-live.m3u8`
+- TVG ID: `TVUniversal.br`
+- Stream: `https://644398c.ha.azioncdn.net/primary/tvuniversal_480p.sdp/playlist.m3u8`
 
-### 13. ESPN 4 (1080p)
+### 13. I Am Channel (576p)
 - Group: `New Channels`
-- TVG ID: `ESPN4.br`
-- Stream: `http://181.78.197.59:8000/play/a07n/index.m3u8`
+- TVG ID: `IAmChannel.id`
+- Stream: `https://61146e7ab7a66.streamlock.net:8089/tes/1/chunklist.m3u8`
 
-### 14. Lamore Rock Show WebTV (720p)
+### 14. Suram TV (720p)
 - Group: `New Channels`
-- TVG ID: `LamoreRockShowWebTV.br`
-- Stream: `https://a.cdni.live/rodrigo2364/rodrigo2364/playlist.m3u8`
+- TVG ID: `SuramTV.co`
+- Stream: `https://us.streaminghd.cl/suramtv/index.m3u8`
 
-### 15. Senillosa TV (360p)
+### 15. Cajamarca TV (1080p)
 - Group: `New Channels`
-- TVG ID: `SenillosaTV.ar`
-- Stream: `https://player.videohost.click/senillosatv/senillosatv/playlist.m3u8`
+- TVG ID: `CajamarcaTV.pe`
+- Stream: `https://live-evg8.tv360.bitel.com.pe/bitel/cajamarcatvSRT/playlist.m3u8`
 
-### 16. Paighan TV
+### 16. Kawanua TV (720p)
 - Group: `New Channels`
-- TVG ID: `PaighanTV.pk`
-- Stream: `https://cdn4.mjunoon.tv:8087/streamtest/107M/chunks.m3u8`
+- TVG ID: `KawanuaTV.id`
+- Stream: `http://122.248.43.242:1935/KAWANUATV/_definst_/myStream/playlist.m3u8`
 
-### 17. Pooya TV Plus (576p)
+### 17. Sony Marathi (1080p)
 - Group: `New Channels`
-- TVG ID: `PooyaTVPlus.ir`
-- Stream: `https://ncdn.telewebion.ir/javaneh/live/playlist.m3u8`
+- TVG ID: `SonyMarathi.in`
+- Stream: `https://cloudplay-sonyliv.pages.dev/marathi.m3u8`
 
-### 18. SCTV18 (720p)
+### 18. Columna TV (720p)
 - Group: `New Channels`
-- TVG ID: `SCTV18.vn`
-- Stream: `https://vtvgolive-sctvdrm.vtvdigital.vn/manifest/sctv18/master.m3u8`
+- TVG ID: `ColumnaTV.ro`
+- Stream: `https://cdn.streamnet.pro/columnatv/live/playlist.m3u8`
 
-### 19. Canal Calima TV (720p)
+### 19. Decima TV (720p)
 - Group: `New Channels`
-- TVG ID: `CanalCalimaTV.co`
-- Stream: `https://movil.ejeserver.com/live/calimatv.m3u8`
+- TVG ID: `DecimaTV.cl`
+- Stream: `https://unlimited2-cl-isp.dps.live/decimatv/decimatv.smil/playlist.m3u8`
 
-### 20. MTV Reality (720p)
+### 20. Manoranjan TV (576p)
 - Group: `New Channels`
-- TVG ID: `MTVReality.se`
-- Stream: `https://jmp2.uk/plu-685139b0f7d8b74b62f41c96.m3u8`
+- TVG ID: `ManoranjanTV.in`
+- Stream: `https://cdn.pishow.tv/ott/live/1013/master.m3u8`
 
-### 21. AMC en Espanol (720p)
+### 21. TV Universal Ecuador (720p)
 - Group: `New Channels`
-- TVG ID: `AMCenEspanol.us`
-- Stream: `https://pb-fmbyorn1d0n1n.akamaized.net/v1/amc_amcespanol_3/samsungheadend_us/latest/main/hls/playlist.m3u8`
+- TVG ID: `TVUniversalEcuador.ec`
+- Stream: `https://cdn.mycloudstream.io/hls/live/broadcast/uwcedjt2/index.m3u8`
 
-### 22. Jeevan TV (576p)
+### 22. AXN (1080p)
 - Group: `New Channels`
-- TVG ID: `JeevanTV.in@SD`
-- Stream: `https://cdn.pishow.tv/ott/live/1467/master.m3u8`
+- TVG ID: `AXN.br`
+- Stream: `http://170.83.49.66:8083/AXNHD/index.m3u8`
 
-### 23. XITE Siempre Latino (1080p)
+### 23. KBS World (720p)
 - Group: `New Channels`
-- TVG ID: `XITESiempreLatino.us`
-- Stream: `https://d1xc25jm9e0l4b.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-xplkt8i7m24dc/XITE_Siempre_Latino.m3u8`
+- TVG ID: `KBSWorld.kr`
+- Stream: `https://stream8.cinerama.uz/1448/playlist.m3u8`
 
-### 24. UVA TV (720p)
+### 24. TV BRICS Chinese (1080p)
 - Group: `New Channels`
-- TVG ID: `UVATV.do`
-- Stream: `https://www.uvatvhd.com/hls.php?file=live.m3u8`
+- TVG ID: `TVBRICSChinese.cn@SD`
+- Stream: `https://chibrics.mediacdn.ru/cdn/brics/chinese/playlist.m3u8`
 
-### 25. Yo! MTV (1080p)
+### 25. Luna TV Canal 53 (720p)
 - Group: `New Channels`
-- TVG ID: `YoMTV.us`
-- Stream: `https://jmp2.uk/plu-5d14fc31252d35decbc4080b.m3u8`
+- TVG ID: `LunaTVCanal53.do`
+- Stream: `https://tv.wracanal10.com:3671/live/lunatvcanal53live.m3u8`
 
-### 26. Canica TV (240p)
+### 26. Universitaria TV (720p)
 - Group: `New Channels`
-- TVG ID: `CanicaTV.co`
-- Stream: `https://stmv4.voxtvhd.com.br/canicatv/canicatv/playlist.m3u8`
+- TVG ID: `UniversitariaTV.pe`
+- Stream: `https://live-evg11.tv360.bitel.com.pe/bitel/uraniotv/playlist.m3u8`
 
-### 27. Nusantara TV (1080p)
+### 27. Masala TV
 - Group: `New Channels`
-- TVG ID: `NusantaraTV.id`
-- Stream: `https://nusantaratv.siar.us/nusantaratv/live/playlist.m3u8`
+- TVG ID: `MasalaTV.pk`
+- Stream: `https://cdn4.mjunoon.tv:8087/streamtest/81M/chunks.m3u8`
 
-### 28. Cibaena TV (720p)
+### 28. Watan TV (1080p)
 - Group: `New Channels`
-- TVG ID: `CibaenaTV.do`
-- Stream: `https://streamunoapp.com:3958/live/cibaenatvlive.m3u8`
+- TVG ID: `WatanTV.eg`
+- Stream: `https://rp.tactivemedia.com/watantv_source/live/playlist.m3u8`
 
-### 29. Mega TV (1080p)
+### 29. Boca Chica TV (720p)
 - Group: `New Channels`
-- TVG ID: `MegaTV.us`
-- Stream: `https://mdstrm.com/live-stream-playlist/67ed74e8af482ba71d47fd7b.m3u8`
+- TVG ID: `BocaChicaTV.do`
+- Stream: `https://fox.hostlagarto.com:8081/bocachicatv/tracks-v1a1/mono.m3u8`
 
-### 30. Ugra-TV (1080p)
+### 30. Payam Javan TV (720p)
 - Group: `New Channels`
-- TVG ID: `UgraTV.ru`
-- Stream: `https://live-ugratv.cdnvideo.ru/ugratv/ugratv/playlist.m3u8`
+- TVG ID: `PayamJavanTV.us`
+- Stream: `https://uni01rtmp.tulix.tv/kensecure/pjtv.stream/playlist.m3u8`
 
-### 31. UAA TV (576p)
+### 31. Taaza TV (576p)
 - Group: `New Channels`
-- TVG ID: `UAATV.mx`
-- Stream: `https://5fe2654d6127d.streamlock.net:443/uaa2/videouaa2/playlist.m3u8`
+- TVG ID: `TaazaTV.in`
+- Stream: `https://tvsen3.aynaott.com/yRMLky2j/index.m3u8`
 
-### 32. ETV Beats (1080p)
+### 32. Nos Isla TV (1080p)
 - Group: `New Channels`
-- TVG ID: `ETVBeats.in@HD`
-- Stream: `https://jmp2.uk/stvp-IN4900002RV`
+- TVG ID: `NosIslaTV.aw`
+- Stream: `https://cdn01.setar.aw/Canal23/canal23/playlist.m3u8`
 
-### 33. Polsat Viasat History (1080p)
+### 33. Nghe An TV (1080p)
 - Group: `New Channels`
-- TVG ID: `PolsatViasatHistory.pl`
-- Stream: `http://185.227.34.179:8080/polsat-viasat-history-hd/index.m3u8`
+- TVG ID: `NgheAnTV.vn`
+- Stream: `https://live.mediatech.vn/live/2859591eef2e92249b682db021f4247c364/chunklist.m3u8`
 
-### 34. Junior Technologia TV (1080p)
+### 34. Viva TV Yurimaguas (720p)
 - Group: `New Channels`
-- TVG ID: `JuniorTechnologiaTV.do`
-- Stream: `https://streamunoapp.com:3616/live/juniorrodrigueztvlive.m3u8`
+- TVG ID: `VivaTVYurimaguas.pe`
+- Stream: `https://live.obslivestream.com/vivatv/index.m3u8`
 
-### 35. JARABACOA TV (720p)
+### 35. CromTV (1080p)
 - Group: `New Channels`
-- TVG ID: `JARABACOATV.do`
-- Stream: `https://streaming.jarabacoatv.com/Jarabacoa_tv/playlist.m3u8`
+- TVG ID: `CromTV.do`
+- Stream: `https://fox.hostlagarto.com:8081/cromtv/tracks-v1a1/mono.m3u8`
 
-### 36. Odisha TV (720p)
+### 36. Balticum TV (576p)
 - Group: `New Channels`
-- TVG ID: `OdishaTV.in`
-- Stream: `https://streams.tangotv.in/OTVLIVE24X7/ORIGIN/index.m3u8`
+- TVG ID: `BalticumTV.lt`
+- Stream: `http://stream.mcquack.net/376/index.m3u8`
 
-### 37. XITE Rock x Metal (1080p)
+### 37. ADA TV (1080p)
 - Group: `New Channels`
-- TVG ID: `XITERockxMetal.nl`
-- Stream: `https://amg01243-xite-amg01243c21-tcl-us-6483.playouts.now.amagi.tv/playlist.m3u8`
+- TVG ID: `ADATV.cl`
+- Stream: `https://live-evg10.tv360.bitel.com.pe/bitel/alasdeaguilaSRT/playlist.m3u8`
 
-### 38. Payam-e-Afghan TV (1080p)
+### 38. Panamericana TV (1080p)
 - Group: `New Channels`
-- TVG ID: `PayameAfghanTV.us`
-- Stream: `https://g5nl6xx5lpq6-hls-live.5centscdn.com/live1234/2621b29e501b445fabf227b086123b70.sdp/mono.m3u8`
+- TVG ID: `PanamericanaTV.pe`
+- Stream: `http://190.93.224.42/PANAMERICANA/index.m3u8`
 
-### 39. MTV Drag
+### 39. Adrenalina Pura TV (720p)
 - Group: `New Channels`
-- TVG ID: `MTVDrag.us`
-- Stream: `https://jmp2.uk/plu-645111f1d8436e00081bb2bd.m3u8`
+- TVG ID: `AdrenalinaPuraTV.us`
+- Stream: `https://jmp2.uk/plu-61b793ccf571b80007b7a610.m3u8`
 
 ## Removed entries
 
