@@ -10,6 +10,7 @@ on:
       - main
     paths:
       - 'scripts/update_playlist.py'
+      - 'scripts/normalize_playlist.py'
       - 'scripts/migrate_external_logos.py'
       - 'scripts/fix_selected_logos.py'
       - '.github/workflows/update-playlist.yml'
@@ -45,10 +46,13 @@ jobs:
       - name: Stage 4 — Select channels and generate report
         run: python scripts/update_playlist.py
 
-      - name: Stage 5 — Migrate external channel logos
+      - name: Stage 5 — Normalize playlist structure and remove rejected imports
+        run: python scripts/normalize_playlist.py
+
+      - name: Stage 6 — Migrate external channel logos
         run: python scripts/migrate_external_logos.py
 
-      - name: Stage 6 — Repair selected channel logos
+      - name: Stage 7 — Repair selected channel logos
         run: |
           if [ -f scripts/fix_selected_logos.py ]; then
             python scripts/fix_selected_logos.py
@@ -56,16 +60,16 @@ jobs:
             echo 'No selected-logo repair script found; skipping.'
           fi
 
-      - name: Stage 7 — Commit playlist, logos, and reports
+      - name: Stage 8 — Commit playlist, logos, and reports
         shell: bash
         run: |
           set -euo pipefail
-          if git diff --quiet -- "IPTV Playlist.m3u" "reports/auto-update.md" "reports/logo-migration.md" "logos"; then
+          if git diff --quiet -- "IPTV Playlist.m3u" "reports/auto-update.md" "reports/playlist-normalization.md" "reports/logo-migration.md" "logos"; then
             echo "No playlist, logo, or report changes."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add "IPTV Playlist.m3u" "reports/auto-update.md" "reports/logo-migration.md" "logos"
-          git commit -m "Update playlist, logos, and reports"
+          git add "IPTV Playlist.m3u" "reports/auto-update.md" "reports/playlist-normalization.md" "reports/logo-migration.md" "logos"
+          git commit -m "Normalize playlist structure and update logos"
           git push origin HEAD:main
