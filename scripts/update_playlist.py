@@ -30,6 +30,13 @@ MAX_SOUTH_MOVIE = 15
 MAX_SOUTH_MUSIC = 15
 MAX_ADULT = 10
 
+# These were false positives for the requested erotic-content category.
+ADULT_EXCLUDED_IDS = {
+    "AdultSwimLatinAmerica.us",
+    "StingrayPopAdult.ca",
+    "PlutoTVAdultAnimation.de",
+}
+
 POPULAR = {
     "amc", "animalplanet", "arirang", "axn", "bbc", "beinsports", "cartoonnetwork",
     "cinemax", "colors", "discovery", "disney", "dreamworks", "espn", "eurosport",
@@ -37,7 +44,7 @@ POPULAR = {
     "mtv", "natgeo", "nationalgeographic", "nickelodeon", "paramount", "phoenix",
     "sony", "starplus", "starmovies", "starsports", "sbs", "tlc", "trace", "tvb",
     "universal", "vh1", "warner", "wwe", "xite", "zee", "cctv", "mnc", "sctv",
-    "indosiar", "antv", "powerturk", "kanald", "showtv", "atv"
+    "indosiar", "antv", "powerturk", "kanald", "showtv", "atv",
 }
 REGIONS = {
     "cn": {"china", "chinese", "cctv", "hunan", "jiangsu", "zhejiang", "shanghai", "phoenix"},
@@ -68,17 +75,18 @@ def norm(value):
 
 def entries(text):
     lines = text.replace("\r", "").splitlines()
-    out, i = [], 0
+    result = []
+    i = 0
     while i < len(lines):
         if lines[i].startswith("#EXTINF"):
             info, j = lines[i].strip(), i + 1
             while j < len(lines) and (not lines[j].strip() or lines[j].startswith("#")):
                 j += 1
             if j < len(lines) and lines[j].strip().startswith(("http://", "https://")):
-                out.append((info, lines[j].strip()))
+                result.append((info, lines[j].strip()))
             i = j
         i += 1
-    return out
+    return result
 
 
 def text_of(info):
@@ -96,7 +104,10 @@ def blocked(info):
 
 
 def is_adult(info):
-    group = attrs(info).get("group-title", "").lower()
+    cid = attrs(info).get("tvg-id", "").strip()
+    if cid in ADULT_EXCLUDED_IDS:
+        return False
+    group = attrs(info).get("group-title", "").strip().lower()
     return group in {"xxx", "adult", "erotic"} or has_any(info, ADULT_TERMS)
 
 
@@ -120,7 +131,7 @@ def credible(info):
     a = attrs(info)
     name, key = name_of(info), norm(name_of(info))
     cid, logo = a.get("tvg-id", "").strip(), a.get("tvg-logo", "").strip()
-    if not cid or not logo or blocked(info):
+    if not cid or not logo or blocked(info) or cid in ADULT_EXCLUDED_IDS:
         return False
     if key in {"channel1", "channel16", "gtv", "metv", "mntv", "ntv", "ntvplus", "tvplus", "television", "test", "demo"}:
         return False
@@ -261,7 +272,8 @@ report = [
     "- Candidates are ordered by stable SHA-256 hash rather than alphabetical/source order.",
     "- South/Asian movie channels go to `International Movies`.",
     "- South Indian music channels go to `International Music`.",
-    "- Adult/erotic channels go to `International Adult`.", "",
+    "- Adult/erotic channels go to `International Adult`.",
+    "- Explicitly excluded false-positive adult IDs are never imported.", "",
     "## Added Channels", "",
 ]
 if new:
@@ -276,7 +288,7 @@ if removed:
         report += [f"### {index}. {item['name']}", f"- Group: `{item['group'] or 'N/A'}`", f"- TVG ID: `{item['tvg_id'] or 'N/A'}`", f"- Reason: {item['reason']}", f"- Stream: `{item['url']}`", ""]
 else:
     report.append("- None")
-report += ["## Policy", "", "- Existing International Movies, International Music, and Backup entries are preserved.", "- New South/Asian movie/music and adult/erotic entries are isolated into their designated groups.", "- All imported entries require TVG ID, logo, credibility checks, and HTTP reachability.", "- Automatic Backup imports remain disabled.", ""]
+report += ["## Policy", "", "- Existing International Movies, International Music, and Backup entries are preserved.", "- New South/Asian movie/music and adult/erotic entries are isolated into their designated groups.", "- All imported entries require TVG ID, logo, credibility checks, and HTTP reachability.", "- Explicitly excluded adult false positives are not imported.", "- Automatic Backup imports remain disabled.", ""]
 REPORT.parent.mkdir(parents=True, exist_ok=True)
 REPORT.write_text("\n".join(report), encoding="utf-8", newline="\n")
 print(f"Added {len(new)} channels: {stats['movie_added']} movies, {stats['music_added']} music, {stats['adult_added']} adult, {stats['general_added']} general.")
