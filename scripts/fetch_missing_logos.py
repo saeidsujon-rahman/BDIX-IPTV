@@ -127,7 +127,7 @@ for idx,name,tvgid,oldlogo in missing:
         unresolved.append(name); print("FAILED:",name,e)
 
 PLAYLIST.write_text("\n".join(lines)+"\n",encoding="utf-8")
-Path("logo-fetch-report.md").write_text(
+Path("reports/logo-fetch-report.md").write_text(
     "# Missing Logo Fetch Report\n\n"
     +f"Found missing: **{len(missing)}**  \nDownloaded: **{len(added)}**  \nUnresolved: **{len(unresolved)}**\n\n"
     +"## Downloaded\n"+("\n".join(f"- {n} → \`logos/{f}\` ({cid})" for n,f,cid in added) or "- None")
