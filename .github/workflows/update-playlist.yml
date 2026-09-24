@@ -10,6 +10,7 @@ on:
       - main
     paths:
       - 'scripts/update_playlist.py'
+      - 'scripts/strict_cleanup.py'
       - 'scripts/migrate_external_logos.py'
       - 'scripts/fix_selected_logos.py'
 
@@ -41,6 +42,9 @@ jobs:
 
       - name: Discover credible new and backup streams
         run: python scripts/update_playlist.py
+
+      - name: Strictly clean international and new channels
+        run: python scripts/strict_cleanup.py
 
       - name: Migrate external channel logos
         run: python scripts/migrate_external_logos.py
