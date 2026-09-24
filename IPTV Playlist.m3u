@@ -1615,6 +1615,8 @@ http://88.212.15.19/live/test_amc_25p/playlist.m3u8
 http://15.204.246.24:8080/AMCHD/index.m3u8
 #EXTINF:-1 tvg-id="AsharqDiscovery.sa" tvg-name="Asharq Discovery" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/asharq-discovery-1080p-da46bd8597.png" tvg-country="SA" tvg-language="ara" nexus-score="100" group-title="New Channels",Asharq Discovery (1080p)
 https://svs.itworkscdn.net/asharqdiscoverylive/asharqd.smil/playlist_dvr.m3u8
+#EXTINF:-1 tvg-id="AsianDrama.hk" tvg-name="Asian Drama" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/asian-drama-1080p-5da5c4d647.png" tvg-country="HK" tvg-language="yue" nexus-score="100" group-title="New Channels",Asian Drama (1080p)
+http://103.172.187.30:12000/stream/mytv/null-11/master.m3u8
 #EXTINF:-1 tvg-id="AXN.br" tvg-name="AXN" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/axn-1080p-e8caac66d8.png" tvg-country="BR" tvg-language="por" nexus-score="100" group-title="New Channels",AXN (1080p)
 http://170.83.49.66:8083/AXNHD/index.m3u8
 #EXTINF:-1 tvg-id="AXNAdria.us" tvg-name="AXN Adria" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/axn-adria-e8caac66d8.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",AXN Adria
@@ -1643,8 +1645,6 @@ http://122.248.43.242:1935/BATAMTV/_definst_/myStream/playlist.m3u8
 http://23.239.31.26:8989/bbcamerica/index.m3u8
 #EXTINF:-1 tvg-id="BBCDrama.uk" tvg-name="BBC Drama" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bbc-drama-1080p-b8c15d1482.png" tvg-country="UK" tvg-language="fra;spa;eng" nexus-score="100" group-title="New Channels",BBC Drama (1080p)
 https://amg00793-amg00793c40-rakuten-es-5444.playouts.now.amagi.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="BBCFirst.uk" tvg-name="BBC First" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bbc-first-11069d0788.png" tvg-country="UK" tvg-language="msa;eng;pol" nexus-score="100" group-title="New Channels",BBC First
-http://88.212.15.29/live/bbc_first/index.m3u8
 #EXTINF:-1 tvg-id="local.da0055c24e5a" tvg-name="Sony Entertainment TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sony-entertainment-tv.png" tvg-chno="502" channel-id="local.da0055c24e5a" group-title="Backup",Sony Entertainment TV
 https://drk6xq0vhn.gpcdn.net/live/sony_ent_hd_abr/index.m3u8
 #EXTINF:-1 tvg-id="local.e432591fe8b7" tvg-name="Sony Entertainment TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sony-entertainment-tv.png" tvg-chno="503" channel-id="local.e432591fe8b7" group-title="Backup",Sony Entertainment TV
@@ -1765,6 +1765,8 @@ http://107.167.16.138/zing/index.m3u8?token=test
 https://dai.google.com/linear/hls/event/JCAm25qkRXiKcK1AJMlvKQ/master.m3u8
 #EXTINF:-1 tvg-id="Zoom.in" tvg-name="Zoom TV [Backup 2]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/zoom-tv.png" tvg-chno="423" channel-id="Zoom.in" group-title="Backup",Zoom TV [Backup 2]
 https://d2esfk1pb9cdob.cloudfront.net/master.m3u8
+#EXTINF:-1 tvg-id="BBCFirst.uk" tvg-name="BBC First" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bbc-first-11069d0788.png" tvg-country="UK" tvg-language="msa;eng;pol" nexus-score="100" group-title="New Channels",BBC First
+http://88.212.15.29/live/bbc_first/index.m3u8
 #EXTINF:-1 tvg-id="BBCFood.us" tvg-name="BBC Food" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bbc-food-1080p-4e9e1d8550.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",BBC Food (1080p)
 https://d1e9r0b71zfwk7.cloudfront.net/playlist.m3u8
 #EXTINF:-1 tvg-id="BBCHomeGarden.us" tvg-name="BBC Home & Garden" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bbc-home-garden-1080p-bda827d5a7.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",BBC Home & Garden (1080p)
@@ -1777,10 +1779,44 @@ https://xemzi.short.gy/1000002
 http://45.14.84.37/bbc3/index.m3u8
 #EXTINF:-1 tvg-id="BBCUHD4.uk" tvg-name="BBC UHD 4" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bbc-uhd-2-720p-96cb7336fd.png" tvg-country="UK" tvg-language="eng" nexus-score="100" group-title="New Channels",BBC UHD 4 (720p)
 http://45.14.84.37/bbc4/index.m3u8
+#EXTINF:-1 tvg-id="beINMoviesStars.tr" tvg-name="beIN Movies Stars" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bein-movies-stars-7450568de3.png" tvg-country="TR" tvg-language="tur" nexus-score="99" group-title="New Channels",beIN Movies Stars
+https://nord.ayakkabiparti.lol/bsaction1/index.m3u8
+#EXTINF:-1 tvg-id="beINMoviesTurk.tr" tvg-name="beIN Movies Turk" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bein-movies-turk-ef8fc60267.png" tvg-country="TR" tvg-language="tur" nexus-score="99" group-title="New Channels",beIN Movies Turk
+https://nord.ayakkabiparti.lol/bsturk/index.m3u8
 #EXTINF:-1 tvg-id="beINSPORTSXTRA.us" tvg-name="beIN SPORTS XTRA" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bein-sports-xtra-1080p-ef1418fd71.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",beIN SPORTS XTRA (1080p)
 https://aegis-cloudfront-1.tubi.video/651ee7d3-e75b-4748-be86-422d43ff24b6/playlist.m3u8
 #EXTINF:-1 tvg-id="BestofMTV.se" tvg-name="Best of MTV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/best-of-mtv-891e4222c1.png" tvg-country="SE" tvg-language="eng;dan;nor;swe" nexus-score="85" group-title="New Channels",Best of MTV
 https://jmp2.uk/plu-632aff5e44111b00076ad9b1.m3u8
+#EXTINF:-1 tvg-id="BhagyamTV.in" tvg-name="Bhagyam TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bhagyam-tv-576p-132ad17dbe.png" tvg-country="IN" tvg-language="tam" nexus-score="100" group-title="New Channels",Bhagyam TV (576p)
+https://bhagyam.iptv.pics/bhagyam/index.m3u8
+#EXTINF:-1 tvg-id="BoomTV.ro" tvg-name="Boom TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/boom-tv-1080p-fdb4a495cb.png" tvg-country="RO" tvg-language="ron" nexus-score="96" group-title="New Channels",Boom TV (1080p)
+https://tvboom.ro/live-tv/live.m3u8
+#EXTINF:-1 tvg-id="BoonniyomTV.th" tvg-name="Boonniyom TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/boonniyom-tv-720p-32f1060335.png" tvg-country="TH" tvg-language="tha" nexus-score="100" group-title="New Channels",Boonniyom TV (720p)
+https://live.x2.co.th/live/bntv.m3u8
+#EXTINF:-1 tvg-id="CMalayalamTV.ca" tvg-name="C Malayalam TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/c-malayalam-tv-720p-3b1c6293f5.png" tvg-country="CA" tvg-language="mal" nexus-score="89" group-title="New Channels",C Malayalam TV (720p)
+https://2-fss-2.streamhoster.com/pl_120/206508-3261972-1/playlist.m3u8
+#EXTINF:-1 tvg-id="CFMTVChannel98.us" tvg-name="CFM TV Channel 98" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/cfm-tv-channel-98-360p-79b6694ebd.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",CFM TV Channel 98 (360p)
+https://cdn3.wowza.com/5/djRwZmQvTEJidmZD/cityftmyers/G2083_002/playlist.m3u8
+#EXTINF:-1 tvg-id="CineSony.us" tvg-name="Cine Sony" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/cine-sony-720p-c27cf4bb09.png" tvg-country="US" tvg-language="spa;eng" nexus-score="100" group-title="New Channels",Cine Sony (720p)
+https://a-cdn.klowdtv.com/live1/cine_720p/playlist.m3u8
+#EXTINF:-1 tvg-id="CinemaxClassics.us" tvg-name="Cinemax Classics" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/cinemax-classics-1080p-2b1cbdb564.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",Cinemax Classics (1080p)
+http://23.237.104.106:8080/USA_5STARMAX/index.m3u8
+#EXTINF:-1 tvg-id="CMCUSACountryMusicChannel.us" tvg-name="CMC-USA Country Music Channel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/cmc-usa-country-music-channel-720p-8a071853aa.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",CMC-USA Country Music Channel (720p)
+https://hwlive.streamingmediahosting.com/14215-live/0_obd393sh/playlist.m3u8
+#EXTINF:-1 tvg-id="CMMTV.es" tvg-name="CMM TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/cmm-tv-1080p-9a09717ac6.png" tvg-country="ES" tvg-language="spa" nexus-score="100" group-title="New Channels",CMM TV (1080p)
+https://cdnapisec.kaltura.com/p/2288691/sp/228869100/playManifest/entryId/1_gnz6ity9/protocol/https/format/applehttp/flavorIds/1_a9gxgxzy,1_v71ryg4b,1_vbfvtjw6,1_obo1bqsx,1_3shk3s5d/a.m3u8
+#EXTINF:-1 tvg-id="CMTV.us" tvg-name="CMTV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/cmtv-720p-5bf23d265d.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",CMTV (720p)
+https://cdn3.wowza.com/5/UWpORHhLSEs5SkJs/costamesa/G0075_002/playlist.m3u8
+#EXTINF:-1 tvg-id="CodeFashionTV.bg" tvg-name="Code Fashion TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/code-fashion-tv-1080p-eba84a3007.png" tvg-country="BG" tvg-language="bul" nexus-score="100" group-title="New Channels",Code Fashion TV (1080p)
+https://cdn2.invivo.bg/Codefashion_5500/index.m3u8
+#EXTINF:-1 tvg-id="ColorsGujarati.in" tvg-name="Colors Gujarati" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/colors-gujarati-360p-c82f072793.png" tvg-country="IN" tvg-language="guj" nexus-score="100" group-title="New Channels",Colors Gujarati (360p)
+https://raw.githubusercontent.com/amazeyourself/adaptive-streams/refs/heads/main/streams/in/YuppTV/ColorsGujarati.m3u8
+#EXTINF:-1 tvg-id="ColorsMENA.in" tvg-name="Colors MENA" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/colors-mena-720p-64195c4b38.png" tvg-country="IN" tvg-language="hin" nexus-score="100" group-title="New Channels",Colors MENA (720p)
+https://da86m1sqpm3o0.cloudfront.net/28072023/smil:colorsme.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="CromTV.do" tvg-name="CromTV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/cromtv-1080p-c8af54e682.png" tvg-country="DO" tvg-language="spa" nexus-score="99" group-title="New Channels",CromTV (1080p)
+https://fox.hostlagarto.com:8081/cromtv/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-id="DBMTV.fr" tvg-name="DBM TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/dbm-tv-1080p-002259b21f.png" tvg-country="FR" tvg-language="fra" nexus-score="100" group-title="New Channels",DBM TV (1080p)
+https://dbmtv.vedge.infomaniak.com/livecast/dbmtv/playlist.m3u8
 #EXTINF:-1 tvg-name="Discovery Channel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/discovery-channel-82927394a8.png" tvg-id="Discovery.Channel.it" tvg-chno="37" tvg-country="IT" group-title="New Channels",Discovery Channel
 https://streaming.aurora.enhanced.live/live/mpc/enl0eG1mLmVncmVzcy5mZDJ2eHI=/out/v1/IT_SIMULCAST/DISCOVERYCHANNEL/CMAF/index.m3u8
 #EXTINF:-1 tvg-id="DisneyChannel.cz" tvg-name="Disney Channel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/disney-channel-40855c7484.png" tvg-country="CZ" tvg-language="ces" nexus-score="100" group-title="New Channels",Disney Channel
@@ -1791,12 +1827,36 @@ http://185.227.34.179:8080/disney-channel-hd/index.m3u8
 http://151.80.18.177:86/Disney_Channel_HD/index.m3u8
 #EXTINF:-1 tvg-id="DisneyChannel.us" tvg-name="Disney Channel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/disney-channel-720p-4686c26017.png" tvg-country="US" tvg-language="eng;spa" nexus-score="100" group-title="New Channels",Disney Channel (720p)
 http://4.30.180.36:8420/disneychannel/index.m3u8?token=test
+#EXTINF:-1 tvg-id="DisneyChannelLatinAmerica.ar" tvg-name="Disney Channel Latin America" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/disney-channel-latin-america-1080p-94455ff877.png" tvg-country="AR" tvg-language="spa;por" nexus-score="100" group-title="New Channels",Disney Channel Latin America (1080p)
+http://190.11.225.124:5000/live/disney_hd/playlist.m3u8
+#EXTINF:-1 tvg-id="DisneyInternationalHD.in" tvg-name="Disney International HD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/disney-international-hd-1080p-1446d4f852.png" tvg-country="IN" tvg-language="eng" nexus-score="100" group-title="New Channels",Disney International HD (1080p)
+http://202.70.146.135:8000/play/a04p/index.m3u8
+#EXTINF:-1 tvg-id="DisneyJrLatinAmerica.ar" tvg-name="Disney Jr. Latin America" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/disney-jr-latin-america-1080p-d4a5b563e8.png" tvg-country="AR" tvg-language="por;spa" nexus-score="100" group-title="New Channels",Disney Jr. Latin America (1080p)
+http://190.14.10.19:16000/play/a02d/index.m3u8
 #EXTINF:-1 tvg-id="DisneyJunior.cz" tvg-name="Disney Junior" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/disney-junior-d4a5b563e8.png" tvg-country="CZ" tvg-language="ces" nexus-score="100" group-title="New Channels",Disney Junior
 http://88.212.15.19/live/test_disney_junior/playlist.m3u8
 #EXTINF:-1 tvg-id="DisneyJunior.ro" tvg-name="Disney Junior" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/disney-junior-d4a5b563e8.png" tvg-country="RO" tvg-language="eng" nexus-score="100" group-title="New Channels",Disney Junior
 https://atlantida1.aquax1.cfd/disjr/usergendxvoq4rnd.m3u8
 #EXTINF:-1 tvg-id="DisneyJunior.us" tvg-name="Disney Junior" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/disney-junior-360p-943f21478f.png" tvg-country="US" tvg-language="eng;spa" nexus-score="100" group-title="New Channels",Disney Junior (360p)
 http://212.5.144.156/disneyjr/index.m3u8
+#EXTINF:-1 tvg-id="DisneyXD.pl" tvg-name="Disney XD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/disney-xd-576p-010b4670bf.png" tvg-country="PL" tvg-language="pol" nexus-score="100" group-title="New Channels",Disney XD (576p)
+http://185.227.34.179:8080/disney-xd/index.m3u8
+#EXTINF:-1 tvg-id="DisneyXD.us" tvg-name="Disney XD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/disney-xd-720p-bc0fb95cc7.png" tvg-country="US" tvg-language="eng;spa" nexus-score="100" group-title="New Channels",Disney XD (720p)
+http://23.237.104.106:8080/USA_DISNEY_XD/index.m3u8
+#EXTINF:-1 tvg-id="DreamTV.ug" tvg-name="Dream TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/dream-tv-480p-d4a94a77db.png" tvg-country="UG" tvg-language="eng;lug" nexus-score="97" group-title="New Channels",Dream TV (480p)
+https://streamfi-dreamtv1.zettawiseroutes.com:8181/hls/stream.m3u8
+#EXTINF:-1 tvg-id="DreamTV.mn" tvg-name="DreamTV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/dreamtv-1080p-f928266d1c.png" tvg-country="MN" tvg-language="mon" nexus-score="100" group-title="New Channels",DreamTV (1080p)
+https://xykt-fix.github.io/play/a02j/index.m3u8
+#EXTINF:-1 tvg-id="ESPN3.br" tvg-name="ESPN 3" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/espn-3-720p-fb45567d52.png" tvg-country="BR" tvg-language="por" nexus-score="100" group-title="New Channels",ESPN 3 (720p)
+http://181.78.197.59:8000/play/a081/index.m3u8
+#EXTINF:-1 tvg-id="ESPN4.br" tvg-name="ESPN 4" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/espn-4-1080p-f9487ad489.png" tvg-country="BR" tvg-language="por" nexus-score="100" group-title="New Channels",ESPN 4 (1080p)
+http://181.78.197.59:8000/play/a07n/index.m3u8
+#EXTINF:-1 tvg-id="ESPN8TheOcho.us" tvg-name="ESPN8: The Ocho" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/espn8-the-ocho-1080p-76369a61db.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",ESPN8: The Ocho (1080p)
+https://d3b6q2ou5kp8ke.cloudfront.net/ESPNTheOcho.m3u8
+#EXTINF:-1 tvg-id="ESPNU.us" tvg-name="ESPNU" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/espnu-720p-da06a20f5d.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",ESPNU (720p)
+http://85.237.89.160:9590/usa-s/ESPN-U-HD/index.m3u8
+#EXTINF:-1 tvg-id="Eurosport4KCzechia.cz" tvg-name="Eurosport 4K Czechia" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/eurosport-4k-czechia-1a359dc9dd.png" tvg-country="CZ" tvg-language="ces" nexus-score="100" group-title="New Channels",Eurosport 4K Czechia
+http://88.212.15.19/live/esp_4k_atk/playlist.m3u8
 #EXTINF:-1 tvg-id="HBOHits.us" tvg-name="HBO Hits" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/hbo-hits-1080p-27da015c1f.png" tvg-country="US" tvg-language="eng;spa" nexus-score="100" group-title="New Channels",HBO Hits (1080p)
 http://4.30.180.36:8420/hbo2/index.m3u8?token=test
 #EXTINF:-1 tvg-id="MTVLive.us" tvg-name="MTV Live" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mtv-live-1080p-40e9c3993c.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",MTV Live (1080p)
