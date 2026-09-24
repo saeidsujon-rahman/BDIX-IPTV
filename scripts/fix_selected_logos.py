@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Repair selected logo mappings without failing when a target is absent."""
 import io
 import re
 import time
@@ -12,7 +13,6 @@ PLAYLIST = Path("IPTV Playlist.m3u")
 LOGO_DIR = Path("logos")
 RAW_BASE = "https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/"
 
-# Exact IDs prevent similarly named channels from being modified.
 TARGETS = {
     "BHI Channel": ("bhi-channel.png", None),
     "local.enter-10-bangla": ("enterr10-bangla.png", None),
@@ -37,51 +37,6 @@ TARGETS = {
     "local.86529dbe4f63": ("solnce.png", "https://i.imgur.com/HCefxaK.png"),
 }
 
-
-def download(url):
-    error = None
-    for attempt in range(3):
-        try:
-            req = urllib.request.Request(url, headers={
-                "User-Agent": "Mozilla/5.0 (compatible; BDIX-IPTV-Logo-Fix/1.0)",
-                "Accept": "image/*,*/*;q=0.8",
-            })
-            with urllib.request.urlopen(req, timeout=30) as response:
-                data = response.read(6 * 1024 * 1024)
-            if len(data) < 300:
-                raise ValueError("image response is too small")
-            return data
-        except Exception as exc:
-            error = exc
-            time.sleep(2 * (attempt + 1))
-    raise RuntimeError(f"download failed: {error}")
-
-
-def png_bytes(source):
-    if source.startswith(("http://", "https://")):
-        data = download(source)
-        is_svg = source.lower().split("?", 1)[0].endswith(".svg") or b"<svg" in data[:512].lower()
-    else:
-        data = Path(source).read_bytes()
-        is_svg = Path(source).suffix.lower() == ".svg" or b"<svg" in data[:512].lower()
-    if is_svg:
-        data = cairosvg.svg2png(bytestring=data)
-    with Image.open(io.BytesIO(data)) as image:
-        image.load()
-        if image.width < 32 or image.height < 32:
-            scale = max(64 / max(image.width, 1), 64 / max(image.height, 1))
-            image = image.resize(
-                (max(64, round(image.width * scale)), max(64, round(image.height * scale))),
-                Image.Resampling.LANCZOS,
-            )
-        image.thumbnail((1600, 1600), Image.Resampling.LANCZOS)
-        if image.mode not in {"RGB", "RGBA"}:
-            image = image.convert("RGBA")
-        output = io.BytesIO()
-        image.save(output, format="PNG", optimize=True)
-        return output.getvalue()
-
-
 DISPLAY_NAMES = {
     "BHI Channel": "BHI CHANNEL",
     "7X Music": "7X PUNJABI",
@@ -92,21 +47,55 @@ DISPLAY_NAMES = {
 }
 
 
+def download(url):
+    last_error = None
+    for attempt in range(3):
+        try:
+            request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; BDIX-IPTV-Logo-Fix/1.0)", "Accept": "image/*,*/*;q=0.8"})
+            with urllib.request.urlopen(request, timeout=30) as response:
+                data = response.read(6 * 1024 * 1024)
+            if len(data) < 300:
+                raise ValueError("image response is too small")
+            return data
+        except Exception as exc:
+            last_error = exc
+            time.sleep(2 * (attempt + 1))
+    raise RuntimeError(f"download failed: {last_error}")
+
+
+def png_bytes(source):
+    if source.startswith(("http://", "https://")):
+        data = download(source)
+        is_svg = source.lower().split("?", 1)[0].endswith(".svg") or b"<svg" in data[:512].lower()
+    else:
+        path = Path(source)
+        data = path.read_bytes()
+        is_svg = path.suffix.lower() == ".svg" or b"<svg" in data[:512].lower()
+    if is_svg:
+        data = cairosvg.svg2png(bytestring=data)
+    with Image.open(io.BytesIO(data)) as image:
+        image.load()
+        if image.width < 32 or image.height < 32:
+            scale = max(64 / max(image.width, 1), 64 / max(image.height, 1))
+            image = image.resize((max(64, round(image.width * scale)), max(64, round(image.height * scale))), Image.Resampling.LANCZOS)
+        image.thumbnail((1600, 1600), Image.Resampling.LANCZOS)
+        if image.mode not in {"RGB", "RGBA"}:
+            image = image.convert("RGBA")
+        output = io.BytesIO()
+        image.save(output, format="PNG", optimize=True)
+        return output.getvalue()
+
+
 def generated_wordmark(channel_id):
-    """Create a dependable local PNG when an obscure channel has no stable logo host."""
     label = DISPLAY_NAMES.get(channel_id, channel_id)
     image = Image.new("RGBA", (640, 360), (12, 18, 32, 255))
     draw = ImageDraw.Draw(image)
-    draw.rounded_rectangle((18, 18, 622, 342), radius=42, fill=(24, 34, 55, 255),
-                           outline=(0, 196, 180, 255), width=8)
-    font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-    size = 86 if len(label) <= 11 else 66
+    draw.rounded_rectangle((18, 18, 622, 342), radius=42, fill=(24, 34, 55, 255), outline=(0, 196, 180, 255), width=8)
     try:
-        font = ImageFont.truetype(font_path, size)
+        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 86 if len(label) <= 11 else 66)
     except OSError:
         font = ImageFont.load_default()
-    draw.text((320, 180), label, font=font, fill=(255, 255, 255, 255),
-              anchor="mm", stroke_width=2, stroke_fill=(0, 0, 0, 220))
+    draw.text((320, 180), label, font=font, fill=(255, 255, 255, 255), anchor="mm", stroke_width=2, stroke_fill=(0, 0, 0, 220))
     output = io.BytesIO()
     image.save(output, format="PNG", optimize=True)
     return output.getvalue()
@@ -121,7 +110,7 @@ for channel_id, (filename, source) in TARGETS.items():
             if channel_id in DISPLAY_NAMES:
                 path.write_bytes(generated_wordmark(channel_id))
             else:
-                errors.append(f"{channel_id}: existing reusable logo is missing ({path})")
+                errors.append(f"{channel_id}: missing reusable logo ({path})")
         continue
     try:
         data = png_bytes(source)
@@ -142,12 +131,11 @@ updated = set()
 for index, line in enumerate(lines):
     if not line.startswith("#EXTINF"):
         continue
-    id_match = re.search(r'tvg-id="([^"]*)"', line)
-    if not id_match or id_match.group(1) not in TARGETS:
+    match = re.search(r'tvg-id="([^"]*)"', line)
+    if not match or match.group(1) not in TARGETS:
         continue
-    channel_id = id_match.group(1)
-    filename = TARGETS[channel_id][0]
-    local_url = RAW_BASE + filename
+    channel_id = match.group(1)
+    local_url = RAW_BASE + TARGETS[channel_id][0]
     if 'tvg-logo="' in line:
         line = re.sub(r'tvg-logo="[^"]*"', f'tvg-logo="{local_url}"', line, count=1)
     else:
@@ -157,22 +145,20 @@ for index, line in enumerate(lines):
 
 missing_entries = sorted(set(TARGETS) - updated)
 if missing_entries:
-    raise SystemExit("Target playlist entries not found: " + ", ".join(missing_entries))
+    print("Skipped absent target playlist entries: " + ", ".join(missing_entries))
 
-# Convert every repository-hosted non-PNG logo referenced by the playlist.
 converted = {}
 conversion_errors = []
 for index, line in enumerate(lines):
     if not line.startswith("#EXTINF"):
         continue
-    logo_match = re.search(r'tvg-logo="([^"]*)"', line)
-    if not logo_match:
+    match = re.search(r'tvg-logo="([^"]*)"', line)
+    if not match:
         continue
-    logo_url = logo_match.group(1)
+    logo_url = match.group(1)
     if not logo_url.startswith(RAW_BASE):
         continue
-    clean_url = logo_url.split("?", 1)[0].split("#", 1)[0]
-    relative = clean_url[len(RAW_BASE):]
+    relative = logo_url[len(RAW_BASE):].split("?", 1)[0].split("#", 1)[0]
     source_path = LOGO_DIR / relative
     if source_path.suffix.lower() == ".png":
         continue
@@ -194,7 +180,4 @@ if conversion_errors:
     raise SystemExit("Non-PNG conversion failed:\n- " + "\n- ".join(conversion_errors))
 
 PLAYLIST.write_text("\n".join(lines), encoding="utf-8", newline="\n")
-print(
-    f"Repaired {len(updated)} selected channel logo mappings and converted "
-    f"{len(converted)} unique non-PNG assets."
-)
+print(f"Repaired {len(updated)} selected channel logo mappings and converted {len(converted)} unique non-PNG assets.")
