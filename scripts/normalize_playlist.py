@@ -82,6 +82,50 @@ def added_tvg_ids():
     return set()
 
 
+def rewrite_auto_report():
+    """Keep the auto-update report consistent with the canonical playlist policy."""
+    if not AUTO_REPORT.exists():
+        return
+
+    text = AUTO_REPORT.read_text(encoding="utf-8", errors="replace")
+
+    # The selector may still label candidates with their discovery type.
+    # The final playlist policy intentionally puts every new import in one group.
+    text = text.replace("`International Movies`", "`New Channels`")
+    text = text.replace("`International Music`", "`New Channels`")
+    text = text.replace("`International Adult`", "`New Channels`")
+
+    text = text.replace(
+        "- South/Asian movie channels go to `New Channels`.",
+        "- South/Asian movie channels go to `New Channels`.",
+    )
+    text = text.replace(
+        "- South/Asian movie channels go to `International Movies`.",
+        "- South/Asian movie channels go to `New Channels`.",
+    )
+    text = text.replace(
+        "- South Indian music channels go to `International Music`.",
+        "- South Indian music channels go to `New Channels`.",
+    )
+    text = text.replace(
+        "- Adult/erotic channels go to `International Adult`.",
+        "- Adult/erotic channels go to `New Channels`.",
+    )
+    text = text.replace(
+        "- New South/Asian movie/music and adult/erotic entries are isolated into their designated groups.",
+        "- All newly imported movie, music, and adult/erotic entries are placed in `New Channels`.",
+    )
+
+    # Correct the per-channel group details in the report as well.
+    text = re.sub(
+        r"(- Group:\s*`)(?:International Movies|International Music|International Adult)(`)",
+        r"\1New Channels\2",
+        text,
+    )
+
+    AUTO_REPORT.write_text(text, encoding="utf-8", newline="\n")
+
+
 base = PLAYLIST.read_text(encoding="utf-8-sig")
 new_ids = added_tvg_ids()
 kept = []
@@ -158,6 +202,7 @@ report.extend([
 ])
 REPORT.parent.mkdir(parents=True, exist_ok=True)
 REPORT.write_text("\n".join(report), encoding="utf-8", newline="\n")
+rewrite_auto_report()
 print(
     f"Normalized {normalized_groups} group titles, consolidated "
     f"{new_channels_consolidated} new imports, moved {special_groups_moved} "
