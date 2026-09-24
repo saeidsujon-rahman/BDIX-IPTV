@@ -40,6 +40,19 @@ POPULAR_BRAND_TOKENS={
     "tbs","tlc","trace","travelchannel","universal","vh1","warner","wwe","xite","zee",
 }
 
+# Preferred additions: recognizable movie/music services from the requested Asian markets.
+PREFERRED_REGION_MARKERS={
+    "china": {"cn","china","chinese","cctv","hunan","jiangsu","zhejiang","shanghai","phoenix","tvb","cmc"},
+    "korea": {"kr","korea","korean","southkorea","arirang","kbs","mbc","sbs","tvn","mnet"},
+    "hongkong": {"hk","hongkong","hongkongese","tvb","jade","pearl","viju"},
+    "turkey": {"tr","turkey","turkish","turkiye","powerturk","kanald","showtv","star tv","atv"},
+    "indonesia": {"id","indonesia","indonesian","mnc","sctv","indosiar","antv","trans tv","trans7","net tv"},
+}
+PREFERRED_GENRE_MARKERS={
+    "movie","movies","cinema","film","films","drama","action","thriller","bollywood",
+    "music","musik","mtv","hits","melody","pop","rock","karaoke","song","songs",
+}
+
 GENERIC_OR_LOOKALIKE_NAMES={
     "channel1","channel16","gtv","metv","mntv","ntv","ntvplus","tvplus","tvwest","iontvuk",
     "television","test","demo",
@@ -77,13 +90,25 @@ def blocked(info):
     hay=(name+" "+group).lower()
     return any(w in hay for w in NON_TV_WORDS|NEWS_WORDS|NON_ISLAMIC_RELIGION)
 
+def preferred_asian_movie_music(info):
+    a=attrs(info); name=name_of(info).lower(); cid=a.get("tvg-id","").lower(); hay=f"{name} {cid}"
+    genre=any(token in hay for token in PREFERRED_GENRE_MARKERS)
+    if not genre: return False
+    for markers in PREFERRED_REGION_MARKERS.values():
+        if any(re.search(rf"(?<![a-z]){re.escape(marker)}(?![a-z])",hay) for marker in markers):
+            return True
+    return False
+
 def credible_candidate(info):
     a=attrs(info); name=name_of(info); nkey=norm(name)
     cid=a.get("tvg-id","").strip(); logo=a.get("tvg-logo","").strip()
     if not cid or not logo: return False
     if nkey in {norm(x) for x in GENERIC_OR_LOOKALIKE_NAMES}: return False
+    # All Fashion TV variants are explicitly preferred, subject to the normal metadata and reachability checks.
+    if "fashiontv" in nkey or "fashion tv" in name.lower(): return True
     if nkey in RENOWNED_NEW_CHANNELS: return True
-    return any(token in nkey for token in POPULAR_BRAND_TOKENS)
+    if any(token in nkey for token in POPULAR_BRAND_TOKENS): return True
+    return preferred_asian_movie_music(info)
 
 def clean_info(info,group):
     info=re.sub(r'\s+group-title="[^"]*"',"",info)
@@ -175,12 +200,12 @@ if out!=base: PLAYLIST.write_text(out,encoding="utf-8",newline="\n")
 
 final_entries=entries(out); categories=Counter(attrs(info).get("group-title","") or "Uncategorized" for info,_ in final_entries)
 generated=datetime.now(timezone.utc).isoformat(timespec="seconds")
-report=["# IPTV Auto Update","",f"Generated: **{generated}**","","## Summary","",f"- Final playlist entries: **{len(final_entries)}**",f"- New channels added: **{len(new)}**",f"- Backup streams added: **{len(backups)}**",f"- Automatic backup candidates skipped by policy: **{stats['automatic_backups_disabled']}**",f"- Exact duplicate URLs skipped: **{stats['duplicate_urls']}**",f"- Policy-blocked candidates skipped: **{stats['blocked']}**",f"- Candidates failing credibility gate skipped: **{stats['not_credible']}**",f"- New candidates missing tvg-id or logo skipped: **{stats['missing_metadata']}**",f"- Unreachable candidates skipped: **{stats['unreachable']}**",f"- Candidates skipped by new-channel limit: **{stats['new_limit']}**","","## Source status",""]
+report=["# IPTV Auto Update","",f"Generated: **{generated}**","","## Summary","",f"- Final playlist entries: **{len(final_entries)}**",f"- New channels added: **{len(new)}**",f"- Backup streams added: **{len(backups)}**",f"- Automatic backup candidates skipped by policy: **{stats['automatic_backups_disabled']}**",f"- Exact duplicate URLs skipped: **{stats['duplicate_urls']}**",f"- Policy-blocked candidates skipped: **{stats['blocked']}**",f"- Candidates failing credibility gate skipped: **{stats['not_credible']}**",f"- New candidates missing tvg-id or logo skipped: **{stats['missing_metadata']}**",f"- Unreachable candidates skipped: **{stats['unreachable']}**",f"- Candidates skipped by new-channel limit: **{stats['new_limit']}","","## Source status",""]
 for source,count,status in source_status: report.append(f"- **{source}** — {count} entries — {safe_markdown(status)}")
 report.extend(["","## Category totals",""])
 for group,count in categories.items(): report.append(f"- **{safe_markdown(group)}**: {count}")
 report.append(""); report.extend(added_section("New channels added",new)); report.extend(added_section("New backup streams added",backups))
-report.extend(["## Active policy","","- Existing playlist entries are preserved.","- New Channels accepts only recognizable network/channel brands with tvg-id, tvg-logo, policy compliance, and a reachable HTTP(S) stream.","- Exact duplicate stream URLs are not added.","- Automatic Backup imports are disabled; existing Backup entries are preserved.","- Backup streams are added only after an explicit owner request.","- News, non-Islamic religious, radio, VOD, webcam, trailer, promo, and test entries are excluded from automatic additions.","- Adult channels remain permitted by the current policy.",f"- New entries are capped at {MAX_NEW} per run.",""])
+report.extend(["## Active policy","","- Existing playlist entries are preserved.","- New Channels accepts recognizable brands, all Fashion TV variants, and credible movie/music channels from China, South Korea, Hong Kong, Turkey, and Indonesia when tvg-id, tvg-logo, policy compliance, and a reachable HTTP(S) stream are present.","- Exact duplicate stream URLs are not added.","- Automatic Backup imports are disabled; existing Backup entries are preserved.","- Backup streams are added only after an explicit owner request.","- News, non-Islamic religious, radio, VOD, webcam, trailer, promo, and test entries are excluded from automatic additions.","- Adult channels remain permitted by the current policy.",f"- New entries are capped at {MAX_NEW} per run.",""])
 REPORT.parent.mkdir(parents=True,exist_ok=True); REPORT.write_text("\n".join(report),encoding="utf-8",newline="\n")
 print(f"Added {len(new)} new channels to {NEW_GROUP}; automatic backup additions disabled.")
 print(f"Updated {REPORT}.")
