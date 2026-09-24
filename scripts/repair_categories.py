@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Repair XCIPTV category metadata and remove duplicate category variants."""
+"""Repair XCIPTV category metadata and consolidate canonical categories."""
 
 import json
 import re
@@ -20,15 +20,54 @@ SPECIAL_GROUPS = {
     "international adult",
 }
 
+REQUIRED_CATEGORIES = ("New Channels", "Sports", "Backup")
+
 
 def attrs(info):
     return dict(re.findall(r'([\w-]+)="([^"]*)"', info))
 
 
+def normalize_space(value):
+    return " ".join((value or "").split())
+
+
+def canonical_group(original, tvg_id, new_ids):
+    group = normalize_space(original)
+    folded = group.casefold()
+
+    # Every channel reported as newly added belongs in New Channels.
+    if tvg_id in new_ids:
+        return "New Channels"
+
+    # Consolidate legacy special groups into the single New Channels category.
+    if folded in SPECIAL_GROUPS or folded.startswith("new channels"):
+        return "New Channels"
+
+    # Repair malformed sports group-title values such as:
+    # SPORTS TVG-NAME=STAR SPORTS SL 2 TVG-CHNO=908
+    # Also catch variants containing the injected metadata tokens.
+    if (
+        folded.startswith("sports")
+        or ("sports" in folded and ("tvg-name" in folded or "tvg-chno" in folded))
+    ):
+        return "Sports"
+
+    # Merge Backup, BACKUP, and variants such as BACKUP (1).
+    if re.fullmatch(r"backup(?:\s*\(\s*\d+\s*\))?", folded):
+        return "Backup"
+
+    return group
+
+
 def set_group(info, group):
-    # Remove the entire group-title segment up to the EXTINF display-name comma.
-    # This also repairs malformed values such as group-title="SPORTS TVG-NAME=...".
-    info = re.sub(r'\s+group-title=.*?,', ',', info, count=1)
+    # Replace only the group-title attribute, preserving all other metadata.
+    if re.search(r'\s+group-title="[^"]*"', info):
+        return re.sub(
+            r'\s+group-title="[^"]*"',
+            f' group-title="{group}"',
+            info,
+            count=1,
+        )
     return info.replace(",", f' group-title="{group}",', 1)
 
 
@@ -53,13 +92,54 @@ def added_ids():
     if not REPORT.exists():
         return set()
     text = REPORT.read_text(encoding="utf-8", errors="replace")
-    section = text.split("## Added Channels", 1)
-    if len(section) != 2:
-        section = text.split("## Added New Channels", 1)
-    if len(section) != 2:
-        return set()
-    section = section[1].split("## Removed entries", 1)[0]
-    return set(re.findall(r"- TVG ID:\s*`([^`]+)`", section))
+    for heading in ("## Added Channels", "## Added New Channels"):
+        section = text.split(heading, 1)
+        if len(section) == 2:
+            body = section[1].split("## Removed entries", 1)[0]
+            return {
+                value.strip()
+                for value in re.findall(r"- TVG ID:\s*`([^`]+)`", body)
+                if value.strip() and value.strip().casefold() != "n/a"
+            }
+    return set()
+
+
+def repair_header(lines):
+    repaired = []
+    for line in lines:
+        if not line.startswith("#PLAYLIST-STUDIO-CATEGORIES:"):
+            repaired.append(line)
+            continue
+
+        prefix = "#PLAYLIST-STUDIO-CATEGORIES:"
+        try:
+            categories = json.loads(line[len(prefix):])
+            canonical = []
+            seen = set()
+            for value in categories:
+                value = normalize_space(str(value))
+                folded = value.casefold()
+                if folded.startswith("sports"):
+                    value = "Sports"
+                elif re.fullmatch(r"backup(?:\s*\(\s*\d+\s*\))?", folded):
+                    value = "Backup"
+                elif folded in SPECIAL_GROUPS or folded.startswith("new channels"):
+                    value = "New Channels"
+                key = value.casefold()
+                if value and key not in seen:
+                    seen.add(key)
+                    canonical.append(value)
+
+            for required in REQUIRED_CATEGORIES:
+                if required.casefold() not in seen:
+                    canonical.append(required)
+                    seen.add(required.casefold())
+
+            line = prefix + json.dumps(canonical, ensure_ascii=False)
+        except (TypeError, ValueError, json.JSONDecodeError):
+            pass
+        repaired.append(line)
+    return repaired
 
 
 base = PLAYLIST.read_text(encoding="utf-8-sig")
@@ -75,55 +155,15 @@ for info, url in entries(base):
         removed += 1
         continue
 
-    original = metadata.get("group-title", "").strip()
-    normalized = " ".join(original.split())
-    folded = normalized.casefold()
-
-    if tvg_id in new_ids or folded in SPECIAL_GROUPS:
-        target = "New Channels"
-    elif folded.startswith("sports"):
-        target = "Sports"
-    elif folded == "backup":
-        target = "Backup"
-    else:
-        target = normalized
-
+    original = metadata.get("group-title", "")
+    target = canonical_group(original, tvg_id, new_ids)
     if target != original:
         info = set_group(info, target)
         changed += 1
     kept.append((info, url))
 
-header = []
-for line in base.splitlines():
-    if line.startswith("#PLAYLIST-STUDIO-CATEGORIES:"):
-        prefix = "#PLAYLIST-STUDIO-CATEGORIES:"
-        try:
-            categories = json.loads(line[len(prefix):])
-            canonical = []
-            seen = set()
-            for value in categories:
-                folded = " ".join(str(value).split()).casefold()
-                value = (
-                    "Backup" if folded == "backup"
-                    else "New Channels" if folded in SPECIAL_GROUPS
-                    else "Sports" if folded.startswith("sports")
-                    else " ".join(str(value).split())
-                )
-                key = value.casefold()
-                if key not in seen:
-                    seen.add(key)
-                    canonical.append(value)
-            for required in ("New Channels", "Backup"):
-                if required.casefold() not in seen:
-                    canonical.append(required)
-                    seen.add(required.casefold())
-            line = prefix + json.dumps(canonical, ensure_ascii=False)
-        except Exception:
-            pass
-    if line.startswith("#PLAYLIST-"):
-        header.append(line)
-
-out = "#EXTM3U\n" + "\n".join(header) + "\n"
+header = repair_header(base.splitlines())
+out = "#EXTM3U\n" + "\n".join(line for line in header if line.startswith("#PLAYLIST-")) + "\n"
 for info, url in kept:
     out += f"{info}\n{url}\n"
 
