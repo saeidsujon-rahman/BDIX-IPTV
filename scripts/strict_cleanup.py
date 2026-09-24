@@ -3,7 +3,9 @@ import re
 from pathlib import Path
 
 PLAYLIST = Path('IPTV Playlist.m3u')
-TARGET_GROUPS = {'International Movies', 'International Music', 'New Channels'}
+# Only generated New Channels may be cleaned automatically.
+# International Movies and International Music are user-maintained groups.
+TARGET_GROUPS = {'New Channels'}
 REGIONS = {
     'china': {'china', 'chinese', 'cctv', 'hunan', 'jiangsu', 'zhejiang', 'shanghai', 'phoenix', 'cmc'},
     'south korea': {'south korea', 'southkorea', 'korea', 'korean', 'arirang', 'kbs', 'mbc', 'sbs', 'tvn', 'mnet'},
@@ -74,4 +76,4 @@ def main():
 if __name__ == '__main__':
     main()
 
-# Strict policy: retain Fashion TV, verified adult-brand channels, and target-region movie/music channels only.
+# Strict policy: only generated New Channels are automatically filtered.
