@@ -1,16 +1,17 @@
 # External Logo Migration
 
-Generated: **2026-09-24T11:51:46+00:00**
+Generated: **2026-09-24T13:21:23+00:00**
 
 ## Summary
 
-- External references found: **49**
-- Unique external URLs: **49**
-- References migrated to `/logos`: **48**
+- External references found: **35**
+- Unique external URLs: **35**
+- References migrated to `/logos`: **33**
 - References reused from an existing local logo: **0**
-- Logo files created or refreshed: **45**
-- External references left unchanged: **1**
+- Logo files created or refreshed: **31**
+- External references left unchanged: **2**
 
 ## Failed downloads
 
 - **CINDIE TV (1080p)** — https://a.jsrdn.com/hls/23208/cindie-tv/logo_20250225_222520_68.png — https://a.jsrdn.com/hls/23208/cindie-tv/logo_20250225_222520_68.png: HTTP 403
+- **Dhamma TV (720p)** — https://dhammaweb.tv/wp-content/uploads/2018/08/cropped-dhammatv-3.png — https://dhammaweb.tv/wp-content/uploads/2018/08/cropped-dhammatv-3.png: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'dhammaweb.tv'. (_ssl.c:1010)>
