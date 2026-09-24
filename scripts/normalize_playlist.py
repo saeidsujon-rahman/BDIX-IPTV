@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Normalize playlist groups, consolidate new imports, and remove rejected imports."""
 
+import json
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -9,17 +10,12 @@ PLAYLIST = Path("IPTV Playlist.m3u")
 REPORT = Path("reports/playlist-normalization.md")
 AUTO_REPORT = Path("reports/auto-update.md")
 
-# These were classified as adult because of their names, not because they
-# provide the erotic movie/series content requested for the playlist.
 REMOVED_TVG_IDS = {
     "AdultSwimLatinAmerica.us",
     "StingrayPopAdult.ca",
     "PlutoTVAdultAnimation.de",
 }
 
-# Keep the playlist structure simple: newly imported movie, music, and
-# adult/erotic candidates all belong in New Channels. Existing Backup is
-# preserved as its own category.
 CANONICAL_GROUPS = {
     "backup": "Backup",
     "new channels": "New Channels",
@@ -27,6 +23,20 @@ CANONICAL_GROUPS = {
     "international music": "New Channels",
     "international adult": "New Channels",
 }
+
+CATEGORY_ORDER = [
+    "Bangladesh",
+    "Indian Bangla",
+    "Indian Movies",
+    "Indian Music",
+    "Indian Entertainment",
+    "New Channels",
+    "Documentary & Wildlife",
+    "Kids",
+    "Religious",
+    "Sports",
+    "Backup",
+]
 
 
 def attrs(info):
@@ -57,7 +67,14 @@ def entries(text):
 def canonical_group(info):
     group = attrs(info).get("group-title", "")
     normalized = " ".join(group.split())
-    return CANONICAL_GROUPS.get(normalized.casefold(), normalized)
+    folded = normalized.casefold()
+
+    # Repair malformed values accidentally created from metadata fragments,
+    # such as: SPORTS TVG-NAME=... TVG-CHNO=...
+    if folded.startswith("sports") and ("tvg-name=" in folded or "tvg-chno=" in folded):
+        return "Sports"
+
+    return CANONICAL_GROUPS.get(folded, normalized)
 
 
 def set_group(info, group):
@@ -66,7 +83,6 @@ def set_group(info, group):
 
 
 def added_tvg_ids():
-    """Read the current auto-update report and identify newly imported IDs."""
     if not AUTO_REPORT.exists():
         return set()
     text = AUTO_REPORT.read_text(encoding="utf-8", errors="replace")
@@ -83,22 +99,13 @@ def added_tvg_ids():
 
 
 def rewrite_auto_report():
-    """Keep the auto-update report consistent with the canonical playlist policy."""
     if not AUTO_REPORT.exists():
         return
 
     text = AUTO_REPORT.read_text(encoding="utf-8", errors="replace")
-
-    # The selector may still label candidates with their discovery type.
-    # The final playlist policy intentionally puts every new import in one group.
     text = text.replace("`International Movies`", "`New Channels`")
     text = text.replace("`International Music`", "`New Channels`")
     text = text.replace("`International Adult`", "`New Channels`")
-
-    text = text.replace(
-        "- South/Asian movie channels go to `New Channels`.",
-        "- South/Asian movie channels go to `New Channels`.",
-    )
     text = text.replace(
         "- South/Asian movie channels go to `International Movies`.",
         "- South/Asian movie channels go to `New Channels`.",
@@ -115,14 +122,11 @@ def rewrite_auto_report():
         "- New South/Asian movie/music and adult/erotic entries are isolated into their designated groups.",
         "- All newly imported movie, music, and adult/erotic entries are placed in `New Channels`.",
     )
-
-    # Correct the per-channel group details in the report as well.
     text = re.sub(
         r"(- Group:\s*`)(?:International Movies|International Music|International Adult)(`)",
         r"\1New Channels\2",
         text,
     )
-
     AUTO_REPORT.write_text(text, encoding="utf-8", newline="\n")
 
 
@@ -162,7 +166,14 @@ for info, url in entries(base):
         normalized_groups += 1
     kept.append((info, url))
 
-header = [line for line in base.splitlines() if line.startswith("#PLAYLIST-")]
+# Rebuild a valid, deterministic category header. This prevents malformed
+# values such as: ["Backup",New Channels].
+header = []
+for line in base.splitlines():
+    if line.startswith("#PLAYLIST-") and not line.startswith("#PLAYLIST-STUDIO-CATEGORIES:"):
+        header.append(line)
+header.append("#PLAYLIST-STUDIO-CATEGORIES:" + json.dumps(CATEGORY_ORDER, ensure_ascii=False))
+
 out = "#EXTM3U\n" + "\n".join(header) + "\n"
 for info, url in kept:
     out += f"{info}\n{url}\n"
@@ -195,8 +206,10 @@ report.extend([
     "", "## Normalization rules", "",
     "- Group-title values are trimmed and known group names use one canonical spelling.",
     "- `Backup`, `BACKUP`, and whitespace variants are merged into `Backup`.",
+    "- Malformed Sports group values containing TVG metadata are normalized to `Sports`.",
     "- `International Movies`, `International Music`, and `International Adult` are moved into `New Channels`.",
-    "- Every channel listed under `Added Channels` or `Added New Channels` in the auto-update report is placed in `New Channels`, including movie, music, and adult/erotic candidates.",
+    "- Every channel listed under `Added Channels` or `Added New Channels` in the auto-update report is placed in `New Channels`.",
+    "- The playlist studio category header is rewritten as valid JSON with one entry per category.",
     "- Three rejected non-erotic adult-category imports are removed by TVG ID.",
     "",
 ])
