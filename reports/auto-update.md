@@ -1,168 +1,168 @@
 # IPTV Auto Update
 
-Generated: **2026-09-24T11:08:23+00:00**
+Generated: **2026-09-24T11:10:39+00:00**
 
 ## Summary
 
 - Removed low-standard New Channels entries: **0**
 - Added credible New Channels: **30**
-- Rejected source candidates: **8823**
-- Unreachable candidates: **3**
-- Duplicate candidates: **288**
+- Rejected source candidates: **8820**
+- Unreachable candidates: **6**
+- Duplicate candidates: **323**
 - Already-present candidates: **228**
 - Source errors: **0**
 
 ## Added New Channels
 
-### 1. 16tv Budapest (360p)
+### 1. Alkarma TV North America & Canada (1080p)
 - Group: `New Channels`
-- TVG ID: `16tvBudapest.hu`
-- Stream: `https://cloudfront44.lexanetwork.com:1344/freerelay/16tv.sdp/playlist.m3u8`
+- TVG ID: `AlkarmaTVNorthAmericaCanada.us`
+- Stream: `https://5aafcc5de91f1.streamlock.net/alkarmatv.com/alkarmana1.smil/playlist.m3u8`
 
-### 2. 3ABN Proclaim! Network (720p)
+### 2. Alkarma TV Praise (1080p)
 - Group: `New Channels`
-- TVG ID: `3ABNProclaimNetwork.us`
-- Stream: `https://3abn.bozztv.com/3abn2/Pro_live/smil:Pro_live.smil/playlist.m3u8`
+- TVG ID: `AlkarmaTVPraise.us`
+- Stream: `https://58cc65c534c67.streamlock.net/alkarmatv.com/alkarmapa.smil/playlist.m3u8`
 
-### 3. 8 La Marina TV (576p)
+### 3. Alkarma TV Talmaza Discipleship (1080p)
 - Group: `New Channels`
-- TVG ID: `8LaMarinaTV.es`
-- Stream: `https://streaming005.gestec-video.com/hls/canal24.m3u8`
+- TVG ID: `AlkarmaTVTalmazaDiscipleship.us`
+- Stream: `https://58cc65c534c67.streamlock.net/alkarmatv.com/alkarmame2.smil/playlist.m3u8`
 
-### 4. Aaseervatham TV (360p)
+### 4. Alkarma TV Youth & English (1080p)
 - Group: `New Channels`
-- TVG ID: `AaseervathamTV.in`
-- Stream: `https://mumt04.tangotv.in/m18aqlK4AASEERVATHAMTV/index.m3u8`
+- TVG ID: `AlkarmaTVYouthEnglish.us`
+- Stream: `https://5aafcc5de91f1.streamlock.net/alkarmatv.com/alkarmaus.smil/playlist.m3u8`
 
-### 5. Abadan TV (576p)
+### 5. Alpha TV (1080p)
 - Group: `New Channels`
-- TVG ID: `AbadanTV.ir`
-- Stream: `https://ncdn.telewebion.ir/abadan/live/playlist.m3u8`
+- TVG ID: `AlphaTV.gr`
+- Stream: `https://alphatvlive2.siliconweb.com/alphatvlive/live_abr/playlist.m3u8`
 
-### 6. Abaza TV (1080p)
+### 6. Al Rayyan TV (1080p)
 - Group: `New Channels`
-- TVG ID: `AbazaTV.ru`
-- Stream: `https://public.apsny.camera/tv_abaza_tv_to_site/index.m3u8`
+- TVG ID: `AlRayyanTV.qa`
+- Stream: `https://alrayyancdn.vidgyor.com/pub-noalrayy3pwz0l/liveabr/playlist_dvr.m3u8`
 
-### 7. ABTV Bariloche
+### 7. Al-Souriya TV (1080p)
 - Group: `New Channels`
-- TVG ID: `ABTVBariloche.ar`
-- Stream: `https://videostream.shockmedia.com.ar/hls/abtvbariloche/abtvbariloche.m3u8`
+- TVG ID: `AlSouriyaTV.sy`
+- Stream: `https://shd-gcp-live.edgenextcdn.net/live/bitmovin-al-souriya-tv/e3150760fa5fd62776225433b8c3d406/index.m3u8`
 
-### 8. Activa TV (720p)
+### 8. Altena TV (720p)
 - Group: `New Channels`
-- TVG ID: `ActivaTV.es`
-- Stream: `https://streamtv.mediasector.es/hls/activatv/index.m3u8`
+- TVG ID: `AltenaTV.nl`
+- Stream: `https://dnx1f4sl30ba2.cloudfront.net/nlpo/clr-nlpo/altenatv/index.m3u8`
 
-### 9. ADA TV (1080p)
+### 9. Alternativa TV (720p)
 - Group: `New Channels`
-- TVG ID: `ADATV.cl`
-- Stream: `https://live-evg10.tv360.bitel.com.pe/bitel/alasdeaguilaSRT/playlist.m3u8`
+- TVG ID: `AlternativaTV.cl`
+- Stream: `https://live20.bozztv.com/giatv/giatv-alternativatv/alternativatv/playlist.m3u8`
 
-### 10. Adhyatm TV (720p)
+### 10. Alt Media TV
 - Group: `New Channels`
-- TVG ID: `AdhyatmTV.in`
-- Stream: `https://mumbai-edge.smartplaytv.in/AdhyatmTV/index.m3u8`
+- TVG ID: `AltMediaTV.py`
+- Stream: `https://video.hostingcaaguazu.com:19360/altmedia/altmedia.m3u8`
 
-### 11. Adoram TV (720p)
+### 11. Altura TV (720p)
 - Group: `New Channels`
-- TVG ID: `AdoramTV.do`
-- Stream: `https://live20.bozztv.com/giatv/giatv-adoram/adoram/chunks.m3u8`
+- TVG ID: `AlturaTV.pe`
+- Stream: `https://play.agenciastreaming.com:8081/tvalturalimalive/video.m3u8`
 
-### 12. Adrenalina Pura TV (720p)
+### 12. Alwesam TV (1080p)
 - Group: `New Channels`
-- TVG ID: `AdrenalinaPuraTV.us`
-- Stream: `https://jmp2.uk/plu-61b793ccf571b80007b7a610.m3u8`
+- TVG ID: `AlwesamTV.sa`
+- Stream: `https://stream.addresses-sat.com/Alwesam/index.m3u8`
 
-### 13. AGR FM TV (720p)
+### 13. Al Wousta TV (1080p)
 - Group: `New Channels`
-- TVG ID: `AGRFMTV.py`
-- Stream: `https://tigocloud.desdeparaguay.net/agrtv/agrtv/playlist.m3u8`
+- TVG ID: `AlWoustaTV.ae`
+- Stream: `https://svs.itworkscdn.net/alwoustalive/alwoustatv.smil/playlist.m3u8`
 
-### 14. Agricultura TV (1080p)
+### 14. Al-Zahra TV Turkic (720p)
 - Group: `New Channels`
-- TVG ID: `AgriculturaTV.cl`
-- Stream: `https://redirector.rudo.video/hls-video/ey6283je82983je9823je8jowowiekldk9838274/921tv/921tv.smil/playlist.m3u8`
+- TVG ID: `AlZahraTVTurkic.tr`
+- Stream: `https://live.al-zahratv.com/live/playlist.m3u8`
 
-### 15. Agrotendencia TV (1080p)
+### 15. Amazonia TV
 - Group: `New Channels`
-- TVG ID: `AgrotendenciaTV.cr`
-- Stream: `https://5fc584f3f19c9.streamlock.net/agrotendencia/videoagrotendencia_hls1/playlist.m3u8`
+- TVG ID: `AmazoniaTV.pe`
+- Stream: `https://servilive.com:3199/live/amazoniatvlive.m3u8`
 
-### 16. Aguila TV (1080p)
+### 16. Amazonica TV (480p)
 - Group: `New Channels`
-- TVG ID: `AguilaTV.do`
-- Stream: `https://fox.hostlagarto.com:8081/aguilatv/playlist.m3u8`
+- TVG ID: `AmazonicaTV.pe`
+- Stream: `https://live-evg8.tv360.bitel.com.pe/bitel/amazonicatvSRT/playlist.m3u8`
 
-### 17. Ahora TV (1080p)
+### 17. AM Canal
 - Group: `New Channels`
-- TVG ID: `AhoraTV.do`
-- Stream: `https://stream.haislin.com/ahoratv/index.m3u8`
+- TVG ID: `AMCanal.cl`
+- Stream: `https://streaming.bitsur.cl:3534/live/vdo1102live.m3u8`
 
-### 18. Ahsan TV (720p)
+### 18. AMC en Espanol (720p)
 - Group: `New Channels`
-- TVG ID: `AhsanTV.id`
-- Stream: `https://5bf7b725107e5.streamlock.net/ahsantv/ahsantv/playlist.m3u8`
+- TVG ID: `AMCenEspanol.us`
+- Stream: `https://pb-fmbyorn1d0n1n.akamaized.net/v1/amc_amcespanol_3/samsungheadend_us/latest/main/hls/playlist.m3u8`
 
-### 19. Ajman TV (720p)
+### 19. AMC Europe
 - Group: `New Channels`
-- TVG ID: `AjmanTV.ae`
-- Stream: `https://cdn1.logichost.in/ajmantv/live/playlist.m3u8`
+- TVG ID: `AMCEurope.uk`
+- Stream: `http://88.212.15.19/live/test_amc_25p/playlist.m3u8`
 
-### 20. Alabbassia TV (1080p)
+### 20. America TV (720p)
 - Group: `New Channels`
-- TVG ID: `AlabbassiaTV.iq`
-- Stream: `https://stream.alabbassia.com/live/alabbassia/index.m3u8`
+- TVG ID: `AmericaTV.ar`
+- Stream: `https://prepublish.f.qaotic.net/a07/americahls-100056/playlist_720p.m3u8`
 
-### 21. Al-Aimma TV (1080p)
+### 21. AMGA TV (1080p)
 - Group: `New Channels`
-- TVG ID: `AlAimmaTV.iq`
-- Stream: `https://alaimma.tv/live/index.m3u8`
+- TVG ID: `AMGATV.us`
+- Stream: `https://streamer1.connectto.com/AMGA_WEB_1202/playlist.m3u8`
 
-### 22. Alanya Posta TV (240p)
+### 22. Amman TV (720p)
 - Group: `New Channels`
-- TVG ID: `AlanyaPostaTV.tr`
-- Stream: `https://api-tv3.yayin.com.tr/postatv/postatv/playlist.m3u8`
+- TVG ID: `AmmanTV.jo`
+- Stream: `https://ammantv-live.ercdn.net/ammantvhd/ammantvhd.m3u8`
 
-### 23. Alawla TV (1080p)
+### 23. Andorra TV (1080p)
 - Group: `New Channels`
-- TVG ID: `AlawlaTV.iq`
-- Stream: `https://live.alawla.tv/hls/stream.m3u8`
+- TVG ID: `AndorraTV.ad`
+- Stream: `https://livesg1.rtva.hiway.media/11a6d6f4-ee13-47c7-9c27-7313cf5424e2/manifest.m3u8`
 
-### 24. Alcarria TV (576p)
+### 24. Anjan TV (1080p)
 - Group: `New Channels`
-- TVG ID: `AlcarriaTV.es`
-- Stream: `http://217.182.77.27/live/alcarriatv-livestream.m3u8`
+- TVG ID: `AnjanTV.in`
+- Stream: `https://anjan.vstream.online/anjanorg/ngrp:anjan_hdall/playlist.m3u8`
 
-### 25. Alegria TV (720p)
+### 25. Antena TV (1080p)
 - Group: `New Channels`
-- TVG ID: `AlegriaTV.bo`
-- Stream: `https://lbgo.bozztv.com/ssh101/ssh101/confirmatv/playlist.m3u8`
+- TVG ID: `AntenaTV.mx`
+- Stream: `https://5ca9af4645e15.streamlock.net/grd/videogrd/playlist.m3u8`
 
-### 26. Alfa Omega TV (1080p)
+### 26. Antofagasta TV (1080p)
 - Group: `New Channels`
-- TVG ID: `AlfaOmegaTV.ro`
-- Stream: `https://aom-live.maghost.ro/aomTV/streams/OOztu5o9Fx6dh9mD1711027803849.m3u8`
+- TVG ID: `AntofagastaTV.cl`
+- Stream: `https://unlimited6-cl.dps.live/atv/atv.smil/playlist.m3u8`
 
-### 27. Al Horreya TV (1080p)
+### 27. Apsua TV (1080p)
 - Group: `New Channels`
-- TVG ID: `AlHorreyaTV.us`
-- Stream: `http://media.smc-host.com:1935/alhorreya.tv/alhorreya.smil/playlist.m3u8`
+- TVG ID: `ApsuaTV.ge`
+- Stream: `https://gcmx3v3owcj.a.trbcdn.net/livemaster/ba7pu_fgej0zelpw.smil/playlist.m3u8?blstid=null`
 
-### 28. Alkarma TV Australia (1080p)
+### 28. Aradana TV (576p)
 - Group: `New Channels`
-- TVG ID: `AlkarmaTVAustralia.us`
-- Stream: `https://5a8308add0b31.streamlock.net/alkarmatv.com/alkarmaau.smil/playlist.m3u8`
+- TVG ID: `AradanaTV.in`
+- Stream: `https://cdn.pishow.tv/ott/live/961/master.m3u8`
 
-### 29. Alkarma TV Family (1080p)
+### 29. Araruna TV (1080p)
 - Group: `New Channels`
-- TVG ID: `AlkarmaTVFamily.us`
-- Stream: `https://58cc65c534c67.streamlock.net/alkarmatv.com/alkarmaNA2.smil/playlist.m3u8`
+- TVG ID: `ArarunaTV.br`
+- Stream: `https://video05.logicahost.com.br/ararunatv/ararunatv/playlist.m3u8`
 
-### 30. Alkarma TV Middle East (1080p)
+### 30. Ara TV (720p)
 - Group: `New Channels`
-- TVG ID: `AlkarmaTVMiddleEast.us`
-- Stream: `https://58cc65c534c67.streamlock.net/alkarmatv.com/alkarmame1.smil/playlist.m3u8`
+- TVG ID: `AraTV.ir`
+- Stream: `https://ncdn.telewebion.ir/ara/live/playlist.m3u8`
 
 ## Removed entries
 

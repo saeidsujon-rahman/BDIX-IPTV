@@ -1649,3 +1649,63 @@ https://5a8308add0b31.streamlock.net/alkarmatv.com/alkarmaau.smil/playlist.m3u8
 https://58cc65c534c67.streamlock.net/alkarmatv.com/alkarmaNA2.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="AlkarmaTVMiddleEast.us" tvg-name="Alkarma TV Middle East" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/alkarma-tv-middle-east-1080p-bfdc6bcc5c.png" tvg-country="US" tvg-language="ara" nexus-score="100" group-title="New Channels",Alkarma TV Middle East (1080p)
 https://58cc65c534c67.streamlock.net/alkarmatv.com/alkarmame1.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="AlkarmaTVNorthAmericaCanada.us" tvg-name="Alkarma TV North America & Canada" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/alkarma-tv-north-america-canada-1080p-aecc163b05.png" tvg-country="US" tvg-language="ara" nexus-score="100" group-title="New Channels",Alkarma TV North America & Canada (1080p)
+https://5aafcc5de91f1.streamlock.net/alkarmatv.com/alkarmana1.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="AlkarmaTVPraise.us" tvg-name="Alkarma TV Praise" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/alkarma-tv-praise-1080p-33353190ea.png" tvg-country="US" tvg-language="ara" nexus-score="100" group-title="New Channels",Alkarma TV Praise (1080p)
+https://58cc65c534c67.streamlock.net/alkarmatv.com/alkarmapa.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="AlkarmaTVTalmazaDiscipleship.us" tvg-name="Alkarma TV Talmaza Discipleship" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/alkarma-tv-talmaza-discipleship-1080p-cb0658ad8a.png" tvg-country="US" tvg-language="ara" nexus-score="100" group-title="New Channels",Alkarma TV Talmaza Discipleship (1080p)
+https://58cc65c534c67.streamlock.net/alkarmatv.com/alkarmame2.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="AlkarmaTVYouthEnglish.us" tvg-name="Alkarma TV Youth & English" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/alkarma-tv-youth-english-1080p-3e965bef11.png" tvg-country="US" tvg-language="ara" nexus-score="99" group-title="New Channels",Alkarma TV Youth & English (1080p)
+https://5aafcc5de91f1.streamlock.net/alkarmatv.com/alkarmaus.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="AlphaTV.gr" tvg-name="Alpha TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/alpha-tv-1080p-45167b9160.png" tvg-country="GR" tvg-language="ell" nexus-score="100" group-title="New Channels",Alpha TV (1080p)
+https://alphatvlive2.siliconweb.com/alphatvlive/live_abr/playlist.m3u8
+#EXTINF:-1 tvg-id="AlRayyanTV.qa" tvg-name="Al Rayyan TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/al-rayyan-tv-1080p-bcd8cb26a7.png" tvg-country="QA" tvg-language="ara" nexus-score="100" group-title="New Channels",Al Rayyan TV (1080p)
+https://alrayyancdn.vidgyor.com/pub-noalrayy3pwz0l/liveabr/playlist_dvr.m3u8
+#EXTINF:-1 tvg-id="AlSouriyaTV.sy" tvg-name="Al-Souriya TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/al-souriya-tv-1080p-85d1e9efc8.png" tvg-country="SY" tvg-language="ara" nexus-score="100" group-title="New Channels",Al-Souriya TV (1080p)
+https://shd-gcp-live.edgenextcdn.net/live/bitmovin-al-souriya-tv/e3150760fa5fd62776225433b8c3d406/index.m3u8
+#EXTINF:-1 tvg-id="AltenaTV.nl" tvg-name="Altena TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/altena-tv-720p-d781fda1d9.png" tvg-country="NL" tvg-language="nld" nexus-score="100" group-title="New Channels",Altena TV (720p)
+https://dnx1f4sl30ba2.cloudfront.net/nlpo/clr-nlpo/altenatv/index.m3u8
+#EXTINF:-1 tvg-id="AlternativaTV.cl" tvg-name="Alternativa TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/alternativa-tv-720p-f70a38bb52.png" tvg-country="CL" tvg-language="spa" nexus-score="99" group-title="New Channels",Alternativa TV (720p)
+https://live20.bozztv.com/giatv/giatv-alternativatv/alternativatv/playlist.m3u8
+#EXTINF:-1 tvg-id="AltMediaTV.py" tvg-name="Alt Media TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/alt-media-tv-d8bf5f531b.png" tvg-country="PY" tvg-language="spa" nexus-score="100" group-title="New Channels",Alt Media TV
+https://video.hostingcaaguazu.com:19360/altmedia/altmedia.m3u8
+#EXTINF:-1 tvg-id="AlturaTV.pe" tvg-name="Altura TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/altura-tv-720p-77312a45aa.png" tvg-country="PE" tvg-language="spa" nexus-score="100" group-title="New Channels",Altura TV (720p)
+https://play.agenciastreaming.com:8081/tvalturalimalive/video.m3u8
+#EXTINF:-1 tvg-id="AlwesamTV.sa" tvg-name="Alwesam TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/alwesam-tv-1080p-e52b459719.png" tvg-country="SA" tvg-language="ara" nexus-score="100" group-title="New Channels",Alwesam TV (1080p)
+https://stream.addresses-sat.com/Alwesam/index.m3u8
+#EXTINF:-1 tvg-id="AlWoustaTV.ae" tvg-name="Al Wousta TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/al-wousta-tv-1080p-0c3b36c945.png" tvg-country="AE" tvg-language="ara" nexus-score="100" group-title="New Channels",Al Wousta TV (1080p)
+https://svs.itworkscdn.net/alwoustalive/alwoustatv.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="AlZahraTVTurkic.tr" tvg-name="Al-Zahra TV Turkic" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/al-zahra-tv-turkic-720p-5a6c8b970f.png" tvg-country="TR" tvg-language="tur" nexus-score="100" group-title="New Channels",Al-Zahra TV Turkic (720p)
+https://live.al-zahratv.com/live/playlist.m3u8
+#EXTINF:-1 tvg-id="AmazoniaTV.pe" tvg-name="Amazonia TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/amazonia-tv-62400b1d98.png" tvg-country="PE" tvg-language="spa" nexus-score="100" group-title="New Channels",Amazonia TV
+https://servilive.com:3199/live/amazoniatvlive.m3u8
+#EXTINF:-1 tvg-id="AmazonicaTV.pe" tvg-name="Amazonica TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/amazonica-tv-480p-047c49902b.png" tvg-country="PE" tvg-language="spa" nexus-score="51" group-title="New Channels",Amazonica TV (480p)
+https://live-evg8.tv360.bitel.com.pe/bitel/amazonicatvSRT/playlist.m3u8
+#EXTINF:-1 tvg-id="AMCanal.cl" tvg-name="AM Canal" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/am-canal-ddb3ca4da2.png" tvg-country="CL" tvg-language="spa" nexus-score="66" group-title="New Channels",AM Canal
+https://streaming.bitsur.cl:3534/live/vdo1102live.m3u8
+#EXTINF:-1 tvg-id="AMCenEspanol.us" tvg-name="AMC en Espanol" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/amc-en-espanol-720p-0fcb9c1d26.png" tvg-country="US" tvg-language="spa" nexus-score="100" group-title="New Channels",AMC en Espanol (720p)
+https://pb-fmbyorn1d0n1n.akamaized.net/v1/amc_amcespanol_3/samsungheadend_us/latest/main/hls/playlist.m3u8
+#EXTINF:-1 tvg-id="AMCEurope.uk" tvg-name="AMC Europe" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/amc-europe-95485d9836.png" tvg-country="UK" tvg-language="bul;eng;pol;por;spa;ukr" nexus-score="100" group-title="New Channels",AMC Europe
+http://88.212.15.19/live/test_amc_25p/playlist.m3u8
+#EXTINF:-1 tvg-id="AmericaTV.ar" tvg-name="America TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/america-tv-720p-3524ac1d9e.png" tvg-country="AR" tvg-language="spa" nexus-score="100" group-title="New Channels",America TV (720p)
+https://prepublish.f.qaotic.net/a07/americahls-100056/playlist_720p.m3u8
+#EXTINF:-1 tvg-id="AMGATV.us" tvg-name="AMGA TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/amga-tv-1080p-7b1283966e.png" tvg-country="US" tvg-language="hye;eng" nexus-score="100" group-title="New Channels",AMGA TV (1080p)
+https://streamer1.connectto.com/AMGA_WEB_1202/playlist.m3u8
+#EXTINF:-1 tvg-id="AmmanTV.jo" tvg-name="Amman TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/amman-tv-720p-b0ba9e03db.png" tvg-country="JO" tvg-language="ara" nexus-score="100" group-title="New Channels",Amman TV (720p)
+https://ammantv-live.ercdn.net/ammantvhd/ammantvhd.m3u8
+#EXTINF:-1 tvg-id="AndorraTV.ad" tvg-name="Andorra TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/andorra-tv-1080p-3abea3ace9.png" tvg-country="AD" tvg-language="cat" nexus-score="100" group-title="New Channels",Andorra TV (1080p)
+https://livesg1.rtva.hiway.media/11a6d6f4-ee13-47c7-9c27-7313cf5424e2/manifest.m3u8
+#EXTINF:-1 tvg-id="AnjanTV.in" tvg-name="Anjan TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/anjan-tv-1080p-4cbe8bff61.png" tvg-country="IN" tvg-language="hin" nexus-score="100" group-title="New Channels",Anjan TV (1080p)
+https://anjan.vstream.online/anjanorg/ngrp:anjan_hdall/playlist.m3u8
+#EXTINF:-1 tvg-id="AntenaTV.mx" tvg-name="Antena TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/antena-tv-1080p-a56e77fa1b.png" tvg-country="MX" tvg-language="spa" nexus-score="99" group-title="New Channels",Antena TV (1080p)
+https://5ca9af4645e15.streamlock.net/grd/videogrd/playlist.m3u8
+#EXTINF:-1 tvg-id="AntofagastaTV.cl" tvg-name="Antofagasta TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/antofagasta-tv-1080p-ade72d5aaf.png" tvg-country="CL" tvg-language="spa" nexus-score="100" group-title="New Channels",Antofagasta TV (1080p)
+https://unlimited6-cl.dps.live/atv/atv.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="ApsuaTV.ge" tvg-name="Apsua TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/apsua-tv-1080p-cfea502a65.png" tvg-country="GE" tvg-language="rus;abk" nexus-score="100" group-title="New Channels",Apsua TV (1080p)
+https://gcmx3v3owcj.a.trbcdn.net/livemaster/ba7pu_fgej0zelpw.smil/playlist.m3u8?blstid=null
+#EXTINF:-1 tvg-id="AradanaTV.in" tvg-name="Aradana TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/aradana-tv-576p-5ebad635f9.png" tvg-country="IN" tvg-language="hin" nexus-score="100" group-title="New Channels",Aradana TV (576p)
+https://cdn.pishow.tv/ott/live/961/master.m3u8
+#EXTINF:-1 tvg-id="ArarunaTV.br" tvg-name="Araruna TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/araruna-tv-1080p-27a2b193da.png" tvg-country="BR" tvg-language="por" nexus-score="100" group-title="New Channels",Araruna TV (1080p)
+https://video05.logicahost.com.br/ararunatv/ararunatv/playlist.m3u8
+#EXTINF:-1 tvg-id="AraTV.ir" tvg-name="Ara TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/ara-tv-720p-94255596ad.png" tvg-country="IR" tvg-language="fas" nexus-score="100" group-title="New Channels",Ara TV (720p)
+https://ncdn.telewebion.ir/ara/live/playlist.m3u8
