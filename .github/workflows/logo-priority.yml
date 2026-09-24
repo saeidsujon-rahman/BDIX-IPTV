@@ -12,8 +12,9 @@ on:
 permissions:
   contents: write
 
+# Serialize every workflow that writes to main.
 concurrency:
-  group: iptv-playlist-and-epg
+  group: iptv-repository-writes
   cancel-in-progress: false
 
 jobs:
@@ -22,12 +23,18 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
+          fetch-depth: 0
       - name: Apply repository-first logos without changing streams or groups
         run: python scripts/sync_logos.py
       - name: Commit logo URLs if changed
         run: |
+          set -euo pipefail
           git config user.name 'IPTV Update Bot'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git add -- 'IPTV Playlist.m3u'
-          git diff --cached --quiet || (git commit -m 'bot: prefer repository logos with external fallback' && git push)
+          if git diff --cached --quiet; then
+            echo 'No logo URL changes.'
+            exit 0
+          fi
+          git commit -m 'bot: prefer repository logos with external fallback'
+          git push origin HEAD:main
