@@ -174,8 +174,6 @@ https://amg00877-b4unew-amg00877c2-xiaomi-in-5489.playouts.now.amagi.tv/playlist
 #EXTINF:-1 tvg-id="BhojpuriCinema.in" tvg-name="Bhojpuri Cinema" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bhojpuri-cinema.png" tvg-chno="289" channel-id="BhojpuriCinema.in" group-title="Indian Movies",Bhojpuri Cinema
 https://live-bhojpuri.akamaized.net/liveabr/playlist.m3u8
 #EXTINF:-1 tvg-id="BollywoodClassic.ro" tvg-name="Bollywood Classic" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bollywood-classic.png" tvg-chno="291" channel-id="BollywoodClassic.ro" tvg-language="ron;hin;rus" tvg-country="RO" group-title="Indian Movies",Bollywood Classic
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 VLC/3.0.18 LibVLC/3.0.18
-#EXTVLCOPT:http-referrer=https://cool-tv.net/
 https://flash1.bogulus1.cfd/boly/usergenr9j8s2t.m3u8
 #EXTINF:-1 channel-id="ColorsCineplex.in" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/colors-cineplex.png" tvg-id="ColorsCineplex.in" tvg-name="Colors Cineplex" tvg-chno="432" group-title="Indian Movies",Colors Cineplex
 http://202.70.146.135:8000/play/a04n/index.m3u8
@@ -666,7 +664,6 @@ https://streamcdne2-4c4b867c89244861ac216426883d1ad0.msvdn.net/live/S62628868/uh
 #EXTINF:-1 tvg-id="PlayTV.gr" tvg-name="MAD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mad.png" tvg-chno="606" channel-id="PlayTV.gr" group-title="International Music",MAD
 http://web.onair-radio.eu:1935/Alpha-Host/Alpha-Host/playlist.m3u8
 #EXTINF:-1 tvg-id="MTV.in" tvg-name="MTV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mtv.png" tvg-chno="607" channel-id="MTV.in" tvg-language="hin" tvg-country="IN" group-title="International Music",MTV
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 https://da86m1sqpm3o0.cloudfront.net/28072023/smil:mtvindia.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="Now70s.uk" tvg-name="NOW 70s" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/now-70s.png" tvg-chno="608" channel-id="Now70s.uk" group-title="International Music",NOW 70s
 https://lightning-now70s-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-lightning-now70s-rakuten/CDN/playlist.m3u8
@@ -1123,7 +1120,6 @@ https://drk6xq0vhn.gpcdn.net/live/b4u_movies_abr/index.m3u8
 #EXTINF:-1 tvg-id="B4UMovies.in" tvg-name="B4U Movies" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/b4u-movies-576p-fd61c20d7c.png" tvg-country="IN" tvg-language="hin" nexus-score="100" group-title="Backup",B4U Movies (576p)
 https://cdn.pishow.tv/ott/live/419/master.m3u8
 #EXTINF:-1 channel-id="local.bangla-tv" tvg-id="local.bangla-tv" tvg-name="Bangla Tv [Backup 3]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bangla-tv.png" tvg-chno="73" group-title="Backup",Bangla Tv [Backup 3]
-#EXTVLCOPT:http-user-agent=oxoo/1.3.9.d (Linux;Android 7.1.2) ExoPlayerLib/2.14.1
 https://iptvlive.ahmed-bd-org.workers.dev/bangla-tv-1/index.m3u8
 #EXTINF:-1 channel-id="local.bangla-tv" tvg-id="local.bangla-tv" tvg-name="Bangla Tv [Backup 4]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bangla-tv.png" tvg-chno="74" group-title="Backup",Bangla Tv [Backup 4]
 https://iptvlive.ahmed-bd-org.workers.dev/bangla-tv-2/index.m3u8
@@ -1468,12 +1464,10 @@ https://da86m1sqpm3o0.cloudfront.net/28072023/smil:rupashibangla.smil/playlist.m
 #EXTINF:-1 tvg-id="RupasiBangla.in" tvg-name="Rupasi Bangla" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/rupasi-bangla-576p-e677fd1858.png" tvg-country="IN" tvg-language="ben" nexus-score="100" group-title="Backup",Ruposhi Bangla (576p)
 https://cdn.pishow.tv/ott/live/1039/master.m3u8
 #EXTINF:-1 tvg-id="SATV.bd" tvg-name="SA TV [Backup 1]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sa-tv.png" tvg-chno="198" channel-id="SATV.bd" group-title="Backup",SA TV [Backup 1]
-#EXTVLCOPT:http-user-agent=oxoo/1.3.9.d (Linux;Android 7.1.2) ExoPlayerLib/2.14.1
 http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/satvoff5666.stream/playlist.m3u8
 #EXTINF:-1 tvg-id="SATV.bd" tvg-name="SA TV [Backup 2]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sa-tv.png" tvg-chno="199" channel-id="SATV.bd" group-title="Backup",SA TV [Backup 2]
 https://tvsen6.aynaott.com/rELXiuUXqbgzPb06Npom/index.m3u8?e=1784102564&u=ee5437a7-c16b-4700-b317-a41b77d5cba9&token=ed25297bf867135d78cb6ad3e1c2b495
 #EXTINF:-1 tvg-id="SATV.bd" tvg-name="SA TV [Backup 3]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sa-tv.png" tvg-chno="200" channel-id="SATV.bd" group-title="Backup",SA TV [Backup 3]
-#EXTVLCOPT:http-user-agent=oxoo/1.3.9.d (Linux;Android 7.1.2) ExoPlayerLib/2.14.1
 https://iptvlive.ahmed-bd-org.workers.dev/sa-tv-1/index.m3u8
 #EXTINF:-1 tvg-id="SATV.bd" tvg-name="SA TV [Backup 4]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sa-tv.png" tvg-chno="201" channel-id="SATV.bd" group-title="Backup",SA TV [Backup 4]
 https://iptvlive.ahmed-bd-org.workers.dev/sa-tv-2/index.m3u8

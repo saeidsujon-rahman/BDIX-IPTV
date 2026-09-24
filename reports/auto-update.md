@@ -1,11 +1,11 @@
 # IPTV Auto Update
 
-Generated: **2026-09-24T10:53:04+00:00**
+Generated: **2026-09-24T10:54:31+00:00**
 
 ## Cleanup
 - Removed low-standard New Channels entries: **0**
 - Added credible New Channels: **30**
-- Rejected source candidates: **8876**
+- Rejected source candidates: **8823**
 - Unreachable candidates: **3**
 
 ## Removed entries
