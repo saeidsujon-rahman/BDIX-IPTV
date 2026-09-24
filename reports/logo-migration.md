@@ -1,6 +1,6 @@
 # External Logo Migration
 
-Generated: **2026-09-24T16:09:19+00:00**
+Generated: **2026-09-24T16:40:57+00:00**
 
 ## Summary
 
@@ -8,7 +8,7 @@ Generated: **2026-09-24T16:09:19+00:00**
 - Unique external URLs: **41**
 - References migrated to `/logos`: **38**
 - References reused from an existing local logo: **0**
-- Logo files created or refreshed: **27**
+- Logo files created or refreshed: **23**
 - External references left unchanged: **3**
 
 ## Failed downloads
