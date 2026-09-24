@@ -22,16 +22,16 @@ SPECIAL_GROUPS = {
 
 
 def attrs(info):
-    return dict(re.findall(r'([\\w-]+)="([^"]*)"', info))
+    return dict(re.findall(r'([\w-]+)="([^"]*)"', info))
 
 
 def set_group(info, group):
-    info = re.sub(r'\\s+group-title="[^"]*"', "", info)
+    info = re.sub(r'\s+group-title="[^"]*"', "", info)
     return info.replace(",", f' group-title="{group}",', 1)
 
 
 def entries(text):
-    lines = text.replace("\\r", "").splitlines()
+    lines = text.replace("\r", "").splitlines()
     result = []
     i = 0
     while i < len(lines):
@@ -77,12 +77,18 @@ for info, url in entries(base):
     normalized = " ".join(original.split())
     folded = normalized.casefold()
 
+    # Every channel selected by the importer, including movie/music/adult
+    # candidates, must use the single New Channels category.
     if tvg_id in new_ids or folded in SPECIAL_GROUPS:
         target = "New Channels"
+    # Repair all malformed sports group values, including values such as
+    # "SPORTS TVG-NAME=... TVG-CHNO=...". The previous condition incorrectly
+    # searched for attribute names inside the group-title value and therefore
+    # never matched these malformed categories.
+    elif folded.startswith("sports"):
+        target = "Sports"
     elif folded == "backup":
         target = "Backup"
-    elif folded.startswith("sports") and ("tvg-name" in folded or "tvg-chno" in folded):
-        target = "Sports"
     else:
         target = normalized
 
@@ -100,9 +106,18 @@ for line in base.splitlines():
             canonical = []
             for value in categories:
                 folded = " ".join(str(value).split()).casefold()
-                value = "Backup" if folded == "backup" else "New Channels" if folded in SPECIAL_GROUPS else " ".join(str(value).split())
+                value = (
+                    "Backup" if folded == "backup"
+                    else "New Channels" if folded in SPECIAL_GROUPS
+                    else "Sports" if folded.startswith("sports")
+                    else " ".join(str(value).split())
+                )
                 if value not in canonical:
                     canonical.append(value)
+            if "New Channels" not in canonical:
+                canonical.append("New Channels")
+            if "Backup" not in canonical:
+                canonical.append("Backup")
             line = prefix + json.dumps(canonical, ensure_ascii=False)
         except Exception:
             pass
