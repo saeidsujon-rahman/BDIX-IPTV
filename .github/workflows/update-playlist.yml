@@ -68,12 +68,39 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if git diff --quiet -- "IPTV Playlist.m3u" "reports/auto-update.md" "reports/playlist-normalization.md" "reports/logo-migration.md" "logos"; then
+          files=(
+            "IPTV Playlist.m3u"
+            "reports/auto-update.md"
+            "reports/playlist-normalization.md"
+            "reports/logo-migration.md"
+            "logos"
+          )
+
+          if git diff --quiet -- "${files[@]}"; then
             echo "No playlist, logo, or report changes."
             exit 0
           fi
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add "IPTV Playlist.m3u" "reports/auto-update.md" "reports/playlist-normalization.md" "reports/logo-migration.md" "logos"
+          git add "${files[@]}"
           git commit -m "Normalize playlist structure and update logos"
-          git push origin HEAD:main
+
+          # The repository may receive another commit while this workflow runs.
+          # Rebase the generated commit onto the latest main before pushing,
+          # then retry a few times if main advances between fetch and push.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+
+            if git push origin HEAD:main; then
+              echo "Playlist changes pushed successfully on attempt ${attempt}."
+              exit 0
+            fi
+
+            echo "Push attempt ${attempt} failed because main advanced; retrying."
+            sleep 3
+          done
+
+          echo "Unable to push after 3 attempts."
+          exit 1
