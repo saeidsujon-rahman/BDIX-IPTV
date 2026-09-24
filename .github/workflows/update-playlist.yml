@@ -11,6 +11,7 @@ on:
     paths:
       - 'scripts/update_playlist.py'
       - 'scripts/normalize_playlist.py'
+      - 'scripts/repair_categories.py'
       - 'scripts/migrate_external_logos.py'
       - 'scripts/fix_selected_logos.py'
       - '.github/workflows/update-playlist.yml'
@@ -49,10 +50,13 @@ jobs:
       - name: Stage 5 — Normalize playlist structure and remove rejected imports
         run: python scripts/normalize_playlist.py
 
-      - name: Stage 6 — Migrate external channel logos
+      - name: Stage 6 — Run final category repair
+        run: python scripts/repair_categories.py
+
+      - name: Stage 7 — Migrate external channel logos
         run: python scripts/migrate_external_logos.py
 
-      - name: Stage 7 — Repair selected channel logos
+      - name: Stage 8 — Repair selected channel logos
         run: |
           if [ -f scripts/fix_selected_logos.py ]; then
             python scripts/fix_selected_logos.py
@@ -60,7 +64,7 @@ jobs:
             echo 'No selected-logo repair script found; skipping.'
           fi
 
-      - name: Stage 8 — Commit playlist, logos, and reports
+      - name: Stage 9 — Commit playlist, logos, and reports
         shell: bash
         run: |
           set -euo pipefail
