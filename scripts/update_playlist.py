@@ -15,7 +15,9 @@ NEW_GROUP="New Channels"
 BACKUP_GROUP="Backup"
 # New Channels is enabled, but additions are tightly restricted below.
 MAX_NEW=30
-MAX_BACKUP=60
+# Automatic backup imports are disabled. Existing Backup entries are preserved;
+# new backups are added only when explicitly requested by the repository owner.
+MAX_BACKUP=0
 NEW_CHANNELS_REQUIRE_TVG_ID=True
 NO_BACKUP_GROUPS={"Sports","Kids","Religious","Documentary & Wildlife"}
 
@@ -146,28 +148,27 @@ for info,u in candidates:
         continue
     a=attrs(info); n=name_of(info); nkey=norm(n); cid=a.get("tvg-id","")
     same=(cid and not cid.startswith("local.") and cid in by_id) or (nkey and nkey in by_name)
-    if same and ((cid and not cid.startswith("local.") and cid in no_backup_ids) or (nkey and nkey in no_backup_names)):
-        stats["excluded_backup_category"]+=1
+    if same:
+        # Backups are intentionally never imported automatically. Existing
+        # Backup entries remain untouched; explicit owner requests are required.
+        stats["automatic_backups_disabled"]+=1
         continue
-    if not same:
-        # Strict New Channels gate: recognizable/popular allowlisted name plus
-        # a non-empty tvg-id. Never accept arbitrary foreign look-alikes.
-        if nkey not in RENOWNED_NEW_CHANNELS:
-            stats["not_renowned"]+=1
-            continue
-        if NEW_CHANNELS_REQUIRE_TVG_ID and not cid.strip():
-            stats["missing_tvg_id"]+=1
-            continue
-    target=backups if same else new
-    limit=MAX_BACKUP if same else MAX_NEW
-    if len(target)>=limit:
-        stats["backup_limit" if same else "new_limit"]+=1
+    # Strict New Channels gate: recognizable/popular allowlisted name plus
+    # a non-empty tvg-id. Never accept arbitrary foreign look-alikes.
+    if nkey not in RENOWNED_NEW_CHANNELS:
+        stats["not_renowned"]+=1
+        continue
+    if NEW_CHANNELS_REQUIRE_TVG_ID and not cid.strip():
+        stats["missing_tvg_id"]+=1
+        continue
+    if len(new)>=MAX_NEW:
+        stats["new_limit"]+=1
         continue
     # Never insert an untested candidate.
     if not reachable(u):
         stats["unreachable"]+=1
         continue
-    target.append((clean_info(info,NEW_GROUP if not same else BACKUP_GROUP),u))
+    new.append((clean_info(info,NEW_GROUP),u))
     seen.add(u)
 
 def sort_dynamic_groups(text):
@@ -215,6 +216,7 @@ report=[
     f"- Final playlist entries: **{len(final_entries)}**",
     f"- New channels added: **{len(new)}**",
     f"- Backup streams added: **{len(backups)}**",
+    f"- Automatic backup candidates skipped by policy: **{stats['automatic_backups_disabled']}**",
     f"- Exact duplicate URLs skipped: **{stats['duplicate_urls']}**",
     f"- Policy-blocked candidates skipped: **{stats['blocked']}**",
     f"- Unmatched channels outside the renowned allowlist skipped: **{stats['not_renowned']}**",
@@ -222,7 +224,6 @@ report=[
     f"- Sports, Kids, Religious, and Documentary backups skipped: **{stats['excluded_backup_category']}**",
     f"- Unreachable candidates skipped: **{stats['unreachable']}**",
     f"- Candidates skipped by new-channel limit: **{stats['new_limit']}**",
-    f"- Candidates skipped by backup limit: **{stats['backup_limit']}**",
     "",
     "## Source status",
     "",
@@ -243,13 +244,14 @@ report.extend([
     "- New-channel candidates must include a non-empty `tvg-id`.",
     "- New-channel candidates must pass the HTTP reachability check before insertion.",
     "- Exact duplicate stream URLs are not added.",
-    "- Backups are not added for Sports, Kids, Religious, or Documentary & Wildlife channels.",
+    "- Automatic Backup imports are disabled; existing Backup entries are preserved.",
+    "- Backup streams are added only after an explicit owner request.",
     "- News, non-Islamic religious, radio, VOD, webcam, trailer, promo, and test entries are excluded from automatic additions.",
     "- Adult channels remain permitted by the current policy.",
-    f"- New entries are capped at {MAX_NEW}; backup entries are capped at {MAX_BACKUP} per run.",
+    f"- New entries are capped at {MAX_NEW} per run.",
     "",
 ])
 REPORT.parent.mkdir(parents=True,exist_ok=True)
 REPORT.write_text("\n".join(report),encoding="utf-8",newline="\n")
-print(f"Added {len(new)} new channels to {NEW_GROUP}; {len(backups)} backups to {BACKUP_GROUP}.")
+print(f"Added {len(new)} new channels to {NEW_GROUP}; automatic backup additions disabled.")
 print(f"Updated {REPORT}.")
