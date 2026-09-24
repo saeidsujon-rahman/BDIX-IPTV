@@ -13,13 +13,17 @@ SOURCES=[
 ]
 NEW_GROUP="New Channels"
 BACKUP_GROUP="Backup"
-MAX_NEW=0
+# New Channels is enabled, but additions are tightly restricted below.
+MAX_NEW=30
 MAX_BACKUP=60
+NEW_CHANNELS_REQUIRE_TVG_ID=True
 NO_BACKUP_GROUPS={"Sports","Kids","Religious","Documentary & Wildlife"}
 
-# New, unmatched channels are admitted only when their normalized name is in
-# this deliberately conservative allowlist. Add a name here only after manual
-# review; existing channels and eligible backup streams do not need this list.
+# Strict allowlist for unmatched channels. A candidate must be a recognizable,
+# popular channel name in this list, have a tvg-id, pass all policy filters,
+# and respond successfully to the HTTP reachability check before insertion.
+# Add names only after manual review; existing channels and eligible backups
+# do not need this allowlist.
 RENOWNED_NEW_CHANNELS={
     "andpictures","amc","axn","bbcearth","bbcfirst","beinsports","beinsports1",
     "beinsports2","beinsports3","beinsportsxtra","cartoonnetwork","cinemax",
@@ -75,8 +79,9 @@ def clean_info(info,group):
     return info.replace(",",f' group-title="{group}",',1)
 
 def reachable(url):
-    # Conservative lightweight check: HTTP(S), reject obvious local/proxy placeholders,
-    # and require the endpoint to answer. A source marked online is already health-checked.
+    # Conservative HTTP validation: require a real HTTP(S) endpoint and a
+    # successful response. This is not a substitute for ffprobe media testing;
+    # the separate Backup Stream Health Audit handles deeper validation.
     try:
         p=urlparse(url)
         if p.scheme not in ("http","https") or not p.netloc: return False
@@ -144,9 +149,15 @@ for info,u in candidates:
     if same and ((cid and not cid.startswith("local.") and cid in no_backup_ids) or (nkey and nkey in no_backup_names)):
         stats["excluded_backup_category"]+=1
         continue
-    if not same and nkey not in RENOWNED_NEW_CHANNELS:
-        stats["not_renowned"]+=1
-        continue
+    if not same:
+        # Strict New Channels gate: recognizable/popular allowlisted name plus
+        # a non-empty tvg-id. Never accept arbitrary foreign look-alikes.
+        if nkey not in RENOWNED_NEW_CHANNELS:
+            stats["not_renowned"]+=1
+            continue
+        if NEW_CHANNELS_REQUIRE_TVG_ID and not cid.strip():
+            stats["missing_tvg_id"]+=1
+            continue
     target=backups if same else new
     limit=MAX_BACKUP if same else MAX_NEW
     if len(target)>=limit:
@@ -156,11 +167,11 @@ for info,u in candidates:
     if not reachable(u):
         stats["unreachable"]+=1
         continue
-    target.append((clean_info(info,BACKUP_GROUP if same else NEW_GROUP),u))
+    target.append((clean_info(info,NEW_GROUP if not same else BACKUP_GROUP),u))
     seen.add(u)
 
 def sort_dynamic_groups(text):
-    lines=text.replace("\\r","").split("\\n")
+    lines=text.replace("\r","").split("\n")
     header=[]; blocks=[]; i=0
     while i<len(lines) and not lines[i].startswith("#EXTINF"):
         if lines[i].strip(): header.append(lines[i])
@@ -179,7 +190,7 @@ def sort_dynamic_groups(text):
         chosen=sorted((x for x in blocks if x[0]==group),key=lambda x:x[1].casefold())
         it=iter(chosen)
         blocks=[next(it) if x[0]==group else x for x in blocks]
-    return "\\n".join(header)+"\\n"+"\\n".join("\\n".join(x[2]) for x in blocks)+"\\n"
+    return "\n".join(header)+"\n"+"\n".join("\n".join(x[2]) for x in blocks)+"\n"
 
 def append_group(text,items):
     if not items: return text
@@ -207,6 +218,7 @@ report=[
     f"- Exact duplicate URLs skipped: **{stats['duplicate_urls']}**",
     f"- Policy-blocked candidates skipped: **{stats['blocked']}**",
     f"- Unmatched channels outside the renowned allowlist skipped: **{stats['not_renowned']}**",
+    f"- New candidates missing tvg-id skipped: **{stats['missing_tvg_id']}**",
     f"- Sports, Kids, Religious, and Documentary backups skipped: **{stats['excluded_backup_category']}**",
     f"- Unreachable candidates skipped: **{stats['unreachable']}**",
     f"- Candidates skipped by new-channel limit: **{stats['new_limit']}**",
@@ -227,8 +239,9 @@ report.extend([
     "## Active policy",
     "",
     "- Existing playlist entries are preserved.",
-    "- An unmatched channel can enter `New Channels` only when its normalized name is in the curated renowned-channel allowlist.",
-    "- New candidates are added only after a successful HTTP check.",
+    "- Unmatched channels may enter `New Channels` only when their normalized name is in the curated popular-channel allowlist.",
+    "- New-channel candidates must include a non-empty `tvg-id`.",
+    "- New-channel candidates must pass the HTTP reachability check before insertion.",
     "- Exact duplicate stream URLs are not added.",
     "- Backups are not added for Sports, Kids, Religious, or Documentary & Wildlife channels.",
     "- News, non-Islamic religious, radio, VOD, webcam, trailer, promo, and test entries are excluded from automatic additions.",
