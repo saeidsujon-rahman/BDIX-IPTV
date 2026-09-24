@@ -28,7 +28,7 @@ ADULT_GROUP = "International Adult"
 MAX_NEW = 30
 MAX_SOUTH_MOVIE = 15
 MAX_SOUTH_MUSIC = 15
-MAX_ADULT = 8
+MAX_ADULT = 10
 
 POPULAR = {
     "amc", "animalplanet", "arirang", "axn", "bbc", "beinsports", "cartoonnetwork",
