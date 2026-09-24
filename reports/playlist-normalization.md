@@ -1,6 +1,6 @@
 # Playlist Normalization
 
-Generated: **2026-09-24T16:40:53+00:00**
+Generated: **2026-09-24T16:54:54+00:00**
 
 - Canonicalized group titles: **9**
 - Newly imported channels consolidated into `New Channels`: **9**
@@ -16,6 +16,8 @@ Generated: **2026-09-24T16:40:53+00:00**
 
 - Group-title values are trimmed and known group names use one canonical spelling.
 - `Backup`, `BACKUP`, and whitespace variants are merged into `Backup`.
+- Malformed Sports group values containing TVG metadata are normalized to `Sports`.
 - `International Movies`, `International Music`, and `International Adult` are moved into `New Channels`.
-- Every channel listed under `Added Channels` or `Added New Channels` in the auto-update report is placed in `New Channels`, including movie, music, and adult/erotic candidates.
+- Every channel listed under `Added Channels` or `Added New Channels` in the auto-update report is placed in `New Channels`.
+- The playlist studio category header is rewritten as valid JSON with one entry per category.
 - Three rejected non-erotic adult-category imports are removed by TVG ID.
