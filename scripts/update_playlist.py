@@ -99,7 +99,9 @@ base = PLAYLIST.read_text(encoding="utf-8-sig")
 old = entries(base); kept = []; removed = []
 for info, url in old:
     group = attrs(info).get("group-title", "")
-    if group in {"International Movies", "International Music", NEW_GROUP} and not credible(info):
+    # Only automatically clean the generated New Channels group.
+    # User-maintained International Movies/Music groups are preserved verbatim.
+    if group == NEW_GROUP and not credible(info):
         removed.append(name_of(info)); continue
     kept.append((info, url))
 
@@ -123,8 +125,8 @@ out += "\n".join(header) + "\n"
 for info, url in kept + new: out += info + "\n" + url + "\n"
 if out != base: PLAYLIST.write_text(out, encoding="utf-8", newline="\n")
 
-report = ["# IPTV Auto Update", "", f"Generated: **{datetime.now(timezone.utc).isoformat(timespec='seconds')}**", "", "## Strict cleanup", f"- Removed low-standard International Movies/Music/New Channels entries: **{len(removed)}**", f"- Added credible New Channels: **{len(new)}**", f"- Rejected source candidates: **{stats['not_credible']}**", f"- Unreachable candidates: **{stats['unreachable']}**", "", "## Removed entries", ""]
+report = ["# IPTV Auto Update", "", f"Generated: **{datetime.now(timezone.utc).isoformat(timespec='seconds')}**", "", "## Cleanup", f"- Removed low-standard New Channels entries: **{len(removed)}**", f"- Added credible New Channels: **{len(new)}**", f"- Rejected source candidates: **{stats['not_credible']}**", f"- Unreachable candidates: **{stats['unreachable']}**", "", "## Removed entries", ""]
 report += [f"- {name}" for name in removed] or ["- None"]
-report += ["", "## Policy", "", "- International Movies and International Music retain only recognizable brands, Fashion TV variants, or region-identifiable movie/music channels from China, South Korea, Hong Kong, Turkey, and Indonesia.", "- New Channels uses the same credibility gate, metadata requirement, policy blocklist, and HTTP reachability check.", "- Existing Backup entries are preserved; automatic Backup imports remain disabled.", ""]
+report += ["", "## Policy", "", "- International Movies and International Music are user-maintained and are never automatically removed or rewritten.", "- New Channels uses the credibility gate, metadata requirement, policy blocklist, and HTTP reachability check.", "- Existing Backup entries are preserved; automatic Backup imports remain disabled.", ""]
 REPORT.parent.mkdir(parents=True, exist_ok=True); REPORT.write_text("\n".join(report), encoding="utf-8", newline="\n")
-print(f"Removed {len(removed)} low-standard entries; added {len(new)} credible New Channels.")
+print(f"Removed {len(removed)} low-standard New Channels entries; added {len(new)} credible New Channels.")
