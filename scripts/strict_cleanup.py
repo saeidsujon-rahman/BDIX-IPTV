@@ -73,3 +73,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# Strict policy: retain Fashion TV, verified adult-brand channels, and target-region movie/music channels only.
