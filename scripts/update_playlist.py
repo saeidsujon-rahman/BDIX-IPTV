@@ -95,6 +95,17 @@ def set_group(info, group):
     return info.replace(",", f' group-title="{group}",', 1)
 
 
+def detail(info, url, reason=""):
+    a = attrs(info)
+    return {
+        "name": name_of(info),
+        "group": a.get("group-title", ""),
+        "tvg_id": a.get("tvg-id", ""),
+        "url": url,
+        "reason": reason,
+    }
+
+
 base = PLAYLIST.read_text(encoding="utf-8-sig")
 old = entries(base); kept = []; removed = []
 for info, url in old:
@@ -102,7 +113,7 @@ for info, url in old:
     # Only automatically clean the generated New Channels group.
     # User-maintained International Movies/Music groups are preserved verbatim.
     if group == NEW_GROUP and not credible(info):
-        removed.append(name_of(info)); continue
+        removed.append(detail(info, url, "Failed New Channels credibility gate")); continue
     kept.append((info, url))
 
 existing_urls = {url for _, url in kept}; existing_ids = {attrs(info).get("tvg-id", "") for info, _ in kept}; existing_names = {norm(name_of(info)) for info, _ in kept}
@@ -117,7 +128,8 @@ for source in SOURCES:
         if not credible(info): stats["not_credible"] += 1; continue
         if len(new) >= MAX_NEW: stats["limit"] += 1; continue
         if not reachable(url): stats["unreachable"] += 1; continue
-        new.append((set_group(info, NEW_GROUP), url)); seen.add(url); existing_ids.add(cid); existing_names.add(name)
+        normalized_info = set_group(info, NEW_GROUP)
+        new.append((normalized_info, url)); seen.add(url); existing_ids.add(cid); existing_names.add(name)
 
 out = "#EXTM3U\n"
 header = [line for line in base.splitlines() if line.startswith("#PLAYLIST-")]
@@ -125,8 +137,49 @@ out += "\n".join(header) + "\n"
 for info, url in kept + new: out += info + "\n" + url + "\n"
 if out != base: PLAYLIST.write_text(out, encoding="utf-8", newline="\n")
 
-report = ["# IPTV Auto Update", "", f"Generated: **{datetime.now(timezone.utc).isoformat(timespec='seconds')}**", "", "## Cleanup", f"- Removed low-standard New Channels entries: **{len(removed)}**", f"- Added credible New Channels: **{len(new)}**", f"- Rejected source candidates: **{stats['not_credible']}**", f"- Unreachable candidates: **{stats['unreachable']}**", "", "## Removed entries", ""]
-report += [f"- {name}" for name in removed] or ["- None"]
-report += ["", "## Policy", "", "- International Movies and International Music are user-maintained and are never automatically removed or rewritten.", "- New Channels uses the credibility gate, metadata requirement, policy blocklist, and HTTP reachability check.", "- Existing Backup entries are preserved; automatic Backup imports remain disabled.", ""]
+report = [
+    "# IPTV Auto Update", "",
+    f"Generated: **{datetime.now(timezone.utc).isoformat(timespec='seconds')}**", "",
+    "## Summary", "",
+    f"- Removed low-standard New Channels entries: **{len(removed)}**",
+    f"- Added credible New Channels: **{len(new)}**",
+    f"- Rejected source candidates: **{stats['not_credible']}**",
+    f"- Unreachable candidates: **{stats['unreachable']}**",
+    f"- Duplicate candidates: **{stats['duplicate']}**",
+    f"- Already-present candidates: **{stats['already_present']}**",
+    f"- Source errors: **{stats['source_errors']}**", "",
+    "## Added New Channels", "",
+]
+if new:
+    for index, (info, url) in enumerate(new, 1):
+        a = attrs(info)
+        report += [
+            f"### {index}. {name_of(info)}",
+            f"- Group: `{a.get('group-title', NEW_GROUP)}`",
+            f"- TVG ID: `{a.get('tvg-id', '') or 'N/A'}`",
+            f"- Stream: `{url}`", "",
+        ]
+else:
+    report.append("- None")
+
+report += ["## Removed entries", ""]
+if removed:
+    for index, item in enumerate(removed, 1):
+        report += [
+            f"### {index}. {item['name']}",
+            f"- Group: `{item['group'] or 'N/A'}`",
+            f"- TVG ID: `{item['tvg_id'] or 'N/A'}`",
+            f"- Reason: {item['reason']}",
+            f"- Stream: `{item['url']}`", "",
+        ]
+else:
+    report.append("- None")
+
+report += [
+    "## Policy", "",
+    "- International Movies and International Music are user-maintained and are never automatically removed or rewritten.",
+    "- New Channels uses the credibility gate, metadata requirement, policy blocklist, and HTTP reachability check.",
+    "- Existing Backup entries are preserved; automatic Backup imports remain disabled.", "",
+]
 REPORT.parent.mkdir(parents=True, exist_ok=True); REPORT.write_text("\n".join(report), encoding="utf-8", newline="\n")
 print(f"Removed {len(removed)} low-standard New Channels entries; added {len(new)} credible New Channels.")
