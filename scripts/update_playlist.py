@@ -18,7 +18,6 @@ MAX_BACKUP=0
 NEW_CHANNELS_REQUIRE_TVG_ID=True
 NO_BACKUP_GROUPS={"Sports","Kids","Religious","Documentary & Wildlife"}
 
-# Exact names already reviewed as credible/popular.
 RENOWNED_NEW_CHANNELS={
     "andpictures","amc","axn","bbcearth","bbcfirst","beinsports","beinsports1",
     "beinsports2","beinsports3","beinsportsxtra","cartoonnetwork","cinemax",
@@ -33,10 +32,6 @@ RENOWNED_NEW_CHANNELS={
     "ufctv","vh1","wwenetwork","xite","zeebangla","zeecinema","zeetv",
 }
 
-# Recognizable network/brand signals. These allow legitimate variants such as
-# HD, regional, +1, and language editions, but do not allow arbitrary names.
-# A signal alone is insufficient: the candidate must also have tvg-id, logo,
-# a non-blocked category, and a reachable stream.
 POPULAR_BRAND_TOKENS={
     "amc","animalplanet","axn","bbc","beinsports","cartoonnetwork","cinemax",
     "colors","discovery","disney","dreamworks","espn","eurosport","foxsports",
@@ -46,8 +41,8 @@ POPULAR_BRAND_TOKENS={
 }
 
 GENERIC_OR_LOOKALIKE_NAMES={
-    "channel1","channel16","gtv","me tv","metv","mntv","ntv","ntv+","n-tv",
-    "tv+","tvwest","iontvuk","sananda","television","test","demo",
+    "channel1","channel16","gtv","metv","mntv","ntv","ntvplus","tvplus","tvwest","iontvuk",
+    "television","test","demo",
 }
 
 NEWS_WORDS={"news","noticias","actualité","actualites","haber","samachar","khabar","সংবাদ"}
@@ -80,10 +75,7 @@ def entries(text):
 def blocked(info):
     a=attrs(info); name=name_of(info); group=a.get("group-title","")
     hay=(name+" "+group).lower()
-    if any(w in hay for w in NON_TV_WORDS): return True
-    if any(w in hay for w in NEWS_WORDS): return True
-    if any(w in hay for w in NON_ISLAMIC_RELIGION): return True
-    return False
+    return any(w in hay for w in NON_TV_WORDS|NEWS_WORDS|NON_ISLAMIC_RELIGION)
 
 def credible_candidate(info):
     a=attrs(info); name=name_of(info); nkey=norm(name)
@@ -91,7 +83,6 @@ def credible_candidate(info):
     if not cid or not logo: return False
     if nkey in {norm(x) for x in GENERIC_OR_LOOKALIKE_NAMES}: return False
     if nkey in RENOWNED_NEW_CHANNELS: return True
-    # Brand variants are accepted only when they carry both metadata fields.
     return any(token in nkey for token in POPULAR_BRAND_TOKENS)
 
 def clean_info(info,group):
@@ -127,9 +118,7 @@ def added_section(title,items):
     return lines+[""]
 
 base=PLAYLIST.read_text(encoding="utf-8-sig")
-existing=entries(base)
-urls={u for _,u in existing}
-by_id={}; by_name={}
+existing=entries(base); urls={u for _,u in existing}; by_id={}; by_name={}
 for info,u in existing:
     a=attrs(info); nkey=norm(name_of(info)); cid=a.get("tvg-id","")
     if cid and not cid.startswith("local."): by_id.setdefault(cid,[]).append(u)
@@ -138,29 +127,22 @@ for info,u in existing:
 candidates=[]; source_status=[]
 for source in SOURCES:
     try:
-        source_entries=entries(fetch(source))
-        candidates.extend(source_entries)
-        source_status.append((source,len(source_entries),"OK"))
+        source_entries=entries(fetch(source)); candidates.extend(source_entries); source_status.append((source,len(source_entries),"OK"))
     except Exception as e:
-        source_status.append((source,0,f"{type(e).__name__}: {e}"))
-        print("SOURCE ERROR",source,e)
+        source_status.append((source,0,f"{type(e).__name__}: {e}")); print("SOURCE ERROR",source,e)
 
 stats=Counter(); new=[]; backups=[]; seen=set(urls)
 for info,u in candidates:
-    if u in seen:
-        stats["duplicate_urls"]+=1; continue
-    if blocked(info):
-        stats["blocked"]+=1; continue
+    if u in seen: stats["duplicate_urls"]+=1; continue
+    if blocked(info): stats["blocked"]+=1; continue
     a=attrs(info); nkey=norm(name_of(info)); cid=a.get("tvg-id","")
     same=(cid and not cid.startswith("local.") and cid in by_id) or (nkey and nkey in by_name)
-    if same:
-        stats["automatic_backups_disabled"]+=1; continue
-    if not credible_candidate(info):
-        stats["not_credible"]+=1; continue
-    if len(new)>=MAX_NEW:
-        stats["new_limit"]+=1; continue
-    if not reachable(u):
-        stats["unreachable"]+=1; continue
+    if same: stats["automatic_backups_disabled"]+=1; continue
+    if not a.get("tvg-id","").strip() or not a.get("tvg-logo","").strip():
+        stats["missing_metadata"]+=1; continue
+    if not credible_candidate(info): stats["not_credible"]+=1; continue
+    if len(new)>=MAX_NEW: stats["new_limit"]+=1; continue
+    if not reachable(u): stats["unreachable"]+=1; continue
     new.append((clean_info(info,NEW_GROUP),u)); seen.add(u)
 
 def sort_dynamic_groups(text):
@@ -188,13 +170,10 @@ def append_group(text,items):
     if not text.endswith("\n"): text+="\n"
     return text+"\n"+"\n".join(x+"\n"+u for x,u in items)+"\n"
 
-out=append_group(base,new)
-out=append_group(out,backups)
-out=sort_dynamic_groups(out)
+out=sort_dynamic_groups(append_group(append_group(base,new),backups))
 if out!=base: PLAYLIST.write_text(out,encoding="utf-8",newline="\n")
 
-final_entries=entries(out)
-categories=Counter(attrs(info).get("group-title","") or "Uncategorized" for info,_ in final_entries)
+final_entries=entries(out); categories=Counter(attrs(info).get("group-title","") or "Uncategorized" for info,_ in final_entries)
 generated=datetime.now(timezone.utc).isoformat(timespec="seconds")
 report=["# IPTV Auto Update","",f"Generated: **{generated}**","","## Summary","",f"- Final playlist entries: **{len(final_entries)}**",f"- New channels added: **{len(new)}**",f"- Backup streams added: **{len(backups)}**",f"- Automatic backup candidates skipped by policy: **{stats['automatic_backups_disabled']}**",f"- Exact duplicate URLs skipped: **{stats['duplicate_urls']}**",f"- Policy-blocked candidates skipped: **{stats['blocked']}**",f"- Candidates failing credibility gate skipped: **{stats['not_credible']}**",f"- New candidates missing tvg-id or logo skipped: **{stats['missing_metadata']}**",f"- Unreachable candidates skipped: **{stats['unreachable']}**",f"- Candidates skipped by new-channel limit: **{stats['new_limit']}**","","## Source status",""]
 for source,count,status in source_status: report.append(f"- **{source}** — {count} entries — {safe_markdown(status)}")
