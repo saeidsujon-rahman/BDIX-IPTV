@@ -59,7 +59,7 @@ for x in blocks:
 
 out="\n".join(header)+"\n"+"\n".join("\n".join(x[3]) for x in kept)+"\n"
 P.write_text(out,encoding="utf-8")
-Path("backup-health-report.md").write_text(
+Path("reports/backup-health-report.md").write_text(
     "# Backup Health Audit\n\n"
     f"Backups checked: **{sum(1 for x in blocks if x[0]=='Backup')}**  \n"
     f"Hard-dead removed: **{len(removed)}**\n\n"
