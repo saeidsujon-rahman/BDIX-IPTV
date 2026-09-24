@@ -1,11 +1,11 @@
 # Playlist Normalization
 
-Generated: **2026-09-24T13:44:30+00:00**
+Generated: **2026-09-24T14:02:05+00:00**
 
-- Canonicalized group titles: **108**
-- Newly imported channels consolidated into `New Channels`: **0**
-- Existing International Movies/Music/Adult channels moved to `New Channels`: **108**
-- Newly imported TVG IDs found in auto-update report: **30**
+- Canonicalized group titles: **9**
+- Newly imported channels consolidated into `New Channels`: **9**
+- Existing International Movies/Music/Adult channels moved to `New Channels`: **0**
+- Newly imported TVG IDs found in auto-update report: **39**
 - Removed rejected adult-category entries: **0**
 
 ## Removed entries
