@@ -1,20 +1,16 @@
 # External Logo Migration
 
-Generated: **2026-09-23T15:39:17+00:00**
+Generated: **2026-09-24T09:29:35+00:00**
 
-## Completed batch
+## Summary
 
-- External logo references originally found: **210**
-- Unique external logo URLs processed: **204**
-- References migrated to repository-owned paths: **210**
-- New logo files stored in `/logos`: **193**
-- References mapped to suitable logos already in `/logos`: **13**
-- Total playlist logo references after migration: **936**
-- Repository-owned logo references after migration: **936**
-- External logo references remaining: **0**
+- External references found: **84**
+- Unique external URLs: **19**
+- References migrated to `/logos`: **84**
+- References reused from an existing local logo: **59**
+- Logo files created or refreshed: **19**
+- External references left unchanged: **0**
 
-## Validation
+## Failed downloads
 
-- Every populated `tvg-logo` value now points to `https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/`.
-- Failed or rate-limited downloads were retried using original Wikimedia assets, reliable alternative sources, or an existing matching local logo.
-- The scheduled playlist workflow now automatically migrates future external logo references after importing channels.
+- None
