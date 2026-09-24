@@ -1463,10 +1463,6 @@ https://tvsen5.aynaott.com/RtvHD/index.m3u8
 http://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/rtv-sg.stream/index.m3u8
 #EXTINF:-1 tvg-id="RTV.bd" tvg-name="RTV [Backup 3]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/rtv.png" tvg-chno="196" channel-id="RTV.bd" group-title="Backup",RTV [Backup 3]
 https://tvsen5.aynaott.com/ba47dHpDk3Se/index.m3u8
-#EXTINF:-1 tvg-id="RTV.at" tvg-name="RTV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/rtv.png" tvg-country="AT" tvg-language="deu" nexus-score="100" group-title="Backup",RTV (1080p)
-http://iptv.rtv-ooe.at/stream.m3u8
-#EXTINF:-1 tvg-id="RTV.ec" tvg-name="RTV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/rtv-1080p-4933b9ab9a.png" tvg-country="EC" tvg-language="spa" nexus-score="99" group-title="Backup",RTV (1080p)
-https://sv72.ecuaradiotv.net/rtvhd/live/manifest.m3u8
 #EXTINF:-1 tvg-id="RupasiBangla.in" tvg-name="Ruposhi Bangla [Backup 1]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/ruposhi-bangla.png" tvg-chno="252" channel-id="RupasiBangla.in" tvg-language="ben" tvg-country="IN" group-title="Backup",Ruposhi Bangla [Backup 1]
 https://da86m1sqpm3o0.cloudfront.net/28072023/smil:rupashibangla.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="RupasiBangla.in" tvg-name="Rupasi Bangla" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/rupasi-bangla-576p-e677fd1858.png" tvg-country="IN" tvg-language="ben" nexus-score="100" group-title="Backup",Ruposhi Bangla (576p)
