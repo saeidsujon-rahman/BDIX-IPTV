@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Normalize playlist groups and remove explicitly rejected imports."""
+"""Normalize playlist groups, consolidate new imports, and remove rejected imports."""
 
 import re
 from datetime import datetime, timezone
@@ -7,6 +7,7 @@ from pathlib import Path
 
 PLAYLIST = Path("IPTV Playlist.m3u")
 REPORT = Path("reports/playlist-normalization.md")
+AUTO_REPORT = Path("reports/auto-update.md")
 
 # These were classified as adult because of their names, not because they
 # provide the erotic movie/series content requested for the playlist.
@@ -61,10 +62,28 @@ def set_group(info, group):
     return info.replace(",", f' group-title="{group}",', 1)
 
 
+def added_tvg_ids():
+    """Read the current auto-update report and identify newly imported IDs."""
+    if not AUTO_REPORT.exists():
+        return set()
+    text = AUTO_REPORT.read_text(encoding="utf-8", errors="replace")
+    section = text.split("## Added Channels", 1)
+    if len(section) != 2:
+        return set()
+    section = section[1].split("## Removed entries", 1)[0]
+    return {
+        value.strip()
+        for value in re.findall(r"- TVG ID:\s*`([^`]+)`", section)
+        if value.strip() and value.strip().casefold() != "n/a"
+    }
+
+
 base = PLAYLIST.read_text(encoding="utf-8-sig")
+new_ids = added_tvg_ids()
 kept = []
 removed = []
 normalized_groups = 0
+new_channels_consolidated = 0
 
 for info, url in entries(base):
     metadata = attrs(info)
@@ -73,8 +92,14 @@ for info, url in entries(base):
         removed.append((name_of(info), tvg_id, metadata.get("group-title", ""), url))
         continue
 
-    group = canonical_group(info)
     original_group = metadata.get("group-title", "")
+    if tvg_id in new_ids:
+        group = "New Channels"
+        if original_group != group:
+            new_channels_consolidated += 1
+    else:
+        group = canonical_group(info)
+
     if group != original_group:
         info = set_group(info, group)
         normalized_groups += 1
@@ -92,6 +117,8 @@ report = [
     "# Playlist Normalization", "",
     f"Generated: **{datetime.now(timezone.utc).isoformat(timespec='seconds')}**", "",
     f"- Canonicalized group titles: **{normalized_groups}**",
+    f"- Newly imported channels consolidated into `New Channels`: **{new_channels_consolidated}**",
+    f"- Newly imported TVG IDs found in auto-update report: **{len(new_ids)}**",
     f"- Removed rejected adult-category entries: **{len(removed)}**", "",
     "## Removed entries", "",
 ]
@@ -110,9 +137,13 @@ report.extend([
     "", "## Normalization rules", "",
     "- Group-title values are trimmed and known group names use one canonical spelling.",
     "- `Backup`, `BACKUP`, and whitespace variants are merged into `Backup`.",
+    "- Every channel listed under `Added Channels` in the auto-update report is placed in `New Channels`, including movie, music, and adult/erotic candidates.",
     "- Three rejected non-erotic adult-category imports are removed by TVG ID.",
     "",
 ])
 REPORT.parent.mkdir(parents=True, exist_ok=True)
 REPORT.write_text("\n".join(report), encoding="utf-8", newline="\n")
-print(f"Normalized {normalized_groups} group titles and removed {len(removed)} rejected adult entries.")
+print(
+    f"Normalized {normalized_groups} group titles, consolidated "
+    f"{new_channels_consolidated} new imports, and removed {len(removed)} rejected adult entries."
+)
