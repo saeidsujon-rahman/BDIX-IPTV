@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Final category repair pass for IPTV playlist consumers."""
+"""Repair XCIPTV category metadata and remove duplicate category variants."""
 
 import json
 import re
@@ -26,7 +26,9 @@ def attrs(info):
 
 
 def set_group(info, group):
-    info = re.sub(r'\s+group-title="[^"]*"', "", info)
+    # Remove the entire group-title segment up to the EXTINF display-name comma.
+    # This also repairs malformed values such as group-title="SPORTS TVG-NAME=...".
+    info = re.sub(r'\s+group-title=.*?,', ',', info, count=1)
     return info.replace(",", f' group-title="{group}",', 1)
 
 
@@ -73,18 +75,12 @@ for info, url in entries(base):
         removed += 1
         continue
 
-    original = metadata.get("group-title", "")
+    original = metadata.get("group-title", "").strip()
     normalized = " ".join(original.split())
     folded = normalized.casefold()
 
-    # Every channel selected by the importer, including movie/music/adult
-    # candidates, must use the single New Channels category.
     if tvg_id in new_ids or folded in SPECIAL_GROUPS:
         target = "New Channels"
-    # Repair all malformed sports group values, including values such as
-    # "SPORTS TVG-NAME=... TVG-CHNO=...". The previous condition incorrectly
-    # searched for attribute names inside the group-title value and therefore
-    # never matched these malformed categories.
     elif folded.startswith("sports"):
         target = "Sports"
     elif folded == "backup":
@@ -104,6 +100,7 @@ for line in base.splitlines():
         try:
             categories = json.loads(line[len(prefix):])
             canonical = []
+            seen = set()
             for value in categories:
                 folded = " ".join(str(value).split()).casefold()
                 value = (
@@ -112,12 +109,14 @@ for line in base.splitlines():
                     else "Sports" if folded.startswith("sports")
                     else " ".join(str(value).split())
                 )
-                if value not in canonical:
+                key = value.casefold()
+                if key not in seen:
+                    seen.add(key)
                     canonical.append(value)
-            if "New Channels" not in canonical:
-                canonical.append("New Channels")
-            if "Backup" not in canonical:
-                canonical.append("Backup")
+            for required in ("New Channels", "Backup"):
+                if required.casefold() not in seen:
+                    canonical.append(required)
+                    seen.add(required.casefold())
             line = prefix + json.dumps(canonical, ensure_ascii=False)
         except Exception:
             pass
