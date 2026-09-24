@@ -24,6 +24,7 @@ jobs:
       - name: Test Backup streams
         run: python scripts/audit_backup_streams.py
       - name: Commit confirmed dead removals
+        shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
@@ -33,9 +34,11 @@ jobs:
             echo "No changes."
             exit 0
           fi
-          # Refresh before committing so the audit does not push against a stale checkout.
+          # Preserve generated changes while rebasing onto the latest main.
+          git stash push --include-untracked -m "backup-audit-generated"
           git fetch origin main
           git rebase origin/main
+          git stash pop
           git add "IPTV Playlist.m3u" "reports/backup-health-report.md"
           git commit -m "Remove confirmed dead backup streams"
           git push origin HEAD:main
