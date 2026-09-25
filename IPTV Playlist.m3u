@@ -1825,3 +1825,9 @@ https://jmp2.uk/plu-5d14fc31252d35decbc4080b.m3u8
 https://www.youtube.com/c/ALLTHEKPOP/live
 #EXTINF:-1 tvg-name="Music Channel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/music-channel-21d02d561c.png" tvg-id="Boni-Records.com.us" tvg-chno="3" tvg-country="US" group-title="New Channels",Music Channel
 http://media.boni-records.com/index.m3u8
+#EXTINF:-1 tvg-id="CMalayalamTV.ca" tvg-name="C Malayalam TV" tvg-logo="https://i.imgur.com/rpg0bQA.png" tvg-country="CA" tvg-language="mal" nexus-score="95" group-title="New Channels",C Malayalam TV (720p)
+https://2-fss-2.streamhoster.com/pl_120/206508-3261972-1/playlist.m3u8
+#EXTINF:-1 tvg-id="PlutoTVCultFilms.us" tvg-name="Pluto TV Cult Films" tvg-logo="https://i.imgur.com/xoaIAus.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",Pluto TV Cult Films
+https://jmp2.uk/plu-5c665db3e6c01b72c4977bc2.m3u8
+#EXTINF:-1 tvg-id="SUMtvEnglish.us" tvg-name="SUMtv English" tvg-logo="https://i.imgur.com/hp1rJjX.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",SUMtv English (1080p)
+https://bozztv.com/uni10rtmp/ssstv1-cdn/smil:ssstv1web.smil/playlist.m3u8
