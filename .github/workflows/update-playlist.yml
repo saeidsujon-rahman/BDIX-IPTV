@@ -11,6 +11,7 @@ on:
     paths:
       - 'scripts/update_playlist.py'
       - 'scripts/strict_update.py'
+      - 'scripts/migrate_external_logos.py'
       - '.github/workflows/update-playlist.yml'
 
 permissions:
@@ -24,7 +25,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
 
     steps:
       - name: Checkout repository
@@ -37,34 +38,41 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Install logo conversion dependency
+        run: python -m pip install --disable-pip-version-check pillow
+
       - name: Update playlist
         run: python scripts/update_playlist.py
 
-      - name: Commit playlist and report
+      - name: Download external logos and convert to local PNG
+        run: python scripts/migrate_external_logos.py
+
+      - name: Commit playlist, local logos, and report
         shell: bash
         run: |
           set -euo pipefail
           files=(
             "IPTV Playlist.m3u"
             "reports/auto-update.md"
+            "logos/"
           )
 
           if git diff --quiet -- "${files[@]}"; then
-            echo "No playlist or report changes."
+            echo "No playlist, logo, or report changes."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add "${files[@]}"
-          git commit -m "Update playlist and auto-update report"
+          git commit -m "Update playlist and local channel logos"
 
           for attempt in 1 2 3; do
             git fetch origin main
             git rebase origin/main
 
             if git push origin HEAD:main; then
-              echo "Playlist changes pushed successfully on attempt ${attempt}."
+              echo "Playlist and logo changes pushed successfully on attempt ${attempt}."
               exit 0
             fi
 
