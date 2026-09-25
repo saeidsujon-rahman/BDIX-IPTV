@@ -7,7 +7,7 @@ This report is generated automatically after playlist updating and logo migratio
 - Playlist entries: **915**
 - Added channels: **0**
 - Removed channels: **0**
-- Logo URL changes: **3**
+- Logo URL changes: **0**
 - Logo status — local PNG: **915**
 - Logo status — repository reference: **0**
 - Logo status — external URL: **0**
@@ -31,9 +31,7 @@ This report is generated automatically after playlist updating and logo migratio
 
 | Channel | Previous Logo | Current Logo |
 |---|---|---|
-| C Malayalam TV | https://i.imgur.com/rpg0bQA.png | https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/c-malayalam-tv-f0687ee4.png |
-| Pluto TV Cult Films | https://i.imgur.com/xoaIAus.png | https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pluto-tv-cult-films-ee1a848f.png |
-| SUMtv English | https://i.imgur.com/hp1rJjX.png | https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sumtv-english-05e63127.png |
+| None | — | — |
 
 ## Logo Exceptions
 
