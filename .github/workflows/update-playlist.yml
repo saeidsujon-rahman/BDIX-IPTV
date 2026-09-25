@@ -12,6 +12,7 @@ on:
       - 'scripts/update_playlist.py'
       - 'scripts/strict_update.py'
       - 'scripts/migrate_external_logos.py'
+      - 'scripts/generate_detailed_report.py'
       - '.github/workflows/update-playlist.yml'
 
 permissions:
@@ -47,6 +48,9 @@ jobs:
       - name: Download external logos and convert to local PNG
         run: python scripts/migrate_external_logos.py
 
+      - name: Generate detailed update and logo report
+        run: python scripts/generate_detailed_report.py
+
       - name: Commit playlist, local logos, and report
         shell: bash
         run: |
@@ -65,14 +69,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add "${files[@]}"
-          git commit -m "Update playlist and local channel logos"
+          git commit -m "Update playlist, local logos, and detailed report"
 
           for attempt in 1 2 3; do
             git fetch origin main
             git rebase origin/main
 
             if git push origin HEAD:main; then
-              echo "Playlist and logo changes pushed successfully on attempt ${attempt}."
+              echo "Playlist, logo, and report changes pushed successfully on attempt ${attempt}."
               exit 0
             fi
 
