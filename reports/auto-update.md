@@ -7,6 +7,7 @@ This report is generated automatically after playlist updating and logo migratio
 - Playlist entries: **915**
 - Added channels: **0**
 - Removed channels: **0**
+- Logo URL changes: **0**
 - Logo status — local PNG: **912**
 - Logo status — repository reference: **0**
 - Logo status — external URL: **3**
@@ -23,6 +24,12 @@ This report is generated automatically after playlist updating and logo migratio
 ## Removed Channels
 
 | Channel | Category | Logo URL |
+|---|---|---|
+| None | — | — |
+
+## Logo URL Changes
+
+| Channel | Previous Logo | Current Logo |
 |---|---|---|
 | None | — | — |
 
