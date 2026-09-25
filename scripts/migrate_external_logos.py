@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-"""Download external channel logos into logos/ and rewrite tvg-logo locally.
+"""Download external logos into logos/ and rewrite tvg-logo locally.
 
-This utility intentionally updates only tvg-logo attributes. Channel names,
-groups, stream URLs, ordering, and all other playlist metadata are preserved.
-All downloaded assets are converted to PNG so XCIPTV receives repository-hosted
-logo URLs consistently.
+Only tvg-logo attributes are changed. Channel names, groups, stream URLs,
+ordering, and other playlist metadata remain untouched.
 """
 
 import hashlib
@@ -30,7 +28,7 @@ def channel_name(line):
 
 def safe_name(value):
     value = re.sub(r"[^A-Za-z0-9]+", "-", value).strip("-").lower()
-    return value[: ninety] if False else value[:90]
+    return value[:90] or "channel"
 
 
 def local_logo(value):
@@ -46,10 +44,10 @@ def download_png(url, target):
 
 
 LOGOS.mkdir(parents=True, exist_ok=True)
-lines = PLAYLIST.read_text(encoding="utf-8-sig").replace("\r", "").splitlines()
+original = PLAYLIST.read_text(encoding="utf-8-sig").replace("\r", "")
+lines = original.splitlines()
 changed = 0
 failed = 0
-seen_urls = {}
 output = []
 
 for line in lines:
@@ -64,7 +62,7 @@ for line in lines:
         continue
 
     title = metadata.get("tvg-name") or channel_name(line)
-    base = safe_name(title) or "channel"
+    base = safe_name(title)
     suffix = hashlib.sha1(logo.encode("utf-8")).hexdigest()[:8]
     filename = f"{base}-{suffix}.png"
     target = LOGOS / filename
@@ -73,9 +71,13 @@ for line in lines:
     try:
         if not target.exists():
             download_png(logo, target)
-        line = re.sub(r'(tvg-logo=")([^"]*)(")', lambda m: m.group(1) + replacement + m.group(3), line, count=1)
+        line = re.sub(
+            r'(tvg-logo=")([^"]*)(")',
+            lambda match: match.group(1) + replacement + match.group(3),
+            line,
+            count=1,
+        )
         changed += 1
-        seen_urls[logo] = filename
     except Exception as exc:
         failed += 1
         print(f"Logo failed: {title}: {exc}")
@@ -83,8 +85,7 @@ for line in lines:
     output.append(line)
 
 new_text = "\n".join(output).rstrip() + "\n"
-old_text = PLAYLIST.read_text(encoding="utf-8-sig").replace("\r", "")
-if new_text != old_text:
+if new_text != original:
     PLAYLIST.write_text(new_text, encoding="utf-8", newline="\n")
 
 print(f"Local logo references updated: {changed}")
