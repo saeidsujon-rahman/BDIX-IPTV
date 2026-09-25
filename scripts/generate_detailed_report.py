@@ -38,6 +38,11 @@ def parse_entries(text):
     return entries
 
 
+def entry_key(line):
+    metadata = attrs(line)
+    return metadata.get("tvg-id", "").lower() or title(line).lower()
+
+
 def diff_entries():
     try:
         diff = subprocess.check_output(
@@ -46,7 +51,7 @@ def diff_entries():
             stderr=subprocess.DEVNULL,
         )
     except Exception:
-        return [], []
+        return [], [], []
 
     added = []
     removed = []
@@ -58,15 +63,19 @@ def diff_entries():
         elif line.startswith("-#EXTINF"):
             removed.append(line[1:])
 
-    def key(line):
-        metadata = attrs(line)
-        return (metadata.get("tvg-id", "").lower() or title(line).lower())
+    added_by_key = {entry_key(line): line for line in added}
+    removed_by_key = {entry_key(line): line for line in removed}
+    common = set(added_by_key) & set(removed_by_key)
+    logo_changes = []
+    for key in sorted(common):
+        old_logo = attrs(removed_by_key[key]).get("tvg-logo", "")
+        new_logo = attrs(added_by_key[key]).get("tvg-logo", "")
+        if old_logo != new_logo:
+            logo_changes.append((added_by_key[key], old_logo, new_logo))
 
-    added_keys = {key(line) for line in added}
-    removed_keys = {key(line) for line in removed}
-    added = [line for line in added if key(line) not in removed_keys]
-    removed = [line for line in removed if key(line) not in added_keys]
-    return added, removed
+    added = [line for line in added if entry_key(line) not in common]
+    removed = [line for line in removed if entry_key(line) not in common]
+    return added, removed, logo_changes
 
 
 def logo_status(metadata):
@@ -91,7 +100,7 @@ def row(line):
 
 
 entries = parse_entries(PLAYLIST.read_text(encoding="utf-8-sig"))
-added, removed = diff_entries()
+added, removed, logo_changes = diff_entries()
 status_counts = Counter(logo_status(metadata) for _, metadata, _ in entries)
 group_counts = Counter(metadata.get("group-title", "Uncategorized") for _, metadata, _ in entries)
 missing = [line for line, metadata, _ in entries if logo_status(metadata) == "Missing"]
@@ -108,6 +117,7 @@ lines = [
     f"- Playlist entries: **{len(entries)}**",
     f"- Added channels: **{len(added)}**",
     f"- Removed channels: **{len(removed)}**",
+    f"- Logo URL changes: **{len(logo_changes)}**",
     f"- Logo status — local PNG: **{status_counts['Local PNG']}**",
     f"- Logo status — repository reference: **{status_counts['Repository reference']}**",
     f"- Logo status — external URL: **{status_counts['External URL']}**",
@@ -127,6 +137,12 @@ if not added:
 lines += ["", "## Removed Channels", "", "| Channel | Category | Logo URL |", "|---|---|---|"]
 lines.extend(row(line) for line in removed)
 if not removed:
+    lines.append("| None | — | — |")
+
+lines += ["", "## Logo URL Changes", "", "| Channel | Previous Logo | Current Logo |", "|---|---|---|"]
+for line, old_logo, new_logo in logo_changes:
+    lines.append(f"| {title(line).replace('|', '/')} | {(old_logo or '—').replace('|', '/')} | {(new_logo or '—').replace('|', '/')} |")
+if not logo_changes:
     lines.append("| None | — | — |")
 
 lines += ["", "## Logo Exceptions", ""]
@@ -160,5 +176,5 @@ lines += [
 REPORT.parent.mkdir(parents=True, exist_ok=True)
 REPORT.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
 print(f"Detailed report generated: {REPORT}")
-print(f"Added: {len(added)}; removed: {len(removed)}; entries: {len(entries)}")
+print(f"Added: {len(added)}; removed: {len(removed)}; logo changes: {len(logo_changes)}; entries: {len(entries)}")
 print(f"Logo statuses: {dict(status_counts)}")
