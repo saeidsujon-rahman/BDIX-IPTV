@@ -11,20 +11,15 @@ on:
     paths:
       - 'scripts/update_playlist.py'
       - 'scripts/strict_update.py'
-      - 'scripts/normalize_playlist.py'
-      - 'scripts/repair_categories.py'
-      - 'scripts/migrate_external_logos.py'
-      - 'scripts/fix_selected_logos.py'
       - '.github/workflows/update-playlist.yml'
 
 permissions:
   contents: write
 
-# Only the newest intended playlist update should continue.
-# A newer push/manual run cancels an older queued or running update.
+# Serialize all workflows that write to main.
 concurrency:
-  group: iptv-playlist-update
-  cancel-in-progress: true
+  group: iptv-repository-writes
+  cancel-in-progress: false
 
 jobs:
   update:
@@ -32,64 +27,38 @@ jobs:
     timeout-minutes: 20
 
     steps:
-      - name: Stage 1 — Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Stage 2 — Set up Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Stage 3 — Install logo tools
-        run: python -m pip install --disable-pip-version-check pillow cairosvg
-
-      - name: Stage 4 — Select channels and generate report
+      - name: Update playlist
         run: python scripts/update_playlist.py
 
-      - name: Stage 5 — Preserve locked category structure
-        run: python scripts/normalize_playlist.py
-
-      - name: Stage 6 — Run final category guard
-        run: python scripts/repair_categories.py
-
-      - name: Stage 7 — Migrate external channel logos
-        run: python scripts/migrate_external_logos.py
-
-      - name: Stage 8 — Repair selected channel logos
-        run: |
-          if [ -f scripts/fix_selected_logos.py ]; then
-            python scripts/fix_selected_logos.py
-          else
-            echo 'No selected-logo repair script found; skipping.'
-          fi
-
-      - name: Stage 9 — Commit playlist, logos, and reports
+      - name: Commit playlist and report
         shell: bash
         run: |
           set -euo pipefail
           files=(
             "IPTV Playlist.m3u"
             "reports/auto-update.md"
-            "reports/playlist-normalization.md"
-            "reports/logo-migration.md"
-            "logos"
           )
 
           if git diff --quiet -- "${files[@]}"; then
-            echo "No playlist, logo, or report changes."
+            echo "No playlist or report changes."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add "${files[@]}"
-          git commit -m "Normalize playlist structure and update logos"
+          git commit -m "Update playlist and auto-update report"
 
-          # The repository may receive another commit while this workflow runs.
-          # Rebase the generated commit onto the latest main before pushing,
-          # then retry a few times if main advances between fetch and push.
           for attempt in 1 2 3; do
             git fetch origin main
             git rebase origin/main
@@ -99,7 +68,7 @@ jobs:
               exit 0
             fi
 
-            echo "Push attempt ${attempt} failed because main advanced; retrying."
+            echo "Push attempt ${attempt} failed; retrying."
             sleep 3
           done
 
