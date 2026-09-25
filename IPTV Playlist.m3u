@@ -175,6 +175,8 @@ https://amg00877-b4unew-amg00877c2-xiaomi-in-5489.playouts.now.amagi.tv/playlist
 https://live-bhojpuri.akamaized.net/liveabr/playlist.m3u8
 #EXTINF:-1 tvg-id="BollywoodClassic.ro" tvg-name="Bollywood Classic" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bollywood-classic.png" tvg-chno="291" channel-id="BollywoodClassic.ro" tvg-language="ron;hin;rus" tvg-country="RO" group-title="Indian Movies",Bollywood Classic
 https://flash1.bogulus1.cfd/boly/usergenr9j8s2t.m3u8
+#EXTINF:-1 nexus-score="100" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bollywood-film-61bc3ef1fe.png" tvg-id="BollywoodFilm.ro" tvg-name="Bollywood Film" tvg-language="ron" tvg-country="RO" group-title="Indian Movies",Bollywood Film
+https://tvextra-hls.b-cdn.net/bollywoodfilm/bollywoodfilm.m3u8
 #EXTINF:-1 channel-id="ColorsCineplex.in" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/colors-cineplex.png" tvg-id="ColorsCineplex.in" tvg-name="Colors Cineplex" tvg-chno="432" group-title="Indian Movies",Colors Cineplex
 http://202.70.146.135:8000/play/a04n/index.m3u8
 #EXTINF:-1 channel-id="local.318535d9c7c4" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/colors-cineplex-uk.png" tvg-id="local.318535d9c7c4" tvg-name="Colors Cineplex [UK]" tvg-chno="434" group-title="Indian Movies",Colors Cineplex [UK]
@@ -283,8 +285,6 @@ https://toffee-proxy.usergamil15.workers.dev/?url=https%3A%2F%2Fbldcmprod-cdn.to
 https://stream.ottplus.live/live/zee_cinema_hd_abr/index.m3u8
 #EXTINF:-1 channel-id="ZeeBanglaSonar.in" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/zee-cinema.png" tvg-id="ZeeBanglaSonar.in" tvg-name="Zee Cinema" tvg-chno="361" group-title="Indian Movies",Zee Cinema
 https://d1g8wgjurz8via.cloudfront.net/bpk-tv/NGCHD/default/NGCHD.m3u8
-#EXTINF:-1 nexus-score="100" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bollywood-film-61bc3ef1fe.png" tvg-id="BollywoodFilm.ro" tvg-name="Bollywood Film" tvg-language="ron" tvg-country="RO" group-title="Indian Movies",Bollywood Film
-https://tvextra-hls.b-cdn.net/bollywoodfilm/bollywoodfilm.m3u8
 #EXTINF:-1 tvg-id="7SMusic.in" tvg-name="7S Music" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/7s-music.png" tvg-chno="363" channel-id="7SMusic.in" group-title="Indian Music",7S Music
 https://mumt03.tangotv.in/Dsly5z3H7SMUSIC/index.m3u8
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/7x-punjabi.png" channel-id="7X Music" tvg-id="7X Music" tvg-name="7X Punjabi" tvg-chno="365" group-title="Indian Music",7X Punjabi
@@ -477,12 +477,16 @@ https://streams.tangotv.in/MHONEDILSE/ORIGIN/index.m3u8
 https://streams.tangotv.in/MHONE/ORIGIN/index.m3u8
 #EXTINF:-1 tvg-id="MKSix.in" tvg-name="MK Six" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mk-six.png" tvg-chno="487" channel-id="MKSix.in" group-title="Indian Entertainment",MK Six
 https://mumt06.tangotv.in/qYyB8fXVMKSIX/index.m3u8
+#EXTINF:-1 http-user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML group-title=" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mtv.png" tvg-id="MTV.in@SD" group-title="Indian Entertainment",MTV (India)
+https://da86m1sqpm3o0.cloudfront.net/28072023/smil:mtvindia.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="local.4ff686856fe3" tvg-name="Nazara" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/nazara.png" tvg-chno="488" channel-id="local.4ff686856fe3" group-title="Indian Entertainment",Nazara
 https://cc-p1izg43bk7sj5.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-p1izg43bk7sj5/DIYC/PMSL/IN10/Nazara_IN_B/Nazara_IN_B.m3u8
 #EXTINF:-1 tvg-id="NKRTVKannada.in" tvg-name="NKR TV Kannada" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/nkr-tv-kannada.png" tvg-chno="489" channel-id="NKRTVKannada.in" group-title="Indian Entertainment",NKR TV Kannada
 https://stream.ottlive.co.in/nkrtv/index.m3u8
 #EXTINF:-1 tvg-id="OnePaschima.in" tvg-name="One Paschima" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/one-paschima.png" tvg-chno="490" channel-id="OnePaschima.in" group-title="Indian Entertainment",One Paschima
 https://live.ekamraott.com/onepaschima/onepaschima/index.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/oscar-movies-bhojpuri-720p-3b04cbe81a.png" tvg-id="OscarMoviesBhojpuri.in@SD" group-title="Indian Entertainment",Oscar Movies Bhojpuri (720p)
+https://cdn.pishow.tv/ott/live/233/master.m3u8
 #EXTINF:-1 tvg-id="PardesiTV.ca" tvg-name="Pardesi TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pardesi-tv.png" tvg-chno="491" channel-id="PardesiTV.ca" group-title="Indian Entertainment",Pardesi TV
 http://stream.pardesitv.online/pardesi/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-id="PTCPunjabi.in" tvg-name="PTC Punjabi" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/ptc-punjabi.png" tvg-chno="492" channel-id="PTCPunjabi.in" group-title="Indian Entertainment",PTC Punjabi
@@ -547,30 +551,44 @@ https://da86m1sqpm3o0.cloudfront.net/28072023/smil:zeetamil1.smil/playlist.m3u8
 https://stream.ottplus.live/live/zee_tv_hd_abr/index.m3u8
 #EXTINF:-1 tvg-id="local.541330179858" tvg-name="Zee TV HD [DE]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/zee-tv-hd-de.png" tvg-chno="533" channel-id="local.541330179858" group-title="Indian Entertainment",Zee TV HD [DE]
 https://d47ddb99.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/U2Ftc3VuZy1kZV9aZWVUVkhEVUtHZXJtYW55X0hMUw/playlist.m3u8
-#EXTINF:-1 http-user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML group-title=" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mtv.png" tvg-id="MTV.in@SD" group-title="Indian Entertainment",MTV (India)
-https://da86m1sqpm3o0.cloudfront.net/28072023/smil:mtvindia.smil/playlist.m3u8
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/oscar-movies-bhojpuri-720p-3b04cbe81a.png" tvg-id="OscarMoviesBhojpuri.in@SD" group-title="Indian Entertainment",Oscar Movies Bhojpuri (720p)
-https://cdn.pishow.tv/ott/live/233/master.m3u8
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/cmc-usa-country-music-channel-720p-8a071853aa.png" tvg-id="CMCUSACountryMusicChannel.us@SD" group-title="International",CMC-USA Country Music Channel (720p)
-https://hwlive.streamingmediahosting.com/14215-live/0_obd393sh/playlist.m3u8
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/hbo-hits-1080p-27da015c1f.png" tvg-id="HBOHits.us@EastHD" group-title="International",HBO Hits East HD (720p)
-http://4.30.180.36:8420/hbo2/index.m3u8?token=test
-#EXTINF:-1 channel-id="SonyMovies.in" tvg-id="SonyMovies.in" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sony-movies-563051ab.png" tvg-name="Sony Movies" tvg-chno="899" group-title="International",Sony Movies
-https://a-cdn.klowdtv.com/live1/smc_720p/chunks.m3u8
-#EXTINF:-1 tvg-id="StarMovies.in" tvg-name="Star Movies" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/star-movies-2087bb49.png" tvg-chno="580" channel-id="StarMovies.in" group-title="International",Star Movies
-http://rgkkw.live/live/1Aoen7elp5/IgMJ60tmAa/98842.ts
-#EXTINF:-1 tvg-id="StarMoviesSelect.in" tvg-name="Star Movies Select" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/star-movies-select-37627406.png" tvg-chno="582" channel-id="StarMoviesSelect.in" group-title="International",Star Movies Select
-http://202.70.146.135:8000/play/a06q/index.m3u8
-#EXTINF:-1 tvg-id="MBCDramaUSA.us" tvg-name="MBC Drama USA" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mbc-drama-usa-1080p-3126247ec1.png" tvg-country="US" tvg-language="ara" nexus-score="100" group-title="International",MBC Drama USA (1080p)
-https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-drama-usa/ea2f5db904aff224b7066e59c7f585a2/index.m3u8
+#EXTINF:-1 tvg-id="4everCinema.ua" tvg-name="4ever Cinema" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/4ever-cinema-1080p-46222eea9d.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="International",4ever Cinema (1080p)
+http://stream.mcquack.net/258/index.m3u8
+#EXTINF:-1 tvg-id="4everDrama.ua" tvg-name="4ever Drama" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/4ever-drama-1080p-5925078a10.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="International",4ever Drama (1080p)
+http://stream.mcquack.net/260/index.m3u8
+#EXTINF:-1 tvg-id="4everMusic.ua" tvg-name="4ever Music" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/4ever-music-1080p-0f54facdb8.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="International",4ever Music (1080p)
+http://stream.mcquack.net/257/index.m3u8
+#EXTINF:-1 tvg-id="ARTFLIXMovieClassics.us" tvg-name="ARTFLIX Movie Classics" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/artflix-movie-classics-720p-1888c5698d.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="International",ARTFLIX Movie Classics (720p)
+https://amogonetworx-artflix-1-nl.samsung.wurl.tv/playlist.m3u8
 #EXTINF:-1 tvg-id="BBCDrama.uk" tvg-name="BBC Drama" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bbc-drama-1080p-b8c15d1482.png" tvg-country="UK" tvg-language="fra;spa;eng" nexus-score="100" group-title="International",BBC Drama (1080p)
 https://amg00793-amg00793c40-rakuten-es-5444.playouts.now.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/cmc-usa-country-music-channel-720p-8a071853aa.png" tvg-id="CMCUSACountryMusicChannel.us@SD" group-title="International",CMC-USA Country Music Channel (720p)
+https://hwlive.streamingmediahosting.com/14215-live/0_obd393sh/playlist.m3u8
+#EXTINF:-1 tvg-id="EBSCinema.us" tvg-name="EBS Cinema" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/ebs-cinema-720p-cbd595f089.png" tvg-country="US" tvg-language="amh" nexus-score="100" group-title="International",EBS Cinema (720p)
+https://rpn.bozztv.com/ebstv/ebscinema/index.m3u8
+#EXTINF:-1 tvg-id="EBSMusika.us" tvg-name="EBS Musika" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/ebs-musika-720p-cb7d702a48.png" tvg-country="US" tvg-language="amh" nexus-score="100" group-title="International",EBS Musika (720p)
+https://rpn.bozztv.com/ebstv/ebsmusika/index.m3u8
+#EXTINF:-1 tvg-id="EnterFilm.ua" tvg-name="Enter-Film" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/enter-film-1080p-3d86ec1568.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="International",Enter-Film (1080p)
+http://str2.iptvhd.ru:8080/enter_film_ua/index.m3u8
+#EXTINF:-1 tvg-id="EUMusic.ua" tvg-name="EU Music" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/eu-music-1080p-bd9e22bbe8.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="International",EU Music (1080p)
+http://stream.mcquack.net/261/index.m3u8
+#EXTINF:-1 tvg-id="FilmUALive.ua" tvg-name="FilmUA Live" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/filmua-live-b70299cedc.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="International",FilmUA Live
+https://dash2.antik.sk/live/test_film_life_atktv/playlist.m3u8
 #EXTINF:-1 tvg-id="HBOHits.us" tvg-name="HBO Hits" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/hbo-hits-1080p-27da015c1f.png" tvg-country="US" tvg-language="eng;spa" nexus-score="100" group-title="International",HBO Hits (1080p)
 http://4.30.180.36:8420/hbo2/index.m3u8?token=test
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/hbo-hits-1080p-27da015c1f.png" tvg-id="HBOHits.us@EastHD" group-title="International",HBO Hits East HD (720p)
+http://4.30.180.36:8420/hbo2/index.m3u8?token=test
+#EXTINF:-1 tvg-name="iFilm English" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/ifilm-english-s-e5f0438e73.png" tvg-id="iFilmEnglish.ir" tvg-chno="6" tvg-country="IR" group-title="International",iFilm English Ⓢ
+https://live.presstv.co.uk/hls/ifilmen.m3u8
+#EXTINF:-1 tvg-id="MBCDramaUSA.us" tvg-name="MBC Drama USA" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mbc-drama-usa-1080p-3126247ec1.png" tvg-country="US" tvg-language="ara" nexus-score="100" group-title="International",MBC Drama USA (1080p)
+https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-drama-usa/ea2f5db904aff224b7066e59c7f585a2/index.m3u8
+#EXTINF:-1 tvg-id="MegogoMusic.ua" tvg-name="Megogo Music" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/megogo-music-d2a1a7f90a.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="International",Megogo Music
+https://ext.cdn.nashnet.tv/228.0.2.214/index.m3u8
 #EXTINF:-1 tvg-id="MovieSphere.us@AU" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/moviesphere-au-1080p-1b23bc91d7.png" group-title="International",MovieSphere AU (1080p)
 https://amg00353-lionsgatefilmsi-moviesphereaus-samsungau-7qzhf.amagi.tv/playlist/amg00353-lionsgatefilmsi-moviesphereaus-samsungau/playlist.m3u8
 #EXTINF:-1 tvg-id="MovieSphere.us@UK" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/moviesphere-au-1080p-1b23bc91d7.png" group-title="International",MovieSphere UK (1080p)
 https://moviesphereuk-samsunguk.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="NASHEMusic.ua" tvg-name="NASHE Music" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/nashe-music-720p-174bccb21c.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="International",NASHE Music (720p)
+https://cdn15.live-tv.cloud/ua_infinitas_tv/nashemus-abr/playlist.m3u8
 #EXTINF:-1 tvg-id="NOWRock.uk@SD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/now-rock-1080p-033d8aedc8.png" group-title="International",NOW Rock (1080p)
 https://lightning-now90s-samsungnz.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-id="RakutenTVActionMovies.es@UK" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/rakuten-tv-action-movies-uk-1080p-75f2eea4ce.png" group-title="International",Rakuten TV Action Movies UK (1080p)
@@ -583,30 +601,12 @@ https://fee09fd665814f51b939b6d106cf5f66.mediatailor.eu-west-1.amazonaws.com/v1/
 https://e3207568b726401995c25670faaf32e4.mediatailor.eu-west-1.amazonaws.com/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-6203/master.m3u8
 #EXTINF:-1 tvg-id="RakutenTVTopMovies.es@UK" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/rakuten-tv-action-movies-uk-1080p-75f2eea4ce.png" group-title="International",Rakuten TV Top Movies UK (1080p)
 https://0145451975a64b35866170fd2e8fa486.mediatailor.eu-west-1.amazonaws.com/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-5987/master.m3u8
-#EXTINF:-1 tvg-id="XITEHits.nl@UK" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/xite-hits-uk-1080p-bf41ee4788.png" group-title="International",XITE Hits UK (1080p)
-https://amg01243-xitenetworksint-hitsuk-samsunguk-mvovq.amagi.tv/playlist/amg01243-xitenetworksint-hitsuk-samsunguk/playlist.m3u8
-#EXTINF:-1 tvg-id="4everCinema.ua" tvg-name="4ever Cinema" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/4ever-cinema-1080p-46222eea9d.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="International",4ever Cinema (1080p)
-http://stream.mcquack.net/258/index.m3u8
-#EXTINF:-1 tvg-id="4everDrama.ua" tvg-name="4ever Drama" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/4ever-drama-1080p-5925078a10.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="International",4ever Drama (1080p)
-http://stream.mcquack.net/260/index.m3u8
-#EXTINF:-1 tvg-id="4everMusic.ua" tvg-name="4ever Music" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/4ever-music-1080p-0f54facdb8.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="International",4ever Music (1080p)
-http://stream.mcquack.net/257/index.m3u8
-#EXTINF:-1 tvg-id="ARTFLIXMovieClassics.us" tvg-name="ARTFLIX Movie Classics" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/artflix-movie-classics-720p-1888c5698d.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="International",ARTFLIX Movie Classics (720p)
-https://amogonetworx-artflix-1-nl.samsung.wurl.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="EBSCinema.us" tvg-name="EBS Cinema" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/ebs-cinema-720p-cbd595f089.png" tvg-country="US" tvg-language="amh" nexus-score="100" group-title="International",EBS Cinema (720p)
-https://rpn.bozztv.com/ebstv/ebscinema/index.m3u8
-#EXTINF:-1 tvg-id="EBSMusika.us" tvg-name="EBS Musika" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/ebs-musika-720p-cb7d702a48.png" tvg-country="US" tvg-language="amh" nexus-score="100" group-title="International",EBS Musika (720p)
-https://rpn.bozztv.com/ebstv/ebsmusika/index.m3u8
-#EXTINF:-1 tvg-id="EnterFilm.ua" tvg-name="Enter-Film" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/enter-film-1080p-3d86ec1568.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="International",Enter-Film (1080p)
-http://str2.iptvhd.ru:8080/enter_film_ua/index.m3u8
-#EXTINF:-1 tvg-id="EUMusic.ua" tvg-name="EU Music" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/eu-music-1080p-bd9e22bbe8.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="International",EU Music (1080p)
-http://stream.mcquack.net/261/index.m3u8
-#EXTINF:-1 tvg-id="FilmUALive.ua" tvg-name="FilmUA Live" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/filmua-live-b70299cedc.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="International",FilmUA Live
-https://dash2.antik.sk/live/test_film_life_atktv/playlist.m3u8
-#EXTINF:-1 tvg-id="MegogoMusic.ua" tvg-name="Megogo Music" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/megogo-music-d2a1a7f90a.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="International",Megogo Music
-https://ext.cdn.nashnet.tv/228.0.2.214/index.m3u8
-#EXTINF:-1 tvg-id="NASHEMusic.ua" tvg-name="NASHE Music" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/nashe-music-720p-174bccb21c.png" tvg-country="UA" tvg-language="ukr" nexus-score="100" group-title="International",NASHE Music (720p)
-https://cdn15.live-tv.cloud/ua_infinitas_tv/nashemus-abr/playlist.m3u8
+#EXTINF:-1 channel-id="SonyMovies.in" tvg-id="SonyMovies.in" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sony-movies-563051ab.png" tvg-name="Sony Movies" tvg-chno="899" group-title="International",Sony Movies
+https://a-cdn.klowdtv.com/live1/smc_720p/chunks.m3u8
+#EXTINF:-1 tvg-id="StarMovies.in" tvg-name="Star Movies" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/star-movies-2087bb49.png" tvg-chno="580" channel-id="StarMovies.in" group-title="International",Star Movies
+http://rgkkw.live/live/1Aoen7elp5/IgMJ60tmAa/98842.ts
+#EXTINF:-1 tvg-id="StarMoviesSelect.in" tvg-name="Star Movies Select" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/star-movies-select-37627406.png" tvg-chno="582" channel-id="StarMoviesSelect.in" group-title="International",Star Movies Select
+http://202.70.146.135:8000/play/a06q/index.m3u8
 #EXTINF:-1 tvg-id="Totalmusic.uk" tvg-name="Totalmusic" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/totalmusic-1080p-4921970701.png" tvg-country="UK" tvg-language="spa" nexus-score="98" group-title="International",Totalmusic (1080p)
 https://cdn.global.elektamedia.com/live/c7eds/Totalmusic/SA_LIVE_hls_enc/master.m3u8
 #EXTINF:-1 tvg-id="Totalmusic80s.uk" tvg-name="Totalmusic 80s" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/totalmusic-80s-1080p-4c7ec66995.png" tvg-country="UK" tvg-language="spa" nexus-score="98" group-title="International",Totalmusic 80s (1080p)
@@ -617,8 +617,8 @@ https://cdn.global.elektamedia.com/live/c7eds/Totalmusic_Concerts/SA_LIVE_hls_en
 https://cdn.global.elektamedia.com/live/c7eds/Totalmusic_Dance/SA_LIVE_hls_enc/master.m3u8
 #EXTINF:-1 tvg-id="ViasatEpicDrama.uk" tvg-name="Viasat Epic Drama" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/viasat-epic-drama-576p-0289747b43.png" tvg-country="UK" tvg-language="cze;eng;ron;rus" nexus-score="100" group-title="International",Viasat Epic Drama (576p)
 http://195.189.60.253/118/index.m3u8
-#EXTINF:-1 tvg-name="iFilm English" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/ifilm-english-s-e5f0438e73.png" tvg-id="iFilmEnglish.ir" tvg-chno="6" tvg-country="IR" group-title="International",iFilm English Ⓢ
-https://live.presstv.co.uk/hls/ifilmen.m3u8
+#EXTINF:-1 tvg-id="XITEHits.nl@UK" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/xite-hits-uk-1080p-bf41ee4788.png" group-title="International",XITE Hits UK (1080p)
+https://amg01243-xitenetworksint-hitsuk-samsunguk-mvovq.amagi.tv/playlist/amg01243-xitenetworksint-hitsuk-samsunguk/playlist.m3u8
 #EXTINF:-1 channel-id="AmazingDiscoveriesTV.ca" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/amazing-discoveries-tv.png" tvg-id="AmazingDiscoveriesTV.ca" tvg-name="Amazing Discoveries TV" tvg-chno="379" group-title="Documentary & Wildlife",Amazing Discoveries TV
 https://uni01rtmp.tulix.tv/amazingdtv/amazingdtv/playlist.m3u8
 #EXTINF:-1 tvg-id="AnimalPlanet.in" tvg-name="Animal Planet" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/animal-planet.png" tvg-chno="645" channel-id="AnimalPlanet.in" group-title="Documentary & Wildlife",Animal Planet
@@ -795,6 +795,8 @@ https://live20.bozztv.com/giatvplayout7/giatv-210728/tracks-v1a1/mono.ts.m3u8
 https://stream.ottplus.live/live/pogo_sd_abr/index.m3u8
 #EXTINF:-1 tvg-id="local.234e1ee9c354" tvg-name="POP" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pop.png" tvg-chno="780" channel-id="local.234e1ee9c354" group-title="Kids",POP
 https://amg01753-narrativeentert-popkids-samsunguk-yjjil.amagi.tv/ts-eu-w1-n2/playlist/amg01753-narrativeentert-popkids-samsunguk/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pop.png" tvg-id="Pop.uk@SD" group-title="Kids",Pop (1080p)
+https://amg01753-narrativeentert-popkids-lggb-xyy5k.amagi.tv/ts-eu-w1-n2/playlist/amg01753-narrativeentert-popkids-lggb/playlist.m3u8
 #EXTINF:-1 tvg-id="local.18292ea85199" tvg-name="Powerkids Kartoon Channel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/powerkids-kartoon-channel.png" tvg-chno="781" channel-id="local.18292ea85199" group-title="Kids",Powerkids Kartoon Channel
 https://cc-j2qrmdlg5y7lg.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-j2qrmdlg5y7lg/powerkids.m3u8
 #EXTINF:-1 tvg-id="RetroCrush.us" tvg-name="RetroCrush" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/retrocrush.png" tvg-chno="782" channel-id="RetroCrush.us" group-title="Kids",RetroCrush
@@ -839,8 +841,6 @@ https://server.zillarbarta.com/zbcatun/video.m3u8
 https://zoomoo-samsungau.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-id="local.86529dbe4f63" tvg-name="Солнце" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/solnce.png" tvg-chno="735" channel-id="local.86529dbe4f63" group-title="Kids",Солнце
 http://tv.mediacdn.ru/live/solntse/playlist.m3u8
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pop.png" tvg-id="Pop.uk@SD" group-title="Kids",Pop (1080p)
-https://amg01753-narrativeentert-popkids-lggb-xyy5k.amagi.tv/ts-eu-w1-n2/playlist/amg01753-narrativeentert-popkids-lggb/playlist.m3u8
 #EXTINF:-1 tvg-id="AlistiqamaTV.om" tvg-name="Al Istiqama" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/al-istiqama.png" tvg-chno="813" channel-id="AlistiqamaTV.om" group-title="Religious",Al Istiqama
 https://jmc-live.ercdn.net/alistiqama/alistiqama.m3u8
 #EXTINF:-1 tvg-id="AlQamarTV.ae" tvg-name="Al Qamar" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/al-qamar.png" tvg-chno="814" channel-id="AlQamarTV.ae" group-title="Religious",Al Qamar
@@ -1019,6 +1019,8 @@ https://streams.tangotv.in/B4UMOVIES/ORIGIN/index.m3u8
 https://drk6xq0vhn.gpcdn.net/live/b4u_movies_abr/index.m3u8
 #EXTINF:-1 tvg-id="B4UMovies.in" tvg-name="B4U Movies" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/b4u-movies-576p-fd61c20d7c.png" tvg-country="IN" tvg-language="hin" nexus-score="100" group-title="Backup",B4U Movies (576p)
 https://cdn.pishow.tv/ott/live/419/master.m3u8
+#EXTINF:-1 tvg-id="B4UMusic.in@India" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/b4u-music.png" group-title="Backup",B4U Music (576p)
+https://cdn.pishow.tv/ott/live/415/master.m3u8
 #EXTINF:-1 channel-id="local.bangla-tv" tvg-id="local.bangla-tv" tvg-name="Bangla Tv [Backup 3]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bangla-tv.png" tvg-chno="73" group-title="Backup",Bangla Tv [Backup 3]
 https://iptvlive.ahmed-bd-org.workers.dev/bangla-tv-1/index.m3u8
 #EXTINF:-1 channel-id="local.bangla-tv" tvg-id="local.bangla-tv" tvg-name="Bangla Tv [Backup 4]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bangla-tv.png" tvg-chno="74" group-title="Backup",Bangla Tv [Backup 4]
@@ -1489,14 +1491,6 @@ http://107.167.16.138/zing/index.m3u8?token=test
 https://dai.google.com/linear/hls/event/JCAm25qkRXiKcK1AJMlvKQ/master.m3u8
 #EXTINF:-1 tvg-id="Zoom.in" tvg-name="Zoom TV [Backup 2]" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/zoom-tv.png" tvg-chno="423" channel-id="Zoom.in" group-title="Backup",Zoom TV [Backup 2]
 https://d2esfk1pb9cdob.cloudfront.net/master.m3u8
-#EXTINF:-1 tvg-id="B4UMusic.in@India" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/b4u-music.png" group-title="Backup",B4U Music (576p)
-https://cdn.pishow.tv/ott/live/415/master.m3u8
-#EXTINF:-1 tvg-id="MBCDrama.kr@SD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mbc-drama-south-korea-480p-geo-blocked-ae3b25e82b.png" group-title="New Channels",MBC Drama (South Korea) (480p) [Geo-blocked]
-http://mytv.dothome.co.kr/ch/catv/26.php
-#EXTINF:-1 tvg-id="SUMtvEnglish.us@SD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sumtv-english-1080p-69250854ca.png" group-title="New Channels",SUMtv English (1080p)
-https://bozztv.com/uni10rtmp/ssstv1-cdn/smil:ssstv1web.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="CMalayalamTV.ca@SD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/c-malayalam-tv-1080p-3b1c6293f5.png" group-title="New Channels",C Malayalam TV (1080p)
-https://2-fss-2.streamhoster.com/pl_120/206508-3261972-1/playlist.m3u8
 #EXTINF:-1 tvg-id="24HourFreeMovies.us" tvg-name="24 Hour Free Movies" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/24-hour-free-movies-720p-2a4fdea7cd.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",24 Hour Free Movies (720p)
 https://d1j2u714xk898n.cloudfront.net/scheduler/scheduleMaster/145.m3u8
 #EXTINF:-1 tvg-id="3ABNPraiseHimMusicNetwork.us" tvg-name="3ABN Praise Him Music Network" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/3abn-praise-him-music-network-720p-12e7a6309e.png" tvg-country="US" tvg-language="spa;eng" nexus-score="100" group-title="New Channels",3ABN Praise Him Music Network (720p)
@@ -1509,6 +1503,8 @@ https://mumt04.tangotv.in/m18aqlK4AASEERVATHAMTV/index.m3u8
 https://mediaserver.abnvideos.com/streams/abnbiblemovies.m3u8
 #EXTINF:-1 tvg-id="AdhyatmTV.in" tvg-name="Adhyatm TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/adhyatm-tv-720p-2506efc675.png" tvg-country="IN" tvg-language="hin" nexus-score="100" group-title="New Channels",Adhyatm TV (720p)
 https://mumbai-edge.smartplaytv.in/AdhyatmTV/index.m3u8
+#EXTINF:-1 tvg-name="All the K-Pop" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/all-the-k-pop-y-d91f7c24c4.png" tvg-id="AlltheKPop.kr" tvg-chno="30" tvg-country="KR" group-title="New Channels",All the K-Pop Ⓨ
+https://www.youtube.com/c/ALLTHEKPOP/live
 #EXTINF:-1 tvg-id="AMusicChannel.ng" tvg-name="AMusic Channel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/amusic-channel-480p-59acbdb4c0.png" tvg-country="NG" tvg-language="eng" nexus-score="100" group-title="New Channels",AMusic Channel (480p)
 https://viewmedia7219.bozztv.com/wmedia/viewmedia100/web_021/Stream/playlist.m3u8
 #EXTINF:-1 tvg-id="BatamTV.id" tvg-name="Batam TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/batam-tv-720p-5282d7658b.png" tvg-country="ID" tvg-language="ind" nexus-score="41" group-title="New Channels",Batam TV (720p)
@@ -1527,6 +1523,10 @@ https://ott.bhagyam.net/hls/bhagyamweb/index-1409148900-now.m3u8
 https://live.x2.co.th/live/bntv.m3u8
 #EXTINF:-1 tvg-id="BusinessRockstars.us" tvg-name="Business Rockstars" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/business-rockstars-720p-4def98aeb0.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",Business Rockstars (720p)
 https://stream-us-east-1.getpublica.com/playlist.m3u8?network_id=2220
+#EXTINF:-1 tvg-id="CMalayalamTV.ca@SD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/c-malayalam-tv-1080p-3b1c6293f5.png" group-title="New Channels",C Malayalam TV (1080p)
+https://2-fss-2.streamhoster.com/pl_120/206508-3261972-1/playlist.m3u8
+#EXTINF:-1 tvg-id="CMalayalamTV.ca" tvg-name="C Malayalam TV" tvg-logo="https://i.imgur.com/rpg0bQA.png" tvg-country="CA" tvg-language="mal" nexus-score="95" group-title="New Channels",C Malayalam TV (720p)
+https://2-fss-2.streamhoster.com/pl_120/206508-3261972-1/playlist.m3u8
 #EXTINF:-1 tvg-id="CaliforniaMusicChannel.us" tvg-name="California Music Channel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/california-music-channel-1080p-ff4c49b546.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",California Music Channel (1080p)
 https://cmc-ono.amagi.tv/hls/amagi_hls_data_cmcAAAAAA-cmc-ono/CDN/playlist.m3u8
 #EXTINF:-1 tvg-id="CCTVNostalgiaTheater.cn" tvg-name="CCTV-Nostalgia Theater" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/cctv-nostalgia-theater-1080p-027994d9fc.png" tvg-country="CN" tvg-language="zho" nexus-score="100" group-title="New Channels",CCTV-Nostalgia Theater (1080p)
@@ -1545,10 +1545,10 @@ http://23.237.104.106:8080/USA_5STARMAX/index.m3u8
 http://23.237.104.106:8080/USA_MOREMAX/index.m3u8
 #EXTINF:-1 tvg-id="ClassicCinema.us" tvg-name="Classic Cinema" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/classic-cinema-240p-431cc7a223.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",Classic Cinema (240p)
 https://rpn.bozztv.com/gusa/gusa-classiccinema/index.m3u8
-#EXTINF:-1 tvg-id="ClassicMoviesChannel.us" tvg-name="Classic Movies Channel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/classic-movies-channel-1d5f82d98a.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",Classic Movies Channel
-https://jmp2.uk/plu-561c5b0dada51f8004c4d855.m3u8
 #EXTINF:-1 tvg-id="ClassicMovieWesterns.us" tvg-name="Classic Movie Westerns" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/classic-movie-westerns-f7feb1b7dc.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",Classic Movie Westerns
 https://jmp2.uk/plu-61f33318210549000806a530.m3u8
+#EXTINF:-1 tvg-id="ClassicMoviesChannel.us" tvg-name="Classic Movies Channel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/classic-movies-channel-1d5f82d98a.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",Classic Movies Channel
+https://jmp2.uk/plu-561c5b0dada51f8004c4d855.m3u8
 #EXTINF:-1 tvg-id="ClassicTVCrimeDrama.us" tvg-name="Classic TV Crime Drama" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/classic-tv-crime-drama-655fc0885f.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",Classic TV Crime Drama
 https://jmp2.uk/plu-61325c4f982acd000723287e.m3u8
 #EXTINF:-1 tvg-id="ClassicTVDrama.us" tvg-name="Classic TV Drama" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/classic-tv-drama-f5e8cc5c9a.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",Classic TV Drama
@@ -1599,6 +1599,8 @@ https://cdn.pishow.tv/ott/live/10007/master.m3u8
 http://107.167.16.138/manoranjanmovies/index.m3u8?token=test
 #EXTINF:-1 tvg-id="MaverickBlackCinema.us" tvg-name="Maverick Black Cinema" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/maverick-black-cinema-1080p-8369c6f55f.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",Maverick Black Cinema (1080p)
 https://aegis-cloudfront-1.tubi.video/55607a73-d5bd-4a09-979e-5933354469ee/playlist.m3u8
+#EXTINF:-1 tvg-id="MBCDrama.kr@SD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mbc-drama-south-korea-480p-geo-blocked-ae3b25e82b.png" group-title="New Channels",MBC Drama (South Korea) (480p) [Geo-blocked]
+http://mytv.dothome.co.kr/ch/catv/26.php
 #EXTINF:-1 tvg-id="MCN6MusicChannel.us" tvg-name="MCN6 Music Channel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mcn6-music-channel-1080p-b16c4717c3.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",MCN6 Music Channel (1080p)
 https://d18fcxaqfnwjhj.cloudfront.net/CDN_Ingest/MCN6_MUSIC.smil/Playlist.m3u8
 #EXTINF:-1 tvg-id="MeiAhMovieChannel.hk" tvg-name="Mei Ah Movie Channel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mei-ah-movie-channel-1080p-427874b362.png" tvg-country="HK" tvg-language="zho" nexus-score="100" group-title="New Channels",Mei Ah Movie Channel (1080p)
@@ -1609,16 +1611,14 @@ https://vhxyrsly.rocketcdn.com/meltemtv/playlist.m3u8
 https://livestream.jswk.online/playlisttest/live/playlist.m3u8
 #EXTINF:-1 tvg-id="MoreTVDrama.us" tvg-name="More TV Drama" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/more-tv-drama-061fbc9550.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",More TV Drama
 https://jmp2.uk/plu-613260e4bdb71c00070d63fa.m3u8
-#EXTINF:-1 tvg-id="Moviedome.us" tvg-name="Moviedome" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/moviedome-720p-96c8b044c7.png" tvg-country="US" tvg-language="deu" nexus-score="93" group-title="New Channels",Moviedome (720p)
-https://jmp2.uk/plu-615c1e5ce3039400070a0547.m3u8
 #EXTINF:-1 tvg-id="MovieMusicbyStingray.ca" tvg-name="Movie Music by Stingray" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/movie-music-by-stingray-1080p-cf132e65b8.png" tvg-country="CA" tvg-language="eng" nexus-score="100" group-title="New Channels",Movie Music by Stingray (1080p)
 https://lotus.stingray.com/manifest/cmusic-cme004-montreal/samsungtvplus/master.m3u8
+#EXTINF:-1 tvg-id="Moviedome.us" tvg-name="Moviedome" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/moviedome-720p-96c8b044c7.png" tvg-country="US" tvg-language="deu" nexus-score="93" group-title="New Channels",Moviedome (720p)
+https://jmp2.uk/plu-615c1e5ce3039400070a0547.m3u8
 #EXTINF:-1 tvg-id="Movies.us" tvg-name="Movies!" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/movies-480p-741fd393f0.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",Movies! (480p)
 https://2-fss-2.streamhoster.com/pl_120/206858-4412962-1/playlist.m3u8
 #EXTINF:-1 tvg-id="MovieSphereGold.us" tvg-name="MovieSphere Gold" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/moviesphere-gold-1080p-0785ed9073.png" tvg-country="US" tvg-language="eng;spa;zho" nexus-score="100" group-title="New Channels",MovieSphere Gold (1080p)
 https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01438-ewscrippscompan-ionmystery-tablo/playlist.m3u8
-#EXTINF:-1 tvg-id="MTV2.us" tvg-name="MTV2" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mtv2-720p-5734b74578.png" tvg-country="US" tvg-language="eng;spa" nexus-score="100" group-title="New Channels",MTV2 (720p)
-http://198.58.104.90:8989/mtv2/index.m3u8
 #EXTINF:-1 tvg-id="MTVAreyoutheOne.us" tvg-name="MTV Are you the One?" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mtv-are-you-the-one-8719394a7c.png" tvg-country="US" tvg-language="por" nexus-score="93" group-title="New Channels",MTV Are you the One?
 https://jmp2.uk/plu-5f6108d8cc331900075e98e4.m3u8
 #EXTINF:-1 tvg-id="MTVBiggestPop.us" tvg-name="MTV Biggest Pop" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mtv-biggest-pop-1080p-4508e1a99c.png" tvg-country="US" tvg-language="por;eng;spa" nexus-score="93" group-title="New Channels",MTV Biggest Pop (1080p)
@@ -1663,6 +1663,8 @@ https://jmp2.uk/plu-625463563b8ddc0007134aeb.m3u8
 https://jmp2.uk/plu-5d14fdb8ca91eedee1633117.m3u8
 #EXTINF:-1 tvg-id="MTVTeenMom.us" tvg-name="MTV Teen Mom" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mtv-teen-mom-720p-9fe02025cb.png" tvg-country="US" tvg-language="spa" nexus-score="93" group-title="New Channels",MTV Teen Mom (720p)
 https://jmp2.uk/plu-620fd9f4afb9a80007a9c6d5.m3u8
+#EXTINF:-1 tvg-id="MTV2.us" tvg-name="MTV2" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mtv2-720p-5734b74578.png" tvg-country="US" tvg-language="eng;spa" nexus-score="100" group-title="New Channels",MTV2 (720p)
+http://198.58.104.90:8989/mtv2/index.m3u8
 #EXTINF:-1 tvg-id="MusicBoxClassic.cz" tvg-name="Music Box Classic" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/music-box-classic-b1ce784de6.png" tvg-country="CZ" tvg-language="eng" nexus-score="100" group-title="New Channels",Music Box Classic
 http://88.212.15.19/live/mb_classic/index.m3u8
 #EXTINF:-1 tvg-id="MusicBoxDance.cz" tvg-name="Music Box Dance" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/music-box-dance-37a68b94a0.png" tvg-country="CZ" tvg-language="eng" nexus-score="100" group-title="New Channels",Music Box Dance
@@ -1671,6 +1673,8 @@ http://88.212.15.19/live/mb_dance/index.m3u8
 http://88.212.15.19/live/mb_hits/index.m3u8
 #EXTINF:-1 tvg-id="MusicBoxSexy.cz" tvg-name="Music Box Sexy" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/music-box-sexy-a39de06013.png" tvg-country="CZ" tvg-language="eng" nexus-score="100" group-title="New Channels",Music Box Sexy
 http://88.212.15.19/live/mb_sexy/index.m3u8
+#EXTINF:-1 tvg-name="Music Channel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/music-channel-21d02d561c.png" tvg-id="Boni-Records.com.us" tvg-chno="3" tvg-country="US" group-title="New Channels",Music Channel
+http://media.boni-records.com/index.m3u8
 #EXTINF:-1 tvg-id="MusicInformationChannel.id" tvg-name="Music Information Channel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/music-information-channel-720p-052e9aeeaa.png" tvg-country="ID" tvg-language="ind" nexus-score="100" group-title="New Channels",Music Information Channel (720p)
 https://mic.siar.us/mic/live/mic.m3u8
 #EXTINF:-1 tvg-id="MyCinemaEurope.ch" tvg-name="My Cinema Europe" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/my-cinema-europe-720p-d2e0976c4f.png" tvg-country="CH" tvg-language="eng" nexus-score="100" group-title="New Channels",My Cinema Europe (720p)
@@ -1679,10 +1683,10 @@ https://op-group1-densxvisionhd-1.dens.tv/h/h18/index.m3u8
 https://mst3k-vizio.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-id="MyTimeMovieNetworkEast.us" tvg-name="MyTime Movie Network East" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mytime-movie-network-1080p-79e6ec3226.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",MyTime Movie Network East (1080p)
 https://appletree-mytimeau-samsung.amagi.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="NEWKMOVIES.us" tvg-name="NEW K.MOVIES" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/new-k-movies-1080p-fdc6c325b6.png" tvg-country="US" tvg-language="eng" nexus-score="92" group-title="New Channels",NEW K.MOVIES (1080p)
-https://ads.its-newid.net/api/manifest.m3u8?ads.service_id=GB1700007PK&channel_id=newid_343&tp=samsung_tvplus
 #EXTINF:-1 tvg-id="NEWKPOP.us" tvg-name="NEW K-POP" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/new-k-pop-1080p-02d85a425b.png" tvg-country="US" tvg-language="eng" nexus-score="90" group-title="New Channels",NEW K-POP (1080p)
 https://ads.its-newid.net/api/manifest.m3u8?ads.service_id=GB17000088V&channel_id=newid_086&tp=samsung_tvplus
+#EXTINF:-1 tvg-id="NEWKMOVIES.us" tvg-name="NEW K.MOVIES" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/new-k-movies-1080p-fdc6c325b6.png" tvg-country="US" tvg-language="eng" nexus-score="92" group-title="New Channels",NEW K.MOVIES (1080p)
+https://ads.its-newid.net/api/manifest.m3u8?ads.service_id=GB1700007PK&channel_id=newid_343&tp=samsung_tvplus
 #EXTINF:-1 tvg-id="OMTV.in" tvg-name="OM TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/om-tv-360p-e64336c928.png" tvg-country="IN" tvg-language="tam" nexus-score="85" group-title="New Channels",OM TV (360p)
 https://mumt01.tangotv.in/O5aw8Zn3OMTV/index.m3u8
 #EXTINF:-1 tvg-id="ParamountMovieChannel.us" tvg-name="Paramount Movie Channel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/paramount-movie-channel-d46b22ff12.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",Paramount Movie Channel
@@ -1703,6 +1707,8 @@ https://jmp2.uk/plu-5f31fd1b4c510e00071c3103.m3u8
 https://jmp2.uk/plu-5f4d8594eb979c0007706de7.m3u8
 #EXTINF:-1 tvg-id="PlutoTVCultFilms.de" tvg-name="Pluto TV Cult Films" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pluto-tv-cult-films-4c48109dbb.png" tvg-country="DE" tvg-language="eng" nexus-score="93" group-title="New Channels",Pluto TV Cult Films
 https://jmp2.uk/plu-5c5c31f2f21b553c1f673fb0.m3u8
+#EXTINF:-1 tvg-id="PlutoTVCultFilms.us" tvg-name="Pluto TV Cult Films" tvg-logo="https://i.imgur.com/xoaIAus.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",Pluto TV Cult Films
+https://jmp2.uk/plu-5c665db3e6c01b72c4977bc2.m3u8
 #EXTINF:-1 tvg-id="PlutoTVDrama.us" tvg-name="Pluto TV Drama" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pluto-tv-drama-1916ac022e.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",Pluto TV Drama
 https://jmp2.uk/plu-5b4e92e4694c027be6ecece1.m3u8
 #EXTINF:-1 tvg-id="PlutoTVDramaMovies.us" tvg-name="Pluto TV Drama Movies" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pluto-tv-drama-movies-7a242cb4f6.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",Pluto TV Drama Movies
@@ -1739,6 +1745,8 @@ https://jmp2.uk/plu-65f060d84e01740008d7421f.m3u8
 https://janus.xpbroadcasting.com:8443/hls/popworld.m3u8
 #EXTINF:-1 tvg-id="PutoTVClassicTVCrimeDrama.us" tvg-name="Puto TV Classic TV Crime Drama" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/puto-tv-classic-tv-crime-drama-0c3bd05a1b.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",Puto TV Classic TV Crime Drama
 https://jmp2.uk/plu-696e61287d2afdec4ff2cb75.m3u8
+#EXTINF:-1 tvg-id="SKPop.us" tvg-name="S KPop!" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/s-kpop-360p-4eb23b8305.png" tvg-country="US" tvg-language="eng;kor" nexus-score="100" group-title="New Channels",S KPop! (360p)
+https://vodcdn.bamboo-cloud.com/livehls/6aac8803063044569e156563/master.m3u8
 #EXTINF:-1 tvg-id="SaamTV.in" tvg-name="Saam TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/saam-tv-576p-5a601ea33f.png" tvg-country="IN" tvg-language="mar;hin" nexus-score="100" group-title="New Channels",Saam TV (576p)
 https://cdn.pishow.tv/ott/live/437/master.m3u8
 #EXTINF:-1 tvg-id="SalaamTV.in" tvg-name="Salaam TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/salaam-tv-720p-0226c0136b.png" tvg-country="IN" tvg-language="urd" nexus-score="100" group-title="New Channels",Salaam TV (720p)
@@ -1751,8 +1759,6 @@ https://mumt07.tangotv.in/zHjX9OFlSATHIYAMTV/index.m3u8
 https://canli.sercemtv.com.tr/hls/0/stream.m3u8
 #EXTINF:-1 tvg-id="SharnamTV.in" tvg-name="Sharnam TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sharnam-tv-720p-468591aaaa.png" tvg-country="IN" tvg-language="hin" nexus-score="100" group-title="New Channels",Sharnam TV (720p)
 https://mumt06.tangotv.in/qYyB8fXVSHARNAMTV/index.m3u8
-#EXTINF:-1 tvg-id="SKPop.us" tvg-name="S KPop!" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/s-kpop-360p-4eb23b8305.png" tvg-country="US" tvg-language="eng;kor" nexus-score="100" group-title="New Channels",S KPop! (360p)
-https://vodcdn.bamboo-cloud.com/livehls/6aac8803063044569e156563/master.m3u8
 #EXTINF:-1 tvg-id="SMTV.id" tvg-name="SMTV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/smtv-720p-60bc791562.png" tvg-country="ID" tvg-language="ind" nexus-score="90" group-title="New Channels",SMTV (720p)
 https://e.siar.us/live/smtv.m3u8
 #EXTINF:-1 tvg-id="SohamTV.in" tvg-name="Soham TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/soham-tv-360p-d35aac0225.png" tvg-country="IN" tvg-language="hin" nexus-score="100" group-title="New Channels",Soham TV (360p)
@@ -1775,22 +1781,26 @@ https://lotus.stingray.com/manifest/ose-102ads-montreal/samsungtvplus/master.m3u
 https://lotus.stingray.com/manifest/ose-317ads-montreal/samsungtvplus/master.m3u8
 #EXTINF:-1 tvg-id="StingrayTodaysLatinPop.ca" tvg-name="Stingray Today's Latin Pop" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/stingray-today-s-latin-pop-1080p-4cd367dd93.png" tvg-country="CA" tvg-language="eng" nexus-score="100" group-title="New Channels",Stingray Today's Latin Pop (1080p)
 https://lotus.stingray.com/manifest/ose-190ads-montreal/samsungtvplus/master.m3u8
+#EXTINF:-1 tvg-id="SUMtvEnglish.us@SD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sumtv-english-1080p-69250854ca.png" group-title="New Channels",SUMtv English (1080p)
+https://bozztv.com/uni10rtmp/ssstv1-cdn/smil:ssstv1web.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="SUMtvEnglish.us" tvg-name="SUMtv English" tvg-logo="https://i.imgur.com/hp1rJjX.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",SUMtv English (1080p)
+https://bozztv.com/uni10rtmp/ssstv1-cdn/smil:ssstv1web.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="SUMtvLatino.us" tvg-name="SUMtv Latino" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sumtv-latino-1080p-6856a86955.png" tvg-country="US" tvg-language="spa" nexus-score="100" group-title="New Channels",SUMtv Latino (1080p)
 https://bozztv.com/uni10rtmp/ssstv2-cdn/smil:ssstv2web.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="SupernaturalDrama.us" tvg-name="Supernatural Drama" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/supernatural-drama-be9e7e4621.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",Supernatural Drama
-https://jmp2.uk/plu-5f24662bebe0f0000767de32.m3u8
-#EXTINF:-1 tvg-id="SuperPop.us" tvg-name="Super! Pop" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/super-pop-c649c39b89.png" tvg-country="US" tvg-language="ita" nexus-score="93" group-title="New Channels",Super! Pop
-https://jmp2.uk/plu-6093f7b5bb49b90007cecaad.m3u8
 #EXTINF:-1 tvg-id="SuperSimpleSongs.us" tvg-name="Super Simple Songs" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/super-simple-songs-1080p-f39abf3ffc.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",Super Simple Songs (1080p)
 https://janson-supersimplesongs-1-us.roku.wurl.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="SuperPop.us" tvg-name="Super! Pop" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/super-pop-c649c39b89.png" tvg-country="US" tvg-language="ita" nexus-score="93" group-title="New Channels",Super! Pop
+https://jmp2.uk/plu-6093f7b5bb49b90007cecaad.m3u8
+#EXTINF:-1 tvg-id="SupernaturalDrama.us" tvg-name="Supernatural Drama" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/supernatural-drama-be9e7e4621.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",Supernatural Drama
+https://jmp2.uk/plu-5f24662bebe0f0000767de32.m3u8
 #EXTINF:-1 tvg-id="TBMMTV.tr" tvg-name="TBMM TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/tbmm-tv-720p-61b1b0801b.png" tvg-country="TR" tvg-language="tur" nexus-score="100" group-title="New Channels",TBMM TV (720p)
 https://meclistv-live.ercdn.net/meclistv/meclistv.m3u8
 #EXTINF:-1 tvg-id="TheFilmDetective.us" tvg-name="The Film Detective" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/the-film-detective-1080p-20e69a9648.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",The Film Detective (1080p)
 https://cinedigm-entertainment-corp-thefilmdetective-1-us.ono.wurl.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="TVJ.jm" tvg-name="TVJ" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/tvj-1080p-b941584536.png" tvg-country="JM" tvg-language="eng" nexus-score="100" group-title="New Channels",TVJ (1080p)
-https://vod2live.univtec.com/manifest/a99a1804-dc83-411f-8c1c-b62f08cdfa59.m3u8
 #EXTINF:-1 tvg-id="TVLandDrama.us" tvg-name="TV Land Drama" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/tv-land-drama-adc7cdb8a1.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",TV Land Drama
 https://jmp2.uk/plu-5d40bebc5e3d2750a2239d7e.m3u8
+#EXTINF:-1 tvg-id="TVJ.jm" tvg-name="TVJ" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/tvj-1080p-b941584536.png" tvg-country="JM" tvg-language="eng" nexus-score="100" group-title="New Channels",TVJ (1080p)
+https://vod2live.univtec.com/manifest/a99a1804-dc83-411f-8c1c-b62f08cdfa59.m3u8
 #EXTINF:-1 tvg-id="TVSClassicMovies.us" tvg-name="TVS Classic Movies" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/tvs-classic-movies-360p-c2d4549656.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",TVS Classic Movies (360p)
 https://rpn.bozztv.com/gusa/gusa-tvsclassicmovies/index.m3u8
 #EXTINF:-1 tvg-id="TVSDriveInMovie.us" tvg-name="TVS Drive In Movie" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/tvs-drive-in-movie-576p-d0b4166233.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",TVS Drive In Movie (576p)
@@ -1821,13 +1831,3 @@ https://cdn.whiplash.cc/whiplash-cinema/index.m3u8
 https://amg01243-xite-amg01243c21-tcl-us-6483.playouts.now.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-id="YoMTV.us" tvg-name="Yo! MTV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/yo-mtv-1080p-481061433b.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",Yo! MTV (1080p)
 https://jmp2.uk/plu-5d14fc31252d35decbc4080b.m3u8
-#EXTINF:-1 tvg-name="All the K-Pop" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/all-the-k-pop-y-d91f7c24c4.png" tvg-id="AlltheKPop.kr" tvg-chno="30" tvg-country="KR" group-title="New Channels",All the K-Pop Ⓨ
-https://www.youtube.com/c/ALLTHEKPOP/live
-#EXTINF:-1 tvg-name="Music Channel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/music-channel-21d02d561c.png" tvg-id="Boni-Records.com.us" tvg-chno="3" tvg-country="US" group-title="New Channels",Music Channel
-http://media.boni-records.com/index.m3u8
-#EXTINF:-1 tvg-id="CMalayalamTV.ca" tvg-name="C Malayalam TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/c-malayalam-tv-f0687ee4.png" tvg-country="CA" tvg-language="mal" nexus-score="95" group-title="New Channels",C Malayalam TV (720p)
-https://2-fss-2.streamhoster.com/pl_120/206508-3261972-1/playlist.m3u8
-#EXTINF:-1 tvg-id="PlutoTVCultFilms.us" tvg-name="Pluto TV Cult Films" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pluto-tv-cult-films-ee1a848f.png" tvg-country="US" tvg-language="eng" nexus-score="93" group-title="New Channels",Pluto TV Cult Films
-https://jmp2.uk/plu-5c665db3e6c01b72c4977bc2.m3u8
-#EXTINF:-1 tvg-id="SUMtvEnglish.us" tvg-name="SUMtv English" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sumtv-english-05e63127.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",SUMtv English (1080p)
-https://bozztv.com/uni10rtmp/ssstv1-cdn/smil:ssstv1web.smil/playlist.m3u8
