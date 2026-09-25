@@ -1951,24 +1951,6 @@ https://xykt-fix.github.io/play/a02j/index.m3u8
 http://stream1.ai-net.net:1935/gtv1/_definst_/smil:gtv.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="MetropolaTV.ro" tvg-name="Metropola TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/metropola-tv-1080p-6f9816d6a5.png" tvg-country="RO" tvg-language="ron" nexus-score="100" group-title="New Channels",Metropola TV (1080p)
 https://www.livemetropolatv.ro/MetropolaTV/Metro/playlist.m3u8
-#EXTINF:-1 tvg-id="ItageTV.ng" tvg-name="Itage TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/itage-tv-480p-453d42d446.png" tvg-country="NG" tvg-language="yor" nexus-score="100" group-title="New Channels",Itage TV (480p)
-https://viewmedia7219.bozztv.com/wmedia/viewmedia100/web_011/Stream/playlist.m3u8
-#EXTINF:-1 tvg-id="PlutoTVNottidiPassione.de" tvg-name="Pluto TV Notti di Passione" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pluto-tv-notti-di-passione-68e82f5481.png" tvg-country="DE" tvg-language="ita" nexus-score="90" group-title="New Channels",Pluto TV Notti di Passione
-https://jmp2.uk/plu-6911c9704316999535eb21cf.m3u8
-#EXTINF:-1 tvg-id="ClassiqueTV.br" tvg-name="Classique TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/classique-tv-360p-6f1c2ec605.png" tvg-country="BR" tvg-language="por" nexus-score="100" group-title="New Channels",Classique TV (360p)
-https://stmv1.srvif.com/classique/classique/playlist.m3u8
-#EXTINF:-1 tvg-id="CINDIETV.br" tvg-name="CINDIE TV" tvg-logo="https://a.jsrdn.com/hls/23208/cindie-tv/logo_20250225_222520_68.png" tvg-country="BR" tvg-language="eng;por;spa" nexus-score="100" group-title="New Channels",CINDIE TV (1080p)
-https://cc-hqw8u5r1nshjc.akamaized.net/scheduler/scheduleMaster/352.m3u8
-#EXTINF:-1 tvg-id="PlutoTVNuestroCine.us" tvg-name="Pluto TV Nuestro Cine" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pluto-tv-nuestro-cine-479a85b751.png" tvg-country="US" tvg-language="spa" nexus-score="90" group-title="New Channels",Pluto TV Nuestro Cine
-https://jmp2.uk/plu-5defde6d6c07b50009cf0757.m3u8
-#EXTINF:-1 tvg-id="PlutoTVNottidiSangue.de" tvg-name="Pluto TV Notti di Sangue" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pluto-tv-notti-di-sangue-4cd041c831.png" tvg-country="DE" tvg-language="ita" nexus-score="90" group-title="New Channels",Pluto TV Notti di Sangue
-https://jmp2.uk/plu-6911c92b4316999535eb1e08.m3u8
-#EXTINF:-1 tvg-id="PlutoTVNottidiTerrore.de" tvg-name="Pluto TV Notti di Terrore" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pluto-tv-notti-di-terrore-df3127aa45.png" tvg-country="DE" tvg-language="ita" nexus-score="90" group-title="New Channels",Pluto TV Notti di Terrore
-https://jmp2.uk/plu-6911c8dd8caba6f046c5c5d5.m3u8
-#EXTINF:-1 tvg-id="PersianaKorea.fr" tvg-name="Persiana Korea" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/persiana-korea-50841eae46.png" tvg-country="FR" tvg-language="fas;kor" nexus-score="100" group-title="New Channels",Persiana Korea
-https://korhls.persiana.live/hls/stream.m3u8
-#EXTINF:-1 tvg-id="RajMusixTelugu.in@SD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/raj-musix-telugu-720p-e8fd0fb178.png" group-title="New Channels",Raj Musix Telugu (720p)
-https://cdn.pishow.tv/ott/live/1213/master.m3u8
 #EXTINF:-1 tvg-id="LanaTV.lb" tvg-name="Lana TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/lana-tv-576p-881f957f1b.png" tvg-country="LB" tvg-language="ara" nexus-score="100" group-title="New Channels",Lana TV (576p)
 https://cdn.streamlane.tv/hls/ltv/master.m3u8
 #EXTINF:-1 tvg-id="GaliciaTVEuropa.es" tvg-name="Galicia TV Europa" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/galicia-tv-europa-720p-1fd17e654d.png" tvg-country="ES" tvg-language="glg" nexus-score="100" group-title="New Channels",Galicia TV Europa (720p)
@@ -2029,3 +2011,81 @@ https://jmp2.uk/plu-5ff8c708653d080007361b14.m3u8
 https://cloudvideo.servers10.com:8081/8026/tracks-v1a1/index.m3u8
 #EXTINF:-1 tvg-id="ColorsMENA.in" tvg-name="Colors MENA" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/colors-mena-720p-64195c4b38.png" tvg-country="IN" tvg-language="hin" nexus-score="100" group-title="New Channels",Colors MENA (720p)
 https://da86m1sqpm3o0.cloudfront.net/28072023/smil:colorsme.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="ItageTV.ng" tvg-name="Itage TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/itage-tv-480p-453d42d446.png" tvg-country="NG" tvg-language="yor" nexus-score="100" group-title="New Channels",Itage TV (480p)
+https://viewmedia7219.bozztv.com/wmedia/viewmedia100/web_011/Stream/playlist.m3u8
+#EXTINF:-1 tvg-id="PlutoTVNottidiPassione.de" tvg-name="Pluto TV Notti di Passione" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pluto-tv-notti-di-passione-68e82f5481.png" tvg-country="DE" tvg-language="ita" nexus-score="93" group-title="New Channels",Pluto TV Notti di Passione
+https://jmp2.uk/plu-6911c9704316999535eb21cf.m3u8
+#EXTINF:-1 tvg-id="ClassiqueTV.br" tvg-name="Classique TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/classique-tv-360p-6f1c2ec605.png" tvg-country="BR" tvg-language="por" nexus-score="100" group-title="New Channels",Classique TV (360p)
+https://stmv1.srvif.com/classique/classique/playlist.m3u8
+#EXTINF:-1 tvg-id="CINDIETV.br" tvg-name="CINDIE TV" tvg-logo="https://a.jsrdn.com/hls/23208/cindie-tv/logo_20250225_222520_68.png" tvg-country="BR" tvg-language="eng;por;spa" nexus-score="100" group-title="New Channels",CINDIE TV (1080p)
+https://cc-hqw8u5r1nshjc.akamaized.net/scheduler/scheduleMaster/352.m3u8
+#EXTINF:-1 tvg-id="PlutoTVNuestroCine.us" tvg-name="Pluto TV Nuestro Cine" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pluto-tv-nuestro-cine-479a85b751.png" tvg-country="US" tvg-language="spa" nexus-score="93" group-title="New Channels",Pluto TV Nuestro Cine
+https://jmp2.uk/plu-5defde6d6c07b50009cf0757.m3u8
+#EXTINF:-1 tvg-id="PlutoTVNottidiSangue.de" tvg-name="Pluto TV Notti di Sangue" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pluto-tv-notti-di-sangue-4cd041c831.png" tvg-country="DE" tvg-language="ita" nexus-score="93" group-title="New Channels",Pluto TV Notti di Sangue
+https://jmp2.uk/plu-6911c92b4316999535eb1e08.m3u8
+#EXTINF:-1 tvg-id="PlutoTVNottidiTerrore.de" tvg-name="Pluto TV Notti di Terrore" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/pluto-tv-notti-di-terrore-df3127aa45.png" tvg-country="DE" tvg-language="ita" nexus-score="93" group-title="New Channels",Pluto TV Notti di Terrore
+https://jmp2.uk/plu-6911c8dd8caba6f046c5c5d5.m3u8
+#EXTINF:-1 tvg-id="PersianaKorea.fr" tvg-name="Persiana Korea" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/persiana-korea-50841eae46.png" tvg-country="FR" tvg-language="fas;kor" nexus-score="100" group-title="New Channels",Persiana Korea
+https://korhls.persiana.live/hls/stream.m3u8
+#EXTINF:-1 tvg-id="RajMusixTelugu.in@SD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/raj-musix-telugu-720p-e8fd0fb178.png" group-title="New Channels",Raj Musix Telugu (720p)
+https://cdn.pishow.tv/ott/live/1213/master.m3u8
+#EXTINF:-1 tvg-id="StaraTV.id" tvg-name="Stara TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/stara-tv-1080p-5086829d0b.png" tvg-country="ID" tvg-language="ind;sun;jav" nexus-score="100" group-title="New Channels",Stara TV (1080p)
+https://malang.staratv.id/hls/0/stream.m3u8
+#EXTINF:-1 tvg-id="MTVRidiculousness.se" tvg-name="MTV Ridiculousness" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mtv-ridiculousness-720p-77ebc42e2d.png" tvg-country="SE" tvg-language="eng;dan;fin;nor;swe" nexus-score="93" group-title="New Channels",MTV Ridiculousness (720p)
+https://jmp2.uk/plu-62cda0dfddc1040008fccacc.m3u8
+#EXTINF:-1 tvg-id="WairarapaTV.nz" tvg-name="Wairarapa TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/wairarapa-tv-1080p-1f9d4158bc.png" tvg-country="NZ" tvg-language="eng" nexus-score="100" group-title="New Channels",Wairarapa TV (1080p)
+https://stream1.np.co.nz/WAITVABR/WAITVABR/playlist.m3u8
+#EXTINF:-1 tvg-id="SonyOneHitsComedie.fr" tvg-name="Sony One Hits Comedie" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sony-one-hits-comedie-1080p-0bb63e2359.png" tvg-country="FR" tvg-language="fra" nexus-score="100" group-title="New Channels",Sony One Hits Comedie (1080p)
+https://d3nvxupr08boay.cloudfront.net/playlist.m3u8
+#EXTINF:-1 tvg-id="SonyOneFavoris.fr" tvg-name="Sony One Favoris" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sony-one-favoris-1080p-83506dda91.png" tvg-country="FR" tvg-language="fra" nexus-score="100" group-title="New Channels",Sony One Favoris (1080p)
+https://d21fkiqbljd83t.cloudfront.net/playlist.m3u8
+#EXTINF:-1 tvg-id="JayaTV.lk" tvg-name="Jaya TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/jaya-tv-1080p-17b08df75d.png" tvg-country="LK" tvg-language="sin" nexus-score="42" group-title="New Channels",Jaya TV (1080p)
+https://live.jayatv.lk/hls/stream.m3u8
+#EXTINF:-1 tvg-id="beINSPORTSXTRA.us" tvg-name="beIN SPORTS XTRA" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bein-sports-xtra-1080p-ef1418fd71.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",beIN SPORTS XTRA (1080p)
+https://bein-xtra-xumo.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="AMCEurope.uk" tvg-name="AMC Europe" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/amc-europe-95485d9836.png" tvg-country="UK" tvg-language="bul;eng;pol;por;spa;ukr" nexus-score="100" group-title="New Channels",AMC Europe
+http://88.212.15.19/live/test_amc_25p/playlist.m3u8
+#EXTINF:-1 tvg-id="SonyOneHitsAction.fr" tvg-name="Sony One Hits Action" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sony-one-hits-action-1080p-5585801d28.png" tvg-country="FR" tvg-language="fra" nexus-score="100" group-title="New Channels",Sony One Hits Action (1080p)
+https://d1tvu4639eiqii.cloudfront.net/playlist.m3u8
+#EXTINF:-1 tvg-id="SriwijayaTV.id" tvg-name="Sriwijaya TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sriwijaya-tv-720p-47872eb670.png" tvg-country="ID" tvg-language="ind" nexus-score="41" group-title="New Channels",Sriwijaya TV (720p)
+https://sriwijayatv.siar.us/live/sriwijayatv.m3u8
+#EXTINF:-1 tvg-id="SonySportsTen3Hindi.in" tvg-name="Sony Sports Ten 3 Hindi" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sony-sports-ten-3-hindi-1080p-8dfd79004b.png" tvg-country="IN" tvg-language="hin" nexus-score="100" group-title="New Channels",Sony Sports Ten 3 Hindi (1080p)
+https://cloudplay-sonyliv.pages.dev/ten3hd.m3u8
+#EXTINF:-1 tvg-id="TraceLatina.fr" tvg-name="Trace Latina" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/trace-latina-1080p-0961cf2b10.png" tvg-country="FR" tvg-language="fra" nexus-score="100" group-title="New Channels",Trace Latina (1080p)
+https://channels.trace.plus/Traceprod/LATINA_hd/index.m3u8
+#EXTINF:-1 tvg-id="AlHorreyaTV.us" tvg-name="Al Horreya TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/al-horreya-tv-1080p-d9e00a5578.png" tvg-country="US" tvg-language="ara" nexus-score="100" group-title="New Channels",Al Horreya TV (1080p)
+http://media.smc-host.com:1935/alhorreya.tv/mp4:alhorreya3/playlist.m3u8
+#EXTINF:-1 tvg-id="ChadaTV.ma" tvg-name="Chada TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/chada-tv-720p-2346bb98ff.png" tvg-country="MA" tvg-language="ara" nexus-score="100" group-title="New Channels",Chada TV (720p)
+https://edge13.vedge.infomaniak.com/livecast/ik:chadatv/manifest.m3u8
+#EXTINF:-1 tvg-id="OMTV.in@SD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/om-tv-576p-e64336c928.png" group-title="New Channels",OM TV (576p)
+https://mumt01.tangotv.in/O5aw8Zn3OMTV/index.m3u8
+#EXTINF:-1 tvg-id="ChacraTV.ar" tvg-name="Chacra TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/chacra-tv-480p-2ced685c38.png" tvg-country="AR" tvg-language="spa" nexus-score="42" group-title="New Channels",Chacra TV (480p)
+https://5f700d5b2c46f.streamlock.net/chacratv/chacratv/playlist.m3u8
+#EXTINF:-1 tvg-id="CeltaTV.ar" tvg-name="Celta TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/celta-tv-240p-a09e3fd785.png" tvg-country="AR" tvg-language="spa" nexus-score="100" group-title="New Channels",Celta TV (240p)
+https://vivo.solumedia.com:19360/celta/celta.m3u8
+#EXTINF:-1 tvg-id="SESCTV.br" tvg-name="SESC TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/sesc-tv-720p-cdc398da08.png" tvg-country="BR" tvg-language="por" nexus-score="100" group-title="New Channels",SESC TV (720p)
+http://45.162.64.114/SESC_TV/index.m3u8
+#EXTINF:-1 tvg-id="IslitaTV.cl" tvg-name="Islita TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/islita-tv-1080p-18491ab9fa.png" tvg-country="CL" tvg-language="spa" nexus-score="100" group-title="New Channels",Islita TV (1080p)
+https://tv.arkeo.cl:1936/unetev/unetev/playlist.m3u8
+#EXTINF:-1 tvg-id="BBCFirst.uk" tvg-name="BBC First" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/bbc-first-11069d0788.png" tvg-country="UK" tvg-language="msa;eng;pol" nexus-score="100" group-title="New Channels",BBC First
+http://88.212.15.29/live/bbc_first/index.m3u8
+#EXTINF:-1 tvg-id="AbadanTV.ir" tvg-name="Abadan TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/abadan-tv-576p-3360d2aa21.png" tvg-country="IR" tvg-language="fas" nexus-score="95" group-title="New Channels",Abadan TV (576p)
+https://ncdn.telewebion.ir/abadan/live/playlist.m3u8
+#EXTINF:-1 tvg-id="MTVAreyoutheOne.us" tvg-name="MTV Are you the One?" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mtv-are-you-the-one-8719394a7c.png" tvg-country="US" tvg-language="por" nexus-score="93" group-title="New Channels",MTV Are you the One?
+https://jmp2.uk/plu-5f6108d8cc331900075e98e4.m3u8
+#EXTINF:-1 tvg-id="RadaTV.ua" tvg-name="Rada TV" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/rada-tv-1080p-0c78f464df.png" tvg-country="UA" tvg-language="rus;eng;ukr" nexus-score="100" group-title="New Channels",Rada TV (1080p)
+https://lowa8026-cmyk.github.io/Ukraine/Edyni_Novyny/RADA.m3u8
+#EXTINF:-1 tvg-id="TrueHistory.us" tvg-name="True History" tvg-logo="https://a.jsrdn.com/hls/23001/true-history/extras/1080_logo.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",True History (720p)
+https://linear-188.frequency.stream/dist/glewedtv/188/hls/master/playlist.m3u8
+#EXTINF:-1 tvg-id="HunanTV.cn@SD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/hunan-tv-2160p-b1ca65294a.png" group-title="New Channels",Hunan TV (2160p)
+http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/dWlwPTEyNy4wLjAuMSZ1aWQ9cWluZy1jbXMmbm5fdGltZXpvbmU9OCZjZG5leF9pZD1hbF9obHNfbGR2dCZ1dWlkPTliODY4NmU5ZTM2YzYwMmMmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8
+#EXTINF:-1 tvg-id="MTVDating.se" tvg-name="MTV Dating" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/mtv-dating-720p-bd51446108.png" tvg-country="SE" tvg-language="eng;dan;fin;nor;swe" nexus-score="93" group-title="New Channels",MTV Dating (720p)
+https://jmp2.uk/plu-685140bd21f49d1b9d177e21.m3u8
+#EXTINF:-1 tvg-id="Canal30TVBethel.gt" tvg-name="Canal 30 TV Bethel" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/canal-30-tv-bethel-720p-f8c883a548.png" tvg-country="GT" tvg-language="spa" nexus-score="100" group-title="New Channels",Canal 30 TV Bethel (720p)
+https://s.emisoras.tv:8081/canal30tvbethel/index.m3u8
+#EXTINF:-1 tvg-id="CinemaxClassics.us" tvg-name="Cinemax Classics" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/cinemax-classics-1080p-2b1cbdb564.png" tvg-country="US" tvg-language="eng" nexus-score="100" group-title="New Channels",Cinemax Classics (1080p)
+http://23.237.104.106:8080/USA_5STARMAX/index.m3u8
+#EXTINF:-1 tvg-id="DisneyXD.pl" tvg-name="Disney XD" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/disney-xd-576p-010b4670bf.png" tvg-country="PL" tvg-language="pol" nexus-score="100" group-title="New Channels",Disney XD (576p)
+http://185.227.34.179:8080/disney-xd/index.m3u8
+#EXTINF:-1 tvg-id="AsharqDiscovery.sa" tvg-name="Asharq Discovery" tvg-logo="https://raw.githubusercontent.com/saeidsujon-rahman/BDIX-IPTV/main/logos/asharq-discovery-1080p-da46bd8597.png" tvg-country="SA" tvg-language="ara" nexus-score="100" group-title="New Channels",Asharq Discovery (1080p)
+https://svs.itworkscdn.net/asharqdiscoverylive/asharqd.smil/playlist_dvr.m3u8
