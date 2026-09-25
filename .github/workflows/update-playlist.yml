@@ -10,6 +10,7 @@ on:
       - main
     paths:
       - 'scripts/update_playlist.py'
+      - 'scripts/strict_update.py'
       - 'scripts/normalize_playlist.py'
       - 'scripts/repair_categories.py'
       - 'scripts/migrate_external_logos.py'
@@ -47,10 +48,10 @@ jobs:
       - name: Stage 4 — Select channels and generate report
         run: python scripts/update_playlist.py
 
-      - name: Stage 5 — Normalize playlist structure and remove rejected imports
+      - name: Stage 5 — Preserve locked category structure
         run: python scripts/normalize_playlist.py
 
-      - name: Stage 6 — Run final category repair
+      - name: Stage 6 — Run final category guard
         run: python scripts/repair_categories.py
 
       - name: Stage 7 — Migrate external channel logos
